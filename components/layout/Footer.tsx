@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Share2, Play, Users, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { photographyServices, videographyServices } from "@/data/services";
+import { locations } from "@/data/locations";
 
 export default function Footer() {
   return (
@@ -103,6 +104,59 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Cities strip */}
+      <div className="border-t border-[#1e1e1e] py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-[10px] font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-5">
+            Cities we serve
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-6">
+            {locations.map((loc) => (
+              <div key={loc.slug}>
+                <p className="text-xs font-semibold text-[#f5f0eb]/60 mb-2 flex items-center gap-1.5">
+                  <MapPin size={10} className="text-[#c9a84c]/70" />
+                  {loc.label}
+                </p>
+                <ul className="space-y-1.5">
+                  <li>
+                    <Link
+                      href={`/photography/wedding-photography/${loc.slug}`}
+                      className="text-[11px] text-[#f5f0eb]/35 hover:text-[#f5f0eb]/70 transition-colors"
+                    >
+                      Wedding Photography
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={`/photography/event-photography/${loc.slug}`}
+                      className="text-[11px] text-[#f5f0eb]/35 hover:text-[#f5f0eb]/70 transition-colors"
+                    >
+                      Event Photography
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={`/videography/wedding-videography/${loc.slug}`}
+                      className="text-[11px] text-[#f5f0eb]/35 hover:text-[#f5f0eb]/70 transition-colors"
+                    >
+                      Wedding Videography
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={`/videography/corporate-videography/${loc.slug}`}
+                      className="text-[11px] text-[#f5f0eb]/35 hover:text-[#f5f0eb]/70 transition-colors"
+                    >
+                      Corporate Videography
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </div>

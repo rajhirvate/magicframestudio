@@ -2,8 +2,9 @@
 // Format: https://images.unsplash.com/photo-{id}?w=600&q=80&fit=crop&auto=format
 
 export const photographyPhotos: Record<string, string> = {
+  // Bride & groom — soft warm light, wide compositional breathing room
   "wedding-photography":
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80&fit=crop&auto=format",
+    "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=600&q=80&fit=crop&auto=format",
   "event-photography":
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop&auto=format",
   "portrait-photography":
