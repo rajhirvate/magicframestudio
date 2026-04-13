@@ -23,6 +23,10 @@ const galleryPhotoPool = [
   "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80&fit=crop&auto=format",
 ];
 
+const serviceStoryPhotos: Record<string, string> = {
+  "wedding-photography": "/images/services/wedding-photography-about.png",
+};
+
 interface ServicePageLayoutProps {
   title: string;
   subtitle: string;
@@ -69,7 +73,7 @@ export default function ServicePageLayout({
   const photoMap = category === "photography" ? photographyPhotos : videographyPhotos;
   const heroPhoto = photoMap[slug];
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
-  const storyPhoto = restPool[0] ?? heroPhoto;
+  const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
   const gallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
 
   return (
