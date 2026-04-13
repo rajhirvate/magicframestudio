@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, CheckCircle2, ChevronRight, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { locations } from "@/data/locations";
 import ContactForm from "@/components/ContactForm";
@@ -112,31 +112,6 @@ export default function ServicePageLayout({
           className="relative flex min-h-screen flex-col pt-24 sm:pt-28 pb-16 sm:pb-20"
         >
           <div className="relative z-10 flex flex-1 flex-col max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-            <div className="pt-2 sm:pt-3 shrink-0">
-              <nav
-                className="inline-flex flex-wrap items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-2"
-                style={{ fontFamily: inter }}
-              >
-                <Link
-                  href="/"
-                  className="text-[11px] sm:text-xs text-[#f5f0eb]/55 hover:text-[#f5f0eb]/90 transition-colors"
-                >
-                  Home
-                </Link>
-                <ChevronRight size={10} className="text-[#f5f0eb]/25 shrink-0" />
-                <Link
-                  href={`/${category}`}
-                  className="text-[11px] sm:text-xs text-[#f5f0eb]/55 hover:text-[#f5f0eb]/90 transition-colors capitalize"
-                >
-                  {category}
-                </Link>
-                <ChevronRight size={10} className="text-[#f5f0eb]/25 shrink-0" />
-                <span className="text-[11px] sm:text-xs font-semibold text-[#c9a84c]">
-                  {title}
-                </span>
-              </nav>
-            </div>
-
             <div className="flex-1 flex flex-col justify-start pt-8 sm:pt-10 pb-16 sm:pb-20">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
                 <motion.div
