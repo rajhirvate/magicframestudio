@@ -4,7 +4,15 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  CheckCircle2,
+  Clock3,
+  Handshake,
+  MapPin,
+  Wallet,
+} from "lucide-react";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { locations } from "@/data/locations";
 import ContactForm from "@/components/ContactForm";
@@ -26,6 +34,33 @@ const galleryPhotoPool = [
 const serviceStoryPhotos: Record<string, string> = {
   "wedding-photography": "/images/services/wedding-photography-about.png",
 };
+
+const whyChooseHighlights = [
+  {
+    icon: BadgeCheck,
+    title: "Trusted Wedding Specialists",
+    description:
+      "Experienced photographers who understand rituals, candid timing, and family moments.",
+  },
+  {
+    icon: Clock3,
+    title: "Fast Turnaround",
+    description:
+      "Preview delivery within 48 hours and a clear timeline for final edited galleries.",
+  },
+  {
+    icon: Wallet,
+    title: "Transparent Packages",
+    description:
+      "Flexible plans with no hidden charges, built to match your celebration scale.",
+  },
+  {
+    icon: Handshake,
+    title: "End-to-End Support",
+    description:
+      "From planning calls to shoot day coordination, our team stays with you throughout.",
+  },
+];
 
 interface ServicePageLayoutProps {
   title: string;
@@ -321,6 +356,96 @@ export default function ServicePageLayout({
           </div>
         </div>
       </section>
+
+      {slug === "wedding-photography" && (
+        <section className="py-16 lg:py-24 bg-white border-t border-stone-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="text-center mb-10">
+              <p
+                className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
+                style={{ fontFamily: poppins }}
+              >
+                Why choose us
+              </p>
+              <h2 className="font-heading text-3xl sm:text-4xl font-light text-stone-900 mb-3">
+                Why Choose Magic Frame Studio?
+              </h2>
+              <p
+                className="text-sm sm:text-[15px] text-stone-500 max-w-2xl mx-auto"
+                style={{ fontFamily: inter }}
+              >
+                From planning to final delivery, we combine creative storytelling
+                with dependable execution for every wedding celebration.
+              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              <div className="lg:col-span-4 space-y-4">
+                {whyChooseHighlights.slice(0, 2).map((item, index) => (
+                  <AnimatedSection key={item.title} delay={0.04 * index}>
+                    <div className="rounded-2xl border border-stone-200 bg-[#fafaf9] px-5 py-4">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <item.icon size={16} className="text-[#c9a84c]" />
+                        <h3
+                          className="text-sm font-semibold text-stone-900"
+                          style={{ fontFamily: poppins }}
+                        >
+                          {item.title}
+                        </h3>
+                      </div>
+                      <p
+                        className="text-xs sm:text-sm text-stone-600 leading-relaxed"
+                        style={{ fontFamily: inter }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+
+              <AnimatedSection delay={0.1} className="lg:col-span-4">
+                <div className="relative mx-auto w-full max-w-sm">
+                  <div className="absolute -inset-3 rounded-3xl bg-[#c9a84c]/15 -z-10" />
+                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-stone-200 shadow-lg shadow-stone-300/30">
+                    <Image
+                      src={serviceStoryPhotos["wedding-photography"]}
+                      alt="Why choose Magic Frame Studio"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 70vw, 28vw"
+                    />
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <div className="lg:col-span-4 space-y-4">
+                {whyChooseHighlights.slice(2).map((item, index) => (
+                  <AnimatedSection key={item.title} delay={0.08 + 0.04 * index}>
+                    <div className="rounded-2xl border border-stone-200 bg-[#fafaf9] px-5 py-4">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <item.icon size={16} className="text-[#c9a84c]" />
+                        <h3
+                          className="text-sm font-semibold text-stone-900"
+                          style={{ fontFamily: poppins }}
+                        >
+                          {item.title}
+                        </h3>
+                      </div>
+                      <p
+                        className="text-xs sm:text-sm text-stone-600 leading-relaxed"
+                        style={{ fontFamily: inter }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Serving cities */}
       <section className="py-14 lg:py-20 bg-white border-t border-stone-100">
