@@ -28,7 +28,7 @@ export default function HeroSection() {
 
     const enable = () => setShowVideo(true);
     let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let timeoutId: number | undefined;
 
     if (typeof w.requestIdleCallback === "function") {
       idleId = w.requestIdleCallback(enable, { timeout: 8000 });

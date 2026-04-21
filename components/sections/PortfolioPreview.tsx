@@ -3,133 +3,192 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { ArrowRight, Plus } from "lucide-react";
 
-const items = [
+const portfolioItems = [
   {
-    photo: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&fit=crop&auto=format",
-    label: "Wedding",
-    cols: "",
+    photo: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80&fit=crop&auto=format",
+    label: "Wedding Photography",
+    category: "Love Stories",
+    size: "large", // spans 2x2
   },
   {
     photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80&fit=crop&auto=format",
-    label: "Portraits",
-    cols: "",
+    label: "Editorial Portraits",
+    category: "Portraits",
+    size: "tall", // spans 1x2
   },
   {
     photo: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80&fit=crop&auto=format",
-    label: "Drone",
-    cols: "",
+    label: "Aerial Perspectives",
+    category: "Drone",
+    size: "small",
   },
   {
     photo: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80&fit=crop&auto=format",
-    label: "Wedding Film",
-    cols: "md:col-span-2",
-  },
-  {
-    photo: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&fit=crop&auto=format",
-    label: "Products",
-    cols: "",
+    label: "Cinematic Experiences",
+    category: "Films",
+    size: "wide", // spans 2x1
   },
   {
     photo: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&fit=crop&auto=format",
-    label: "Events",
-    cols: "",
-  },
-  {
-    photo: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80&fit=crop&auto=format",
-    label: "Real Estate",
-    cols: "",
+    label: "Corporate Events",
+    category: "Events",
+    size: "small",
   },
   {
     photo: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&fit=crop&auto=format",
-    label: "Fashion",
-    cols: "",
+    label: "High Fashion",
+    category: "Fashion",
+    size: "tall",
+  },
+  {
+    photo: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80&fit=crop&auto=format",
+    label: "Luxury Estates",
+    category: "Real Estate",
+    size: "small",
+  },
+  {
+    photo: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&fit=crop&auto=format",
+    label: "Product Showcase",
+    category: "Commercial",
+    size: "small",
   },
 ];
 
-export default function PortfolioPreview() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index: number }) {
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-50px" });
+  
+  const sizeClasses = {
+    large: "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto",
+    wide: "md:col-span-2 aspect-[16/9] md:aspect-auto",
+    tall: "md:row-span-2 aspect-[2/3] md:aspect-auto",
+    small: "aspect-square",
+  };
 
   return (
-    <section ref={ref} className="py-14 lg:py-20 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-8"
-        >
-          <div>
-            <p
-              className="text-xs tracking-widest text-[#c9a84c] uppercase mb-3"
-              style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-            >
-              Our Work
-            </p>
-            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-light text-[#f5f0eb]">
-              Portfolio
-            </h2>
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className={`group relative overflow-hidden rounded-2xl bg-neutral-900 ${sizeClasses[item.size as keyof typeof sizeClasses]}`}
+    >
+      <Link href="/portfolio" className="block w-full h-full">
+        <Image
+          src={item.photo}
+          alt={item.label}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        
+        {/* Modern Glass Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+        
+        {/* Content */}
+        <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-2">
+            {item.category}
+          </p>
+          <h3 className="text-white text-xl md:text-2xl font-light mb-4">
+            {item.label}
+          </h3>
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-[#c9a84c] group-hover:border-[#c9a84c] transition-colors duration-300">
+              <Plus className="text-white" size={18} />
+            </div>
+            <span className="text-white/80 text-sm font-light">View Project</span>
           </div>
-          <Link
-            href="/portfolio"
-            className="group inline-flex items-center gap-2 text-sm text-[#f5f0eb]/60 hover:text-[#c9a84c] transition-colors duration-200"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
-          >
-            View Full Portfolio
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </motion.div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              className={`group relative overflow-hidden rounded-xl aspect-[3/2] bg-zinc-900 cursor-pointer ${item.cols}`}
-            >
-              <Image
-                src={item.photo}
-                alt={item.label}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-3 left-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <span
-                  className="text-xs font-medium text-[#f5f0eb] bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 border border-white/10"
-                  style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-                >
-                  {item.label}
-                </span>
-              </div>
-            </motion.div>
+export default function PortfolioPreview() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  return (
+    <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#060606] overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-[#c9a84c]/10 blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-blue-500/5 blur-[120px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex flex-col items-center text-center mb-16 lg:mb-24">
+          <motion.span
+            initial={{ opacity: 0, letterSpacing: "0.2em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.5em" }}
+            viewport={{ once: true }}
+            className="text-[#c9a84c] text-[10px] md:text-xs font-bold uppercase mb-6 block"
+          >
+            Visual Excellence
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-tight leading-tight font-heading"
+          >
+            Capturing the <span className="italic">Essence</span> <br /> 
+            of Every Moment
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-8 text-neutral-400 max-w-2xl text-lg font-light leading-relaxed"
+          >
+            Explore our curated selection of visual stories, ranging from intimate celebrations to high-end commercial projects.
+          </motion.p>
+        </div>
+
+        {/* Dynamic Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6 auto-rows-[250px] md:auto-rows-[300px]">
+          {portfolioItems.map((item, index) => (
+            <PortfolioCard key={index} item={item} index={index} />
           ))}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-10"
+        {/* Modern Footer CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 flex flex-col items-center"
         >
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#2a2a2a] hover:border-[#c9a84c]/50 rounded-full transition-all duration-300 hover:bg-[#c9a84c]/5"
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black rounded-full overflow-hidden transition-all duration-500 hover:pr-14"
           >
-            View Full Portfolio <ArrowRight size={14} />
+            <span className="relative z-10 font-semibold tracking-wide">Enter Full Gallery</span>
+            <div className="absolute right-6 w-0 group-hover:w-6 overflow-hidden transition-all duration-500">
+              <ArrowRight size={20} />
+            </div>
+            <div className="absolute inset-0 bg-[#c9a84c] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-white font-semibold tracking-wide">
+              Explore Now <ArrowRight className="ml-2" size={20} />
+            </span>
           </Link>
+          
+          <p className="mt-8 text-neutral-500 text-sm font-medium tracking-[0.2em] uppercase">
+            Over 500+ projects completed
+          </p>
         </motion.div>
       </div>
     </section>
