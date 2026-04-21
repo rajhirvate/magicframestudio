@@ -13,15 +13,19 @@ export default function HeroSection() {
     if (w.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
+    // ~5.7MB MP4: only load on large viewports so phones/tablets stay fast.
+    if (!w.matchMedia?.("(min-width: 1024px)").matches) {
+      return;
+    }
 
     const enable = () => setShowVideo(true);
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     if ("requestIdleCallback" in w) {
-      idleId = w.requestIdleCallback(enable, { timeout: 4000 });
+      idleId = w.requestIdleCallback(enable, { timeout: 8000 });
     } else {
-      timeoutId = w.setTimeout(enable, 2500);
+      timeoutId = w.setTimeout(enable, 4000);
     }
 
     return () => {

@@ -318,7 +318,7 @@ export default function ServiceCityPageLayout({
               Gallery preview
             </h2>
           </AnimatedSection>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {gallery.map((photo, i) => (
               <AnimatedSection key={`${photo}-${i}`} delay={i * 0.06}>
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-stone-200 relative group cursor-default ring-1 ring-stone-200/90 shadow-sm">
@@ -327,13 +327,26 @@ export default function ServiceCityPageLayout({
                     alt={`${cityTitle} gallery ${i + 1}`}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 768px) 33vw, 28vw"
                   />
                   <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/10 transition-colors duration-300" />
                 </div>
               </AnimatedSection>
             ))}
           </div>
+
+          <AnimatedSection className="mt-10 flex justify-center" delay={0.24}>
+            <a
+              href="https://magicframestudio.com/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#b8942e] rounded-full transition-colors duration-200 shadow-md shadow-[#c9a84c]/25"
+              style={{ fontFamily: poppins }}
+            >
+              View Our Portfolio
+              <ArrowRight size={14} />
+            </a>
+          </AnimatedSection>
         </div>
       </section>
 

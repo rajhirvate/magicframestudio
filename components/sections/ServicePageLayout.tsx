@@ -32,16 +32,6 @@ const galleryPhotoPool = [
   "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80&fit=crop&auto=format",
 ];
 
-/** Extra row for wedding photography only — local files under /public (replace or edit as needed). */
-const weddingGalleryExtraRow = [
-  "/images/services/wedding-photography-about.png",
-  "/images/wedding-about-service.png",
-  "/images/gallery/wedding-row-3-placeholder.png",
-] as const;
-
-const WEDDING_PORTFOLIO_HREF =
-  "/portfolio#:~:text=All-,Wedding,-Events" as const;
-
 const serviceStoryPhotos: Record<string, string> = {
   "wedding-photography": "/images/services/wedding-photography-about.png",
 };
@@ -114,11 +104,7 @@ export default function ServicePageLayout({
   const heroPhoto = photoMap[slug];
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
   const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
-  const galleryBase = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
-  const gallery =
-    slug === "wedding-photography"
-      ? [...galleryBase, ...weddingGalleryExtraRow]
-      : galleryBase;
+  const gallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
 
   return (
     <>
@@ -330,7 +316,7 @@ export default function ServicePageLayout({
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery preview — same 6-image grid as other service pages */}
       <section className="py-16 lg:py-24 bg-[#f5f0eb] border-t border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-12 text-center">
@@ -347,7 +333,7 @@ export default function ServicePageLayout({
             </h2>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {gallery.map((photo, i) => (
               <AnimatedSection key={`${photo}-${i}`} delay={i * 0.06}>
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-stone-200 relative group cursor-default ring-1 ring-stone-200/90 shadow-sm">
@@ -356,7 +342,7 @@ export default function ServicePageLayout({
                     alt={`${title} gallery ${i + 1}`}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 768px) 33vw, 28vw"
                   />
                   <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/10 transition-colors duration-300" />
                 </div>
@@ -364,18 +350,18 @@ export default function ServicePageLayout({
             ))}
           </div>
 
-          {slug === "wedding-photography" && (
-            <div className="mt-10 sm:mt-12 flex justify-center px-2">
-              <Link
-                href={WEDDING_PORTFOLIO_HREF}
-                className="inline-flex w-full max-w-md sm:w-auto items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-all duration-200 shadow-md shadow-[#c9a84c]/25 hover:scale-[1.02] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a84c]"
-                style={{ fontFamily: poppins }}
-              >
-                View Wedding Photography Portfolio
-                <ArrowRight size={14} className="shrink-0" aria-hidden />
-              </Link>
-            </div>
-          )}
+          <AnimatedSection className="mt-10 flex justify-center" delay={0.24}>
+            <a
+              href="https://magicframestudio.com/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#b8942e] rounded-full transition-colors duration-200 shadow-md shadow-[#c9a84c]/25"
+              style={{ fontFamily: poppins }}
+            >
+              View Our Portfolio
+              <ArrowRight size={14} />
+            </a>
+          </AnimatedSection>
         </div>
       </section>
 
