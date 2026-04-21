@@ -37,21 +37,18 @@ const serviceStoryPhotos: Record<string, string> = {
 const whyChooseHighlights = [
   {
     icon: Wallet,
-    number: "01",
     title: "Competitive wedding packages",
     description:
       "Get premium wedding photography coverage with clear pricing and no hidden costs.",
   },
   {
     icon: Handshake,
-    number: "02",
     title: "Long-term partnership",
     description:
       "From pre-wedding planning to album delivery, we stay with you through every step.",
   },
   {
     icon: Gauge,
-    number: "03",
     title: "Performance-driven execution",
     description:
       "Our team captures key rituals, emotions, and candid moments with speed and precision.",
@@ -396,13 +393,6 @@ export default function ServicePageLayout({
                       style={{ fontFamily: inter }}
                     >
                       {item.description}
-                    </p>
-
-                    <p
-                      className="mt-6 text-6xl md:text-7xl font-semibold text-stone-300/45 leading-none"
-                      style={{ fontFamily: poppins }}
-                    >
-                      {item.number}.
                     </p>
                   </div>
                 </AnimatedSection>
