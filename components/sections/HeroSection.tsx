@@ -5,19 +5,20 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+/** DOM typings always include idle callbacks; omit them so the fallback branch is actually reachable for TS. */
+type WindowIdleOptional = Omit<Window, "requestIdleCallback" | "cancelIdleCallback"> & {
+  requestIdleCallback?: (
+    callback: IdleRequestCallback,
+    options?: IdleRequestOptions,
+  ) => number;
+  cancelIdleCallback?: (handle: number) => void;
+};
+
 export default function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    type WindowWithOptionalIdle = Window & {
-      requestIdleCallback?: (
-        callback: IdleRequestCallback,
-        options?: IdleRequestOptions,
-      ) => number;
-      cancelIdleCallback?: (handle: number) => void;
-    };
-
-    const w = window as WindowWithOptionalIdle;
+    const w = window as WindowIdleOptional;
     if (w.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
       return;
     }

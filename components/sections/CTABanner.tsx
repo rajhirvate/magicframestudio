@@ -9,10 +9,10 @@ export default function CTABanner() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="relative py-14 lg:py-20 overflow-hidden bg-[#0a0a0a]">
+    <section ref={ref} className="relative py-14 lg:py-20 overflow-hidden bg-[#0f0c0a]">
       {/* Background accent */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#1a1408]/50 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c0a] via-[#1a1408]/50 to-[#0f0c0a]" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/30 to-transparent" />
       </div>

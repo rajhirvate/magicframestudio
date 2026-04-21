@@ -76,7 +76,7 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={`group relative overflow-hidden rounded-2xl bg-neutral-900 ${sizeClasses[item.size as keyof typeof sizeClasses]}`}
     >
-      <Link href="/portfolio" className="block w-full h-full">
+      <Link href="/portfolio" className="block h-full w-full">
         <Image
           src={item.photo}
           alt={item.label}
@@ -84,23 +84,21 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        
-        {/* Modern Glass Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-        
-        {/* Content */}
-        <div className="absolute inset-0 p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-          <p className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase mb-2">
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100" />
+
+        <div className="absolute inset-0 flex translate-y-4 flex-col justify-end p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#c9a84c]">
             {item.category}
           </p>
-          <h3 className="text-white text-xl md:text-2xl font-light mb-4">
+          <h3 className="mb-4 text-xl font-light text-white md:text-2xl">
             {item.label}
           </h3>
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-[#c9a84c] group-hover:border-[#c9a84c] transition-colors duration-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-colors duration-300 group-hover:border-[#c9a84c] group-hover:bg-[#c9a84c]">
               <Plus className="text-white" size={18} />
             </div>
-            <span className="text-white/80 text-sm font-light">View Project</span>
+            <span className="text-sm font-light text-white/80">View Project</span>
           </div>
         </div>
       </Link>
@@ -119,7 +117,10 @@ export default function PortfolioPreview() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#060606] overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative overflow-hidden bg-[#0f0c0a] py-24 lg:py-32"
+    >
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-[#c9a84c]/10 blur-[120px]" />

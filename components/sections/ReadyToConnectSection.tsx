@@ -9,7 +9,7 @@ export default function ReadyToConnectSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section ref={ref} className="bg-black py-20 lg:py-28">
+    <section ref={ref} className="bg-[#0f0c0a] py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -25,8 +25,8 @@ export default function ReadyToConnectSection() {
           </p>
           <Link
             href="/contact"
-            className="mt-2 inline-flex items-center justify-center rounded-full border border-white bg-transparent px-10 py-3.5 text-[10px] font-medium uppercase tracking-[0.22em] text-white transition-colors duration-200 hover:bg-white/10 sm:text-[11px] sm:tracking-[0.26em]"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            className="mt-2 inline-flex items-center justify-center rounded-full bg-[#c9a84c] px-10 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-md shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068] sm:px-11"
+            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Connect now
           </Link>

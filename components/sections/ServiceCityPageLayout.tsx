@@ -410,9 +410,9 @@ export default function ServiceCityPageLayout({
       </section>
 
       {/* CTA */}
-      <section className="relative py-16 lg:py-24 overflow-hidden bg-[#0a0a0a] border-t border-stone-800/80">
+      <section className="relative py-16 lg:py-24 overflow-hidden bg-[#0f0c0a] border-t border-stone-800/80">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#1a1408]/45 to-[#0a0a0a]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c0a] via-[#1a1408]/45 to-[#0f0c0a]" />
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/35 to-transparent" />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 text-center">

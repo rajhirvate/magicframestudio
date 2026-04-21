@@ -1,21 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-
-const poppins = "var(--font-poppins), sans-serif";
-const inter = "var(--font-inter), sans-serif";
-
-const PORTFOLIO_CTA_HREF =
-  "/portfolio#:~:text=All-,Wedding,-Events" as const;
+import { cn } from "@/lib/utils";
 
 export type MasonryImageItem = {
   src: string;
   alt: string;
   aspect: string;
+  /** Applied to the image card; use to size a tile smaller than the column (e.g. `mx-auto w-[72%]`). */
+  cardClassName?: string;
 };
 
 const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
@@ -32,7 +25,8 @@ const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
   {
     src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=640&q=75&fit=crop&auto=format",
     alt: "Bridal portrait",
-    aspect: "aspect-[2/3]",
+    aspect: "aspect-[1/1]",
+    cardClassName: "mx-auto w-[68%] sm:w-[70%]",
   },
   {
     src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=640&q=75&fit=crop&auto=format",
@@ -45,7 +39,7 @@ const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
     aspect: "aspect-[3/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c2?w=640&q=75&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1519167758481-83f29da3d0e6?w=640&q=75&fit=crop&auto=format",
     alt: "Wedding venue",
     aspect: "aspect-[3/4]",
   },
@@ -104,34 +98,17 @@ const WEDDING_MASONRY_SECTION_2: MasonryImageItem[] = [
   },
 ];
 
-function MasonryReveal({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 18 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
   return (
-    <div className="columns-1 md:columns-2 [column-gap:0.75rem] sm:[column-gap:1rem] lg:[column-gap:1.125rem] [column-fill:balance]">
+    <div className="columns-1 sm:columns-2 md:columns-3 [column-gap:0.5rem] sm:[column-gap:0.625rem] md:[column-gap:0.75rem] [column-fill:balance]">
       {items.map((item, i) => (
-        <div key={`${item.src}-${i}`} className="mb-3.5 sm:mb-[1.125rem] break-inside-avoid">
-          <div className="group relative overflow-hidden rounded-2xl bg-stone-200 ring-1 ring-stone-200/80 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.1)] transition-[box-shadow,transform] duration-500 ease-out hover:shadow-[0_12px_40px_-8px_rgba(201,168,76,0.22)] hover:ring-[#c9a84c]/35">
+        <div key={`${item.src}-${i}`} className="mb-2.5 sm:mb-3 break-inside-avoid">
+          <div
+            className={cn(
+              "group relative overflow-hidden rounded-xl bg-stone-200 ring-1 ring-stone-200/80 shadow-[0_2px_16px_-4px_rgba(0,0,0,0.08)] transition-[box-shadow,transform] duration-500 ease-out hover:shadow-[0_8px_28px_-6px_rgba(201,168,76,0.18)] hover:ring-[#c9a84c]/35 sm:rounded-2xl",
+              item.cardClassName,
+            )}
+          >
             <div className={`relative w-full ${item.aspect}`}>
               <Image
                 src={item.src}
@@ -139,7 +116,7 @@ function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
                 fill
                 loading="lazy"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 768px) 100vw, 42vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
               />
             </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -159,31 +136,10 @@ export default function WeddingMasonryPortfolios() {
       <div className="pointer-events-none absolute -top-32 left-1/2 h-[28rem] w-[min(100%,56rem)] -translate-x-1/2 rounded-full bg-[#c9a84c]/[0.07] blur-[80px]" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-300/40 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <MasonryGrid
           items={[...WEDDING_MASONRY_SECTION_1, ...WEDDING_MASONRY_SECTION_2]}
         />
-
-        {/* Footer CTA */}
-        <MasonryReveal delay={0.08}>
-          <div className="mt-14 flex flex-col items-center gap-4 border-t border-stone-200/70 pt-12 text-center sm:mt-16 sm:pt-14">
-            <p
-              className="max-w-md text-sm text-stone-500"
-              style={{ fontFamily: inter }}
-            >
-              See the full wedding category, filters, and more work in our
-              portfolio.
-            </p>
-            <Link
-              href={PORTFOLIO_CTA_HREF}
-              className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-[#c9a84c] px-8 py-3.5 text-sm font-medium text-[#0a0a0a] shadow-md shadow-[#c9a84c]/25 transition-all duration-200 hover:scale-[1.02] hover:bg-[#e0c068] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a84c] sm:w-auto"
-              style={{ fontFamily: poppins }}
-            >
-              View Wedding Photography Portfolio
-              <ArrowRight size={14} className="shrink-0" aria-hidden />
-            </Link>
-          </div>
-        </MasonryReveal>
       </div>
     </section>
   );
