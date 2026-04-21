@@ -22,6 +22,9 @@
 
 # misc
 .DS_Store
+
+# local Node.js unpacks / archives (do not commit)
+node-v22.*/
 *.pem
 
 # debug

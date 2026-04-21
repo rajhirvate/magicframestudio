@@ -15,6 +15,8 @@ import {
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { locations } from "@/data/locations";
 import ContactForm from "@/components/ContactForm";
+import WeddingMasonryPortfolios from "@/components/sections/WeddingMasonryPortfolios";
+import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -29,6 +31,16 @@ const galleryPhotoPool = [
   "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&fit=crop&auto=format",
   "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80&fit=crop&auto=format",
 ];
+
+/** Extra row for wedding photography only — local files under /public (replace or edit as needed). */
+const weddingGalleryExtraRow = [
+  "/images/services/wedding-photography-about.png",
+  "/images/wedding-about-service.png",
+  "/images/gallery/wedding-row-3-placeholder.png",
+] as const;
+
+const WEDDING_PORTFOLIO_HREF =
+  "/portfolio#:~:text=All-,Wedding,-Events" as const;
 
 const serviceStoryPhotos: Record<string, string> = {
   "wedding-photography": "/images/services/wedding-photography-about.png",
@@ -102,7 +114,11 @@ export default function ServicePageLayout({
   const heroPhoto = photoMap[slug];
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
   const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
-  const gallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const galleryBase = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const gallery =
+    slug === "wedding-photography"
+      ? [...galleryBase, ...weddingGalleryExtraRow]
+      : galleryBase;
 
   return (
     <>
@@ -347,59 +363,78 @@ export default function ServicePageLayout({
               </AnimatedSection>
             ))}
           </div>
+
+          {slug === "wedding-photography" && (
+            <div className="mt-10 sm:mt-12 flex justify-center px-2">
+              <Link
+                href={WEDDING_PORTFOLIO_HREF}
+                className="inline-flex w-full max-w-md sm:w-auto items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-all duration-200 shadow-md shadow-[#c9a84c]/25 hover:scale-[1.02] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a84c]"
+                style={{ fontFamily: poppins }}
+              >
+                View Wedding Photography Portfolio
+                <ArrowRight size={14} className="shrink-0" aria-hidden />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
       {slug === "wedding-photography" && (
-        <section className="py-16 lg:py-24 bg-white border-t border-stone-200/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection className="text-center mb-10">
-              <p
-                className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
-                style={{ fontFamily: poppins }}
-              >
-                Why choose us
-              </p>
-              <h2 className="font-heading text-3xl sm:text-4xl font-light text-stone-900 mb-3">
-                Why Choose Magic Frame Studio?
-              </h2>
-              <p
-                className="text-sm sm:text-[15px] text-stone-500 max-w-2xl mx-auto"
-                style={{ fontFamily: inter }}
-              >
-                We blend storytelling, planning, and reliable execution so your
-                wedding memories are captured beautifully.
-              </p>
-            </AnimatedSection>
+        <>
+          <section className="py-16 lg:py-24 bg-white border-t border-stone-200/70">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <AnimatedSection className="text-center mb-10">
+                <p
+                  className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
+                  style={{ fontFamily: poppins }}
+                >
+                  Why choose us
+                </p>
+                <h2 className="font-heading text-3xl sm:text-4xl font-light text-stone-900 mb-3">
+                  Why Choose Magic Frame Studio?
+                </h2>
+                <p
+                  className="text-sm sm:text-[15px] text-stone-500 max-w-2xl mx-auto"
+                  style={{ fontFamily: inter }}
+                >
+                  We blend storytelling, planning, and reliable execution so your
+                  wedding memories are captured beautifully.
+                </p>
+              </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-              {whyChooseHighlights.map((item, index) => (
-                <AnimatedSection key={item.title} delay={0.04 * index}>
-                  <div className="relative text-center px-3 py-2">
-                    <div className="mb-5 flex justify-center">
-                      <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-stone-200/70">
-                        <item.icon size={24} className="text-[#c9a84c]" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+                {whyChooseHighlights.map((item, index) => (
+                  <AnimatedSection key={item.title} delay={0.04 * index}>
+                    <div className="relative text-center px-3 py-2">
+                      <div className="mb-5 flex justify-center">
+                        <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-stone-200/70">
+                          <item.icon size={24} className="text-[#c9a84c]" />
+                        </div>
                       </div>
+
+                      <h3
+                        className="font-heading text-2xl font-bold text-stone-900 mb-3 leading-tight"
+                      >
+                        {item.title}
+                      </h3>
+
+                      <p
+                        className="text-sm sm:text-[15px] text-stone-500 leading-relaxed max-w-sm mx-auto"
+                        style={{ fontFamily: inter }}
+                      >
+                        {item.description}
+                      </p>
                     </div>
-
-                    <h3
-                      className="font-heading text-2xl font-bold text-stone-900 mb-3 leading-tight"
-                    >
-                      {item.title}
-                    </h3>
-
-                    <p
-                      className="text-sm sm:text-[15px] text-stone-500 leading-relaxed max-w-sm mx-auto"
-                      style={{ fontFamily: inter }}
-                    >
-                      {item.description}
-                    </p>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  </AnimatedSection>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          <ReadyToConnectSection />
+
+          <WeddingMasonryPortfolios />
+        </>
       )}
 
       {/* Serving cities */}

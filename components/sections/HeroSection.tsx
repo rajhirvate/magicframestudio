@@ -1,22 +1,56 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    const w = window;
+    if (w.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const enable = () => setShowVideo(true);
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    if ("requestIdleCallback" in w) {
+      idleId = w.requestIdleCallback(enable, { timeout: 4000 });
+    } else {
+      timeoutId = w.setTimeout(enable, 2500);
+    }
+
+    return () => {
+      if (idleId !== undefined && "cancelIdleCallback" in w) {
+        w.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== undefined) {
+        w.clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/hero-bg.mp4" type="video/mp4" />
-      </video>
+      {/* Solid base while video loads — avoids blocking LCP on ~6MB MP4 */}
+      <div className="absolute inset-0 bg-[#141210]" aria-hidden />
+
+      {showVideo && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Dark overlay layers */}
       <div className="absolute inset-0 bg-black/60" />
