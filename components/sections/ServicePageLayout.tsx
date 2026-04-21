@@ -6,9 +6,8 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowRight,
-  BadgeCheck,
   CheckCircle2,
-  Clock3,
+  Gauge,
   Handshake,
   MapPin,
   Wallet,
@@ -37,28 +36,25 @@ const serviceStoryPhotos: Record<string, string> = {
 
 const whyChooseHighlights = [
   {
-    icon: BadgeCheck,
-    title: "Trusted Wedding Specialists",
-    description:
-      "Experienced photographers who understand rituals, candid timing, and family moments.",
-  },
-  {
-    icon: Clock3,
-    title: "Fast Turnaround",
-    description:
-      "Preview delivery within 48 hours and a clear timeline for final edited galleries.",
-  },
-  {
     icon: Wallet,
-    title: "Transparent Packages",
+    number: "01",
+    title: "Competitive wedding packages",
     description:
-      "Flexible plans with no hidden charges, built to match your celebration scale.",
+      "Get premium wedding photography coverage with clear pricing and no hidden costs.",
   },
   {
     icon: Handshake,
-    title: "End-to-End Support",
+    number: "02",
+    title: "Long-term partnership",
     description:
-      "From planning calls to shoot day coordination, our team stays with you throughout.",
+      "From pre-wedding planning to album delivery, we stay with you through every step.",
+  },
+  {
+    icon: Gauge,
+    number: "03",
+    title: "Performance-driven execution",
+    description:
+      "Our team captures key rituals, emotions, and candid moments with speed and precision.",
   },
 ];
 
@@ -358,7 +354,7 @@ export default function ServicePageLayout({
       </section>
 
       {slug === "wedding-photography" && (
-        <section className="py-16 lg:py-24 bg-white border-t border-stone-100">
+        <section className="py-16 lg:py-24 bg-white border-t border-stone-200/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-10">
               <p
@@ -374,74 +370,43 @@ export default function ServicePageLayout({
                 className="text-sm sm:text-[15px] text-stone-500 max-w-2xl mx-auto"
                 style={{ fontFamily: inter }}
               >
-                From planning to final delivery, we combine creative storytelling
-                with dependable execution for every wedding celebration.
+                We blend storytelling, planning, and reliable execution so your
+                wedding memories are captured beautifully.
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-              <div className="lg:col-span-4 space-y-4">
-                {whyChooseHighlights.slice(0, 2).map((item, index) => (
-                  <AnimatedSection key={item.title} delay={0.04 * index}>
-                    <div className="rounded-2xl border border-stone-200 bg-[#fafaf9] px-5 py-4">
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <item.icon size={16} className="text-[#c9a84c]" />
-                        <h3
-                          className="text-sm font-semibold text-stone-900"
-                          style={{ fontFamily: poppins }}
-                        >
-                          {item.title}
-                        </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+              {whyChooseHighlights.map((item, index) => (
+                <AnimatedSection key={item.title} delay={0.04 * index}>
+                  <div className="relative text-center px-3 py-2">
+                    <div className="mb-5 flex justify-center">
+                      <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-stone-200/70">
+                        <item.icon size={24} className="text-[#4c4ca8]" />
                       </div>
-                      <p
-                        className="text-xs sm:text-sm text-stone-600 leading-relaxed"
-                        style={{ fontFamily: inter }}
-                      >
-                        {item.description}
-                      </p>
                     </div>
-                  </AnimatedSection>
-                ))}
-              </div>
 
-              <AnimatedSection delay={0.1} className="lg:col-span-4">
-                <div className="relative mx-auto w-full max-w-sm">
-                  <div className="absolute -inset-3 rounded-3xl bg-[#c9a84c]/15 -z-10" />
-                  <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-stone-200 shadow-lg shadow-stone-300/30">
-                    <Image
-                      src={serviceStoryPhotos["wedding-photography"]}
-                      alt="Why choose Magic Frame Studio"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 70vw, 28vw"
-                    />
+                    <h3
+                      className="font-heading text-xl sm:text-2xl font-bold text-stone-900 mb-3 leading-tight"
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p
+                      className="text-sm sm:text-[15px] text-stone-500 leading-relaxed max-w-sm mx-auto"
+                      style={{ fontFamily: inter }}
+                    >
+                      {item.description}
+                    </p>
+
+                    <p
+                      className="mt-6 text-6xl md:text-7xl font-semibold text-stone-300/45 leading-none"
+                      style={{ fontFamily: poppins }}
+                    >
+                      {item.number}.
+                    </p>
                   </div>
-                </div>
-              </AnimatedSection>
-
-              <div className="lg:col-span-4 space-y-4">
-                {whyChooseHighlights.slice(2).map((item, index) => (
-                  <AnimatedSection key={item.title} delay={0.08 + 0.04 * index}>
-                    <div className="rounded-2xl border border-stone-200 bg-[#fafaf9] px-5 py-4">
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <item.icon size={16} className="text-[#c9a84c]" />
-                        <h3
-                          className="text-sm font-semibold text-stone-900"
-                          style={{ fontFamily: poppins }}
-                        >
-                          {item.title}
-                        </h3>
-                      </div>
-                      <p
-                        className="text-xs sm:text-sm text-stone-600 leading-relaxed"
-                        style={{ fontFamily: inter }}
-                      >
-                        {item.description}
-                      </p>
-                    </div>
-                  </AnimatedSection>
-                ))}
-              </div>
+                </AnimatedSection>
+              ))}
             </div>
           </div>
         </section>
