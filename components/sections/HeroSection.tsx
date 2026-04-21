@@ -9,7 +9,15 @@ export default function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const w = window;
+    type WindowWithOptionalIdle = Window & {
+      requestIdleCallback?: (
+        callback: IdleRequestCallback,
+        options?: IdleRequestOptions,
+      ) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+
+    const w = window as WindowWithOptionalIdle;
     if (w.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
@@ -22,14 +30,14 @@ export default function HeroSection() {
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
-    if ("requestIdleCallback" in w) {
+    if (typeof w.requestIdleCallback === "function") {
       idleId = w.requestIdleCallback(enable, { timeout: 8000 });
     } else {
       timeoutId = w.setTimeout(enable, 4000);
     }
 
     return () => {
-      if (idleId !== undefined && "cancelIdleCallback" in w) {
+      if (idleId !== undefined && typeof w.cancelIdleCallback === "function") {
         w.cancelIdleCallback(idleId);
       }
       if (timeoutId !== undefined) {
