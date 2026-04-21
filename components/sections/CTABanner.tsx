@@ -23,21 +23,28 @@ export default function CTABanner() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-xs tracking-widest text-[#c9a84c] uppercase mb-5">
-            Let&apos;s Create Together
+          <p
+            className="mb-4 text-xs font-semibold tracking-normal text-[#c9a84c]"
+            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+          >
+            Let&apos;s create together
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light text-[#f5f0eb] leading-tight mb-6">
-            Ready to Book{" "}
-            <span className="italic text-[#c9a84c]">Your Shoot?</span>
+          <h2 className="font-heading mb-4 text-3xl font-light leading-tight text-[#f5f0eb] sm:text-4xl lg:text-5xl">
+            Ready to book{" "}
+            <span className="italic text-[#e0c068]">your shoot?</span>
           </h2>
-          <p className="text-base text-[#f5f0eb]/50 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p
+            className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-[#f5f0eb]/55 sm:text-[15px]"
+            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+          >
             Let&apos;s discuss your vision. Whether it&apos;s a wedding, a product launch, or a brand film — we&apos;re here to craft something extraordinary together.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center px-10 py-4 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200 shadow-xl shadow-[#c9a84c]/20"
+            className="inline-flex items-center rounded-full bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
+            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
-            Contact Us Today
+            Contact us today
           </Link>
         </motion.div>
       </div>

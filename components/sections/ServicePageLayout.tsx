@@ -462,7 +462,7 @@ export default function ServicePageLayout({
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <p
-              className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-4"
+              className="mb-4 text-xs font-semibold tracking-normal text-[#c9a84c]"
               style={{ fontFamily: poppins }}
             >
               Next step

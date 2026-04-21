@@ -15,17 +15,21 @@ export default function ReadyToConnectSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center gap-5"
+          className="flex flex-col items-center gap-4 text-center"
         >
-          <h2 className="font-heading text-2xl font-normal uppercase tracking-[0.14em] text-white sm:text-3xl md:text-[2.125rem] md:tracking-[0.16em]">
-            Ready to connect?
+          <h2 className="font-heading text-3xl font-light leading-tight text-[#f5f0eb] sm:text-4xl lg:text-5xl">
+            Ready to{" "}
+            <span className="italic text-[#e0c068]">connect?</span>
           </h2>
-          <p className="font-heading text-xs uppercase tracking-[0.22em] text-white sm:text-sm sm:tracking-[0.26em]">
+          <p
+            className="max-w-md text-sm font-normal leading-relaxed text-[#f5f0eb]/55 sm:text-[15px]"
+            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+          >
             Request availability
           </p>
           <Link
             href="/contact"
-            className="mt-2 inline-flex items-center justify-center rounded-full bg-[#c9a84c] px-10 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-md shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068] sm:px-11"
+            className="mt-1 inline-flex items-center justify-center rounded-full bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Connect now
