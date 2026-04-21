@@ -21,12 +21,12 @@ const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=640&q=75&fit=crop&auto=format",
     alt: "Wedding ceremony couple",
     aspect: "aspect-[4/3]",
+    cardClassName: "mx-auto w-[62%] sm:w-[65%] md:w-[68%]",
   },
   {
     src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=640&q=75&fit=crop&auto=format",
     alt: "Bridal portrait",
     aspect: "aspect-[1/1]",
-    cardClassName: "mx-auto w-[68%] sm:w-[70%]",
   },
   {
     src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=640&q=75&fit=crop&auto=format",
@@ -39,17 +39,17 @@ const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
     aspect: "aspect-[3/5]",
   },
   {
-    src: "https://images.unsplash.com/photo-1519167758481-83f29da3d0e6?w=640&q=75&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1464366400606-116158a48e7f?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding venue",
     aspect: "aspect-[3/4]",
   },
   {
-    src: "https://images.unsplash.com/photo-1520854221050-0f9c9aafeac5?w=640&q=75&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding rings detail",
     aspect: "aspect-[1/1]",
   },
   {
-    src: "https://images.unsplash.com/photo-1523438885200-e635ba2c145e?w=640&q=75&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1522673607260-14d1d9341941?w=800&q=80&fit=crop&auto=format",
     alt: "Couple portrait",
     aspect: "aspect-[4/5]",
   },
@@ -100,9 +100,9 @@ const WEDDING_MASONRY_SECTION_2: MasonryImageItem[] = [
 
 function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
   return (
-    <div className="columns-1 sm:columns-2 md:columns-3 [column-gap:0.5rem] sm:[column-gap:0.625rem] md:[column-gap:0.75rem] [column-fill:balance]">
+    <div className="columns-1 md:columns-3 [column-gap:0.625rem] sm:[column-gap:0.75rem] md:[column-gap:1rem] [column-fill:balance]">
       {items.map((item, i) => (
-        <div key={`${item.src}-${i}`} className="mb-2.5 sm:mb-3 break-inside-avoid">
+        <div key={`${item.src}-${i}`} className="mb-2.5 sm:mb-3.5 break-inside-avoid">
           <div
             className={cn(
               "group relative overflow-hidden rounded-xl bg-stone-200 ring-1 ring-stone-200/80 shadow-[0_2px_16px_-4px_rgba(0,0,0,0.08)] transition-[box-shadow,transform] duration-500 ease-out hover:shadow-[0_8px_28px_-6px_rgba(201,168,76,0.18)] hover:ring-[#c9a84c]/35 sm:rounded-2xl",
@@ -116,7 +116,7 @@ function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
                 fill
                 loading="lazy"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -136,7 +136,7 @@ export default function WeddingMasonryPortfolios() {
       <div className="pointer-events-none absolute -top-32 left-1/2 h-[28rem] w-[min(100%,56rem)] -translate-x-1/2 rounded-full bg-[#c9a84c]/[0.07] blur-[80px]" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-300/40 to-transparent" />
 
-      <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <MasonryGrid
           items={[...WEDDING_MASONRY_SECTION_1, ...WEDDING_MASONRY_SECTION_2]}
         />
