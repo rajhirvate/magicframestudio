@@ -18,12 +18,6 @@ const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
     aspect: "aspect-[3/4]",
   },
   {
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=640&q=75&fit=crop&auto=format",
-    alt: "Wedding ceremony couple",
-    aspect: "aspect-[4/3]",
-    cardClassName: "mx-auto w-[62%] sm:w-[65%] md:w-[68%]",
-  },
-  {
     src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=640&q=75&fit=crop&auto=format",
     alt: "Bridal portrait",
     aspect: "aspect-[1/1]",
