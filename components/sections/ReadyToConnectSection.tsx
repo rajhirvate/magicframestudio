@@ -12,7 +12,7 @@ export default function ReadyToConnectSection() {
     <section
       ref={ref}
       id="ready-to-connect"
-      className="bg-black py-20 lg:py-28"
+      className="bg-[#0d0b09] py-20 lg:py-28"
     >
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <motion.div
