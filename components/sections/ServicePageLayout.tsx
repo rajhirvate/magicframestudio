@@ -381,12 +381,12 @@ export default function ServicePageLayout({
                   <div className="relative text-center px-3 py-2">
                     <div className="mb-5 flex justify-center">
                       <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-stone-200/70">
-                        <item.icon size={24} className="text-[#4c4ca8]" />
+                        <item.icon size={24} className="text-[#c9a84c]" />
                       </div>
                     </div>
 
                     <h3
-                      className="font-heading text-xl sm:text-2xl font-bold text-stone-900 mb-3 leading-tight"
+                      className="font-heading text-2xl font-bold text-stone-900 mb-3 leading-tight"
                     >
                       {item.title}
                     </h3>
