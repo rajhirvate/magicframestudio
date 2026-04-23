@@ -3,13 +3,10 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ClipboardList, UsersRound, CalendarCheck2, Camera } from "lucide-react";
+import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 
 const inter = "var(--font-inter), sans-serif";
 const poppins = "var(--font-poppins), sans-serif";
-
-/** Pink → violet → indigo ring like the reference design */
-const ICON_RING_GRADIENT =
-  "linear-gradient(155deg, #f472b6 0%, #c084fc 42%, #6366f1 88%)";
 
 const steps = [
   {

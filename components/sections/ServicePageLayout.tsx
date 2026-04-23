@@ -19,10 +19,10 @@ import WeddingMasonryPortfolios from "@/components/sections/WeddingMasonryPortfo
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import WeddingPhotographyFAQ from "@/components/sections/WeddingPhotographyFAQ";
 import WeddingHowItWorks from "@/components/sections/WeddingHowItWorks";
+import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
-
 
 // Pool of extra gallery photos (Unsplash)
 const galleryPhotoPool = [
@@ -395,8 +395,17 @@ export default function ServicePageLayout({
                   <AnimatedSection key={item.title} delay={0.04 * index}>
                     <div className="relative text-center px-3 py-2">
                       <div className="mb-5 flex justify-center">
-                        <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-stone-200/70">
-                          <item.icon size={24} className="text-[#c9a84c]" />
+                        <div
+                          className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full p-[2px] shadow-sm"
+                          style={{ background: ICON_RING_GRADIENT }}
+                        >
+                          <div className="flex h-full w-full items-center justify-center rounded-full bg-white">
+                            <item.icon
+                              size={24}
+                              className="text-stone-900"
+                              strokeWidth={1.35}
+                            />
+                          </div>
                         </div>
                       </div>
 
