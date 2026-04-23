@@ -111,19 +111,10 @@ export default function WeddingPhotographyFAQ() {
   };
 
   return (
-    <section className="relative overflow-hidden border-t border-stone-200/80 bg-[#f5f0eb] py-16 lg:py-24">
-      {/* Warm cream base + subtle brand gold wash (matches gallery / story sections) */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: [
-            "radial-gradient(ellipse 75% 55% at 50% -15%, rgba(201,168,76,0.09) 0%, transparent 58%)",
-            "radial-gradient(ellipse 45% 35% at 90% 100%, rgba(201,168,76,0.05) 0%, transparent 50%)",
-          ].join(", "),
-        }}
-        aria-hidden
-      />
-
+    <section
+      className="relative overflow-hidden border-t border-stone-200/80 py-16 lg:py-24"
+      style={{ backgroundColor: "#f5f0eb" }}
+    >
       <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={headerRef}

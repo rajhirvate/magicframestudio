@@ -18,6 +18,7 @@ import ContactForm from "@/components/ContactForm";
 import WeddingMasonryPortfolios from "@/components/sections/WeddingMasonryPortfolios";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import WeddingPhotographyFAQ from "@/components/sections/WeddingPhotographyFAQ";
+import WeddingHowItWorks from "@/components/sections/WeddingHowItWorks";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -421,6 +422,8 @@ export default function ServicePageLayout({
           <ReadyToConnectSection />
 
           <WeddingMasonryPortfolios />
+
+          <WeddingHowItWorks />
         </>
       )}
 
