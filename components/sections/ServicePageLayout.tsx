@@ -17,6 +17,7 @@ import { locations } from "@/data/locations";
 import ContactForm from "@/components/ContactForm";
 import WeddingMasonryPortfolios from "@/components/sections/WeddingMasonryPortfolios";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
+import WeddingPhotographyFAQ from "@/components/sections/WeddingPhotographyFAQ";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -452,6 +453,8 @@ export default function ServicePageLayout({
           </div>
         </div>
       </section>
+
+      {slug === "wedding-photography" && <WeddingPhotographyFAQ />}
 
       {/* CTA — match CTABanner / ReadyToConnect warm near-black */}
       <section className="relative py-16 lg:py-24 overflow-hidden bg-[#0f0c0a] border-t border-stone-800/80">
