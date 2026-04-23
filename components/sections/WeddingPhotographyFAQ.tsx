@@ -121,22 +121,20 @@ export default function WeddingPhotographyFAQ() {
           initial={{ opacity: 0, y: 18 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          className="mb-10 text-center sm:mb-12"
+          className="mx-auto mb-10 max-w-2xl text-center sm:mb-12"
         >
-          <span
-            className="mb-5 inline-flex items-center rounded-full border border-stone-200 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-stone-800 shadow-sm"
-            style={{ fontFamily: inter }}
+          <p
+            className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]"
+            style={{ fontFamily: poppins }}
           >
             FAQs
-          </span>
-          <h2
-            className="font-heading text-3xl font-light tracking-tight text-stone-900 sm:text-4xl md:text-[2.5rem] md:leading-tight"
-          >
+          </p>
+          <h2 className="font-heading mb-3 text-3xl font-light text-stone-900 sm:text-4xl md:text-[2.35rem] md:leading-tight">
             Frequently Asked Questions
           </h2>
           <p
-            className="mt-3 text-lg font-semibold text-stone-900 sm:text-xl"
-            style={{ fontFamily: poppins }}
+            className="text-sm text-stone-500 sm:text-[15px]"
+            style={{ fontFamily: inter }}
           >
             Everything You Need to Know!
           </p>
