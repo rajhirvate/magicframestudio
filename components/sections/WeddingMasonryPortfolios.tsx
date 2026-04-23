@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+
+const inter = "var(--font-inter), sans-serif";
 
 export type MasonryImageItem = {
   src: string;
@@ -92,14 +95,98 @@ const WEDDING_MASONRY_SECTION_2: MasonryImageItem[] = [
   },
 ];
 
-function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
+/** Extra tiles so the first view can show 15 and “Load more” still reveals more */
+const WEDDING_MASONRY_SECTION_3: MasonryImageItem[] = [
+  {
+    src: "https://images.unsplash.com/photo-1606800052052-a08c714e61e9?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding ceremony aisle",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&fit=crop&auto=format",
+    alt: "Bride and groom portrait",
+    aspect: "aspect-[4/5]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding reception lights",
+    aspect: "aspect-[16/10]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1583939003579-73062142fd40?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding mandap detail",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&q=80&fit=crop&auto=format",
+    alt: "Couple walking together",
+    aspect: "aspect-[2/3]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding guests celebration",
+    aspect: "aspect-[5/3]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1520854221050-0f4caff4492c?w=800&q=80&fit=crop&auto=format",
+    alt: "Bridal bouquet close-up",
+    aspect: "aspect-[1/1]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80&fit=crop&auto=format",
+    alt: "Outdoor wedding venue",
+    aspect: "aspect-[16/9]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&fit=crop&auto=format",
+    alt: "Evening wedding decor",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1609560827847-e9927da40b7b?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding celebration candid",
+    aspect: "aspect-[3/5]",
+  },
+];
+
+const ALL_MASONRY_ITEMS: MasonryImageItem[] = [
+  ...WEDDING_MASONRY_SECTION_1,
+  ...WEDDING_MASONRY_SECTION_2,
+  ...WEDDING_MASONRY_SECTION_3,
+];
+
+/** How many images show before the user clicks anything (not 5). */
+const INITIAL_MASONRY_COUNT = 15;
+/** How many images each “Load more.” click appends (always 5 per click until the list runs out). */
+const LOAD_MORE_BATCH = 5;
+
+function MasonryGrid({
+  items,
+  eagerUpToIndex,
+}: {
+  items: MasonryImageItem[];
+  /** Load first N tiles eagerly so all 15 initial slots paint (lazy-only can hide below-the-fold in columns). */
+  eagerUpToIndex: number;
+}) {
   return (
-    <div className="columns-1 md:columns-3 [column-gap:0.625rem] sm:[column-gap:0.75rem] md:[column-gap:1rem] [column-fill:balance]">
-      {items.map((item, i) => (
-        <div key={`${item.src}-${i}`} className="mb-2.5 sm:mb-3.5 break-inside-avoid">
+    <div
+      className={cn(
+        "columns-1 [column-fill:balance] sm:columns-2 md:columns-3",
+        "[column-gap:12px]",
+      )}
+    >
+      {items.map((item, index) => (
+        <div
+          key={`${item.src}-${item.alt}-${index}`}
+          className="mb-3 break-inside-avoid sm:mb-3"
+        >
           <div
             className={cn(
-              "group relative overflow-hidden rounded-xl bg-stone-200 ring-1 ring-stone-200/80 shadow-[0_2px_16px_-4px_rgba(0,0,0,0.08)] transition-[box-shadow,transform] duration-500 ease-out hover:shadow-[0_8px_28px_-6px_rgba(201,168,76,0.18)] hover:ring-[#c9a84c]/35 sm:rounded-2xl",
+              "group relative overflow-hidden rounded-[10px] bg-neutral-200/90",
+              "ring-1 ring-black/[0.06]",
+              "shadow-[0_1px_2px_rgba(0,0,0,0.04)]",
+              "transition-[box-shadow,transform] duration-300 ease-out",
+              "hover:shadow-[0_4px_14px_-4px_rgba(0,0,0,0.08)]",
               item.cardClassName,
             )}
           >
@@ -108,13 +195,11 @@ function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
                 src={item.src}
                 alt={item.alt}
                 fill
-                loading="lazy"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                loading={index < eagerUpToIndex ? "eager" : "lazy"}
+                className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
               />
             </div>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-stone-900/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <div className="pointer-events-none absolute inset-0 ring-0 ring-inset ring-white/0 transition-all duration-300 group-hover:ring-1 group-hover:ring-white/10" />
           </div>
         </div>
       ))}
@@ -123,17 +208,39 @@ function MasonryGrid({ items }: { items: MasonryImageItem[] }) {
 }
 
 export default function WeddingMasonryPortfolios() {
-  return (
-    <section className="relative overflow-hidden border-t border-stone-200/80 bg-gradient-to-b from-[#faf8f5] via-[#f7f4ef] to-[#fafaf9] py-16 lg:py-24">
-      {/* Top hairline + warm glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#c9a84c]/35 to-transparent" />
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-[28rem] w-[min(100%,56rem)] -translate-x-1/2 rounded-full bg-[#c9a84c]/[0.07] blur-[80px]" />
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-300/40 to-transparent" />
+  const [visibleCount, setVisibleCount] = useState(() =>
+    Math.min(INITIAL_MASONRY_COUNT, ALL_MASONRY_ITEMS.length),
+  );
+  const visibleItems = ALL_MASONRY_ITEMS.slice(0, visibleCount);
+  const hasMore = visibleCount < ALL_MASONRY_ITEMS.length;
+  /** Eager-load through the first full batch so column layout shows all 15 images, not only above-the-fold lazies. */
+  const eagerUpToIndex = Math.min(INITIAL_MASONRY_COUNT, visibleItems.length);
 
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <MasonryGrid
-          items={[...WEDDING_MASONRY_SECTION_1, ...WEDDING_MASONRY_SECTION_2]}
-        />
+  return (
+    <section className="border-t border-neutral-200/90 bg-[#f4f4f3] py-14 lg:py-20">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <MasonryGrid items={visibleItems} eagerUpToIndex={eagerUpToIndex} />
+
+        {hasMore && (
+          <p
+            className="mt-10 text-center text-sm text-stone-600 sm:text-[15px]"
+            style={{ fontFamily: inter }}
+          >
+            Want to see more?{" "}
+            <button
+              type="button"
+              onClick={() =>
+                setVisibleCount((prev) =>
+                  Math.min(prev + LOAD_MORE_BATCH, ALL_MASONRY_ITEMS.length),
+                )
+              }
+              className="inline cursor-pointer border-0 bg-transparent p-0 font-semibold text-stone-900 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-[#c9a84c] hover:decoration-[#c9a84c]/50"
+              style={{ fontFamily: inter }}
+            >
+              Load more.
+            </button>
+          </p>
+        )}
       </div>
     </section>
   );
