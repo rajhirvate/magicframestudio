@@ -213,7 +213,6 @@ export default function ServicePageLayout({
                   transition={{ duration: 0.75, delay: 0.15 }}
                 >
                   <ContactForm
-                    defaultService={title}
                     variant={slug === "wedding-photography" ? "light" : "dark"}
                   />
                 </motion.div>
