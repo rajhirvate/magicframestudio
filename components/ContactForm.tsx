@@ -10,6 +10,7 @@ interface FormState {
   name: string;
   phone: string;
   location: string;
+  message: string;
 }
 
 function Field({
@@ -59,6 +60,48 @@ function Field({
   );
 }
 
+function TextareaField({
+  label,
+  name,
+  placeholder,
+  value,
+  onChange,
+  light = false,
+}: {
+  label: string;
+  name: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  light?: boolean;
+}) {
+  return (
+    <div>
+      <label
+        className={`block text-[9px] font-semibold tracking-[0.15em] uppercase mb-1.5 ${
+          light ? "text-stone-500" : "text-[#f5f0eb]/30"
+        }`}
+        style={{ fontFamily: poppins }}
+      >
+        {label}
+      </label>
+      <textarea
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        rows={4}
+        className={`w-full min-h-[120px] rounded-lg px-3.5 py-2 text-sm transition-colors resize-y focus:outline-none focus:border-[#c9a84c]/50 ${
+          light
+            ? "bg-white border border-stone-300 text-stone-900 placeholder:text-stone-400"
+            : "bg-[#0d0d0d] border border-[#2a2a2a] text-[#f5f0eb] placeholder-[#f5f0eb]/20"
+        }`}
+        style={{ fontFamily: inter }}
+      />
+    </div>
+  );
+}
+
 export default function ContactForm({
   variant = "dark",
 }: {
@@ -69,11 +112,15 @@ export default function ContactForm({
     name: "",
     phone: "",
     location: "",
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -114,7 +161,7 @@ export default function ContactForm({
           type="button"
           onClick={() => {
             setSubmitted(false);
-            setForm({ name: "", phone: "", location: "" });
+            setForm({ name: "", phone: "", location: "", message: "" });
           }}
           className="text-sm text-[#c9a84c] hover:underline"
           style={{ fontFamily: poppins }}
@@ -178,6 +225,15 @@ export default function ContactForm({
         value={form.location}
         onChange={handleChange}
         required
+        light={light}
+      />
+
+      <TextareaField
+        label="Message"
+        name="message"
+        placeholder="Event date, location, special requirements..."
+        value={form.message}
+        onChange={handleTextareaChange}
         light={light}
       />
 
