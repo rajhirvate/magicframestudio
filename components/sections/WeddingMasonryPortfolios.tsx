@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const inter = "var(--font-inter), sans-serif";
@@ -266,13 +267,124 @@ function usePrefersReducedMotion(): boolean {
   );
 }
 
+function GalleryLightbox({
+  items,
+  index,
+  onNavigate,
+  onClose,
+}: {
+  items: MasonryImageItem[];
+  index: number;
+  onNavigate: (nextIndex: number) => void;
+  onClose: () => void;
+}) {
+  const n = items.length;
+  const safeIndex = n === 0 ? 0 : Math.min(Math.max(0, index), n - 1);
+  const item = items[safeIndex];
+  const showArrows = n > 1;
+
+  const goPrev = useCallback(() => {
+    if (n < 2) return;
+    onNavigate((safeIndex - 1 + n) % n);
+  }, [n, onNavigate, safeIndex]);
+
+  const goNext = useCallback(() => {
+    if (n < 2) return;
+    onNavigate((safeIndex + 1) % n);
+  }, [n, onNavigate, safeIndex]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose, goPrev, goNext]);
+
+  if (!item) {
+    return null;
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-4 pt-16 pb-10 backdrop-blur-[3px]"
+      onClick={onClose}
+      role="presentation"
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        className="absolute top-5 right-5 z-[101] flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10"
+        aria-label="Close enlarged photo"
+      >
+        <X size={24} strokeWidth={2} aria-hidden />
+      </button>
+
+      {showArrows ? (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              goPrev();
+            }}
+            className="absolute left-2 top-1/2 z-[101] flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 sm:left-4 md:left-6 md:h-12 md:w-12"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft size={28} strokeWidth={2} className="md:h-8 md:w-8" aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              goNext();
+            }}
+            className="absolute right-2 top-1/2 z-[101] flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 sm:right-4 md:right-6 md:h-12 md:w-12"
+            aria-label="Next photo"
+          >
+            <ChevronRight size={28} strokeWidth={2} className="md:h-8 md:w-8" aria-hidden />
+          </button>
+        </>
+      ) : null}
+
+      <div
+        className="relative max-h-[85vh] w-full max-w-5xl"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={item.alt}
+      >
+        <Image
+          key={item.src + safeIndex}
+          src={item.src}
+          alt={item.alt}
+          width={1400}
+          height={1750}
+          className="mx-auto h-auto max-h-[85vh] w-auto max-w-full object-contain"
+          sizes="(max-width: 1280px) 100vw, 1024px"
+          priority
+        />
+      </div>
+    </div>
+  );
+}
+
 function UniformGalleryGrid({
   items,
   eagerUpToIndex,
+  onOpenLightbox,
 }: {
   items: MasonryImageItem[];
   /** Images at or above this index use lazy loading (after “Load more” batches). */
   eagerUpToIndex: number;
+  onOpenLightbox: (item: MasonryImageItem, index: number) => void;
 }) {
   const reduceMotion = usePrefersReducedMotion();
 
@@ -282,8 +394,9 @@ function UniformGalleryGrid({
       data-gallery-count={items.length}
     >
       {items.map((item, index) => (
-        <motion.div
+        <motion.button
           key={`${item.src}-${index}`}
+          type="button"
           initial={reduceMotion ? false : { opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2, margin: "0px 0px -10% 0px" }}
@@ -295,15 +408,18 @@ function UniformGalleryGrid({
                 ? 0
                 : Math.min(index * 0.028, 0.42),
           }}
+          onClick={() => onOpenLightbox(item, index)}
           className={cn(
-            "group relative overflow-hidden rounded-xl bg-stone-100",
+            "group relative w-full cursor-zoom-in overflow-hidden rounded-xl bg-stone-100 text-left",
             "ring-1 ring-black/[0.04]",
             "shadow-[0_1px_2px_rgba(0,0,0,0.04)]",
             "transition-[box-shadow,transform] duration-300 ease-out",
             "hover:shadow-[0_6px_16px_-6px_rgba(0,0,0,0.12)]",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a84c]",
           )}
+          aria-label={`Open larger view: ${item.alt}`}
         >
-          <div className="relative aspect-[3/4] w-full">
+          <div className="relative aspect-[4/5] w-full pointer-events-none">
             <Image
               src={item.src}
               alt={item.alt}
@@ -313,7 +429,7 @@ function UniformGalleryGrid({
               sizes="(max-width: 640px) 25vw, 25vw"
             />
           </div>
-        </motion.div>
+        </motion.button>
       ))}
     </div>
   );
@@ -322,6 +438,9 @@ function UniformGalleryGrid({
 export default function WeddingMasonryPortfolios() {
   /** Derived count avoids stale `useState` after hot reload when INITIAL_VISIBLE_COUNT changes. */
   const [loadMoreBatches, setLoadMoreBatches] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+
   const visibleCount = Math.min(
     INITIAL_VISIBLE_COUNT + loadMoreBatches * LOAD_MORE_BATCH,
     TOTAL_GALLERY_IMAGES,
@@ -334,6 +453,14 @@ export default function WeddingMasonryPortfolios() {
 
   return (
     <section className="border-t border-stone-200/90 bg-[#f8f7f5] py-14 lg:py-20">
+      {lightboxIndex !== null ? (
+        <GalleryLightbox
+          items={visibleItems}
+          index={lightboxIndex}
+          onNavigate={setLightboxIndex}
+          onClose={closeLightbox}
+        />
+      ) : null}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="sr-only" aria-live="polite">
           Gallery showing {visibleItems.length} of {TOTAL_GALLERY_IMAGES} photos
@@ -341,6 +468,7 @@ export default function WeddingMasonryPortfolios() {
         <UniformGalleryGrid
           items={visibleItems}
           eagerUpToIndex={INITIAL_VISIBLE_COUNT}
+          onOpenLightbox={(_, index) => setLightboxIndex(index)}
         />
 
         {hasMore && (
