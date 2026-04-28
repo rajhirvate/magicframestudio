@@ -119,7 +119,7 @@ export default function ServiceCityPageLayout({
             {/* Breadcrumb */}
             <div className="pt-2 sm:pt-3 shrink-0">
               <nav
-                className="inline-flex flex-wrap items-center gap-1.5 rounded-none border border-white/10 bg-white/5 px-3.5 py-2"
+                className="inline-flex flex-wrap items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-3.5 py-2"
                 style={{ fontFamily: inter }}
               >
                 <Link href="/" className="text-[11px] sm:text-xs text-[#f5f0eb]/55 hover:text-[#f5f0eb]/90 transition-colors">
@@ -148,7 +148,7 @@ export default function ServiceCityPageLayout({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.75 }}
                 >
-                  <div className="inline-flex items-center gap-1.5 rounded-none bg-[#c9a84c]/15 border border-[#c9a84c]/30 px-3 py-1 mb-4">
+                  <div className="inline-flex items-center gap-1.5 rounded-md bg-[#c9a84c]/15 border border-[#c9a84c]/30 px-3 py-1 mb-4">
                     <MapPin size={11} className="text-[#c9a84c]" />
                     <span
                       className="text-[11px] font-semibold tracking-wider text-[#c9a84c] uppercase"
@@ -201,7 +201,7 @@ export default function ServiceCityPageLayout({
                       </Link>
                       <Link
                         href="/portfolio"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium text-[#f5f0eb]/80 border border-[#f5f0eb]/20 hover:border-[#c9a84c]/50 hover:text-[#f5f0eb] rounded-none transition-all"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium text-[#f5f0eb]/80 border border-[#f5f0eb]/20 hover:border-[#c9a84c]/50 hover:text-[#f5f0eb] rounded-md transition-all"
                         style={{ fontFamily: poppins }}
                       >
                         View our work
@@ -371,7 +371,7 @@ export default function ServiceCityPageLayout({
               <Link
                 key={city.slug}
                 href={`/${category}/${slug}/${city.slug}`}
-                className="inline-flex items-center gap-2 rounded-none border border-stone-200 bg-[#fafaf9] px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-md border border-stone-200 bg-[#fafaf9] px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200"
                 style={{ fontFamily: inter }}
               >
                 <MapPin size={12} className="text-[#c9a84c]/70" />
@@ -401,7 +401,7 @@ export default function ServiceCityPageLayout({
               <Link
                 key={s.slug}
                 href={`/${category}/${s.slug}/${location.slug}`}
-                className="inline-flex items-center gap-2 rounded-none border border-stone-200 bg-white px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200 shadow-sm"
+                className="inline-flex items-center gap-2 rounded-md border border-stone-200 bg-white px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200 shadow-sm"
                 style={{ fontFamily: inter }}
               >
                 {s.title} <ArrowRight size={11} className="text-[#c9a84c]/70" />

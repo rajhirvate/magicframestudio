@@ -338,7 +338,7 @@ export default function PortfolioPage() {
                 key={cat}
                 type="button"
                 onClick={() => setActive(cat)}
-                className={`px-4 py-2 text-xs rounded-none border transition-all duration-200 ${
+                className={`px-4 py-2 text-xs rounded-md border transition-all duration-200 ${
                   active === cat
                     ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a0a0a] font-medium"
                     : "border-[#2a2a2a] text-[#f5f0eb]/50 hover:border-[#c9a84c]/30 hover:text-[#f5f0eb]"
@@ -385,7 +385,7 @@ export default function PortfolioPage() {
                         {item.title}
                       </p>
                       <span
-                        className="inline-block mt-1 text-[10px] text-[#c9a84c] border border-[#c9a84c]/40 rounded-none px-2 py-0.5"
+                        className="inline-block mt-1 text-[10px] text-[#c9a84c] border border-[#c9a84c]/40 rounded-md px-2 py-0.5"
                         style={{ fontFamily: "var(--font-inter), sans-serif" }}
                       >
                         {item.category}

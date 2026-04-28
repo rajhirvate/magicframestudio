@@ -450,7 +450,7 @@ export default function ServicePageLayout({
               <Link
                 key={loc.slug}
                 href={`/${category}/${slug}/${loc.slug}`}
-                className="inline-flex items-center gap-2 rounded-none border border-stone-200 bg-[#fafaf9] px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200 shadow-sm"
+                className="inline-flex items-center gap-2 rounded-md border border-stone-200 bg-[#fafaf9] px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200 shadow-sm"
                 style={{ fontFamily: inter }}
               >
                 <MapPin size={12} className="text-[#c9a84c]/70" />
