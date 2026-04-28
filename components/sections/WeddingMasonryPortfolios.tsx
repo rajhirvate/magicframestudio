@@ -461,11 +461,11 @@ export default function WeddingMasonryPortfolios() {
           onClose={closeLightbox}
         />
       ) : null}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <p className="sr-only" aria-live="polite">
           Gallery showing {visibleItems.length} of {TOTAL_GALLERY_IMAGES} photos
         </p>
-        <div className="mx-auto w-full max-w-[76rem]">
+        <div className="mx-auto w-full max-w-[62rem]">
           <UniformGalleryGrid
             items={visibleItems}
             eagerUpToIndex={INITIAL_VISIBLE_COUNT}
