@@ -471,12 +471,6 @@ export default function ServicePageLayout({
         </div>
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
-            <p
-              className="mb-4 text-xs font-semibold tracking-normal text-[#c9a84c]"
-              style={{ fontFamily: poppins }}
-            >
-              Next step
-            </p>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-light text-[#f5f0eb] mb-4 leading-tight">
               Book{" "}
               <span className="italic text-[#e0c068]">{title}</span> in India
