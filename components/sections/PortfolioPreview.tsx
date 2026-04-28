@@ -175,7 +175,7 @@ export default function PortfolioPreview() {
         >
           <Link
             href="/portfolio"
-            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black rounded-full overflow-hidden transition-all duration-500 hover:pr-14"
+            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black rounded-xl overflow-hidden transition-all duration-500 hover:pr-14"
           >
             <span className="relative z-10 font-semibold tracking-wide">Enter Full Gallery</span>
             <div className="absolute right-6 w-0 group-hover:w-6 overflow-hidden transition-all duration-500">

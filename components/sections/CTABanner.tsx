@@ -41,7 +41,7 @@ export default function CTABanner() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-full bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
+            className="inline-flex items-center rounded-xl bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Contact us today

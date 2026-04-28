@@ -252,7 +252,7 @@ export default function ServicePageLayout({
               <div className="pt-8">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#b8942e] rounded-full transition-colors duration-200 shadow-md shadow-[#c9a84c]/25"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#b8942e] rounded-xl transition-colors duration-200 shadow-md shadow-[#c9a84c]/25"
                   style={{ fontFamily: poppins }}
                 >
                   Book this service <ArrowRight size={14} />
@@ -356,7 +356,7 @@ export default function ServicePageLayout({
               href="https://magicframestudio.com/portfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#b8942e] rounded-full transition-colors duration-200 shadow-md shadow-[#c9a84c]/25"
+              className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#b8942e] rounded-xl transition-colors duration-200 shadow-md shadow-[#c9a84c]/25"
               style={{ fontFamily: poppins }}
             >
               View Our Portfolio
@@ -371,12 +371,6 @@ export default function ServicePageLayout({
           <section className="py-16 lg:py-24 bg-white border-t border-stone-200/70">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <AnimatedSection className="text-center mb-10">
-                <p
-                  className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
-                  style={{ fontFamily: poppins }}
-                >
-                  Why choose us
-                </p>
                 <h2 className="font-heading text-3xl sm:text-4xl font-light text-stone-900 mb-3">
                   Why Choose Magic Frame Studio?
                 </h2>
@@ -454,7 +448,7 @@ export default function ServicePageLayout({
               <Link
                 key={loc.slug}
                 href={`/${category}/${slug}/${loc.slug}`}
-                className="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-[#fafaf9] px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200 shadow-sm"
+                className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-[#fafaf9] px-5 py-2.5 text-sm text-stone-700 hover:border-[#c9a84c]/50 hover:text-[#c9a84c] hover:bg-white transition-all duration-200 shadow-sm"
                 style={{ fontFamily: inter }}
               >
                 <MapPin size={12} className="text-[#c9a84c]/70" />
@@ -494,7 +488,7 @@ export default function ServicePageLayout({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200 shadow-lg shadow-[#c9a84c]/25"
+                className="inline-flex items-center gap-2 px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-lg shadow-[#c9a84c]/25"
                 style={{ fontFamily: poppins }}
               >
                 Get in touch

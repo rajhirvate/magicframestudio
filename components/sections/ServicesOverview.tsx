@@ -47,7 +47,7 @@ function ServiceCard({
           {/* Dark gradient overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           {/* Arrow pill */}
-          <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
+          <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
             <span className="text-[11px] font-medium text-stone-700" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>View</span>
             <ArrowRight size={10} className="text-[#c9a84c]" />
           </div>

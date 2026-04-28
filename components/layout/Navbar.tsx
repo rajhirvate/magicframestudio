@@ -163,7 +163,7 @@ function MegaMenu({
           <Link
             href="/contact"
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200"
             style={{ fontFamily: "var(--font-inter), sans-serif" }}
           >
             Get a Free Quote
@@ -334,7 +334,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className="hidden sm:inline-flex items-center px-5 py-2 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200"
+                className="hidden sm:inline-flex items-center px-5 py-2 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200"
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}
               >
                 Book a Shoot
@@ -446,7 +446,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="block text-center py-3 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors"
+                className="block text-center py-3 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors"
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}
               >
                 Book a Shoot

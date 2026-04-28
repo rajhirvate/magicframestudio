@@ -196,7 +196,7 @@ export default function AboutPageClient() {
               <div className="mt-8">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200 shadow-md shadow-[#c9a84c]/20"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-md shadow-[#c9a84c]/20"
                   style={{ fontFamily: poppins }}
                 >
                   Work with us <ArrowRight size={14} />
@@ -341,7 +341,7 @@ export default function AboutPageClient() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
+                className="inline-flex items-center gap-2 px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
                 style={{ fontFamily: poppins }}
               >
                 Get in Touch

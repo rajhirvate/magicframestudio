@@ -58,14 +58,14 @@ export default function IntroSection() {
         >
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#c9a84c] hover:bg-[#b8942e] rounded-full transition-colors duration-200 shadow-md shadow-[#c9a84c]/20"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#c9a84c] hover:bg-[#b8942e] rounded-xl transition-colors duration-200 shadow-md shadow-[#c9a84c]/20"
             style={{ fontFamily: poppins }}
           >
             Learn More About Us <ArrowRight size={14} />
           </Link>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-full transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-xl transition-all duration-200"
             style={{ fontFamily: poppins }}
           >
             View Our Work <ArrowRight size={14} />

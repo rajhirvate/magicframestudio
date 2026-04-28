@@ -123,12 +123,6 @@ export default function WeddingPhotographyFAQ() {
           transition={{ duration: 0.55 }}
           className="mx-auto mb-10 max-w-2xl text-center sm:mb-12"
         >
-          <p
-            className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]"
-            style={{ fontFamily: poppins }}
-          >
-            FAQs
-          </p>
           <h2 className="font-heading mb-3 text-3xl font-light text-stone-900 sm:text-4xl md:text-[2.35rem] md:leading-tight">
             Frequently Asked Questions
           </h2>

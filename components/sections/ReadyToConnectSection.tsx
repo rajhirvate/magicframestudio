@@ -29,7 +29,7 @@ export default function ReadyToConnectSection() {
           </p>
           <Link
             href="/contact"
-            className="mt-1 inline-flex items-center justify-center rounded-full bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
+            className="mt-1 inline-flex items-center justify-center rounded-xl bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Connect now

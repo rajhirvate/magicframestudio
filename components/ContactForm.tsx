@@ -240,7 +240,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] disabled:opacity-60 rounded-lg transition-colors duration-200"
+        className="w-full py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] disabled:opacity-60 rounded-xl transition-colors duration-200"
         style={{ fontFamily: poppins }}
       >
         {loading ? "Sending…" : "Send Message"}

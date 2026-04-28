@@ -132,7 +132,7 @@ export default function HeroSection() {
         >
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-full transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
+            className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-xl transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Explore Our Work
@@ -140,7 +140,7 @@ export default function HeroSection() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-full transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Get a Quote
