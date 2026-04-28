@@ -278,10 +278,7 @@ function UniformGalleryGrid({
 
   return (
     <div
-      className={cn(
-        "grid grid-cols-4 gap-1.5 sm:gap-2.5 lg:gap-3",
-        "rounded-2xl bg-white p-1.5 sm:p-2.5 lg:p-3 ring-1 ring-stone-200/80 shadow-sm",
-      )}
+      className={cn("grid grid-cols-4 gap-1.5 sm:gap-2.5 lg:gap-3")}
       data-gallery-count={items.length}
     >
       {items.map((item, index) => (
