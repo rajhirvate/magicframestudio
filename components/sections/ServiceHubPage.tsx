@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Service } from "@/data/services";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -64,7 +65,7 @@ function ServiceCard({
             <div className="w-full h-full bg-gradient-to-br from-amber-100/80 via-stone-100 to-stone-200" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
-          <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm rounded-xl px-3 py-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-md">
+          <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm rounded-none px-3 py-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-md">
             <span
               className="text-[11px] font-semibold text-stone-700"
               style={{ fontFamily: poppins }}
@@ -223,7 +224,7 @@ export default function ServiceHubPage({
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
+            className={BTN_PRIMARY}
             style={{ fontFamily: poppins }}
           >
             Get a free quote

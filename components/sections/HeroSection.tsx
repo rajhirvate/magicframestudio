@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 /** DOM typings always include idle callbacks; omit them so the fallback branch is actually reachable for TS. */
 type WindowIdleOptional = Omit<Window, "requestIdleCallback" | "cancelIdleCallback"> & {
@@ -132,18 +134,21 @@ export default function HeroSection() {
         >
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-xl transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
+            className={cn(BTN_PRIMARY, "group")}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
-            Explore Our Work
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+            Explore our work
+            <ArrowRight
+              size={14}
+              className="shrink-0 group-hover:translate-x-1 transition-transform duration-200"
+            />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
+            className={BTN_PRIMARY}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
-            Get a Quote
+            Get a quote
           </Link>
         </motion.div>
       </div>

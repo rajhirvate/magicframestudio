@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 export default function CTABanner() {
   const ref = useRef(null);
@@ -41,7 +42,7 @@ export default function CTABanner() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center rounded-xl bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
+            className={BTN_PRIMARY}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Contact us today

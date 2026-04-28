@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const categories = ["All", "Wedding", "Events", "Portraits", "Corporate", "Products", "Real Estate", "Drone"];
 
@@ -336,10 +338,10 @@ export default function PortfolioPage() {
                 key={cat}
                 type="button"
                 onClick={() => setActive(cat)}
-                className={`px-4 py-2 text-xs rounded-xl border transition-all duration-200 ${
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] rounded-none border transition-all duration-200 ${
                   active === cat
-                    ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a0a0a] font-medium"
-                    : "border-[#2a2a2a] text-[#f5f0eb]/50 hover:border-[#c9a84c]/30 hover:text-[#f5f0eb]"
+                    ? "bg-white border-white text-black"
+                    : "border-[#2a2a2a] text-[#f5f0eb]/50 hover:border-white/40 hover:text-[#f5f0eb]"
                 }`}
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}
               >
@@ -383,7 +385,7 @@ export default function PortfolioPage() {
                         {item.title}
                       </p>
                       <span
-                        className="inline-block mt-1 text-[10px] text-[#c9a84c] border border-[#c9a84c]/40 rounded-xl px-2 py-0.5"
+                        className="inline-block mt-1 text-[10px] font-semibold uppercase tracking-wide text-black bg-white/90 border border-white/30 rounded-none px-2 py-0.5"
                         style={{ fontFamily: "var(--font-inter), sans-serif" }}
                       >
                         {item.category}
@@ -404,10 +406,10 @@ export default function PortfolioPage() {
               <button
                 type="button"
                 onClick={() => setLoadMoreClicks((c) => Math.min(c + 1, MAX_LOAD_MORE_CLICKS))}
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200"
+                className={cn(BTN_PRIMARY)}
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}
               >
-                Load More
+                Load more
               </button>
             </motion.div>
           )}
@@ -480,10 +482,10 @@ export default function PortfolioPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors"
+            className={cn(BTN_PRIMARY)}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
-            Book a Shoot
+            Book a shoot
           </Link>
         </div>
       </section>

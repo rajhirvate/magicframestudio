@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 export default function NotFound() {
   return (
@@ -10,11 +11,8 @@ export default function NotFound() {
       <p className="text-base text-[#f5f0eb]/40 mb-8 max-w-md">
         The page you&apos;re looking for doesn&apos;t exist or has been moved.
       </p>
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 px-7 py-3 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors"
-      >
-        Back to Home
+      <Link href="/" className={BTN_PRIMARY}>
+        Back to home
       </Link>
     </div>
   );

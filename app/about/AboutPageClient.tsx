@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { Camera, Film, Award, Users, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -196,10 +198,10 @@ export default function AboutPageClient() {
               <div className="mt-8">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-md shadow-[#c9a84c]/20"
+                  className={cn(BTN_PRIMARY)}
                   style={{ fontFamily: poppins }}
                 >
-                  Work with us <ArrowRight size={14} />
+                  Work with us <ArrowRight size={14} className="shrink-0" />
                 </Link>
               </div>
             </AnimatedSection>
@@ -341,10 +343,10 @@ export default function AboutPageClient() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200 shadow-lg shadow-[#c9a84c]/20"
+                className={cn(BTN_PRIMARY)}
                 style={{ fontFamily: poppins }}
               >
-                Get in Touch
+                Get in touch
               </Link>
               <Link
                 href="/portfolio"

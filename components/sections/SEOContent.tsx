@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -55,17 +57,17 @@ export default function SEOContent() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#c9a84c] hover:bg-[#b8942e] rounded-xl transition-colors duration-200 shadow-md shadow-[#c9a84c]/20"
+            className={cn(BTN_PRIMARY)}
             style={{ fontFamily: poppins }}
           >
-            Learn More About Us <ArrowRight size={14} />
+            Learn more about us <ArrowRight size={14} className="shrink-0" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-xl transition-all duration-200"
+            className={cn(BTN_PRIMARY)}
             style={{ fontFamily: poppins }}
           >
-            Book a Shoot <ArrowRight size={14} />
+            Book a shoot <ArrowRight size={14} className="shrink-0" />
           </Link>
         </div>
       </div>

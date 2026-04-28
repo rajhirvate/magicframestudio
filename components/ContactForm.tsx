@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const poppins = "var(--font-poppins), sans-serif";
 const inter = "var(--font-inter), sans-serif";
@@ -240,7 +242,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 text-sm font-semibold text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] disabled:opacity-60 rounded-xl transition-colors duration-200"
+        className={cn(BTN_PRIMARY, "w-full")}
         style={{ fontFamily: poppins }}
       >
         {loading ? "Sending…" : "Send Message"}

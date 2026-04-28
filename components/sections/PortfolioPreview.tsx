@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const portfolioItems = [
   {
@@ -95,8 +97,8 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
             {item.label}
           </h3>
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-colors duration-300 group-hover:border-[#c9a84c] group-hover:bg-[#c9a84c]">
-              <Plus className="text-white" size={18} />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-colors duration-300 group-hover:border-white group-hover:bg-white">
+              <Plus className="text-white transition-colors group-hover:text-black" size={18} />
             </div>
             <span className="text-sm font-light text-white/80">View Project</span>
           </div>
@@ -175,16 +177,13 @@ export default function PortfolioPreview() {
         >
           <Link
             href="/portfolio"
-            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black rounded-xl overflow-hidden transition-all duration-500 hover:pr-14"
+            className={cn(BTN_PRIMARY, "group px-10 py-4")}
           >
-            <span className="relative z-10 font-semibold tracking-wide">Enter Full Gallery</span>
-            <div className="absolute right-6 w-0 group-hover:w-6 overflow-hidden transition-all duration-500">
-              <ArrowRight size={20} />
-            </div>
-            <div className="absolute inset-0 bg-[#c9a84c] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-white font-semibold tracking-wide">
-              Explore Now <ArrowRight className="ml-2" size={20} />
-            </span>
+            <span className="relative z-10">Full gallery</span>
+            <ArrowRight
+              size={18}
+              className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+            />
           </Link>
           
           <p className="mt-8 text-neutral-500 text-sm font-medium tracking-[0.2em] uppercase">

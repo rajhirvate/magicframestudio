@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
@@ -29,7 +31,7 @@ export default function ReadyToConnectSection() {
           </p>
           <Link
             href="/contact"
-            className="mt-1 inline-flex items-center justify-center rounded-xl bg-[#c9a84c] px-9 py-3.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-[#c9a84c]/25 transition-colors duration-200 hover:bg-[#e0c068]"
+            className={cn("mt-1", BTN_PRIMARY)}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Connect now

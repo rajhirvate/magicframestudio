@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BTN_PRIMARY } from "@/lib/btn";
 import { photographyServices, videographyServices } from "@/data/services";
 
 /* ─── Mega menu data ──────────────────────────────────────────── */
@@ -163,10 +164,10 @@ function MegaMenu({
           <Link
             href="/contact"
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200"
+            className={cn(BTN_PRIMARY, "px-4 py-2 text-[10px] tracking-[0.16em]")}
             style={{ fontFamily: "var(--font-inter), sans-serif" }}
           >
-            Get a Free Quote
+            Get a free quote
           </Link>
         </div>
       </div>
@@ -334,10 +335,10 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className="hidden sm:inline-flex items-center px-5 py-2 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors duration-200"
+                className={cn(BTN_PRIMARY, "px-5 py-2 text-[11px]")}
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}
               >
-                Book a Shoot
+                Book a shoot
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
@@ -446,10 +447,10 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="block text-center py-3 text-sm font-medium text-[#0a0a0a] bg-[#c9a84c] hover:bg-[#e0c068] rounded-xl transition-colors"
+                className={cn(BTN_PRIMARY, "w-full py-3 text-[11px]")}
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}
               >
-                Book a Shoot
+                Book a shoot
               </Link>
             </div>
           </div>
