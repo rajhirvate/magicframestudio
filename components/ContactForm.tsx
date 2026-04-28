@@ -165,7 +165,7 @@ export default function ContactForm({
             setSubmitted(false);
             setForm({ name: "", phone: "", location: "", message: "" });
           }}
-          className="text-sm font-medium uppercase tracking-[0.06em] text-[#c9a84c] hover:underline"
+          className="text-sm text-[#c9a84c] hover:underline"
           style={{ fontFamily: poppins }}
         >
           Send another message

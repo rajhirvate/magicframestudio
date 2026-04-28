@@ -134,7 +134,7 @@ export default function HeroSection() {
         >
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.06em] text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-md transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
+            className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-md transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           >
             Explore our work
