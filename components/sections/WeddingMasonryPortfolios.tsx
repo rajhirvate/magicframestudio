@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const inter = "var(--font-inter), sans-serif";
@@ -9,323 +10,354 @@ const inter = "var(--font-inter), sans-serif";
 export type MasonryImageItem = {
   src: string;
   alt: string;
-  aspect: string;
-  /** Applied to the image card; use to size a tile smaller than the column (e.g. `mx-auto w-[72%]`). */
-  cardClassName?: string;
 };
 
-const WEDDING_MASONRY_SECTION_1: MasonryImageItem[] = [
+const WEDDING_GALLERY_SECTION_1: MasonryImageItem[] = [
   {
     src: "/images/services/wedding-photography-about.png",
     alt: "Wedding photography — celebration",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=640&q=75&fit=crop&auto=format",
     alt: "Bridal portrait",
-    aspect: "aspect-[1/1]",
   },
   {
     src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=640&q=75&fit=crop&auto=format",
     alt: "Wedding film still",
-    aspect: "aspect-[16/10]",
   },
   {
     src: "/images/wedding-about-service.png",
     alt: "Wedding story",
-    aspect: "aspect-[3/5]",
   },
   {
     src: "https://images.unsplash.com/photo-1464366400606-116158a48e7f?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding venue",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding rings detail",
-    aspect: "aspect-[1/1]",
   },
   {
     src: "https://images.unsplash.com/photo-1522673607260-14d1d9341941?w=800&q=80&fit=crop&auto=format",
     alt: "Couple portrait",
-    aspect: "aspect-[4/5]",
   },
 ];
 
-const WEDDING_MASONRY_SECTION_2: MasonryImageItem[] = [
+const WEDDING_GALLERY_SECTION_2: MasonryImageItem[] = [
   {
     src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=640&q=75&fit=crop&auto=format",
     alt: "Event celebration",
-    aspect: "aspect-[5/3]",
   },
   {
     src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=640&q=75&fit=crop&auto=format",
     alt: "Portrait session",
-    aspect: "aspect-[3/4]",
   },
   {
-    src: "/images/gallery/wedding-row-3-placeholder.png",
-    alt: "Wedding gallery",
-    aspect: "aspect-[3/4]",
+    src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=640&q=75&fit=crop&auto=format",
+    alt: "Wedding celebration moments",
   },
   {
     src: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=640&q=75&fit=crop&auto=format",
     alt: "Fashion wedding look",
-    aspect: "aspect-[2/3]",
   },
   {
     src: "https://images.unsplash.com/photo-1619470342094-17fc66c779ee?w=640&q=75&fit=crop&auto=format",
     alt: "Wedding couple — candid portrait",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=640&q=75&fit=crop&auto=format",
     alt: "Drone wedding view",
-    aspect: "aspect-[16/9]",
   },
   {
     src: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=640&q=75&fit=crop&auto=format",
     alt: "Wedding couple outdoors",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=640&q=75&fit=crop&auto=format",
     alt: "Wedding details and styling",
-    aspect: "aspect-[4/3]",
   },
   {
     src: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=640&q=75&fit=crop&auto=format",
     alt: "Celebration atmosphere",
-    aspect: "aspect-[1/1]",
   },
 ];
 
-/** Extra tiles so the first view can show 16+ and “Load more” still reveals more */
-const WEDDING_MASONRY_SECTION_3: MasonryImageItem[] = [
+const WEDDING_GALLERY_SECTION_3: MasonryImageItem[] = [
   {
     src: "https://images.unsplash.com/photo-1606800052052-a08c714e61e9?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding ceremony aisle",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&fit=crop&auto=format",
     alt: "Bride and groom portrait",
-    aspect: "aspect-[4/5]",
   },
   {
     src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding reception lights",
-    aspect: "aspect-[16/10]",
   },
   {
     src: "https://images.unsplash.com/photo-1583939003579-73062142fd40?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding mandap detail",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800&q=80&fit=crop&auto=format",
     alt: "Couple walking together",
-    aspect: "aspect-[2/3]",
   },
   {
     src: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding guests celebration",
-    aspect: "aspect-[5/3]",
   },
   {
     src: "https://images.unsplash.com/photo-1520854221050-0f4caff4492c?w=800&q=80&fit=crop&auto=format",
     alt: "Bridal bouquet close-up",
-    aspect: "aspect-[1/1]",
   },
   {
     src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&q=80&fit=crop&auto=format",
     alt: "Outdoor wedding venue",
-    aspect: "aspect-[16/9]",
   },
   {
     src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&fit=crop&auto=format",
     alt: "Evening wedding decor",
-    aspect: "aspect-[3/4]",
   },
   {
     src: "https://images.unsplash.com/photo-1609560827847-e9927da40b7b?w=800&q=80&fit=crop&auto=format",
     alt: "Wedding celebration candid",
-    aspect: "aspect-[3/5]",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding flowers and rings",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding couple portrait",
   },
 ];
 
-const ALL_MASONRY_ITEMS: MasonryImageItem[] = [
-  ...WEDDING_MASONRY_SECTION_1,
-  ...WEDDING_MASONRY_SECTION_2,
-  ...WEDDING_MASONRY_SECTION_3,
+/** Extra pool for “Load more” (+8 per click) — URLs verified HTTP 200 on Unsplash CDN. */
+const WEDDING_GALLERY_LOAD_MORE: MasonryImageItem[] = [
+  {
+    src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding celebration portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80&fit=crop&auto=format",
+    alt: "Bridal getting ready",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding fashion portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding day portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=800&q=80&fit=crop&auto=format",
+    alt: "Couple — wedding portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding reception moment",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&q=80&fit=crop&auto=format",
+    alt: "Bridal beauty portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding candid portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80&fit=crop&auto=format",
+    alt: "Bridal styling detail",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80&fit=crop&auto=format",
+    alt: "Outdoor wedding portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&fit=crop&auto=format",
+    alt: "Couple laughing together",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding party group",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&fit=crop&auto=format",
+    alt: "Soft light bridal portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80&fit=crop&auto=format",
+    alt: "Editorial wedding portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=800&q=80&fit=crop&auto=format",
+    alt: "Creative couple portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=800&q=80&fit=crop&auto=format",
+    alt: "Couple outdoors",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&fit=crop&auto=format",
+    alt: "Groom portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80&fit=crop&auto=format",
+    alt: "Groom candid portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80&fit=crop&auto=format",
+    alt: "Bridal portrait — natural light",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding day moment",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1526510747491-58f928ec870f?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding detail — hands",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80&fit=crop&auto=format",
+    alt: "Wedding guest portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80&fit=crop&auto=format",
+    alt: "Formal wedding portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80&fit=crop&auto=format",
+    alt: "Professional wedding portrait",
+  },
 ];
 
-/** Total pool (7 + 9 + 10 = 26). First view uses INITIAL_MASONRY_COUNT. */
-const TOTAL_MASONRY_IMAGES = ALL_MASONRY_ITEMS.length;
+const ALL_GALLERY_ITEMS: MasonryImageItem[] = [
+  ...WEDDING_GALLERY_SECTION_1,
+  ...WEDDING_GALLERY_SECTION_2,
+  ...WEDDING_GALLERY_SECTION_3,
+  ...WEDDING_GALLERY_LOAD_MORE,
+];
 
-/** How many images show before the user clicks anything (not 5). */
-const INITIAL_MASONRY_COUNT = 16;
-/** How many images each “Load more.” click appends (always 5 per click until the list runs out). */
-const LOAD_MORE_BATCH = 5;
+const TOTAL_GALLERY_IMAGES = ALL_GALLERY_ITEMS.length;
 
-/** Estimated vertical “weight” from Tailwind aspect class (taller tiles go to shorter columns). */
-function aspectWeight(aspectClass: string): number {
-  const m = aspectClass.match(/\[(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)\]/);
-  if (!m) return 1;
-  const w = parseFloat(m[1]);
-  const h = parseFloat(m[2]);
-  return h / w;
+const INITIAL_VISIBLE_COUNT = 28;
+const LOAD_MORE_BATCH = 8;
+
+/** Stagger only the first screen of tiles so the grid feels sequential as you scroll. */
+const SCROLL_REVEAL_STAGGER_CAP = 28;
+
+function subscribePrefersReducedMotion(onChange: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
 }
 
-type IndexedMasonryItem = { item: MasonryImageItem; index: number };
-
-/** Shortest-column packing — balances column heights vs CSS columns (which stacks unevenly at the bottom). */
-function distributeIntoColumns(
-  entries: IndexedMasonryItem[],
-  columnCount: number,
-): IndexedMasonryItem[][] {
-  if (columnCount <= 1) return [entries];
-  const cols: IndexedMasonryItem[][] = Array.from(
-    { length: columnCount },
-    () => [],
-  );
-  const heights = Array(columnCount).fill(0);
-  for (const entry of entries) {
-    const w = aspectWeight(entry.item.aspect);
-    let shortest = 0;
-    for (let c = 1; c < columnCount; c++) {
-      if (heights[c] < heights[shortest]) shortest = c;
-    }
-    cols[shortest].push(entry);
-    heights[shortest] += w;
-  }
-  return cols;
+function getPrefersReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function getMasonryColumnCount(): 1 | 2 | 3 {
-  if (typeof window === "undefined") return 1;
-  if (window.matchMedia("(min-width: 768px)").matches) return 3;
-  if (window.matchMedia("(min-width: 640px)").matches) return 2;
-  return 1;
-}
-
-function subscribeMasonryColumnCount(cb: () => void) {
-  const mqSm = window.matchMedia("(min-width: 640px)");
-  const mqMd = window.matchMedia("(min-width: 768px)");
-  mqSm.addEventListener("change", cb);
-  mqMd.addEventListener("change", cb);
-  return () => {
-    mqSm.removeEventListener("change", cb);
-    mqMd.removeEventListener("change", cb);
-  };
-}
-
-function useMasonryColumnCount(): 1 | 2 | 3 {
+function usePrefersReducedMotion(): boolean {
   return useSyncExternalStore(
-    subscribeMasonryColumnCount,
-    getMasonryColumnCount,
-    () => 1,
+    subscribePrefersReducedMotion,
+    getPrefersReducedMotionSnapshot,
+    () => false,
   );
 }
 
-function MasonryGrid({
+function UniformGalleryGrid({
   items,
   eagerUpToIndex,
 }: {
   items: MasonryImageItem[];
-  /** Load first N tiles eagerly so all initial slots paint (lazy-only can hide below-the-fold in columns). */
+  /** Images at or above this index use lazy loading (after “Load more” batches). */
   eagerUpToIndex: number;
 }) {
-  const columnCount = useMasonryColumnCount();
-  const indexed = useMemo(
-    () => items.map((item, index) => ({ item, index })),
-    [items],
-  );
-  const columns = useMemo(
-    () => distributeIntoColumns(indexed, columnCount),
-    [indexed, columnCount],
-  );
+  const reduceMotion = usePrefersReducedMotion();
 
   return (
     <div
       className={cn(
-        "flex gap-3",
-        columnCount === 1 ? "flex-col" : "flex-row",
+        "grid grid-cols-4 gap-1.5 sm:gap-2.5 lg:gap-3",
+        "rounded-2xl bg-white p-1.5 sm:p-2.5 lg:p-3 ring-1 ring-stone-200/80 shadow-sm",
       )}
+      data-gallery-count={items.length}
     >
-      {columns.map((col, colIdx) => (
-        <div
-          key={colIdx}
+      {items.map((item, index) => (
+        <motion.div
+          key={`${item.src}-${index}`}
+          initial={reduceMotion ? false : { opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -10% 0px" }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.55,
+            ease: [0.22, 1, 0.36, 1],
+            delay:
+              reduceMotion || index >= SCROLL_REVEAL_STAGGER_CAP
+                ? 0
+                : Math.min(index * 0.028, 0.42),
+          }}
           className={cn(
-            "flex min-w-0 flex-col gap-3",
-            columnCount > 1 && "flex-1",
+            "group relative overflow-hidden rounded-xl bg-stone-100",
+            "ring-1 ring-black/[0.04]",
+            "shadow-[0_1px_2px_rgba(0,0,0,0.04)]",
+            "transition-[box-shadow,transform] duration-300 ease-out",
+            "hover:shadow-[0_6px_16px_-6px_rgba(0,0,0,0.12)]",
           )}
         >
-          {col.map(({ item, index }) => (
-            <div key={`masonry-${index}`}>
-              <div
-                className={cn(
-                  "group relative overflow-hidden rounded-[10px] bg-neutral-200/90",
-                  "ring-1 ring-black/[0.06]",
-                  "shadow-[0_1px_2px_rgba(0,0,0,0.04)]",
-                  "transition-[box-shadow,transform] duration-300 ease-out",
-                  "hover:shadow-[0_4px_14px_-4px_rgba(0,0,0,0.08)]",
-                  item.cardClassName,
-                )}
-              >
-                <div className={`relative w-full ${item.aspect}`}>
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    loading={index < eagerUpToIndex ? "eager" : "lazy"}
-                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+          <div className="relative aspect-[3/4] w-full">
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              loading={index < eagerUpToIndex ? "eager" : "lazy"}
+              className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+              sizes="(max-width: 640px) 25vw, 25vw"
+            />
+          </div>
+        </motion.div>
       ))}
     </div>
   );
 }
 
 export default function WeddingMasonryPortfolios() {
-  const [visibleCount, setVisibleCount] = useState(() =>
-    Math.min(INITIAL_MASONRY_COUNT, TOTAL_MASONRY_IMAGES),
+  /** Derived count avoids stale `useState` after hot reload when INITIAL_VISIBLE_COUNT changes. */
+  const [loadMoreBatches, setLoadMoreBatches] = useState(0);
+  const visibleCount = Math.min(
+    INITIAL_VISIBLE_COUNT + loadMoreBatches * LOAD_MORE_BATCH,
+    TOTAL_GALLERY_IMAGES,
   );
   const visibleItems = useMemo(
-    () => ALL_MASONRY_ITEMS.slice(0, visibleCount),
+    () => ALL_GALLERY_ITEMS.slice(0, visibleCount),
     [visibleCount],
   );
-  const hasMore = visibleCount < TOTAL_MASONRY_IMAGES;
-  /** Eager-load through the first full batch so column layout shows all initial images, not only above-the-fold lazies. */
-  const eagerUpToIndex = Math.min(INITIAL_MASONRY_COUNT, visibleItems.length);
+  const hasMore = visibleCount < TOTAL_GALLERY_IMAGES;
 
   return (
-    <section className="border-t border-neutral-200/90 bg-[#f4f4f3] py-14 lg:py-20">
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="border-t border-stone-200/90 bg-[#f8f7f5] py-14 lg:py-20">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="sr-only" aria-live="polite">
-          Gallery showing {visibleItems.length} of {TOTAL_MASONRY_IMAGES} photos
+          Gallery showing {visibleItems.length} of {TOTAL_GALLERY_IMAGES} photos
         </p>
-        <MasonryGrid items={visibleItems} eagerUpToIndex={eagerUpToIndex} />
+        <UniformGalleryGrid
+          items={visibleItems}
+          eagerUpToIndex={INITIAL_VISIBLE_COUNT}
+        />
 
         {hasMore && (
           <p
-            className="mt-10 text-center text-sm text-stone-600 sm:text-[15px]"
+            className="mt-10 text-center text-sm sm:text-[15px] leading-relaxed"
             style={{ fontFamily: inter }}
           >
-            Want to see more?{" "}
+            <span className="font-normal text-stone-500">
+              Want to see more?{" "}
+            </span>
             <button
               type="button"
-              onClick={() =>
-                setVisibleCount((prev) =>
-                  Math.min(prev + LOAD_MORE_BATCH, TOTAL_MASONRY_IMAGES),
-                )
-              }
-              className="inline cursor-pointer border-0 bg-transparent p-0 font-semibold text-stone-900 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-[#c9a84c] hover:decoration-[#c9a84c]/50"
+              onClick={() => setLoadMoreBatches((b) => b + 1)}
+              className="inline cursor-pointer border-0 bg-transparent p-0 font-bold text-stone-900 underline decoration-stone-300 underline-offset-[3px] transition-colors hover:text-[#c9a84c] hover:decoration-[#c9a84c]/50"
               style={{ fontFamily: inter }}
             >
               Load more.
