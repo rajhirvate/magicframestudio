@@ -201,7 +201,7 @@ export default function ServiceCityPageLayout({
                       </Link>
                       <Link
                         href="/portfolio"
-                        className={cn(BTN_PRIMARY, "px-6")}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium text-[#f5f0eb]/80 border border-[#f5f0eb]/20 hover:border-[#c9a84c]/50 hover:text-[#f5f0eb] rounded-none transition-all"
                         style={{ fontFamily: poppins }}
                       >
                         View our work

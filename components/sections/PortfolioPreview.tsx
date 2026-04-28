@@ -97,8 +97,8 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
             {item.label}
           </h3>
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-colors duration-300 group-hover:border-white group-hover:bg-white">
-              <Plus className="text-white transition-colors group-hover:text-black" size={18} />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-colors duration-300 group-hover:border-[#c9a84c] group-hover:bg-[#c9a84c]">
+              <Plus className="text-white" size={18} />
             </div>
             <span className="text-sm font-light text-white/80">View Project</span>
           </div>

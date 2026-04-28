@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
 const poppins = "var(--font-poppins), sans-serif";
@@ -60,14 +59,14 @@ export default function IntroSection() {
         >
           <Link
             href="/about"
-            className={cn(BTN_PRIMARY)}
+            className={BTN_PRIMARY}
             style={{ fontFamily: poppins }}
           >
             Learn more about us <ArrowRight size={14} className="shrink-0" />
           </Link>
           <Link
             href="/portfolio"
-            className={cn(BTN_PRIMARY)}
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-none transition-all duration-200"
             style={{ fontFamily: poppins }}
           >
             View our work <ArrowRight size={14} className="shrink-0" />
