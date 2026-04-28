@@ -465,11 +465,13 @@ export default function WeddingMasonryPortfolios() {
         <p className="sr-only" aria-live="polite">
           Gallery showing {visibleItems.length} of {TOTAL_GALLERY_IMAGES} photos
         </p>
-        <UniformGalleryGrid
-          items={visibleItems}
-          eagerUpToIndex={INITIAL_VISIBLE_COUNT}
-          onOpenLightbox={(_, index) => setLightboxIndex(index)}
-        />
+        <div className="mx-auto w-full max-w-[76rem]">
+          <UniformGalleryGrid
+            items={visibleItems}
+            eagerUpToIndex={INITIAL_VISIBLE_COUNT}
+            onOpenLightbox={(_, index) => setLightboxIndex(index)}
+          />
+        </div>
 
         {hasMore && (
           <p
