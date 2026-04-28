@@ -338,9 +338,9 @@ export default function PortfolioPage() {
                 key={cat}
                 type="button"
                 onClick={() => setActive(cat)}
-                className={`px-4 py-2 text-xs rounded-md border transition-all duration-200 ${
+                className={`px-4 py-2 text-xs font-medium uppercase tracking-[0.06em] rounded-md border transition-all duration-200 ${
                   active === cat
-                    ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a0a0a] font-medium"
+                    ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a0a0a]"
                     : "border-[#2a2a2a] text-[#f5f0eb]/50 hover:border-[#c9a84c]/30 hover:text-[#f5f0eb]"
                 }`}
                 style={{ fontFamily: "var(--font-poppins), sans-serif" }}

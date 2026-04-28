@@ -66,7 +66,7 @@ export default function IntroSection() {
           </Link>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-md transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.06em] text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-md transition-all duration-200"
             style={{ fontFamily: poppins }}
           >
             View our work <ArrowRight size={14} className="shrink-0" />

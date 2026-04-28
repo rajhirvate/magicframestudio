@@ -484,7 +484,7 @@ export default function WeddingMasonryPortfolios() {
             <button
               type="button"
               onClick={() => setLoadMoreBatches((b) => b + 1)}
-              className="inline cursor-pointer border-0 bg-transparent p-0 font-bold text-stone-900 underline decoration-stone-300 underline-offset-[3px] transition-colors hover:text-[#c9a84c] hover:decoration-[#c9a84c]/50"
+              className="inline cursor-pointer border-0 bg-transparent p-0 text-sm font-bold uppercase tracking-[0.06em] text-stone-900 underline decoration-stone-300 underline-offset-[3px] transition-colors hover:text-[#c9a84c] hover:decoration-[#c9a84c]/50"
               style={{ fontFamily: inter }}
             >
               Load more.

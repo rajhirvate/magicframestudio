@@ -97,7 +97,7 @@ function MegaMenu({
           <Link
             href={hubHref}
             onClick={onClose}
-            className="flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:text-[#e0c068] transition-colors"
+            className="flex items-center gap-2 text-sm font-medium uppercase tracking-[0.05em] text-[#c9a84c] hover:text-[#e0c068] transition-colors"
             style={{ fontFamily: "var(--font-inter), sans-serif" }}
           >
             <span
@@ -134,7 +134,7 @@ function MegaMenu({
                       className="group flex flex-col gap-0.5 rounded-lg px-3 py-2.5 hover:bg-[#1a1a1a] transition-colors duration-150"
                     >
                       <span
-                        className="text-sm font-medium text-[#f5f0eb]/85 group-hover:text-[#c9a84c] transition-colors"
+                        className="text-sm font-medium uppercase tracking-[0.04em] text-[#f5f0eb]/85 group-hover:text-[#c9a84c] transition-colors"
                         style={{ fontFamily: "var(--font-inter), sans-serif" }}
                       >
                         {item.label}
@@ -189,7 +189,7 @@ function MobileServiceList({
       <Link
         href={`/${type}`}
         onClick={onClose}
-        className="block py-2 text-sm text-[#c9a84c]"
+        className="block py-2 text-sm font-medium uppercase tracking-[0.05em] text-[#c9a84c]"
         style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
         View All {type === "photography" ? "Photography" : "Videography"} Services →
@@ -199,7 +199,7 @@ function MobileServiceList({
           key={s.slug}
           href={`/${type}/${s.slug}`}
           onClick={onClose}
-          className="block py-2 text-sm text-[#f5f0eb]/55 hover:text-[#f5f0eb] transition-colors"
+          className="block py-2 text-sm font-medium uppercase tracking-[0.04em] text-[#f5f0eb]/55 hover:text-[#f5f0eb] transition-colors"
           style={{ fontFamily: "var(--font-inter), sans-serif" }}
         >
           {s.title}
@@ -282,7 +282,7 @@ export default function Navbar() {
               >
                 <button
                   className={cn(
-                    "flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-200 py-2",
+                    "flex items-center gap-1.5 text-sm font-medium uppercase tracking-[0.08em] transition-colors duration-200 py-2",
                     openMega === "photography" || pathname.startsWith("/photography")
                       ? "text-[#c9a84c]"
                       : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
@@ -308,7 +308,7 @@ export default function Navbar() {
               >
                 <button
                   className={cn(
-                    "flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-200 py-2",
+                    "flex items-center gap-1.5 text-sm font-medium uppercase tracking-[0.08em] transition-colors duration-200 py-2",
                     openMega === "videography" || pathname.startsWith("/videography")
                       ? "text-[#c9a84c]"
                       : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
@@ -388,7 +388,7 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setMobilePhotoOpen(!mobilePhotoOpen)}
-                  className="flex items-center justify-between w-full py-3 text-sm font-medium text-[#f5f0eb]"
+                  className="flex items-center justify-between w-full py-3 text-sm font-medium uppercase tracking-[0.08em] text-[#f5f0eb]"
                   style={{ fontFamily: "var(--font-inter), sans-serif" }}
                 >
                   Photography
@@ -408,7 +408,7 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setMobileVideoOpen(!mobileVideoOpen)}
-                  className="flex items-center justify-between w-full py-3 text-sm font-medium text-[#f5f0eb]"
+                  className="flex items-center justify-between w-full py-3 text-sm font-medium uppercase tracking-[0.08em] text-[#f5f0eb]"
                   style={{ fontFamily: "var(--font-inter), sans-serif" }}
                 >
                   Videography
@@ -433,7 +433,7 @@ export default function Navbar() {
                   <Link
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-3 text-sm font-medium text-[#f5f0eb]"
+                    className="block py-3 text-sm font-medium uppercase tracking-[0.08em] text-[#f5f0eb]"
                     style={{ fontFamily: "var(--font-inter), sans-serif" }}
                   >
                     {label}
@@ -466,7 +466,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
     <Link
       href={href}
       className={cn(
-        "text-sm font-medium tracking-wide transition-colors duration-200",
+        "text-sm font-medium uppercase tracking-[0.08em] transition-colors duration-200",
         pathname === href
           ? "text-[#c9a84c]"
           : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
