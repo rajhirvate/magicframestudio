@@ -18,6 +18,13 @@ import ContactForm from "@/components/ContactForm";
 import WeddingMasonryPortfolios from "@/components/sections/WeddingMasonryPortfolios";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import WeddingPhotographyFAQ from "@/components/sections/WeddingPhotographyFAQ";
+import EventPhotographyFAQ from "@/components/sections/EventPhotographyFAQ";
+import PortraitPhotographyFAQ from "@/components/sections/PortraitPhotographyFAQ";
+import FashionModelPhotographyFAQ from "@/components/sections/FashionModelPhotographyFAQ";
+import ProductPhotographyFAQ from "@/components/sections/ProductPhotographyFAQ";
+import CorporatePhotographyFAQ from "@/components/sections/CorporatePhotographyFAQ";
+import RealEstatePhotographyFAQ from "@/components/sections/RealEstatePhotographyFAQ";
+import DronePhotographyFAQ from "@/components/sections/DronePhotographyFAQ";
 import WeddingHowItWorks from "@/components/sections/WeddingHowItWorks";
 import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 import { cn } from "@/lib/utils";
@@ -40,26 +47,219 @@ const serviceStoryPhotos: Record<string, string> = {
   "wedding-photography": "/images/services/wedding-photography-about.png",
 };
 
-const whyChooseHighlights = [
+const serviceHighlights: Record<
+  string,
   {
-    icon: Wallet,
-    title: "Competitive wedding packages",
+    heading: string;
+    description: string;
+    items: {
+      icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
+      title: string;
+      description: string;
+    }[];
+  }
+> = {
+  "wedding-photography": {
+    heading: "Why Choose Magic Frame Studio?",
     description:
-      "Get premium wedding photography coverage with clear pricing and no hidden costs.",
+      "We blend storytelling, planning, and reliable execution so your wedding memories are captured beautifully.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Competitive wedding packages",
+        description:
+          "Get premium wedding photography coverage with clear pricing and no hidden costs.",
+      },
+      {
+        icon: Handshake,
+        title: "Long-term partnership",
+        description:
+          "From pre-wedding planning to album delivery, we stay with you through every step.",
+      },
+      {
+        icon: Gauge,
+        title: "Performance-driven execution",
+        description:
+          "Our team captures key rituals, emotions, and candid moments with speed and precision.",
+      },
+    ],
   },
-  {
-    icon: Handshake,
-    title: "Long-term partnership",
+  "event-photography": {
+    heading: "Why Choose Magic Frame Studio for Events?",
     description:
-      "From pre-wedding planning to album delivery, we stay with you through every step.",
+      "From intimate celebrations to large productions, we capture key moments without disrupting your event flow.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Flexible event packages",
+        description:
+          "Choose coverage by hours, sessions, or full-day requirements with transparent pricing.",
+      },
+      {
+        icon: Handshake,
+        title: "Smooth team coordination",
+        description:
+          "We align with your event manager and timeline so every critical segment is documented on schedule.",
+      },
+      {
+        icon: Gauge,
+        title: "Fast, dependable delivery",
+        description:
+          "Receive polished edits quickly for social sharing, media use, and post-event reports.",
+      },
+    ],
   },
-  {
-    icon: Gauge,
-    title: "Performance-driven execution",
+  "portrait-photography": {
+    heading: "Why Choose Magic Frame Studio for Portraits?",
     description:
-      "Our team captures key rituals, emotions, and candid moments with speed and precision.",
+      "We create portrait sessions that feel relaxed and intentional, so your photos look natural, polished, and true to you.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Flexible portrait packages",
+        description:
+          "Choose from studio, outdoor, or lifestyle sessions with clear deliverables and transparent pricing.",
+      },
+      {
+        icon: Handshake,
+        title: "Guided posing and direction",
+        description:
+          "Our team helps with expressions, posture, and angles so you feel confident in front of the camera.",
+      },
+      {
+        icon: Gauge,
+        title: "Consistent editing quality",
+        description:
+          "Receive beautifully retouched images with natural skin tones, balanced light, and a refined finish.",
+      },
+    ],
   },
-];
+  "fashion-model-photography": {
+    heading: "Why Choose Magic Frame Studio for Fashion & Model Shoots?",
+    description:
+      "We combine creative direction, styling-aware framing, and polished post-production to deliver portfolio and campaign-ready images.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Flexible fashion shoot packages",
+        description:
+          "Select half-day, full-day, studio, or on-location sessions based on your campaign or portfolio goals.",
+      },
+      {
+        icon: Handshake,
+        title: "Creative team collaboration",
+        description:
+          "We coordinate with stylists, makeup artists, and creative directors to keep every frame aligned with your brief.",
+      },
+      {
+        icon: Gauge,
+        title: "Editorial-grade output",
+        description:
+          "Get high-impact retouched photos optimized for lookbooks, social media, and agency/model portfolios.",
+      },
+    ],
+  },
+  "product-photography": {
+    heading: "Why Choose Magic Frame Studio for Product Photography?",
+    description:
+      "We create conversion-focused product imagery with consistent lighting, color accuracy, and platform-ready outputs.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Scalable package options",
+        description:
+          "From small catalogs to large SKU batches, choose a plan that fits your volume and deadlines.",
+      },
+      {
+        icon: Handshake,
+        title: "Marketplace-aware execution",
+        description:
+          "We shoot to meet platform and brand guidelines for Amazon, Flipkart, D2C stores, and social campaigns.",
+      },
+      {
+        icon: Gauge,
+        title: "Fast, reliable turnaround",
+        description:
+          "Receive clean, retouched assets quickly so product listings and launches stay on schedule.",
+      },
+    ],
+  },
+  "corporate-photography": {
+    heading: "Why Choose Magic Frame Studio for Corporate Photography?",
+    description:
+      "We deliver polished business imagery that strengthens your brand across web, media, and internal communications.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Cost-effective corporate plans",
+        description:
+          "Book one-time shoots or recurring sessions with transparent pricing and clearly defined deliverables.",
+      },
+      {
+        icon: Handshake,
+        title: "Professional on-site coordination",
+        description:
+          "We work seamlessly with HR, marketing, and leadership teams to keep shoots organized and efficient.",
+      },
+      {
+        icon: Gauge,
+        title: "Brand-consistent visual quality",
+        description:
+          "Get consistent headshots, workplace visuals, and team photos ready for websites and PR use.",
+      },
+    ],
+  },
+  "real-estate-photography": {
+    heading: "Why Choose Magic Frame Studio for Real Estate?",
+    description:
+      "We highlight space, light, and layout to help your listings stand out and attract serious buyers faster.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Flexible listing packages",
+        description:
+          "Choose image sets based on apartment, villa, commercial, or hospitality property requirements.",
+      },
+      {
+        icon: Handshake,
+        title: "Agent-friendly workflow",
+        description:
+          "Our team coordinates with brokers, owners, and site staff to capture each property efficiently.",
+      },
+      {
+        icon: Gauge,
+        title: "High-impact delivery quality",
+        description:
+          "Receive bright, distortion-controlled, professionally edited photos optimized for listing portals.",
+      },
+    ],
+  },
+  "drone-photography": {
+    heading: "Why Choose Magic Frame Studio for Drone Photography?",
+    description:
+      "We capture safe, cinematic aerial imagery that adds scale and clarity to real estate, events, and branded content.",
+    items: [
+      {
+        icon: Wallet,
+        title: "Transparent aerial pricing",
+        description:
+          "Select coverage by flight duration, locations, and deliverable type without hidden production costs.",
+      },
+      {
+        icon: Handshake,
+        title: "Licensed and safety-first crew",
+        description:
+          "Our pilots follow compliance protocols and site checks for smooth, legal, and secure operations.",
+      },
+      {
+        icon: Gauge,
+        title: "Cinematic aerial output",
+        description:
+          "Get stable, high-resolution drone images ready for marketing, listings, and campaign usage.",
+      },
+    ],
+  },
+};
 
 interface ServicePageLayoutProps {
   title: string;
@@ -109,6 +309,7 @@ export default function ServicePageLayout({
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
   const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
   const gallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const highlightsContent = serviceHighlights[slug];
 
   return (
     <>
@@ -215,7 +416,18 @@ export default function ServicePageLayout({
                   transition={{ duration: 0.75, delay: 0.15 }}
                 >
                   <ContactForm
-                    variant={slug === "wedding-photography" ? "light" : "dark"}
+                    variant={
+                      slug === "wedding-photography" ||
+                      slug === "event-photography" ||
+                      slug === "portrait-photography" ||
+                      slug === "fashion-model-photography" ||
+                      slug === "product-photography" ||
+                      slug === "corporate-photography" ||
+                      slug === "real-estate-photography" ||
+                      slug === "drone-photography"
+                        ? "light"
+                        : "dark"
+                    }
                   />
                 </motion.div>
               </div>
@@ -368,25 +580,24 @@ export default function ServicePageLayout({
         </div>
       </section>
 
-      {slug === "wedding-photography" && (
+      {highlightsContent && (
         <>
           <section className="py-16 lg:py-24 bg-white border-t border-stone-200/70">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <AnimatedSection className="text-center mb-10">
                 <h2 className="font-heading text-3xl sm:text-4xl font-light text-stone-900 mb-3">
-                  Why Choose Magic Frame Studio?
+                  {highlightsContent.heading}
                 </h2>
                 <p
                   className="text-sm sm:text-[15px] text-stone-500 max-w-2xl mx-auto"
                   style={{ fontFamily: inter }}
                 >
-                  We blend storytelling, planning, and reliable execution so your
-                  wedding memories are captured beautifully.
+                  {highlightsContent.description}
                 </p>
               </AnimatedSection>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-                {whyChooseHighlights.map((item, index) => (
+                {highlightsContent.items.map((item, index) => (
                   <AnimatedSection key={item.title} delay={0.04 * index}>
                     <div className="relative text-center px-3 py-2">
                       <div className="mb-5 flex justify-center">
@@ -462,6 +673,13 @@ export default function ServicePageLayout({
       </section>
 
       {slug === "wedding-photography" && <WeddingPhotographyFAQ />}
+      {slug === "event-photography" && <EventPhotographyFAQ />}
+      {slug === "portrait-photography" && <PortraitPhotographyFAQ />}
+      {slug === "fashion-model-photography" && <FashionModelPhotographyFAQ />}
+      {slug === "product-photography" && <ProductPhotographyFAQ />}
+      {slug === "corporate-photography" && <CorporatePhotographyFAQ />}
+      {slug === "real-estate-photography" && <RealEstatePhotographyFAQ />}
+      {slug === "drone-photography" && <DronePhotographyFAQ />}
 
       {/* CTA — match CTABanner / ReadyToConnect warm near-black */}
       <section className="relative py-16 lg:py-24 overflow-hidden bg-[#0f0c0a] border-t border-stone-800/80">
