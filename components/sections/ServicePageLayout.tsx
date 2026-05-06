@@ -26,6 +26,7 @@ import CorporatePhotographyFAQ from "@/components/sections/CorporatePhotographyF
 import RealEstatePhotographyFAQ from "@/components/sections/RealEstatePhotographyFAQ";
 import DronePhotographyFAQ from "@/components/sections/DronePhotographyFAQ";
 import WeddingHowItWorks from "@/components/sections/WeddingHowItWorks";
+import WeddingCustomerTestimonials from "@/components/sections/WeddingCustomerTestimonials";
 import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
@@ -639,6 +640,8 @@ export default function ServicePageLayout({
           <WeddingMasonryPortfolios />
 
           <WeddingHowItWorks />
+
+          {slug === "wedding-photography" && <WeddingCustomerTestimonials />}
         </>
       )}
 
