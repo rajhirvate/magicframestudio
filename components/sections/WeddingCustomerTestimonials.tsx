@@ -255,28 +255,6 @@ export default function WeddingCustomerTestimonials() {
               ))}
             </motion.div>
           </div>
-
-          <div
-            className="mt-10 flex flex-wrap justify-center gap-2"
-            role="tablist"
-            aria-label="Testimonial pages"
-          >
-            {pages.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={pageIndex === i}
-                aria-label={`Show testimonials ${i * PER_VIEW + 1} to ${Math.min((i + 1) * PER_VIEW, testimonials.length)}`}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  pageIndex === i
-                    ? "w-8 bg-[#c9a84c]"
-                    : "w-2 bg-stone-300 hover:bg-stone-400"
-                }`}
-                onClick={() => setPageIndex(i)}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
