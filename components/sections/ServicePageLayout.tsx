@@ -641,7 +641,16 @@ export default function ServicePageLayout({
 
           <WeddingHowItWorks />
 
-          {slug === "wedding-photography" && <WeddingCustomerTestimonials />}
+          {(slug === "wedding-photography" ||
+            slug === "event-photography" ||
+            slug === "portrait-photography" ||
+            slug === "fashion-model-photography" ||
+            slug === "product-photography" ||
+            slug === "corporate-photography" ||
+            slug === "real-estate-photography" ||
+            slug === "drone-photography") && (
+            <WeddingCustomerTestimonials />
+          )}
         </>
       )}
 
