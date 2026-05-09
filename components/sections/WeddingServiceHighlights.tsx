@@ -60,7 +60,7 @@ export default function WeddingServiceHighlights() {
               </h3>
               <p
                 className="mt-5 max-w-[22rem] text-sm leading-relaxed text-[#666666] sm:text-[15px]"
-                style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 {col.description}
               </p>

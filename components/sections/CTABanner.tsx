@@ -26,7 +26,7 @@ export default function CTABanner() {
         >
           <p
             className="mb-4 text-xs font-semibold tracking-normal text-[#c9a84c]"
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Let&apos;s create together
           </p>
@@ -36,14 +36,14 @@ export default function CTABanner() {
           </h2>
           <p
             className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-[#f5f0eb]/55 sm:text-[15px]"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Let&apos;s discuss your vision. Whether it&apos;s a wedding, a product launch, or a brand film — we&apos;re here to craft something extraordinary together.
           </p>
           <Link
             href="/contact"
             className={BTN_PRIMARY}
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Contact us today
           </Link>

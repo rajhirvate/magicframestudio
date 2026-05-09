@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const inter = "var(--font-inter), sans-serif";
+const inter = "var(--font-sans), sans-serif";
 
 export type MasonryImageItem = {
   src: string;

@@ -23,15 +23,15 @@ html {
 body {
   background-color: #0a0a0a;
   color: #f5f0eb;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Heading font — maps to Cormorant Garamond via next/font CSS variable */
+/* Headings — Playfair Display via next/font CSS variable */
 .font-heading {
-  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
 /* Custom scrollbar */

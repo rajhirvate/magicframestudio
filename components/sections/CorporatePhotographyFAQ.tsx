@@ -5,8 +5,8 @@ import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
-const inter = "var(--font-inter), sans-serif";
-const poppins = "var(--font-poppins), sans-serif";
+const inter = "var(--font-sans), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
 
 const corporateFaqs = [
   {

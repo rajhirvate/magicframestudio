@@ -31,8 +31,8 @@ import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
-const poppins = "var(--font-poppins), sans-serif";
-const inter = "var(--font-inter), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
+const inter = "var(--font-sans), sans-serif";
 
 // Pool of extra gallery photos (Unsplash)
 const galleryPhotoPool = [

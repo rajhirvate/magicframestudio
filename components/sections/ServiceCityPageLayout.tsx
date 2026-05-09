@@ -11,8 +11,8 @@ import { photographyServices, videographyServices } from "@/data/services";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
-const poppins = "var(--font-poppins), sans-serif";
-const inter = "var(--font-inter), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
+const inter = "var(--font-sans), sans-serif";
 
 const galleryPhotoPool = [
   "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&fit=crop&auto=format",

@@ -310,7 +310,7 @@ export default function PortfolioPage() {
           >
             <p
               className="text-xs tracking-widest text-[#c9a84c] uppercase mb-4"
-              style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+              style={{ fontFamily: "var(--font-sans), sans-serif" }}
             >
               Our Work
             </p>
@@ -319,7 +319,7 @@ export default function PortfolioPage() {
             </h1>
             <p
               className="text-base text-[#f5f0eb]/50 leading-relaxed"
-              style={{ fontFamily: "var(--font-inter), sans-serif" }}
+              style={{ fontFamily: "var(--font-sans), sans-serif" }}
             >
               A glimpse into five years of crafting cinematic stories across India.
             </p>
@@ -343,7 +343,7 @@ export default function PortfolioPage() {
                     ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a0a0a] font-medium"
                     : "border-[#2a2a2a] text-[#f5f0eb]/50 hover:border-[#c9a84c]/30 hover:text-[#f5f0eb]"
                 }`}
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 {cat}
               </button>
@@ -380,13 +380,13 @@ export default function PortfolioPage() {
                     <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                       <p
                         className="text-xs font-medium text-[#f5f0eb]/90"
-                        style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                        style={{ fontFamily: "var(--font-sans), sans-serif" }}
                       >
                         {item.title}
                       </p>
                       <span
                         className="inline-block mt-1 text-[10px] text-[#c9a84c] border border-[#c9a84c]/40 rounded-md px-2 py-0.5"
-                        style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                        style={{ fontFamily: "var(--font-sans), sans-serif" }}
                       >
                         {item.category}
                       </span>
@@ -407,7 +407,7 @@ export default function PortfolioPage() {
                 type="button"
                 onClick={() => setLoadMoreClicks((c) => Math.min(c + 1, MAX_LOAD_MORE_CLICKS))}
                 className={cn(BTN_PRIMARY)}
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Load more
               </button>
@@ -452,13 +452,13 @@ export default function PortfolioPage() {
               <div className="absolute bottom-0 left-0 right-0 px-6 py-4 bg-gradient-to-t from-black/80 to-transparent">
                 <p
                   className="text-sm font-medium text-white"
-                  style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                  style={{ fontFamily: "var(--font-sans), sans-serif" }}
                 >
                   {lightbox.title}
                 </p>
                 <span
                   className="text-xs text-[#c9a84c]"
-                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  style={{ fontFamily: "var(--font-sans), sans-serif" }}
                 >
                   {lightbox.category}
                 </span>
@@ -476,14 +476,14 @@ export default function PortfolioPage() {
           </h2>
           <p
             className="text-sm text-[#f5f0eb]/40 mb-8"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Let&apos;s create something extraordinary together.
           </p>
           <Link
             href="/contact"
             className={cn(BTN_PRIMARY)}
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Book a shoot
           </Link>

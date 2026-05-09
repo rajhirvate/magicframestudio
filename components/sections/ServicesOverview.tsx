@@ -48,7 +48,7 @@ function ServiceCard({
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           {/* Arrow pill */}
           <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-md px-3 py-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
-            <span className="text-[11px] font-medium text-stone-700" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>View</span>
+            <span className="text-[11px] font-medium text-stone-700" style={{ fontFamily: "var(--font-sans), sans-serif" }}>View</span>
             <ArrowRight size={10} className="text-[#c9a84c]" />
           </div>
         </div>
@@ -56,13 +56,13 @@ function ServiceCard({
         <div className="px-4 py-3.5">
           <h3
             className="text-[15px] font-semibold text-stone-800 group-hover:text-[#c9a84c] transition-colors duration-200 mb-0.5"
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             {title}
           </h3>
           <p
             className="flex items-center gap-1 text-xs text-[#c9a84c]/80 group-hover:gap-2 transition-all duration-200"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Learn More <ArrowRight size={9} />
           </p>
@@ -89,7 +89,7 @@ export default function ServicesOverview() {
         >
           <p
             className="text-xs tracking-widest text-[#c9a84c] uppercase mb-3"
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             What We Do
           </p>
@@ -113,7 +113,7 @@ export default function ServicesOverview() {
               </div>
               <h3
                 className="text-xl font-semibold text-stone-800"
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Photography Services
               </h3>
@@ -141,7 +141,7 @@ export default function ServicesOverview() {
               <Link
                 href="/photography"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 View All Photography Services <ArrowRight size={14} />
               </Link>
@@ -161,7 +161,7 @@ export default function ServicesOverview() {
               </div>
               <h3
                 className="text-xl font-semibold text-stone-800"
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Videography Services
               </h3>
@@ -189,7 +189,7 @@ export default function ServicesOverview() {
               <Link
                 href="/videography"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 View All Videography Services <ArrowRight size={14} />
               </Link>

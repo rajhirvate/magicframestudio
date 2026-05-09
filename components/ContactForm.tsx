@@ -5,8 +5,8 @@ import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
-const poppins = "var(--font-poppins), sans-serif";
-const inter = "var(--font-inter), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
+const inter = "var(--font-sans), sans-serif";
 
 interface FormState {
   name: string;

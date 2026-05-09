@@ -25,14 +25,14 @@ export default function ReadyToConnectSection() {
           </h2>
           <p
             className="max-w-md text-sm font-normal leading-relaxed text-[#f5f0eb]/55 sm:text-[15px]"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Request availability
           </p>
           <Link
             href="/contact"
             className={cn("mt-1", BTN_PRIMARY)}
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Connect now
           </Link>

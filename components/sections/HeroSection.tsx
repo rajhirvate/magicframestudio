@@ -88,7 +88,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-xs font-medium tracking-[0.4em] text-[#c9a84c] uppercase mb-6"
-          style={{ fontFamily: "var(--font-inter), sans-serif" }}
+          style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           Magic Frame Studio · Since 2020
         </motion.p>
@@ -121,7 +121,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
           className="text-xs sm:text-sm text-[#f5f0eb]/60 tracking-[0.25em] uppercase mb-10"
-          style={{ fontFamily: "var(--font-inter), sans-serif" }}
+          style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           Wedding · Events · Portraits · Corporate · Product Shoots
         </motion.p>
@@ -135,7 +135,7 @@ export default function HeroSection() {
           <Link
             href="/portfolio"
             className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-md transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Explore our work
             <ArrowRight
@@ -146,7 +146,7 @@ export default function HeroSection() {
           <Link
             href="/contact"
             className={BTN_PRIMARY}
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Get a quote
           </Link>

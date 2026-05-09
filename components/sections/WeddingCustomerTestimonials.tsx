@@ -5,7 +5,7 @@ import { useCallback, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
-const inter = "var(--font-inter), sans-serif";
+const inter = "var(--font-sans), sans-serif";
 
 const testimonials = [
   {

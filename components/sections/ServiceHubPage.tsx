@@ -9,8 +9,8 @@ import { Service } from "@/data/services";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { BTN_PRIMARY } from "@/lib/btn";
 
-const poppins = "var(--font-poppins), sans-serif";
-const inter = "var(--font-inter), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
+const inter = "var(--font-sans), sans-serif";
 
 const hubHeroImage: Record<"photography" | "videography", string> = {
   photography:

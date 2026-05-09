@@ -46,7 +46,7 @@ export default function WhyChooseUs() {
         >
           <p
             className="text-xs tracking-widest text-[#c9a84c] uppercase mb-3"
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Why Us
           </p>
@@ -69,13 +69,13 @@ export default function WhyChooseUs() {
               </div>
               <h3
                 className="text-lg font-semibold text-stone-800 mb-3"
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 {feature.title}
               </h3>
               <p
                 className="text-sm text-stone-500 leading-relaxed"
-                style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 {feature.description}
               </p>

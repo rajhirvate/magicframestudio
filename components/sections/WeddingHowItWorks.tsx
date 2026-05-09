@@ -5,8 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { ClipboardList, UsersRound, CalendarCheck2, Camera } from "lucide-react";
 import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 
-const inter = "var(--font-inter), sans-serif";
-const poppins = "var(--font-poppins), sans-serif";
+const inter = "var(--font-sans), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
 
 const steps = [
   {

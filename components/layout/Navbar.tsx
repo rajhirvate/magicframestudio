@@ -98,7 +98,7 @@ function MegaMenu({
             href={hubHref}
             onClick={onClose}
             className="flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:text-[#e0c068] transition-colors"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             <span
               className="w-1.5 h-1.5 rounded-full inline-block"
@@ -109,7 +109,7 @@ function MegaMenu({
           </Link>
           <span
             className="text-xs text-[#f5f0eb]/25 uppercase tracking-widest"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             {allServices.length} Services
           </span>
@@ -121,7 +121,7 @@ function MegaMenu({
             <div key={cat.group} className="px-7 py-6">
               <p
                 className="text-[10px] font-semibold tracking-[0.2em] text-[#f5f0eb]/25 uppercase mb-4"
-                style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 {cat.group}
               </p>
@@ -135,13 +135,13 @@ function MegaMenu({
                     >
                       <span
                         className="text-sm font-medium text-[#f5f0eb]/85 group-hover:text-[#c9a84c] transition-colors"
-                        style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                        style={{ fontFamily: "var(--font-sans), sans-serif" }}
                       >
                         {item.label}
                       </span>
                       <span
                         className="text-xs text-[#f5f0eb]/30"
-                        style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                        style={{ fontFamily: "var(--font-sans), sans-serif" }}
                       >
                         {item.desc}
                       </span>
@@ -157,7 +157,7 @@ function MegaMenu({
         <div className="flex items-center justify-between px-7 py-4 border-t border-[#1e1e1e] bg-[#0a0a0a]">
           <p
             className="text-xs text-[#f5f0eb]/30"
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Not sure which service you need?
           </p>
@@ -165,7 +165,7 @@ function MegaMenu({
             href="/contact"
             onClick={onClose}
             className={cn(BTN_PRIMARY, "px-4 py-2 text-[10px] tracking-[0.16em]")}
-            style={{ fontFamily: "var(--font-inter), sans-serif" }}
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             Get a free quote
           </Link>
@@ -190,7 +190,7 @@ function MobileServiceList({
         href={`/${type}`}
         onClick={onClose}
         className="block py-2 text-sm text-[#c9a84c]"
-        style={{ fontFamily: "var(--font-inter), sans-serif" }}
+        style={{ fontFamily: "var(--font-sans), sans-serif" }}
       >
         View All {type === "photography" ? "Photography" : "Videography"} Services →
       </Link>
@@ -200,7 +200,7 @@ function MobileServiceList({
           href={`/${type}/${s.slug}`}
           onClick={onClose}
           className="block py-2 text-sm text-[#f5f0eb]/55 hover:text-[#f5f0eb] transition-colors"
-          style={{ fontFamily: "var(--font-inter), sans-serif" }}
+          style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           {s.title}
         </Link>
@@ -217,6 +217,9 @@ export default function Navbar() {
   const [mobilePhotoOpen, setMobilePhotoOpen] = useState(false);
   const [mobileVideoOpen, setMobileVideoOpen] = useState(false);
   const pathname = usePathname();
+  /** Editorial `/hero3`: light bar while idle; dark chrome while mega menu open (matches dropdown). */
+  const hero3Editorial = pathname === "/hero3";
+  const lightNavChrome = hero3Editorial && !openMega;
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -251,9 +254,11 @@ export default function Navbar() {
         ref={navRef}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled || openMega
-            ? "bg-[#0a0a0a] border-b border-[#1e1e1e] shadow-2xl"
-            : "bg-transparent"
+          lightNavChrome
+            ? "bg-[#f4f1ea]/92 backdrop-blur-md border-b border-[#d3d3d3]/90 shadow-sm"
+            : scrolled || openMega
+              ? "bg-[#0a0a0a] border-b border-[#1e1e1e] shadow-2xl"
+              : "bg-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -267,7 +272,11 @@ export default function Navbar() {
                 width={200}
                 height={52}
                 className="h-9 lg:h-10 w-auto"
-                style={{ filter: "invert(1)", mixBlendMode: "screen" }}
+                style={
+                  lightNavChrome
+                    ? undefined
+                    : { filter: "invert(1)", mixBlendMode: "screen" }
+                }
                 priority
               />
             </Link>
@@ -285,9 +294,11 @@ export default function Navbar() {
                     "flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-200 py-2",
                     openMega === "photography" || pathname.startsWith("/photography")
                       ? "text-[#c9a84c]"
-                      : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
+                      : lightNavChrome
+                        ? "text-[#1a1a1a]/75 hover:text-[#1a1a1a]"
+                        : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
                   )}
-                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  style={{ fontFamily: "var(--font-sans), sans-serif" }}
                 >
                   Photography
                   <ChevronDown
@@ -311,9 +322,11 @@ export default function Navbar() {
                     "flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors duration-200 py-2",
                     openMega === "videography" || pathname.startsWith("/videography")
                       ? "text-[#c9a84c]"
-                      : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
+                      : lightNavChrome
+                        ? "text-[#1a1a1a]/75 hover:text-[#1a1a1a]"
+                        : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
                   )}
-                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  style={{ fontFamily: "var(--font-sans), sans-serif" }}
                 >
                   Videography
                   <ChevronDown
@@ -326,9 +339,9 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <NavLink href="/portfolio" label="Portfolio" />
-              <NavLink href="/about" label="About" />
-              <NavLink href="/contact" label="Contact" />
+              <NavLink href="/portfolio" label="Portfolio" lightNavChrome={lightNavChrome} />
+              <NavLink href="/about" label="About" lightNavChrome={lightNavChrome} />
+              <NavLink href="/contact" label="Contact" lightNavChrome={lightNavChrome} />
             </div>
 
             {/* Book CTA + mobile toggle */}
@@ -336,13 +349,18 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 className={cn(BTN_PRIMARY, "px-5 py-2 text-[11px]")}
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Book a shoot
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 text-[#f5f0eb]/70 hover:text-[#f5f0eb] transition-colors"
+                className={cn(
+                  "lg:hidden p-2 transition-colors",
+                  lightNavChrome
+                    ? "text-[#1a1a1a]/70 hover:text-[#1a1a1a]"
+                    : "text-[#f5f0eb]/70 hover:text-[#f5f0eb]",
+                )}
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -389,7 +407,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setMobilePhotoOpen(!mobilePhotoOpen)}
                   className="flex items-center justify-between w-full py-3 text-sm font-medium text-[#f5f0eb]"
-                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  style={{ fontFamily: "var(--font-sans), sans-serif" }}
                 >
                   Photography
                   <ChevronDown
@@ -409,7 +427,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setMobileVideoOpen(!mobileVideoOpen)}
                   className="flex items-center justify-between w-full py-3 text-sm font-medium text-[#f5f0eb]"
-                  style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                  style={{ fontFamily: "var(--font-sans), sans-serif" }}
                 >
                   Videography
                   <ChevronDown
@@ -434,7 +452,7 @@ export default function Navbar() {
                     href={href}
                     onClick={() => setMobileOpen(false)}
                     className="block py-3 text-sm font-medium text-[#f5f0eb]"
-                    style={{ fontFamily: "var(--font-inter), sans-serif" }}
+                    style={{ fontFamily: "var(--font-sans), sans-serif" }}
                   >
                     {label}
                   </Link>
@@ -448,7 +466,7 @@ export default function Navbar() {
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className={cn(BTN_PRIMARY, "w-full py-3 text-[11px]")}
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
+                style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Book a shoot
               </Link>
@@ -460,7 +478,15 @@ export default function Navbar() {
   );
 }
 
-function NavLink({ href, label }: { href: string; label: string }) {
+function NavLink({
+  href,
+  label,
+  lightNavChrome,
+}: {
+  href: string;
+  label: string;
+  lightNavChrome?: boolean;
+}) {
   const pathname = usePathname();
   return (
     <Link
@@ -469,9 +495,11 @@ function NavLink({ href, label }: { href: string; label: string }) {
         "text-sm font-medium tracking-wide transition-colors duration-200",
         pathname === href
           ? "text-[#c9a84c]"
-          : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
+          : lightNavChrome
+            ? "text-[#1a1a1a]/75 hover:text-[#1a1a1a]"
+            : "text-[#f5f0eb]/75 hover:text-[#f5f0eb]"
       )}
-      style={{ fontFamily: "var(--font-inter), sans-serif" }}
+      style={{ fontFamily: "var(--font-sans), sans-serif" }}
     >
       {label}
     </Link>
