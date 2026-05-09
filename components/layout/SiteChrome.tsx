@@ -1,10 +1,16 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const hideGlobalNav = pathname === "/hero2";
+
   return (
     <>
-      <Navbar />
+      {!hideGlobalNav ? <Navbar /> : null}
       <main className="flex-1">{children}</main>
       <Footer />
     </>

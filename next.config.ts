@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "zerogravity.photography",
+      },
+      {
+        protocol: "https",
+        hostname: "www.focuzstudios.in",
+      },
     ],
     formats: ["image/avif", "image/webp"],
   },
