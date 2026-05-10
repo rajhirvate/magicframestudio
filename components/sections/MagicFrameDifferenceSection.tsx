@@ -265,9 +265,7 @@ export default function MagicFrameDifferenceSection() {
       aria-labelledby="magic-frame-difference-heading"
     >
       {/*
-        100% reference: three balanced columns (~1 : 1.5 : 1). Center cream rail is only
-        modestly wider than each portrait column—not capped at 600px (which balloons sides)
-        and not ultra-narrow vw rails (that was for a different zoom perception).
+        Three-column editorial layout (~1 : 1.5 : 1). Center rail uses site dark bg + light copy.
       */}
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(min(100%,300px),1.5fr)_minmax(0,1fr)] lg:items-stretch">
         <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(85vh,720px)] lg:h-full lg:w-full">
@@ -280,14 +278,14 @@ export default function MagicFrameDifferenceSection() {
           />
         </div>
 
-        <div className="flex flex-col justify-center bg-[#f4f1ea] px-8 py-14 text-center lg:px-12 lg:py-20 xl:px-16">
+        <div className="flex flex-col justify-center bg-[#0a0a0a] px-8 py-14 text-center lg:px-12 lg:py-20 xl:px-16">
           <motion.h2
             id="magic-frame-difference-heading"
             initial={{ opacity: 1, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.5 }}
-            className="mx-auto max-w-[min(100%,22rem)] text-lg font-bold uppercase tracking-[0.14em] text-[#1a1a1a] sm:max-w-[26rem] sm:text-xl md:text-2xl lg:text-[1.35rem] xl:max-w-[28rem] xl:text-[1.5rem]"
+            className="mx-auto max-w-[min(100%,22rem)] text-lg font-bold uppercase tracking-[0.14em] text-[#f5f0eb] sm:max-w-[26rem] sm:text-xl md:text-2xl lg:text-[1.35rem] xl:max-w-[28rem] xl:text-[1.5rem]"
             style={{ fontFamily: sans }}
           >
             Award-winning photographers in India
@@ -298,7 +296,7 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={viewport}
             transition={{ duration: 0.45, delay: 0.06 }}
-            className="mx-auto mt-5 mb-6 h-px w-14 origin-center bg-[#1a1a1a]/40"
+            className="mx-auto mt-5 mb-6 h-px w-14 origin-center bg-[#c9a84c]/45"
             aria-hidden
           />
 
@@ -307,7 +305,7 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mx-auto mb-10 max-w-md text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#5c6570] sm:text-[11px]"
+            className="mx-auto mb-10 max-w-md text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#f5f0eb]/55 sm:text-[11px]"
             style={{ fontFamily: sans }}
           >
             Capturing timeless memories and brand stories
@@ -318,7 +316,7 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.55, delay: 0.16 }}
-            className="mx-auto mb-10 max-w-xl space-y-5 text-center text-[13px] leading-[1.85] text-[#3d3d3d] sm:text-sm lg:max-w-2xl xl:max-w-3xl lg:space-y-6 lg:text-[14px] lg:leading-[1.8]"
+            className="mx-auto mb-10 max-w-xl space-y-5 text-center text-[13px] leading-[1.85] text-stone-300 sm:text-sm lg:max-w-2xl xl:max-w-3xl lg:space-y-6 lg:text-[14px] lg:leading-[1.8]"
             style={{ fontFamily: sans }}
           >
             <p>
@@ -338,7 +336,7 @@ export default function MagicFrameDifferenceSection() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1a1a1a] underline-offset-4 transition-colors hover:text-[#b4232c] hover:underline"
+              className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#f5f0eb] underline-offset-4 transition-colors hover:text-[#c9a84c] hover:underline"
               style={{ fontFamily: sans }}
             >
               Our Story
