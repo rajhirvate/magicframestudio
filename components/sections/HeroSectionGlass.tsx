@@ -76,6 +76,11 @@ function LogoMark() {
 
 export default function HeroSectionGlass() {
   const pathname = usePathname();
+  return <HeroSectionGlassInner key={pathname} />;
+}
+
+function HeroSectionGlassInner() {
+  const pathname = usePathname();
   const [active, setActive] = useState(0);
   const [bgIndex, setBgIndex] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -83,13 +88,6 @@ export default function HeroSectionGlass() {
   const [mobilePhotoOpen, setMobilePhotoOpen] = useState(false);
   const [mobileVideoOpen, setMobileVideoOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    setOpenMega(null);
-    setMobileOpen(false);
-    setMobilePhotoOpen(false);
-    setMobileVideoOpen(false);
-  }, [pathname]);
 
   const handleMouseEnter = (type: "photography" | "videography") => {
     if (closeTimer.current) clearTimeout(closeTimer.current);

@@ -134,14 +134,19 @@ export default function MagicFrameDifferenceSection() {
       className="relative scroll-mt-24 bg-[#0a0a0a]"
       aria-labelledby="magic-frame-difference-heading"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(320px,600px)_minmax(0,1fr)]">
-        <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(90vh,720px)]">
+      {/*
+        Reference layout: narrow portrait rails + wide cream column.
+        Avoid `1fr | max 600px center | 1fr` — on large screens the sides steal ~40% each.
+        Side tracks use vw + px cap; center is minmax(floor, 1fr) so it grows with the viewport.
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(96px,min(14vw,260px))_minmax(min(100%,340px),1fr)_minmax(96px,min(14vw,260px))] lg:items-stretch">
+        <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(85vh,720px)] lg:h-full lg:w-full">
           <Image
             src={IMG_LEFT}
             alt="Editorial portrait in black and white"
             fill
             className="object-cover grayscale contrast-[1.05]"
-            sizes="(max-width: 1024px) 100vw, 33vw"
+            sizes="(max-width: 1024px) 100vw, 280px"
           />
         </div>
 
@@ -183,7 +188,7 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.55, delay: 0.16 }}
-            className="mx-auto mb-10 max-w-xl space-y-5 text-center text-[13px] leading-[1.85] text-[#3d3d3d] sm:text-sm lg:max-w-2xl lg:space-y-6 lg:text-[14px] lg:leading-[1.8]"
+            className="mx-auto mb-10 max-w-xl space-y-5 text-center text-[13px] leading-[1.85] text-[#3d3d3d] sm:text-sm lg:max-w-3xl xl:max-w-4xl lg:space-y-6 lg:text-[14px] lg:leading-[1.8]"
             style={{ fontFamily: sans }}
           >
             <p>
@@ -227,13 +232,13 @@ export default function MagicFrameDifferenceSection() {
           </motion.div>
         </div>
 
-        <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(90vh,720px)]">
+        <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(85vh,720px)] lg:h-full lg:w-full">
           <Image
             src={IMG_RIGHT}
             alt="Fashion editorial portrait by the coast at golden hour"
             fill
             className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 33vw"
+            sizes="(max-width: 1024px) 100vw, 280px"
           />
         </div>
       </div>
