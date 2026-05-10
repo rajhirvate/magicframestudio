@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { BTN_PRIMARY } from "@/lib/btn";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -63,6 +65,21 @@ export default function IntroSection() {
           technology, and passion to deliver photographs and films that feel timeless and
           powerful.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.22 }}
+          className="mt-10 flex justify-center"
+        >
+          <Link
+            href="/contact"
+            className={BTN_PRIMARY}
+            style={{ fontFamily: sans }}
+          >
+            Request for packages
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

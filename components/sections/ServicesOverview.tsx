@@ -72,7 +72,11 @@ export default function ServicesOverview() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-14 lg:py-20 bg-[#f5f0eb]" ref={ref}>
+    <section
+      id="homepage-services"
+      className="py-14 lg:py-20 bg-[#f5f0eb]"
+      ref={ref}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section heading */}

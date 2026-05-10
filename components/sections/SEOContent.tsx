@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
@@ -9,14 +10,9 @@ import { BTN_PRIMARY } from "@/lib/btn";
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
 
-export const approachBlock = {
-  tag: "Our Approach",
-  heading: "We Are Story-First Photographers & Filmmakers",
-  paragraphs: [
-    "At Magic Frame Studio, we believe great photography is never just about the gear — it's about the eye behind the lens and the heart behind the edit. Every shoot we undertake begins with a deep understanding of your vision, your story, and your audience. We don't apply cookie-cutter templates; we craft bespoke visual experiences.",
-    "Our photographers and videographers are trained in both technical excellence and creative storytelling. Using cinema-grade equipment — from Sony FX series cameras to DJI Ronin gimbals and professional drone rigs — we ensure that every frame we deliver is cinematic, sharp, and emotionally resonant. The result is content that doesn't just look good — it moves people.",
-  ],
-} as const;
+/** Editorial B&W office — collaboration / creative briefing (Unsplash). */
+const APPROACH_IMAGE =
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&fit=crop&auto=format";
 
 const whyIndiaBlock = {
   tag: "Why India Trusts Us",
@@ -30,10 +26,91 @@ const whyIndiaBlock = {
 const mainSeoBlocks = [whyIndiaBlock];
 
 export function OurApproachSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section className="bg-[#f5f0eb] py-14 lg:py-20 border-t border-stone-200">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SEOBlock block={approachBlock} index={0} blockCount={1} />
+    <section
+      ref={ref}
+      className="border-t border-stone-200 bg-white py-16 lg:py-24"
+      aria-labelledby="our-approach-heading"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-lg lg:mx-0 lg:max-w-none"
+          >
+            <Image
+              src={APPROACH_IMAGE}
+              alt="Creative team collaborating around a laptop in the studio"
+              fill
+              className="object-cover grayscale contrast-[1.02]"
+              sizes="(max-width: 1024px) 90vw, 45vw"
+              priority={false}
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.06, ease: "easeOut" }}
+            className="text-left"
+          >
+            <p
+              className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#b89e67]"
+              style={{ fontFamily: poppins }}
+            >
+              Our approach
+            </p>
+            <h2
+              id="our-approach-heading"
+              className="font-heading mb-6 text-3xl font-normal leading-[1.18] text-stone-900 sm:text-4xl lg:text-[2.35rem]"
+            >
+              How Real Moments Rewrote the Way We Shoot
+            </h2>
+            <div
+              className="space-y-4 text-[15px] leading-relaxed text-stone-600 sm:text-base"
+              style={{ fontFamily: inter }}
+            >
+              <p>
+                When we started out, we chased flawless lighting and
+                picture-perfect poses. Deliverables looked polished — yet something
+                felt incomplete.{" "}
+                <strong className="font-semibold text-stone-800">
+                  Where was the story? Where were the unguarded moments?
+                </strong>
+              </p>
+              <p>
+                That&apos;s when it clicked:{" "}
+                <strong className="font-semibold text-stone-800">
+                  great work isn&apos;t about repeating the same formula —
+                  it&apos;s about honesty, emotion, and the scenes nobody has to
+                  stage.
+                </strong>
+              </p>
+              <p>
+                So we built Magic Frame Studio around a simple promise —{" "}
+                <strong className="font-semibold text-stone-800">
+                  authentic, cinematic, real.
+                </strong>{" "}
+                Years and tens of thousands of clients later, we&apos;re still
+                chasing frames that feel lived-in, not staged.
+              </p>
+            </div>
+            <div className="mt-9">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center bg-[#6d5d4c] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#5c4e40] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6d5d4c]"
+                style={{ fontFamily: poppins }}
+              >
+                Request for packages
+              </Link>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -79,7 +156,7 @@ function SEOBlock({
   index,
   blockCount,
 }: {
-  block: typeof approachBlock | typeof whyIndiaBlock;
+  block: typeof whyIndiaBlock;
   index: number;
   blockCount: number;
 }) {
