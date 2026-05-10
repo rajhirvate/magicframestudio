@@ -26,7 +26,7 @@ export default function MagicFrameDifferenceSection() {
       className="relative scroll-mt-24 bg-[#0a0a0a]"
       aria-labelledby="magic-frame-difference-heading"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(320px,520px)_minmax(0,1fr)]">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(320px,600px)_minmax(0,1fr)]">
         <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(90vh,720px)]">
           <Image
             src={IMG_LEFT}
@@ -47,7 +47,7 @@ export default function MagicFrameDifferenceSection() {
             className="text-lg font-bold uppercase tracking-[0.14em] text-[#1a1a1a] sm:text-xl md:text-2xl lg:text-[1.35rem] xl:text-[1.5rem]"
             style={{ fontFamily: sans }}
           >
-            The Magic Frame Difference
+            Award-winning photographers in India
           </motion.h2>
 
           <motion.div
@@ -75,14 +75,14 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.55, delay: 0.16 }}
-            className="mx-auto mb-10 max-w-lg space-y-5 text-[13px] leading-[1.85] text-[#3d3d3d] sm:text-sm"
+            className="mx-auto mb-10 max-w-xl space-y-5 text-center text-[13px] leading-[1.85] text-[#3d3d3d] sm:text-sm lg:max-w-2xl lg:space-y-6 lg:text-[14px] lg:leading-[1.8]"
             style={{ fontFamily: sans }}
           >
             <p>
-              Magic Frame Studio brings together seasoned photographers and filmmakers who treat every brief like an editorial assignment — meticulous lighting, thoughtful framing, and emotion that reads on the first glance.
+              At Magic Frame Studio, we believe photography and videography are about preserving emotions, stories, and moments that can be cherished for a lifetime. Since 2020, our growing network of photographers and videographers across India has helped capture meaningful experiences for couples, families, businesses, creators, and brands.
             </p>
             <p>
-              From intimate celebrations to national campaigns, we deliver on-location and in-studio production under one roof so your photo and video stay unmistakably cohesive.
+              What sets us apart is our platform-driven approach that connects clients with talented and verified creative professionals across the country. As a trusted photography and videography platform in India, we offer access to wedding photography, cinematic videography, event coverage, brand shoots, corporate productions, and creative visual storytelling. Our photographers and videographers work closely with every client to understand their style, vision, and requirements—whether it’s a cinematic wedding film, a professional brand campaign, or a memorable family photoshoot. Over the years, this commitment to quality, creativity, and seamless service has helped us build trusted relationships with clients, businesses, creators, and event organizers throughout India.
             </p>
           </motion.div>
 
