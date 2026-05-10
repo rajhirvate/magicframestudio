@@ -18,7 +18,7 @@ export default function IntroSection() {
       className="bg-white py-14 lg:py-20"
       aria-labelledby="intro-services-heading"
     >
-      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:max-w-[52rem] lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
         <motion.h2
           id="intro-services-heading"
           initial={{ opacity: 0, y: 18 }}
@@ -42,7 +42,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.1 }}
-          className="mx-auto mb-10 max-w-2xl text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#5c6570] sm:text-[11px]"
+          className="mx-auto mb-10 max-w-5xl text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#5c6570] sm:text-[11px]"
           style={{ fontFamily: sans }}
         >
           Professional photography services for individuals &amp; businesses
@@ -52,7 +52,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.16 }}
-          className="mx-auto mb-12 max-w-3xl text-[15px] leading-[1.85] text-stone-500 lg:text-base lg:leading-[1.9]"
+          className="mx-auto mb-12 max-w-6xl text-[15px] leading-[1.85] text-stone-500 lg:text-base lg:leading-[1.9]"
           style={{ fontFamily: sans }}
         >
           We provide a complete range of photography and videography services across India,
