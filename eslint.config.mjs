@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    /** Mirror next.config webpack watch ignore — duplicate snapshot / legacy tree */
+    "_push_repo/**",
   ]),
 ]);
 

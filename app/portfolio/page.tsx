@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -279,10 +279,6 @@ export default function PortfolioPage() {
     [active]
   );
 
-  useEffect(() => {
-    setLoadMoreClicks(0);
-  }, [active]);
-
   const displayCount = Math.min(
     INITIAL_VISIBLE + loadMoreClicks * LOAD_BATCH,
     filtered.length,
@@ -337,7 +333,10 @@ export default function PortfolioPage() {
               <button
                 key={cat}
                 type="button"
-                onClick={() => setActive(cat)}
+                onClick={() => {
+                  setActive(cat);
+                  setLoadMoreClicks(0);
+                }}
                 className={`px-4 py-2 text-xs rounded-md border transition-all duration-200 ${
                   active === cat
                     ? "bg-[#c9a84c] border-[#c9a84c] text-[#0a0a0a] font-medium"

@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
@@ -78,7 +78,7 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={`group relative overflow-hidden rounded-2xl bg-neutral-900 ${sizeClasses[item.size as keyof typeof sizeClasses]}`}
     >
-      <Link href="/portfolio" className="block h-full w-full">
+      <Link href="/portfolio" className="relative block h-full w-full min-h-0">
         <Image
           src={item.photo}
           alt={item.label}
@@ -109,20 +109,8 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
 }
 
 export default function PortfolioPreview() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
   return (
-    <section
-      ref={containerRef}
-      className="relative overflow-hidden bg-[#0f0c0a] py-24 lg:py-32"
-    >
+    <section className="relative overflow-hidden bg-[#0f0c0a] py-24 lg:py-32">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-[#c9a84c]/10 blur-[120px]" />

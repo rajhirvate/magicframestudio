@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, startTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -30,8 +30,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    setOpenMega(null);
-    setMobileOpen(false);
+    startTransition(() => {
+      setOpenMega(null);
+      setMobileOpen(false);
+    });
   }, [pathname]);
 
   // Small delay before closing so the cursor can move into the panel

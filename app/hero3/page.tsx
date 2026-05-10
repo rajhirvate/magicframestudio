@@ -3,6 +3,7 @@ import HeroSectionHero3 from "@/components/sections/HeroSectionHero3";
 import StatsBar from "@/components/sections/StatsBar";
 import IntroSection from "@/components/sections/IntroSection";
 import ServicesOverview from "@/components/sections/ServicesOverview";
+import MagicFrameDifferenceSection from "@/components/sections/MagicFrameDifferenceSection";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import WeddingServiceHighlights from "@/components/sections/WeddingServiceHighlights";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
@@ -25,6 +26,7 @@ export default function Hero3Page() {
       <StatsBar />
       <IntroSection />
       <ServicesOverview />
+      <MagicFrameDifferenceSection />
       <WhyChooseUs />
       <WeddingServiceHighlights />
       <ReadyToConnectSection />

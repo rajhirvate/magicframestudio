@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -19,8 +20,16 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   experimental: {
-    /** Tree-shake icon and motion barrels so client bundles stay smaller in dev and prod. */
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    /** Tree-shake icon / motion / Radix barrels — smaller graphs for Turbopack to traverse. */
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-select",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-toast",
+    ],
   },
   /**
    * Dev-only: allow HMR / devtools when the browser uses a different host than

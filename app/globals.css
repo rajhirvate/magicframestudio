@@ -7,6 +7,9 @@
   --gold-light: #e0c068;
   --card-bg: #1e1e1e;
   --border-color: #2a2a2a;
+  /* Loaded via <link> in layout — avoids next/font compile-time fetches (can hang offline / blocked Google). */
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 *,
@@ -29,7 +32,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings — Playfair Display via next/font CSS variable */
+/* Headings — Playfair Display (see layout font links) */
 .font-heading {
   font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }

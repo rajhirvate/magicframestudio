@@ -59,7 +59,6 @@ function AnimatedSection({
 
 export default function ServiceCityPageLayout({
   title,
-  subtitle,
   description,
   subServices,
   category,

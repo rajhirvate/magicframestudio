@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import StatsBar from "@/components/sections/StatsBar";
 import IntroSection from "@/components/sections/IntroSection";
 import ServicesOverview from "@/components/sections/ServicesOverview";
+import StudioEditorialSplit from "@/components/sections/StudioEditorialSplit";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import WeddingServiceHighlights from "@/components/sections/WeddingServiceHighlights";
-import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
-import PortfolioPreview from "@/components/sections/PortfolioPreview";
-import Testimonials from "@/components/sections/Testimonials";
-import CTABanner from "@/components/sections/CTABanner";
-import FAQSection from "@/components/sections/FAQSection";
-import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
+
+const HomeLowerBlocks = dynamic(() => import("./HomeLowerBlocks"), {
+  loading: () => null,
+});
 
 export const metadata: Metadata = {
   title: "Magic Frame Studio | Professional Photography & Videography in India",
@@ -31,15 +30,9 @@ export default function HomePage() {
       <StatsBar />
       <IntroSection />
       <ServicesOverview />
+      <StudioEditorialSplit />
       <WhyChooseUs />
-      <WeddingServiceHighlights />
-      <ReadyToConnectSection />
-      <OurApproachSection />
-      <PortfolioPreview />
-      <Testimonials />
-      <CTABanner />
-      <SEOContent />
-      <FAQSection />
+      <HomeLowerBlocks />
     </>
   );
 }

@@ -15,18 +15,18 @@ export default function StatsBar() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="bg-[#111111] border-y border-[#1e1e1e] py-10">
+    <section ref={ref} className="bg-[#111111] border-y border-[#1e1e1e] py-5 sm:py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-[#2a2a2a]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-6 lg:gap-0 lg:divide-x lg:divide-[#2a2a2a]">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex flex-col items-center text-center lg:px-8"
+              className="flex flex-col items-center text-center lg:px-6 py-0.5"
             >
-              <span className="font-heading text-3xl sm:text-4xl lg:text-5xl font-medium text-[#c9a84c] mb-1">
+              <span className="font-heading text-2xl sm:text-3xl lg:text-4xl font-medium text-[#c9a84c] mb-0.5 leading-tight">
                 {stat.number}
               </span>
               <span className="text-xs sm:text-sm text-[#f5f0eb]/40 tracking-wide uppercase">

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
 /** DOM typings always include idle callbacks; omit them so the fallback branch is actually reachable for TS. */
