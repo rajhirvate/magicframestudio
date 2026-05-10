@@ -33,7 +33,7 @@ function ServiceCard({
     >
       <Link
         href={`/${prefix}/${slug}`}
-        className="group block bg-white rounded-2xl overflow-hidden border border-stone-100 hover:border-[#c9a84c]/40 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-stone-300/40"
+        className="group block rounded-2xl overflow-hidden border border-stone-100 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-[#c9a84c]/40 hover:shadow-2xl hover:shadow-stone-300/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a84c]"
       >
         {/* Photo */}
         <div className="aspect-[3/2] relative overflow-hidden bg-stone-100">
@@ -46,11 +46,6 @@ function ServiceCard({
           />
           {/* Dark gradient overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          {/* Arrow pill */}
-          <div className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-md px-3 py-1.5 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
-            <span className="text-[11px] font-medium text-stone-700" style={{ fontFamily: "var(--font-sans), sans-serif" }}>View</span>
-            <ArrowRight size={10} className="text-[#c9a84c]" />
-          </div>
         </div>
         {/* Card body */}
         <div className="px-4 py-3.5">
