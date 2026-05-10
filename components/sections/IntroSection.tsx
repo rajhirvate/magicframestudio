@@ -6,73 +6,84 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
 
-const poppins = "var(--font-sans), sans-serif";
-const inter = "var(--font-sans), sans-serif";
+const sans = "var(--font-sans), sans-serif";
 
 export default function IntroSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-white py-14 lg:py-20" ref={ref}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
-          style={{ fontFamily: poppins }}
-        >
-          Photography &amp; Videography
-        </motion.p>
-
+    <section
+      ref={ref}
+      className="bg-white py-14 lg:py-20"
+      aria-labelledby="intro-services-heading"
+    >
+      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:max-w-[52rem] lg:px-8">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          id="intro-services-heading"
+          initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.08 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 leading-snug mb-6"
-          style={{ fontFamily: poppins }}
+          transition={{ duration: 0.55 }}
+          className="text-xl font-bold uppercase tracking-[0.14em] text-stone-900 sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] xl:text-[2rem]"
+          style={{ fontFamily: sans }}
         >
-          Professional Photography &amp; Videography Services in India
+          Photography &amp; Videography Services
         </motion.h2>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, scaleX: 0.6 }}
+          animate={inView ? { opacity: 1, scaleX: 1 } : {}}
+          transition={{ duration: 0.45, delay: 0.06 }}
+          className="mx-auto mt-6 mb-7 h-px w-16 origin-center bg-stone-300"
+          aria-hidden
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="mx-auto mb-10 max-w-2xl text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#5c6570] sm:text-[11px]"
+          style={{ fontFamily: sans }}
+        >
+          Professional photography services for individuals &amp; businesses
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.16 }}
-          className="space-y-4 mb-10"
+          className="mx-auto mb-12 max-w-3xl text-[15px] leading-[1.85] text-stone-500 lg:text-base lg:leading-[1.9]"
+          style={{ fontFamily: sans }}
         >
-          <p className="text-[15px] text-stone-500 leading-relaxed" style={{ fontFamily: inter }}>
-            Magic Frame Studio is India&apos;s trusted destination for photography and videography services that go beyond the ordinary. We create cinematic, story-driven visuals for weddings, events, portraits, corporate brands, e-commerce products, real estate, and more — delivering work that is technically flawless and emotionally powerful.
-          </p>
-          <p className="text-[15px] text-stone-500 leading-relaxed" style={{ fontFamily: inter }}>
-            Since 2020, our team of passionate creatives has served 42,540+ clients across India, building a reputation grounded in artistry, reliability, and a genuine love for the craft. We are more than photographers and videographers — we are storytellers, and your story is our greatest project.
-          </p>
-        </motion.div>
+          We provide a complete range of photography and videography services across India,
+          crafted to suit both individuals and businesses. From personal milestones such as
+          maternity portraits and family photoshoots to commercial productions including
+          corporate headshots, food and product photography, and large-scale events, our
+          verified creatives cover every aspect of visual storytelling. We also offer
+          cinematic videography, brand campaigns, and aerial drone coverage when your brief
+          calls for it — helping you capture unforgettable memories and impactful visuals.
+          Whether in-studio or on location nationwide, our network combines artistry,
+          technology, and passion to deliver photographs and films that feel timeless and
+          powerful.
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.28 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.5, delay: 0.26 }}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link
-            href="/about"
-            className={BTN_PRIMARY}
-            style={{ fontFamily: poppins }}
-          >
-            Learn more about us <ArrowRight size={14} className="shrink-0" />
+          <Link href="/about" className={BTN_PRIMARY} style={{ fontFamily: sans }}>
+            Learn more about us <ArrowRight size={14} className="shrink-0" aria-hidden />
           </Link>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-md transition-all duration-200"
-            style={{ fontFamily: poppins }}
+            className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-8 py-3.5 text-sm font-semibold text-stone-700 transition-all duration-200 hover:border-[#c9a84c] hover:text-[#c9a84c]"
+            style={{ fontFamily: sans }}
           >
-            View our work <ArrowRight size={14} className="shrink-0" />
+            View our work <ArrowRight size={14} className="shrink-0" aria-hidden />
           </Link>
         </motion.div>
-
       </div>
     </section>
   );
