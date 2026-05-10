@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -69,7 +69,20 @@ const GALLERY_STRIP_IMAGES = [
   },
 ] as const;
 
-function EditorialGalleryStrip() {
+const GALLERY_TILE_CLASS =
+  "relative h-[min(48vw,220px)] w-[min(38vw,176px)] shrink-0 sm:h-[200px] sm:w-[160px] md:h-[240px] md:w-[192px] lg:h-[280px] lg:w-[224px]";
+
+/** Thick white chevrons with shadow (reference slider controls). */
+const STRIP_NAV_BTN =
+  "pointer-events-auto rounded-full p-2 text-white transition hover:bg-white/12 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/90 active:scale-[0.96]";
+const STRIP_CHEVRON =
+  "drop-shadow-[0_3px_10px_rgba(0,0,0,0.45)] h-8 w-8 sm:h-9 sm:w-9";
+
+/** px per animation frame — continuous slow drift (~0.55 matches prior marquee pace). */
+const GALLERY_AUTO_SCROLL_PX = 0.55;
+
+/** Scroll only — reduced motion (same arrows as main strip). */
+function EditorialGalleryStripScroll() {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   const scrollByViewportFraction = useCallback((direction: 1 | -1) => {
@@ -81,6 +94,17 @@ function EditorialGalleryStrip() {
 
   return (
     <div className="relative w-full border-t border-black/15 bg-[#0a0a0a]">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex w-14 items-center bg-gradient-to-r from-black/55 via-black/30 to-transparent pl-2 sm:w-[4.5rem] sm:pl-3 md:w-24">
+        <button
+          type="button"
+          onClick={() => scrollByViewportFraction(-1)}
+          className={STRIP_NAV_BTN}
+          aria-label="Slide gallery left"
+        >
+          <ChevronLeft className={STRIP_CHEVRON} strokeWidth={2.85} aria-hidden />
+        </button>
+      </div>
+
       <div
         ref={scrollerRef}
         role="region"
@@ -93,10 +117,7 @@ function EditorialGalleryStrip() {
         className="flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {GALLERY_STRIP_IMAGES.map((item, index) => (
-          <div
-            key={index}
-            className="relative h-[min(48vw,220px)] w-[min(38vw,176px)] shrink-0 snap-start sm:h-[200px] sm:w-[160px] md:h-[240px] md:w-[192px] lg:h-[280px] lg:w-[224px]"
-          >
+          <div key={index} className={`${GALLERY_TILE_CLASS} snap-start`}>
             <Image
               src={item.src}
               alt={item.alt}
@@ -108,21 +129,130 @@ function EditorialGalleryStrip() {
         ))}
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-14 items-center justify-end bg-gradient-to-l from-black/60 via-black/20 to-transparent pr-2 sm:w-[4.5rem] md:w-24 md:pr-3"
-        aria-hidden
-      >
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-14 items-center justify-end bg-gradient-to-l from-black/55 via-black/30 to-transparent pr-2 sm:w-[4.5rem] sm:pr-3 md:w-24">
         <button
           type="button"
           onClick={() => scrollByViewportFraction(1)}
-          className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-white text-[#1a1a1a] shadow-md backdrop-blur-sm transition hover:bg-white hover:text-[#b4232c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:h-11 md:w-11"
-          aria-label="Scroll gallery to the right"
+          className={STRIP_NAV_BTN}
+          aria-label="Slide gallery right"
         >
-          <ChevronRight className="h-5 w-5 shrink-0 md:h-6 md:w-6" strokeWidth={2} aria-hidden />
+          <ChevronRight className={STRIP_CHEVRON} strokeWidth={2.85} aria-hidden />
         </button>
       </div>
     </div>
   );
+}
+
+/** Continuous slow scroll + duplicated loop + manual arrows (requestAnimationFrame). */
+function EditorialGalleryStripMarquee() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const pauseRef = useRef(false);
+  const rafRef = useRef(0);
+
+  const scrollManual = useCallback((direction: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const delta = Math.max(260, Math.floor(el.clientWidth * 0.48));
+    el.scrollBy({ left: direction * delta, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const tick = () => {
+      const node = scrollerRef.current;
+      if (node && !pauseRef.current) {
+        if (typeof document !== "undefined" && !document.hidden) {
+          const half = node.scrollWidth / 2;
+          if (half > 8) {
+            node.scrollLeft += GALLERY_AUTO_SCROLL_PX;
+            if (node.scrollLeft >= half - 0.5) {
+              node.scrollLeft -= half;
+            }
+          }
+        }
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  return (
+    <div
+      className="relative w-full border-t border-black/15 bg-[#0a0a0a]"
+      onMouseEnter={() => {
+        pauseRef.current = true;
+      }}
+      onMouseLeave={() => {
+        pauseRef.current = false;
+      }}
+    >
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex w-14 items-center bg-gradient-to-r from-black/55 via-black/30 to-transparent pl-2 sm:w-[4.5rem] sm:pl-3 md:w-24">
+        <button
+          type="button"
+          onClick={() => scrollManual(-1)}
+          className={STRIP_NAV_BTN}
+          aria-label="Slide gallery left"
+        >
+          <ChevronLeft className={STRIP_CHEVRON} strokeWidth={2.85} aria-hidden />
+        </button>
+      </div>
+
+      <div
+        ref={scrollerRef}
+        role="region"
+        aria-label="Portfolio strip — slowly scrolling gallery; arrows move the strip"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") scrollManual(1);
+          if (e.key === "ArrowLeft") scrollManual(-1);
+        }}
+        className="flex gap-0 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {GALLERY_STRIP_IMAGES.map((item, index) => (
+          <div key={`a-${index}`} className={GALLERY_TILE_CLASS}>
+            <Image
+              src={item.src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 52vw, 240px"
+              aria-hidden
+            />
+          </div>
+        ))}
+        {GALLERY_STRIP_IMAGES.map((item, index) => (
+          <div key={`b-${index}`} className={GALLERY_TILE_CLASS}>
+            <Image
+              src={item.src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 52vw, 240px"
+              aria-hidden
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-14 items-center justify-end bg-gradient-to-l from-black/55 via-black/30 to-transparent pr-2 sm:w-[4.5rem] sm:pr-3 md:w-24">
+        <button
+          type="button"
+          onClick={() => scrollManual(1)}
+          className={STRIP_NAV_BTN}
+          aria-label="Slide gallery right"
+        >
+          <ChevronRight className={STRIP_CHEVRON} strokeWidth={2.85} aria-hidden />
+        </button>
+      </div>
+    </div>
+  );
+}
+function EditorialGalleryStrip() {
+  const prefersReducedMotion = useReducedMotion();
+  if (prefersReducedMotion) {
+    return <EditorialGalleryStripScroll />;
+  }
+  return <EditorialGalleryStripMarquee />;
 }
 /** Keep opacity at 1 so copy stays readable if viewport observers mis-fire; animate Y only. */
 const viewport = { once: true, amount: 0.08 } as const;

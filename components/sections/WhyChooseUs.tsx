@@ -50,8 +50,8 @@ export default function WhyChooseUs() {
           >
             Why Us
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-light uppercase text-stone-900 tracking-[0.08em]">
-            Award-winning photographers in India
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-light text-stone-900">
+            The Magic Frame Difference
           </h2>
         </motion.div>
 
