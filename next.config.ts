@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   turbopack: {},
   images: {
+    /** Cache optimized images longer at the CDN edge (default is short). */
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: "https",
@@ -18,18 +20,6 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
-  },
-  experimental: {
-    /** Tree-shake icon / motion / Radix barrels — smaller graphs for Turbopack to traverse. */
-    optimizePackageImports: [
-      "lucide-react",
-      "framer-motion",
-      "@radix-ui/react-dialog",
-      "@radix-ui/react-dropdown-menu",
-      "@radix-ui/react-select",
-      "@radix-ui/react-slot",
-      "@radix-ui/react-toast",
-    ],
   },
   /**
    * Dev-only: allow HMR / devtools when the browser uses a different host than

@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/sections/HeroSection";
 import StatsBar from "@/components/sections/StatsBar";
-import IntroSection from "@/components/sections/IntroSection";
-import ServicesOverview from "@/components/sections/ServicesOverview";
-import StudioEditorialSplit from "@/components/sections/StudioEditorialSplit";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
+
+const IntroSection = dynamic(() => import("@/components/sections/IntroSection"));
+const ServicesOverview = dynamic(
+  () => import("@/components/sections/ServicesOverview"),
+);
+const StudioEditorialSplit = dynamic(
+  () => import("@/components/sections/StudioEditorialSplit"),
+);
+const WhyChooseUs = dynamic(() => import("@/components/sections/WhyChooseUs"));
 
 const HomeLowerBlocks = dynamic(() => import("./HomeLowerBlocks"), {
   loading: () => null,

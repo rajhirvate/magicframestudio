@@ -28,14 +28,28 @@ export default function HeroSection() {
       return;
     }
 
+    const conn = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (conn?.saveData) return;
+    if (
+      conn?.effectiveType === "slow-2g" ||
+      conn?.effectiveType === "2g" ||
+      conn?.effectiveType === "3g"
+    ) {
+      return;
+    }
+
     const enable = () => setShowVideo(true);
     let idleId: number | undefined;
     let timeoutId: number | undefined;
 
     if (typeof w.requestIdleCallback === "function") {
-      idleId = w.requestIdleCallback(enable, { timeout: 8000 });
+      idleId = w.requestIdleCallback(enable, { timeout: 12000 });
     } else {
-      timeoutId = w.setTimeout(enable, 4000);
+      timeoutId = w.setTimeout(enable, 12000);
     }
 
     return () => {

@@ -5,7 +5,6 @@ import IntroSection from "@/components/sections/IntroSection";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import MagicFrameDifferenceSection from "@/components/sections/MagicFrameDifferenceSection";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import WeddingServiceHighlights from "@/components/sections/WeddingServiceHighlights";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
 import Testimonials from "@/components/sections/Testimonials";
@@ -28,7 +27,6 @@ export default function Hero3Page() {
       <ServicesOverview />
       <MagicFrameDifferenceSection />
       <WhyChooseUs />
-      <WeddingServiceHighlights />
       <ReadyToConnectSection />
       <OurApproachSection />
       <PortfolioPreview />

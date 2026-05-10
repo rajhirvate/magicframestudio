@@ -8,8 +8,9 @@ import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
 /** Rural wedding / field scene — bright sky on the left for charcoal type (editorial hero). */
+/** Lighter decode cost than w=2400; Next still serves responsive widths via `sizes`. */
 const HERO_BG =
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2400&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=75&w=1600&auto=format&fit=crop";
 
 export default function HeroSectionHero3() {
   return (
@@ -23,6 +24,7 @@ export default function HeroSectionHero3() {
           alt=""
           fill
           priority
+          quality={80}
           className="object-cover object-[28%_center] sm:object-[32%_center]"
           sizes="100vw"
         />
