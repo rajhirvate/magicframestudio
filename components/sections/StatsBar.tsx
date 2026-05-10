@@ -29,7 +29,7 @@ export default function StatsBar() {
               <span className="font-heading text-2xl sm:text-3xl lg:text-4xl font-medium text-[#c9a84c] mb-0.5 leading-tight">
                 {stat.number}
               </span>
-              <span className="text-xs sm:text-sm text-[#f5f0eb]/40 tracking-wide">
+              <span className="text-xs sm:text-sm text-[#f5f0eb]/40 tracking-wide uppercase">
                 {stat.label}
               </span>
             </motion.div>

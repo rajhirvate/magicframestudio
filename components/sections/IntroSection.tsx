@@ -21,7 +21,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          className="text-xl font-bold tracking-tight text-stone-900 sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] xl:text-[2rem]"
+          className="text-xl font-bold uppercase tracking-[0.14em] text-stone-900 sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] xl:text-[2rem]"
           style={{ fontFamily: sans }}
         >
           Photography &amp; Videography Services
@@ -39,7 +39,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.1 }}
-          className="mx-auto mb-10 max-w-3xl text-[10px] font-semibold leading-relaxed tracking-normal text-[#5c6570] sm:text-[11px]"
+          className="mx-auto mb-10 max-w-3xl text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#5c6570] sm:text-[11px]"
           style={{ fontFamily: sans }}
         >
           Professional photography services for individuals &amp; businesses
