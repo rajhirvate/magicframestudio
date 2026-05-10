@@ -1,10 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { BTN_PRIMARY } from "@/lib/btn";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -52,7 +49,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.16 }}
-          className="mx-auto mb-12 max-w-4xl text-[15px] leading-[1.85] text-stone-500 lg:text-base lg:leading-[1.9]"
+          className="mx-auto max-w-4xl text-[15px] leading-[1.85] text-stone-500 lg:text-base lg:leading-[1.9]"
           style={{ fontFamily: sans }}
         >
           We provide a complete range of photography and videography services across India,
@@ -66,24 +63,6 @@ export default function IntroSection() {
           technology, and passion to deliver photographs and films that feel timeless and
           powerful.
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.26 }}
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <Link href="/about" className={BTN_PRIMARY} style={{ fontFamily: sans }}>
-            Learn more about us <ArrowRight size={14} className="shrink-0" aria-hidden />
-          </Link>
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-8 py-3.5 text-sm font-semibold text-stone-700 transition-all duration-200 hover:border-[#c9a84c] hover:text-[#c9a84c]"
-            style={{ fontFamily: sans }}
-          >
-            View our work <ArrowRight size={14} className="shrink-0" aria-hidden />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
