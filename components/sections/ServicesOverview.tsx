@@ -83,7 +83,7 @@ export default function ServicesOverview() {
           className="text-center mb-10"
         >
           <p
-            className="text-xs tracking-widest text-[#c9a84c] uppercase mb-3"
+            className="text-xs tracking-wide text-[#c9a84c] mb-3"
             style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             What We Do

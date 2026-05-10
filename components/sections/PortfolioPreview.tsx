@@ -90,7 +90,7 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100" />
 
         <div className="absolute inset-0 flex translate-y-4 flex-col justify-end p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#c9a84c]">
+          <p className="mb-2 text-xs font-semibold tracking-wide text-[#c9a84c]">
             {item.category}
           </p>
           <h3 className="mb-4 text-xl font-light text-white md:text-2xl">
@@ -174,7 +174,7 @@ export default function PortfolioPreview() {
             />
           </Link>
           
-          <p className="mt-8 text-neutral-500 text-sm font-medium tracking-[0.2em] uppercase">
+          <p className="mt-8 text-neutral-500 text-sm font-medium tracking-wide">
             Over 500+ projects completed
           </p>
         </motion.div>

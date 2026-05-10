@@ -285,7 +285,7 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.5 }}
-            className="mx-auto max-w-[min(100%,22rem)] text-lg font-bold uppercase tracking-[0.14em] text-[#f5f0eb] sm:max-w-[26rem] sm:text-xl md:text-2xl lg:text-[1.35rem] xl:max-w-[28rem] xl:text-[1.5rem]"
+            className="mx-auto max-w-[min(100%,22rem)] text-lg font-bold tracking-tight text-[#f5f0eb] sm:max-w-[26rem] sm:text-xl md:text-2xl lg:text-[1.35rem] xl:max-w-[28rem] xl:text-[1.5rem]"
             style={{ fontFamily: sans }}
           >
             Award-winning photographers in India
@@ -305,7 +305,7 @@ export default function MagicFrameDifferenceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mx-auto mb-10 max-w-md text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#f5f0eb]/55 sm:text-[11px]"
+            className="mx-auto mb-10 max-w-md text-[10px] font-semibold leading-relaxed tracking-normal text-[#f5f0eb]/55 sm:text-[11px]"
             style={{ fontFamily: sans }}
           >
             Capturing timeless memories and brand stories
@@ -336,7 +336,7 @@ export default function MagicFrameDifferenceSection() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#f5f0eb] underline-offset-4 transition-colors hover:text-[#c9a84c] hover:underline"
+              className="inline-flex items-center gap-1 text-[11px] font-semibold tracking-wide text-[#f5f0eb] underline-offset-4 transition-colors hover:text-[#c9a84c] hover:underline"
               style={{ fontFamily: sans }}
             >
               Our Story

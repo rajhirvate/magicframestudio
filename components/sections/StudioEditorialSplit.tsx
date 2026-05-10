@@ -39,7 +39,7 @@ export default function StudioEditorialSplit() {
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.45 }}
-            className="text-[11px] font-bold tracking-[0.2em] text-[#1a1a1a] uppercase mb-4"
+            className="text-[11px] font-bold tracking-wide text-[#1a1a1a] mb-4"
             style={{ fontFamily: sans }}
           >
             Magic Frame Studio
@@ -59,7 +59,7 @@ export default function StudioEditorialSplit() {
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-xs sm:text-sm font-medium uppercase tracking-[0.18em] text-[#1a1a1a]/55 mb-8"
+            className="text-xs sm:text-sm font-medium tracking-wide text-[#1a1a1a]/55 mb-8"
             style={{ fontFamily: sans }}
           >
             Capturing timeless memories and brand stories
@@ -94,7 +94,7 @@ export default function StudioEditorialSplit() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#1a1a1a] underline-offset-4 hover:text-[#c9a84c] hover:underline transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide text-[#1a1a1a] underline-offset-4 hover:text-[#c9a84c] hover:underline transition-colors"
               style={{ fontFamily: sans }}
             >
               Our story

@@ -41,7 +41,7 @@ export default function Testimonials() {
           transition={{ duration: 0.7 }}
           className="text-center mb-10"
         >
-          <p className="text-xs tracking-widest text-[#c9a84c] uppercase mb-3">
+          <p className="text-xs tracking-wide text-[#c9a84c] mb-3">
             Client Stories
           </p>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-light text-[#f5f0eb]">

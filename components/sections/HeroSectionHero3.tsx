@@ -44,7 +44,7 @@ export default function HeroSectionHero3() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: "easeOut" }}
-            className="text-[10px] font-medium uppercase tracking-[0.4em] text-[#c9a84c] sm:text-xs mb-5 sm:mb-6"
+            className="text-[10px] font-medium tracking-wide text-[#c9a84c] sm:text-xs mb-5 sm:mb-6"
           >
             Magic Frame Studio · Since 2020
           </motion.p>
@@ -72,7 +72,7 @@ export default function HeroSectionHero3() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.22, ease: "easeOut" }}
-            className="mt-6 text-[10px] font-light uppercase tracking-[0.32em] text-[#1a1a1a]/72 sm:text-xs sm:tracking-[0.28em]"
+            className="mt-6 text-[10px] font-light tracking-wide text-[#1a1a1a]/72 sm:text-xs"
           >
             Wedding · Events · Portraits · Corporate · Product Shoots
           </motion.p>

@@ -95,7 +95,7 @@ function SEOBlock({
       className="text-center max-w-4xl mx-auto"
     >
       <p
-        className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
+        className="text-xs font-semibold tracking-wide text-[#c9a84c] mb-3"
         style={{ fontFamily: poppins }}
       >
         {block.tag}

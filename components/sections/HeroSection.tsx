@@ -100,7 +100,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-xs font-medium tracking-[0.4em] text-[#c9a84c] uppercase mb-6"
+          className="text-xs font-medium tracking-wide text-[#c9a84c] mb-6"
           style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           Magic Frame Studio · Since 2020
@@ -133,7 +133,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
-          className="text-xs sm:text-sm text-[#f5f0eb]/60 tracking-[0.25em] uppercase mb-10"
+          className="text-xs sm:text-sm text-[#f5f0eb]/60 tracking-wide mb-10"
           style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           Wedding · Events · Portraits · Corporate · Product Shoots
