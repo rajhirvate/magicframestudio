@@ -1,9 +1,10 @@
 "use client";
 
+import { useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -16,6 +17,113 @@ const IMG_RIGHT =
 const BTN_EDITORIAL_RED =
   "inline-flex min-w-[12rem] items-center justify-center rounded-sm bg-[#b4232c] px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm transition-colors hover:bg-[#961f26] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b4232c] sm:min-w-0 sm:px-8";
 
+/** Filmstrip under editorial trio — diverse genres, flush tiles, horizontal scroll. */
+const GALLERY_STRIP_IMAGES = [
+  {
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=640&q=80&fit=crop&auto=format",
+    alt: "Wedding couple",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=640&q=80&fit=crop&auto=format",
+    alt: "Food styling and plating",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=640&q=80&fit=crop&auto=format",
+    alt: "Newborn portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=640&q=80&fit=crop&auto=format",
+    alt: "Fashion portrait by the ocean",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&q=80&fit=crop&auto=format",
+    alt: "Professional headshot",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=640&q=80&fit=crop&auto=format",
+    alt: "Modern interior living space",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519225429388-bd98ffb52be8?w=640&q=80&fit=crop&auto=format",
+    alt: "Bride and groom on staircase",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=640&q=80&fit=crop&auto=format",
+    alt: "Corporate event venue",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=640&q=80&fit=crop&auto=format",
+    alt: "Creative team collaboration",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=640&q=80&fit=crop&auto=format",
+    alt: "Celebration and décor detail",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&q=80&fit=crop&auto=format",
+    alt: "Portrait photography session",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=640&q=80&fit=crop&auto=format",
+    alt: "Commercial lifestyle photography",
+  },
+] as const;
+
+function EditorialGalleryStrip() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByViewportFraction = useCallback((direction: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const delta = Math.max(260, Math.floor(el.clientWidth * 0.72));
+    el.scrollBy({ left: direction * delta, behavior: "smooth" });
+  }, []);
+
+  return (
+    <div className="relative w-full border-t border-black/15 bg-[#0a0a0a]">
+      <div
+        ref={scrollerRef}
+        role="region"
+        aria-label="Portfolio strip — scroll for more photos"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") scrollByViewportFraction(1);
+          if (e.key === "ArrowLeft") scrollByViewportFraction(-1);
+        }}
+        className="flex snap-x snap-mandatory gap-0 overflow-x-auto overflow-y-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {GALLERY_STRIP_IMAGES.map((item, index) => (
+          <div
+            key={index}
+            className="relative h-[min(48vw,220px)] w-[min(38vw,176px)] shrink-0 snap-start sm:h-[200px] sm:w-[160px] md:h-[240px] md:w-[192px] lg:h-[280px] lg:w-[224px]"
+          >
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 52vw, 240px"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 flex w-14 items-center justify-end bg-gradient-to-l from-black/60 via-black/20 to-transparent pr-2 sm:w-[4.5rem] md:w-24 md:pr-3"
+        aria-hidden
+      >
+        <button
+          type="button"
+          onClick={() => scrollByViewportFraction(1)}
+          className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-white text-[#1a1a1a] shadow-md backdrop-blur-sm transition hover:bg-white hover:text-[#b4232c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:h-11 md:w-11"
+          aria-label="Scroll gallery to the right"
+        >
+          <ChevronRight className="h-5 w-5 shrink-0 md:h-6 md:w-6" strokeWidth={2} aria-hidden />
+        </button>
+      </div>
+    </div>
+  );
+}
 /** Keep opacity at 1 so copy stays readable if viewport observers mis-fire; animate Y only. */
 const viewport = { once: true, amount: 0.08 } as const;
 
@@ -129,6 +237,8 @@ export default function MagicFrameDifferenceSection() {
           />
         </div>
       </div>
+
+      <EditorialGalleryStrip />
     </section>
   );
 }
