@@ -15,7 +15,7 @@ const IMG_RIGHT =
   "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80&fit=crop&auto=format";
 
 const BTN_EDITORIAL_RED =
-  "inline-flex min-w-[12rem] items-center justify-center rounded-sm bg-[#b4232c] px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm transition-colors hover:bg-[#961f26] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b4232c] sm:min-w-0 sm:px-8";
+  "mfs-btn-editorial inline-flex min-w-[12rem] items-center justify-center rounded-sm bg-[#b4232c] px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm transition-colors hover:bg-[#961f26] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b4232c] sm:min-w-0 sm:px-8";
 
 /** Filmstrip under editorial trio — diverse genres, flush tiles, horizontal scroll. */
 const GALLERY_STRIP_IMAGES = [

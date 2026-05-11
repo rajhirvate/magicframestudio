@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
+
+const fontSerif = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const fontSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Magic Frame Studio | Professional Photography & Videography in India",
@@ -22,7 +38,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html
+      lang="en"
+      className={`${fontSerif.variable} ${fontSans.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col antialiased">
         <SiteChrome>{children}</SiteChrome>
       </body>

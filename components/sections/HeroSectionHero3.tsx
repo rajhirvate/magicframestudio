@@ -85,15 +85,17 @@ export default function HeroSectionHero3() {
           >
             <Link
               href="/portfolio"
-              className="group inline-flex w-fit items-center gap-2.5 border border-[#1a1a1a]/25 bg-white/35 px-7 py-3.5 text-sm font-medium text-[#1a1a1a] backdrop-blur-sm rounded-md hover:border-[#1a1a1a]/45 hover:bg-white/55 transition-all duration-300"
+              className={cn(
+                "group mfs-btn-primary inline-flex w-fit items-center gap-2.5 px-9 py-3.5 text-sm font-medium transition-colors duration-200",
+              )}
             >
               Explore our work
               <ArrowRight
                 size={14}
-                className="shrink-0 group-hover:translate-x-1 transition-transform duration-200"
+                className="shrink-0 transition-transform duration-200 group-hover:translate-x-1"
               />
             </Link>
-            <Link href="/contact" className={cn(BTN_PRIMARY, "w-fit shadow-black/10")}>
+            <Link href="/contact" className={cn(BTN_PRIMARY, "group w-fit")}>
               Get a quote
             </Link>
           </motion.div>

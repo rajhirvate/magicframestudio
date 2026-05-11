@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function Hero3Page() {
   return (
-    <>
+    <div className="hero3-page">
       <HeroSectionHero3 />
       <StatsBar />
       <IntroSection />
@@ -34,6 +34,6 @@ export default function Hero3Page() {
       <CTABanner />
       <SEOContent />
       <FAQSection />
-    </>
+    </div>
   );
 }

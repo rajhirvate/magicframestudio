@@ -139,7 +139,7 @@ export default function ServicesOverview() {
             >
               <Link
                 href="/photography"
-                className="inline-flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
+                className="mfs-service-footer-cta inline-flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
                 style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 View All Photography Services <ArrowRight size={14} />
@@ -187,7 +187,7 @@ export default function ServicesOverview() {
             >
               <Link
                 href="/videography"
-                className="inline-flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
+                className="mfs-service-footer-cta inline-flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
                 style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 View All Videography Services <ArrowRight size={14} />

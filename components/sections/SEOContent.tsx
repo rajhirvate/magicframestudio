@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
+import { cn } from "@/lib/utils";
 
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
@@ -72,38 +73,30 @@ export function OurApproachSection() {
               How Real Moments Rewrote the Way We Shoot
             </h2>
             <div
-              className="space-y-4 text-[15px] leading-relaxed text-stone-600 sm:text-base"
+              className="space-y-4 text-[15px] font-normal leading-relaxed text-stone-600 sm:text-base"
               style={{ fontFamily: inter }}
             >
               <p>
                 When we started out, we chased flawless lighting and
                 picture-perfect poses. Deliverables looked polished — yet something
-                felt incomplete.{" "}
-                <strong className="font-semibold text-stone-800">
-                  Where was the story? Where were the unguarded moments?
-                </strong>
+                felt incomplete. Where was the story? Where were the unguarded
+                moments?
               </p>
               <p>
-                That&apos;s when it clicked:{" "}
-                <strong className="font-semibold text-stone-800">
-                  great work isn&apos;t about repeating the same formula —
-                  it&apos;s about honesty, emotion, and the scenes nobody has to
-                  stage.
-                </strong>
+                That&apos;s when it clicked: great work isn&apos;t about repeating
+                the same formula — it&apos;s about honesty, emotion, and the scenes
+                nobody has to stage.
               </p>
               <p>
-                So we built Magic Frame Studio around a simple promise —{" "}
-                <strong className="font-semibold text-stone-800">
-                  authentic, cinematic, real.
-                </strong>{" "}
-                Years and tens of thousands of clients later, we&apos;re still
-                chasing frames that feel lived-in, not staged.
+                So we built Magic Frame Studio around a simple promise —
+                authentic, cinematic, real. Years and tens of thousands of clients
+                later, we&apos;re still chasing frames that feel lived-in, not staged.
               </p>
             </div>
             <div className="mt-9">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-[#6d5d4c] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-[#5c4e40] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6d5d4c]"
+                className={BTN_PRIMARY}
                 style={{ fontFamily: poppins }}
               >
                 Request for packages
@@ -133,14 +126,14 @@ export default function SEOContent() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Link
             href="/about"
-            className={BTN_PRIMARY}
+            className={cn(BTN_PRIMARY, "group")}
             style={{ fontFamily: poppins }}
           >
             Learn more about us <ArrowRight size={14} className="shrink-0" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-stone-700 border border-stone-300 hover:border-[#c9a84c] hover:text-[#c9a84c] rounded-md transition-all duration-200"
+            className={cn(BTN_PRIMARY, "group")}
             style={{ fontFamily: poppins }}
           >
             Book a shoot <ArrowRight size={14} className="shrink-0" />

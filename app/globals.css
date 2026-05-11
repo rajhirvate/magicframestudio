@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -8,9 +7,7 @@
   --gold-light: #e0c068;
   --card-bg: #1e1e1e;
   --border-color: #2a2a2a;
-  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system,
-    sans-serif;
+  /* Serif/sans stacks are injected by next/font on <html> (see layout.tsx). */
 }
 
 *,
@@ -33,7 +30,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings — serif stack (--font-serif from Google Fonts in @import above) */
+/* Headings — uses --font-serif from next/font in layout.tsx */
 .font-heading {
   font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }
@@ -54,4 +51,53 @@ body {
 ::selection {
   background: rgba(201, 168, 76, 0.2);
   color: #c9a84c;
+}
+
+/**
+ * /hero3 — editorial taupe CTAs (flat, square corners, uppercase tracking).
+ * Scoped so other routes keep gold `BTN_PRIMARY`.
+ */
+.hero3-page .mfs-btn-primary,
+.hero3-page .mfs-btn-editorial,
+.hero3-page .mfs-service-footer-cta {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  --tw-shadow: 0 0 #0000 !important;
+  --tw-shadow-colored: 0 0 #0000 !important;
+  background-color: #6b5e51 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 500 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.25 !important;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important;
+  padding-top: 0.6875rem !important;
+  padding-bottom: 0.6875rem !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+.hero3-page .mfs-btn-primary:hover,
+.hero3-page .mfs-btn-editorial:hover,
+.hero3-page .mfs-service-footer-cta:hover {
+  background-color: #5a4f44 !important;
+  color: #ffffff !important;
+}
+
+.hero3-page .mfs-btn-primary:focus-visible,
+.hero3-page .mfs-btn-editorial:focus-visible,
+.hero3-page .mfs-service-footer-cta:focus-visible {
+  outline: 2px solid #6b5e51 !important;
+  outline-offset: 2px !important;
+}
+
+.hero3-page .mfs-btn-primary svg,
+.hero3-page .mfs-btn-editorial svg,
+.hero3-page .mfs-service-footer-cta svg {
+  color: #ffffff;
+  stroke: #ffffff;
+  width: 0.875rem !important;
+  height: 0.875rem !important;
 }
