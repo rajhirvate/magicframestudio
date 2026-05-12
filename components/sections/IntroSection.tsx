@@ -33,19 +33,9 @@ export default function IntroSection() {
           initial={{ opacity: 0, scaleX: 0.6 }}
           animate={inView ? { opacity: 1, scaleX: 1 } : {}}
           transition={{ duration: 0.45, delay: 0.06 }}
-          className="mx-auto mt-6 mb-7 h-px w-16 origin-center bg-stone-300"
+          className="mx-auto mb-10 mt-6 h-px w-16 origin-center bg-stone-300"
           aria-hidden
         />
-
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="mx-auto mb-10 max-w-3xl text-[10px] font-semibold uppercase leading-relaxed tracking-[0.22em] text-[#5c6570] sm:text-[11px]"
-          style={{ fontFamily: sans }}
-        >
-          Professional photography services for individuals &amp; businesses
-        </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 14 }}
