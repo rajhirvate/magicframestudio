@@ -49,7 +49,7 @@ export default function ReadyToConnectSection() {
           aria-hidden
         />
 
-        <div className="relative z-10 w-full px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-14">
+        <div className="relative z-10 w-full px-4 py-20 sm:px-6 sm:py-24 lg:px-10 lg:py-28 xl:px-14">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
