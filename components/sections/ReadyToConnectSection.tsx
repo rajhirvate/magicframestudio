@@ -58,12 +58,12 @@ export default function ReadyToConnectSection() {
           >
             <h2
               id="hero3-ready-connect-heading"
-              className="font-heading text-[2rem] font-semibold leading-[1.12] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)] sm:text-4xl md:text-5xl lg:text-[3.25rem]"
+              className="font-heading text-[1.625rem] font-semibold leading-snug tracking-tight text-white drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-[1.75rem] md:text-[1.875rem] lg:text-[2.25rem]"
             >
               Prewedding Shoot in Dubai
             </h2>
             <p
-              className="mt-5 text-[13px] font-normal leading-relaxed text-white/90 sm:mt-6 sm:text-[14px] md:text-[15px]"
+              className="mt-4 text-[13px] font-normal leading-relaxed text-white/90 sm:mt-5 sm:text-[14px] md:text-[15px]"
               style={{ fontFamily: sans }}
             >
               Before the &quot;I do&apos;s,&quot; let&apos;s capture the
