@@ -24,7 +24,7 @@ export default function ReadyToConnectSection() {
     return (
       <section
         ref={ref}
-        className="relative isolate min-h-[min(92vh,_880px)] w-full overflow-hidden"
+        className="relative isolate w-full overflow-hidden"
         aria-labelledby="hero3-ready-connect-heading"
       >
         <Image
@@ -49,7 +49,7 @@ export default function ReadyToConnectSection() {
           aria-hidden
         />
 
-        <div className="relative z-10 flex min-h-[min(92vh,_880px)] w-full flex-col justify-center px-4 py-24 sm:px-6 lg:px-10 xl:px-14 lg:py-28">
+        <div className="relative z-10 w-full px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24 xl:px-14">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -80,13 +80,6 @@ export default function ReadyToConnectSection() {
               that tells your story. It&apos;s a fun way to celebrate your love
               before the wedding day madness kicks in.
             </p>
-            <Link
-              href="/contact"
-              className={cn(BTN_PRIMARY, "mt-9 inline-flex w-fit")}
-              style={{ fontFamily: sans }}
-            >
-              Connect now
-            </Link>
           </motion.div>
         </div>
       </section>
