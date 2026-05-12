@@ -1,14 +1,97 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
+/** Full-bleed desert / dunes — cinematic backdrop for editorial CTA (`/hero3`). */
+const HERO3_READY_CONNECT_BG =
+  "https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=75&w=2400&auto=format&fit=crop";
+
+const sans = "var(--font-sans), sans-serif";
+
 export default function ReadyToConnectSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const pathname = usePathname();
+  const cinematicHero3 = pathname === "/hero3";
+
+  if (cinematicHero3) {
+    return (
+      <section
+        ref={ref}
+        className="relative isolate min-h-[min(92vh,_880px)] w-full overflow-hidden"
+        aria-labelledby="hero3-ready-connect-heading"
+      >
+        <Image
+          src={HERO3_READY_CONNECT_BG}
+          alt=""
+          fill
+          className="object-cover object-[center_42%]"
+          sizes="100vw"
+          priority={false}
+        />
+        {/* Readability overlays */}
+        <div
+          className="pointer-events-none absolute inset-0 bg-black/50"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/82 via-black/48 to-black/25"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/35"
+          aria-hidden
+        />
+
+        <div className="relative z-10 flex min-h-[min(92vh,_880px)] w-full flex-col justify-center px-4 py-24 sm:px-6 lg:px-10 xl:px-14 lg:py-28">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full max-w-none text-left"
+          >
+            <h2
+              id="hero3-ready-connect-heading"
+              className="font-heading text-[2rem] font-semibold leading-[1.12] tracking-tight text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.35)] sm:text-4xl md:text-5xl lg:text-[3.25rem]"
+            >
+              Prewedding Shoot in Dubai
+            </h2>
+            <p
+              className="mt-6 text-[15px] font-normal leading-[1.75] text-white/92 sm:text-base md:text-lg"
+              style={{ fontFamily: sans }}
+            >
+              Before the &quot;I do&apos;s,&quot; let&apos;s capture the
+              &quot;just us.&quot; For your{" "}
+              <strong className="font-semibold text-white">
+                prewedding shoot in Dubai
+              </strong>
+              , we sit down with you to talk themes, pick the best spots in Dubai
+              or anywhere in the UAE, and plan it your way. You can go simple
+              with photos only, or add video for a{" "}
+              <strong className="font-semibold text-white">
+                save-the-date edit
+              </strong>{" "}
+              that tells your story. It&apos;s a fun way to celebrate your love
+              before the wedding day madness kicks in.
+            </p>
+            <Link
+              href="/contact"
+              className={cn(BTN_PRIMARY, "mt-9 inline-flex w-fit")}
+              style={{ fontFamily: sans }}
+            >
+              Connect now
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={ref} className="bg-[#0f0c0a] py-20 lg:py-28">
@@ -23,16 +106,10 @@ export default function ReadyToConnectSection() {
             Ready to{" "}
             <span className="italic text-[#e0c068]">connect?</span>
           </h2>
-          <p
-            className="max-w-md text-sm font-normal leading-relaxed text-[#f5f0eb]/55 sm:text-[15px]"
-            style={{ fontFamily: "var(--font-sans), sans-serif" }}
-          >
-            Request availability
-          </p>
           <Link
             href="/contact"
             className={cn("mt-1", BTN_PRIMARY)}
-            style={{ fontFamily: "var(--font-sans), sans-serif" }}
+            style={{ fontFamily: sans }}
           >
             Connect now
           </Link>
