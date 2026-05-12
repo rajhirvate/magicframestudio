@@ -92,7 +92,7 @@ export default function ServicesOverview() {
           >
             What We Do
           </p>
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-light text-stone-900">
+          <h2 className="font-heading text-3xl font-light text-stone-900 sm:text-4xl lg:text-5xl">
             Our Services
           </h2>
         </motion.div>
