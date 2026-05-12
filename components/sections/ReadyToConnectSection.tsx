@@ -63,7 +63,7 @@ export default function ReadyToConnectSection() {
               Prewedding Shoot in Dubai
             </h2>
             <p
-              className="mt-6 text-[15px] font-normal leading-[1.75] text-white/92 sm:text-base md:text-lg"
+              className="mt-5 text-[13px] font-normal leading-relaxed text-white/90 sm:mt-6 sm:text-[14px] md:text-[15px]"
               style={{ fontFamily: sans }}
             >
               Before the &quot;I do&apos;s,&quot; let&apos;s capture the
