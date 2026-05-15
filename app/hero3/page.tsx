@@ -6,7 +6,7 @@ import ServicesOverview from "@/components/sections/ServicesOverview";
 import MagicFrameDifferenceSection from "@/components/sections/MagicFrameDifferenceSection";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
-import Testimonials from "@/components/sections/Testimonials";
+import SuccessStoriesMarquee from "@/components/sections/SuccessStoriesMarquee";
 import CTABanner from "@/components/sections/CTABanner";
 import FAQSection from "@/components/sections/FAQSection";
 import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
@@ -26,9 +26,9 @@ export default function Hero3Page() {
       <ServicesOverview />
       <ReadyToConnectSection />
       <OurApproachSection />
-      <PortfolioPreview embedBrandsTrust />
+      <PortfolioPreview />
       <MagicFrameDifferenceSection />
-      <Testimonials />
+      <SuccessStoriesMarquee />
       <CTABanner />
       <SEOContent />
       <FAQSection />

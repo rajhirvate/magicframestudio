@@ -7,7 +7,6 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
-import PortfolioBrandsTrustSection from "@/components/sections/PortfolioBrandsTrustSection";
 
 const portfolioItems = [
   {
@@ -109,18 +108,9 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
   );
 }
 
-export default function PortfolioPreview({
-  embedBrandsTrust = false,
-}: {
-  embedBrandsTrust?: boolean;
-} = {}) {
+export default function PortfolioPreview() {
   return (
-    <section
-      className={cn(
-        "relative bg-[#0f0c0a] py-24 lg:py-32",
-        embedBrandsTrust ? "overflow-x-clip overflow-y-visible" : "overflow-hidden",
-      )}
-    >
+    <section className="relative overflow-hidden bg-[#0f0c0a] py-24 lg:py-32">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-[#c9a84c]/10 blur-[120px]" />
@@ -158,8 +148,6 @@ export default function PortfolioPreview({
             Explore our curated selection of visual stories, ranging from intimate celebrations to high-end commercial projects.
           </motion.p>
         </div>
-
-        {embedBrandsTrust ? <PortfolioBrandsTrustSection /> : null}
 
         {/* Dynamic Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6 auto-rows-[250px] md:auto-rows-[300px]">

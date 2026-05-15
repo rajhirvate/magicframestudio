@@ -101,6 +101,41 @@ body {
   color: #c9a84c;
 }
 
+/** Dual-row testimonial marquees (`SuccessStoriesMarquee`) */
+@keyframes mfs-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes mfs-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mfs-marquee-row-left {
+  animation: mfs-marquee-left 52s linear infinite;
+  will-change: transform;
+}
+.mfs-marquee-row-right {
+  animation: mfs-marquee-right 56s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mfs-marquee-row-left,
+  .mfs-marquee-row-right {
+    animation: none;
+    transform: none !important;
+  }
+}
+
 /**
  * /hero3 — editorial taupe CTAs (flat, square corners, uppercase tracking).
  * Scoped so other routes keep gold `BTN_PRIMARY`.
