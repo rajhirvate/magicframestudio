@@ -7,7 +7,6 @@ import MagicFrameDifferenceSection from "@/components/sections/MagicFrameDiffere
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
 import SuccessStoriesMarquee from "@/components/sections/SuccessStoriesMarquee";
-import CTABanner from "@/components/sections/CTABanner";
 import FAQSection from "@/components/sections/FAQSection";
 import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
 
@@ -29,7 +28,6 @@ export default function Hero3Page() {
       <PortfolioPreview />
       <MagicFrameDifferenceSection />
       <SuccessStoriesMarquee />
-      <CTABanner />
       <SEOContent />
       <FAQSection />
     </div>
