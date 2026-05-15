@@ -24,10 +24,10 @@ export default function Hero3Page() {
       <StatsBar />
       <IntroSection />
       <ServicesOverview />
-      <MagicFrameDifferenceSection />
-      <OurApproachSection />
       <ReadyToConnectSection />
+      <OurApproachSection />
       <PortfolioPreview />
+      <MagicFrameDifferenceSection />
       <Testimonials />
       <CTABanner />
       <SEOContent />
