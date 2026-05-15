@@ -26,9 +26,9 @@ export default function Hero3Page() {
       <ReadyToConnectSection />
       <OurApproachSection />
       <PortfolioPreview />
-      <MagicFrameDifferenceSection />
       <SuccessStoriesMarquee />
       <SEOContent />
+      <MagicFrameDifferenceSection />
       <FAQSection />
     </div>
   );

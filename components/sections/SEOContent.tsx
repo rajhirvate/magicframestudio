@@ -37,83 +37,6 @@ export function OurApproachSection() {
   const pathname = usePathname();
   const isHero3 = pathname === "/hero3";
 
-  if (isHero3) {
-    return (
-      <section
-        ref={ref}
-        className="border-t border-stone-200 bg-[#f5f0eb] py-14 lg:py-20"
-        aria-labelledby="our-approach-heading"
-      >
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, ease: "easeOut" }}
-            className="mx-auto max-w-4xl text-center"
-          >
-            <p
-              className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]"
-              style={{ fontFamily: poppins }}
-            >
-              Our approach
-            </p>
-            <h2
-              id="our-approach-heading"
-              className="mb-5 text-2xl font-bold leading-snug text-stone-900 sm:text-3xl"
-              style={{ fontFamily: poppins }}
-            >
-              How Real Moments Rewrote the Way We Shoot
-            </h2>
-            <div className="mx-auto mb-10 max-w-4xl space-y-4 text-center">
-              <p
-                className="text-[15px] leading-relaxed text-stone-500 sm:text-base"
-                style={{ fontFamily: inter }}
-              >
-                When we started out, we chased flawless lighting and
-                picture-perfect poses. Deliverables looked polished — yet something
-                felt incomplete. Where was the story? Where were the unguarded
-                moments?
-              </p>
-              <p
-                className="text-[15px] leading-relaxed text-stone-500 sm:text-base"
-                style={{ fontFamily: inter }}
-              >
-                That&apos;s when it clicked: great work isn&apos;t about repeating
-                the same formula — it&apos;s about honesty, emotion, and the scenes
-                nobody has to stage.
-              </p>
-              <p
-                className="text-[15px] leading-relaxed text-stone-500 sm:text-base"
-                style={{ fontFamily: inter }}
-              >
-                So we built Magic Frame Studio around a simple promise —
-                authentic, cinematic, real. Years and tens of thousands of clients
-                later, we&apos;re still chasing frames that feel lived-in, not staged.
-              </p>
-            </div>
-            <div className="flex flex-col items-center justify-center gap-4 pt-2 sm:flex-row">
-              <Link
-                href="/about"
-                className={cn(BTN_PRIMARY, "group")}
-                style={{ fontFamily: poppins }}
-              >
-                Learn more about us{" "}
-                <ArrowRight size={14} className="shrink-0" />
-              </Link>
-              <Link
-                href="/contact"
-                className={cn(BTN_PRIMARY, "group")}
-                style={{ fontFamily: poppins }}
-              >
-                Book a shoot <ArrowRight size={14} className="shrink-0" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section
       ref={ref}
@@ -177,15 +100,35 @@ export function OurApproachSection() {
                 later, we&apos;re still chasing frames that feel lived-in, not staged.
               </p>
             </div>
-            <div className="mt-9">
-              <Link
-                href="/contact"
-                className={BTN_PRIMARY}
-                style={{ fontFamily: poppins }}
-              >
-                Request for packages
-              </Link>
-            </div>
+            {isHero3 ? (
+              <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:gap-5">
+                <Link
+                  href="/about"
+                  className={cn(BTN_PRIMARY, "group")}
+                  style={{ fontFamily: poppins }}
+                >
+                  Learn more about us{" "}
+                  <ArrowRight size={14} className="shrink-0" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className={cn(BTN_PRIMARY, "group")}
+                  style={{ fontFamily: poppins }}
+                >
+                  Book a shoot <ArrowRight size={14} className="shrink-0" />
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-9">
+                <Link
+                  href="/contact"
+                  className={BTN_PRIMARY}
+                  style={{ fontFamily: poppins }}
+                >
+                  Request for packages
+                </Link>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>
