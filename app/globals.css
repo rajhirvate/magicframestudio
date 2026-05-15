@@ -106,8 +106,7 @@ body {
  * Scoped so other routes keep gold `BTN_PRIMARY`.
  */
 .hero3-page .mfs-btn-primary,
-.hero3-page .mfs-btn-editorial,
-.hero3-page .mfs-service-footer-cta {
+.hero3-page .mfs-btn-editorial {
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
@@ -128,22 +127,19 @@ body {
 }
 
 .hero3-page .mfs-btn-primary:hover,
-.hero3-page .mfs-btn-editorial:hover,
-.hero3-page .mfs-service-footer-cta:hover {
+.hero3-page .mfs-btn-editorial:hover {
   background-color: #5a4f44 !important;
   color: #ffffff !important;
 }
 
 .hero3-page .mfs-btn-primary:focus-visible,
-.hero3-page .mfs-btn-editorial:focus-visible,
-.hero3-page .mfs-service-footer-cta:focus-visible {
+.hero3-page .mfs-btn-editorial:focus-visible {
   outline: 2px solid #6b5e51 !important;
   outline-offset: 2px !important;
 }
 
 .hero3-page .mfs-btn-primary svg,
-.hero3-page .mfs-btn-editorial svg,
-.hero3-page .mfs-service-footer-cta svg {
+.hero3-page .mfs-btn-editorial svg {
   color: #ffffff;
   stroke: #ffffff;
   width: 0.875rem !important;

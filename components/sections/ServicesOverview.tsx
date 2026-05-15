@@ -130,21 +130,6 @@ export default function ServicesOverview() {
                 />
               ))}
             </div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.9 }}
-              className="mt-6 lg:hidden"
-            >
-              <Link
-                href="/photography"
-                className="mfs-service-footer-cta inline-flex w-full justify-center items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
-                style={{ fontFamily: "var(--font-sans), sans-serif" }}
-              >
-                View All Photography Services <ArrowRight size={14} />
-              </Link>
-            </motion.div>
           </div>
 
           {/* Videography Column */}
@@ -178,21 +163,6 @@ export default function ServicesOverview() {
                 />
               ))}
             </div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.9 }}
-              className="mt-6 lg:hidden"
-            >
-              <Link
-                href="/videography"
-                className="mfs-service-footer-cta inline-flex w-full justify-center items-center gap-2 text-sm font-medium text-[#c9a84c] hover:gap-3 transition-all duration-200"
-                style={{ fontFamily: "var(--font-sans), sans-serif" }}
-              >
-                View All Videography Services <ArrowRight size={14} />
-              </Link>
-            </motion.div>
           </div>
 
         </div>
