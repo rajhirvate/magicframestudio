@@ -243,13 +243,20 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
             <p key={j}>{para}</p>
           ))}
         </div>
-        <div className="mt-9">
+        <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:gap-5">
           <Link
-            href="/contact"
-            className={BTN_PRIMARY}
+            href="/about"
+            className={cn(BTN_PRIMARY, "group")}
             style={{ fontFamily: poppins }}
           >
-            Request for packages
+            Learn more about us <ArrowRight size={14} className="shrink-0" />
+          </Link>
+          <Link
+            href="/contact"
+            className={cn(BTN_PRIMARY, "group")}
+            style={{ fontFamily: poppins }}
+          >
+            Book a shoot <ArrowRight size={14} className="shrink-0" />
           </Link>
         </div>
       </motion.div>
@@ -271,22 +278,6 @@ export default function SEOContent() {
           {mainSeoBlocks.map((block) => (
             <WhyIndiaHero3Editorial key={block.heading} block={block} />
           ))}
-          <div className="mx-auto mt-14 flex max-w-lg flex-col items-stretch gap-4 pt-2 sm:flex-row sm:justify-center sm:gap-5">
-            <Link
-              href="/about"
-              className={cn(BTN_PRIMARY, "group")}
-              style={{ fontFamily: poppins }}
-            >
-              Learn more about us <ArrowRight size={14} className="shrink-0" />
-            </Link>
-            <Link
-              href="/contact"
-              className={cn(BTN_PRIMARY, "group")}
-              style={{ fontFamily: poppins }}
-            >
-              Book a shoot <ArrowRight size={14} className="shrink-0" />
-            </Link>
-          </div>
         </div>
       </section>
     );
