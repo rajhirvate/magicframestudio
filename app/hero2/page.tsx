@@ -3,7 +3,6 @@ import HeroSectionGlass from "@/components/sections/HeroSectionGlass";
 import StatsBar from "@/components/sections/StatsBar";
 import IntroSection from "@/components/sections/IntroSection";
 import ServicesOverview from "@/components/sections/ServicesOverview";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import WeddingServiceHighlights from "@/components/sections/WeddingServiceHighlights";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
@@ -25,7 +24,6 @@ export default function Hero2Page() {
       <StatsBar />
       <IntroSection />
       <ServicesOverview />
-      <WhyChooseUs />
       <WeddingServiceHighlights />
       <ReadyToConnectSection />
       <OurApproachSection />

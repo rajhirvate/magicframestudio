@@ -35,6 +35,54 @@ body {
   font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
+/**
+ * Playfair has no 300 in `next/font/google` metadata; `font-light` would fake 300.
+ * Map serif “light” headings to 400 so we only load real font files.
+ */
+.font-heading.font-light {
+  font-weight: 400;
+}
+
+/* Home hero: CSS animation instead of framer-motion (smaller first-load JS) */
+@keyframes mfs-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mfs-hero-line {
+  animation: mfs-hero-rise 0.7s ease-out forwards;
+  opacity: 0;
+}
+.mfs-hero-title {
+  animation: mfs-hero-rise 0.9s ease-out 0.12s forwards;
+  opacity: 0;
+}
+.mfs-hero-sub {
+  animation: mfs-hero-rise 0.7s ease-out 0.28s forwards;
+  opacity: 0;
+}
+.mfs-hero-cta {
+  animation: mfs-hero-rise 0.7s ease-out 0.42s forwards;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mfs-hero-line,
+  .mfs-hero-title,
+  .mfs-hero-sub,
+  .mfs-hero-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 5px;

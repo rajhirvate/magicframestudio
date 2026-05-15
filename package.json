@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001 -H 0.0.0.0",
+    "dev": "next dev --webpack -p 3001 -H 0.0.0.0",
     "dev:turbo": "next dev -p 3001 -H 0.0.0.0",
     "dev:webpack": "next dev --webpack -p 3001 -H 0.0.0.0",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001 -H 0.0.0.0",
     "lint": "eslint"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.7.0",
     "next": "^16.2.5",
+    "postcss": "8.5.8",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.5.0"
@@ -32,6 +33,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.2.5",
+    "lightningcss": "^1.32.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

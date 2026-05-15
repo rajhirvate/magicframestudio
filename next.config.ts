@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   turbopack: {},
+  /** Fewer modules to trace in dev/build when using barrel-heavy packages */
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   images: {
     /** Cache optimized images longer at the CDN edge (default is short). */
     minimumCacheTTL: 60 * 60 * 24 * 30,
@@ -43,9 +47,14 @@ const nextConfig: NextConfig = {
        * When `ignored` is still unset here, leave it alone so Next can apply its
        * defaults; only debounce rebuilds.
        */
+      /**
+       * When webpack never set `ignored`, still ignore heavy folders so watcher
+       * work stays bounded (helps `npm run dev:webpack`).
+       */
       if (prev === undefined) {
         config.watchOptions = {
           ...config.watchOptions,
+          ignored: ["**/node_modules/**", ...extraIgnores],
           aggregateTimeout: 400,
         };
       } else if (typeof prev === "string" && prev.length > 0) {

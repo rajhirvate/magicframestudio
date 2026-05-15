@@ -72,7 +72,7 @@ export default function HeroSectionHero3() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.22, ease: "easeOut" }}
-            className="mt-6 text-[10px] font-light uppercase tracking-[0.32em] text-[#1a1a1a]/72 sm:text-xs sm:tracking-[0.28em]"
+            className="mt-6 text-[10px] font-normal uppercase tracking-[0.32em] text-[#1a1a1a]/72 sm:text-xs sm:tracking-[0.28em]"
           >
             Wedding · Events · Portraits · Corporate · Product Shoots
           </motion.p>

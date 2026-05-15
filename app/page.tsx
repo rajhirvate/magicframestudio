@@ -10,7 +10,6 @@ const ServicesOverview = dynamic(
 const StudioEditorialSplit = dynamic(
   () => import("@/components/sections/StudioEditorialSplit"),
 );
-const WhyChooseUs = dynamic(() => import("@/components/sections/WhyChooseUs"));
 
 const HomeLowerBlocks = dynamic(() => import("./HomeLowerBlocks"), {
   loading: () => null,
@@ -36,7 +35,6 @@ export default function HomePage() {
       <IntroSection />
       <ServicesOverview />
       <StudioEditorialSplit />
-      <WhyChooseUs />
       <HomeLowerBlocks />
     </>
   );

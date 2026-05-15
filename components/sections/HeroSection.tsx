@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
 
@@ -96,22 +95,14 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-5xl w-full mx-auto">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-xs font-medium tracking-[0.4em] text-[#c9a84c] uppercase mb-6"
+        <p
+          className="mfs-hero-line text-xs font-medium tracking-[0.4em] text-[#c9a84c] uppercase mb-6"
           style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           Magic Frame Studio · Since 2020
-        </motion.p>
+        </p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.12, ease: "easeOut" }}
-          className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-[#f5f0eb] leading-[1.15] mb-6 text-center w-full"
-        >
+        <h1 className="mfs-hero-title font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-[#f5f0eb] leading-[1.15] mb-6 text-center w-full">
           We Don&apos;t Just Capture Moments{" "}
           <span
             aria-hidden="true"
@@ -127,24 +118,16 @@ export default function HeroSection() {
             }}
           />{" "}
           We Craft Stories
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
-          className="text-xs sm:text-sm text-[#f5f0eb]/60 tracking-[0.25em] uppercase mb-10"
+        <p
+          className="mfs-hero-sub text-xs sm:text-sm text-[#f5f0eb]/60 tracking-[0.25em] uppercase mb-10"
           style={{ fontFamily: "var(--font-sans), sans-serif" }}
         >
           Wedding · Events · Portraits · Corporate · Product Shoots
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.42, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
+        <div className="mfs-hero-cta flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/portfolio"
             className="group inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#f5f0eb] border border-[#f5f0eb]/25 hover:border-[#f5f0eb]/60 rounded-md transition-all duration-300 hover:bg-white/5 backdrop-blur-sm"
@@ -163,7 +146,7 @@ export default function HeroSection() {
           >
             Get a quote
           </Link>
-        </motion.div>
+        </div>
       </div>
 
     </section>

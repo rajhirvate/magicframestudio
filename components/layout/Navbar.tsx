@@ -73,13 +73,14 @@ export default function Navbar() {
                 alt="Magic Frame Studio"
                 width={200}
                 height={52}
+                priority
+                fetchPriority="high"
                 className="h-9 lg:h-10 w-auto"
                 style={
                   lightNavChrome
                     ? undefined
                     : { filter: "invert(1)", mixBlendMode: "screen" }
                 }
-                priority
               />
             </Link>
 

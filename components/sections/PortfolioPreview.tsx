@@ -93,14 +93,14 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
           <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#c9a84c]">
             {item.category}
           </p>
-          <h3 className="mb-4 text-xl font-light text-white md:text-2xl">
+          <h3 className="mb-4 text-xl font-normal text-white md:text-2xl">
             {item.label}
           </h3>
           <div className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-colors duration-300 group-hover:border-[#c9a84c] group-hover:bg-[#c9a84c]">
               <Plus className="text-white" size={18} />
             </div>
-            <span className="text-sm font-light text-white/80">View Project</span>
+            <span className="text-sm font-normal text-white/80">View Project</span>
           </div>
         </div>
       </Link>
@@ -143,7 +143,7 @@ export default function PortfolioPreview() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="mt-8 text-neutral-400 max-w-2xl text-lg font-light leading-relaxed"
+            className="mt-8 text-neutral-400 max-w-2xl text-lg font-normal leading-relaxed"
           >
             Explore our curated selection of visual stories, ranging from intimate celebrations to high-end commercial projects.
           </motion.p>
