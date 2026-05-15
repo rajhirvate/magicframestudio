@@ -26,7 +26,7 @@ export default function Hero3Page() {
       <ServicesOverview />
       <ReadyToConnectSection />
       <OurApproachSection />
-      <PortfolioPreview />
+      <PortfolioPreview embedBrandsTrust />
       <MagicFrameDifferenceSection />
       <Testimonials />
       <CTABanner />
