@@ -5,13 +5,7 @@ import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-/** Editorial layout — `/hero3` flanking portraits + strip gallery (no center copy column). */
-const IMG_LEFT =
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&q=80&fit=crop&auto=format";
-const IMG_RIGHT =
-  "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=80&fit=crop&auto=format";
-
-/** Filmstrip under portraits — diverse genres, flush tiles, horizontal scroll. */
+/** Scrolling portfolio strip — `/hero3` editorial filmstrip (above-the-fold gallery). */
 const GALLERY_STRIP_IMAGES = [
   {
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=640&q=80&fit=crop&auto=format",
@@ -255,30 +249,8 @@ export default function MagicFrameDifferenceSection() {
     <section
       id="magic-frame-difference"
       className="relative scroll-mt-24 bg-[#0a0a0a]"
-      aria-label="Editorial portraits and scrolling portfolio gallery"
+      aria-label="Scrolling portfolio gallery"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-stretch">
-        <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(85vh,720px)] lg:h-full lg:w-full">
-          <Image
-            src={IMG_LEFT}
-            alt="Editorial portrait in black and white"
-            fill
-            className="object-cover grayscale contrast-[1.05]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </div>
-
-        <div className="relative min-h-[280px] aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:min-h-[min(85vh,720px)] lg:h-full lg:w-full">
-          <Image
-            src={IMG_RIGHT}
-            alt="Fashion editorial portrait by the coast at golden hour"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </div>
-      </div>
-
       <EditorialGalleryStrip />
     </section>
   );
