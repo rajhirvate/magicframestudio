@@ -43,7 +43,7 @@ export function OurApproachSection() {
       className="border-t border-stone-200 bg-white py-16 lg:py-24"
       aria-labelledby="our-approach-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -217,7 +217,7 @@ export default function SEOContent() {
         className="border-t border-stone-200 bg-white py-16 lg:py-24"
         aria-labelledby="why-india-trusts-heading"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           {mainSeoBlocks.map((block) => (
             <WhyIndiaHero3Editorial key={block.heading} block={block} />
           ))}
