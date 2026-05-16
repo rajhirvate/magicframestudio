@@ -118,7 +118,7 @@ export async function POST(request: Request) {
   revalidatePath("/");
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
-  revalidateTag("blog-posts");
+  revalidateTag("blog-posts", "max");
 
   return NextResponse.json({ ok: true, post }, { status: 201 });
 }
