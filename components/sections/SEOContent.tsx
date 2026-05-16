@@ -16,7 +16,7 @@ const inter = "var(--font-sans), sans-serif";
 const APPROACH_IMAGE =
   "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&fit=crop&auto=format";
 
-/** “Why India” split on `/hero3` — different from Intro + Approach portraits. */
+/** “Why India” split on editorial home — different from Intro + Approach portraits. */
 const WHY_INDIA_SPLIT_IMAGE =
   "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80&fit=crop&auto=format";
 
@@ -35,7 +35,7 @@ export function OurApproachSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
-  const isHero3 = pathname === "/hero3";
+  const isHero3 = pathname === "/" || pathname === "/hero3";
 
   return (
     <section
@@ -209,7 +209,7 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
 
 export default function SEOContent() {
   const pathname = usePathname();
-  const isHero3 = pathname === "/hero3";
+  const isHero3 = pathname === "/" || pathname === "/hero3";
 
   if (isHero3) {
     return (

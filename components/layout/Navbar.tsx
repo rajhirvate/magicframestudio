@@ -17,8 +17,8 @@ export default function Navbar() {
   const [mobilePhotoOpen, setMobilePhotoOpen] = useState(false);
   const [mobileVideoOpen, setMobileVideoOpen] = useState(false);
   const pathname = usePathname();
-  /** Editorial `/hero3`: light bar while idle; dark chrome while mega menu open (matches dropdown). */
-  const hero3Editorial = pathname === "/hero3";
+  /** Editorial home (formerly `/hero3`): light bar while idle; dark chrome while mega menu open. */
+  const hero3Editorial = pathname === "/" || pathname === "/hero3";
   const lightNavChrome = hero3Editorial && !openMega;
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);

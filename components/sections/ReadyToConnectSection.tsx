@@ -8,7 +8,7 @@ import { BTN_PRIMARY } from "@/lib/btn";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Full-bleed desert / dunes — cinematic backdrop for editorial CTA (`/hero3`). */
+/** Full-bleed desert / dunes — cinematic backdrop for editorial CTA (home). */
 const HERO3_READY_CONNECT_BG =
   "https://images.unsplash.com/photo-1547036967-23d11aacaee0?q=75&w=2400&auto=format&fit=crop";
 
@@ -18,7 +18,7 @@ export default function ReadyToConnectSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const pathname = usePathname();
-  const cinematicHero3 = pathname === "/hero3";
+  const cinematicHero3 = pathname === "/" || pathname === "/hero3";
 
   if (cinematicHero3) {
     return (

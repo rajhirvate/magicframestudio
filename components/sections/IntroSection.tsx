@@ -17,7 +17,7 @@ export default function IntroSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
-  const isHero3 = pathname === "/hero3";
+  const isHero3 = pathname === "/" || pathname === "/hero3";
 
   if (isHero3) {
     return (
