@@ -143,6 +143,7 @@ export default function Navbar() {
               </div>
 
               <NavLink href="/portfolio" label="Portfolio" lightNavChrome={lightNavChrome} />
+              <NavLink href="/blog" label="Blog" lightNavChrome={lightNavChrome} matchPrefix />
               <NavLink href="/about" label="About" lightNavChrome={lightNavChrome} />
               <NavLink href="/contact" label="Contact" lightNavChrome={lightNavChrome} />
             </div>
@@ -247,6 +248,7 @@ export default function Navbar() {
 
               {[
                 { label: "Portfolio", href: "/portfolio" },
+                { label: "Blog", href: "/blog" },
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },
               ].map(({ label, href }) => (
@@ -285,18 +287,24 @@ function NavLink({
   href,
   label,
   lightNavChrome,
+  matchPrefix,
 }: {
   href: string;
   label: string;
   lightNavChrome?: boolean;
+  /** Active when pathname is `href` or starts with `${href}/` (e.g. blog posts). */
+  matchPrefix?: boolean;
 }) {
   const pathname = usePathname();
+  const active = matchPrefix
+    ? pathname === href || pathname.startsWith(`${href}/`)
+    : pathname === href;
   return (
     <Link
       href={href}
       className={cn(
         "text-sm font-medium tracking-wide transition-colors duration-200",
-        pathname === href
+        active
           ? "text-[#c9a84c]"
           : lightNavChrome
             ? "text-[#1a1a1a]/75 hover:text-[#1a1a1a]"

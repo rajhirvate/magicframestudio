@@ -5,8 +5,8 @@ import SiteChrome from "@/components/layout/SiteChrome";
 
 const fontSerif = Playfair_Display({
   subsets: ["latin"],
-  /** Next.js Google font data has no 300 for Playfair — use 400–700 + italic */
-  weight: ["400", "500", "600", "700"],
+  /** Playfair has no 300 in `next/font/google` metadata; `font-light` maps to 400 in globals. */
+  weight: ["400", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
@@ -14,7 +14,6 @@ const fontSerif = Playfair_Display({
 
 const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  /** Drop 300 — map rare sans `font-light` to normal to save a font file */
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",

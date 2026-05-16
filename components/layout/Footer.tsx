@@ -16,10 +16,16 @@ export default function Footer() {
                 Magic Frame Studio
               </span>
             </Link>
-            <p className="text-sm text-[#f5f0eb]/50 leading-relaxed mb-6">
+            <p className="text-sm text-[#f5f0eb]/50 leading-relaxed mb-4">
               India&apos;s most trusted photography &amp; videography studio since 2020.
               We craft cinematic stories that last forever.
             </p>
+            <Link
+              href="/blog"
+              className="inline-block text-sm font-semibold text-[#c9a84c] hover:text-[#e0c068] transition-colors mb-6"
+            >
+              Blog &amp; stories
+            </Link>
             {/* Social Icons */}
             <div className="flex items-center gap-3">
               <SocialLink href="#" icon={<Share2 size={16} />} label="Instagram" />

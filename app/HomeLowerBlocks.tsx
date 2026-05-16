@@ -1,22 +1,12 @@
-import dynamic from "next/dynamic";
+import LatestBlogSection from "@/components/sections/LatestBlogSection";
+import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
+import PortfolioPreview from "@/components/sections/PortfolioPreview";
+import Testimonials from "@/components/sections/Testimonials";
+import CTABanner from "@/components/sections/CTABanner";
+import FAQSection from "@/components/sections/FAQSection";
+import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
 
-/** Below-the-fold homepage slices — split into separate chunks so initial JS stays smaller. */
-const ReadyToConnectSection = dynamic(
-  () => import("@/components/sections/ReadyToConnectSection"),
-);
-const OurApproachSection = dynamic(() =>
-  import("@/components/sections/SEOContent").then((m) => ({
-    default: m.OurApproachSection,
-  })),
-);
-const PortfolioPreview = dynamic(
-  () => import("@/components/sections/PortfolioPreview"),
-);
-const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
-const CTABanner = dynamic(() => import("@/components/sections/CTABanner"));
-const SEOContent = dynamic(() => import("@/components/sections/SEOContent"));
-const FAQSection = dynamic(() => import("@/components/sections/FAQSection"));
-
+/** Below-the-fold homepage — static imports avoid a long chain of lazy chunk requests on first load. */
 export default function HomeLowerBlocks() {
   return (
     <>
@@ -26,6 +16,7 @@ export default function HomeLowerBlocks() {
       <Testimonials />
       <CTABanner />
       <SEOContent />
+      <LatestBlogSection />
       <FAQSection />
     </>
   );

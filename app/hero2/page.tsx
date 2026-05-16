@@ -8,6 +8,7 @@ import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
 import Testimonials from "@/components/sections/Testimonials";
 import CTABanner from "@/components/sections/CTABanner";
+import LatestBlogSection from "@/components/sections/LatestBlogSection";
 import FAQSection from "@/components/sections/FAQSection";
 import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
 
@@ -31,6 +32,7 @@ export default function Hero2Page() {
       <Testimonials />
       <CTABanner />
       <SEOContent />
+      <LatestBlogSection />
       <FAQSection />
     </>
   );
