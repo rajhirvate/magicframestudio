@@ -245,11 +245,11 @@ export default function HeroSectionHero3() {
 
                 <div
                   className={cn(
-                    "font-heading",
                     isHero4
                       ? "text-white text-[clamp(2.85rem,5.5vw+1rem,6.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em]"
-                      : "text-[#1a1a1a] font-light leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem]",
+                      : "font-heading text-[#1a1a1a] font-light leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem]",
                   )}
+                  style={isHero4 ? { fontFamily: "var(--font-poppins), sans-serif" } : undefined}
                 >
                   <h1
                     className={cn(
