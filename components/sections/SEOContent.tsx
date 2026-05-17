@@ -67,15 +67,9 @@ export function OurApproachSection() {
             transition={{ duration: 0.65, delay: 0.06, ease: "easeOut" }}
             className="text-left"
           >
-            <p
-              className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#b89e67]"
-              style={{ fontFamily: poppins }}
-            >
-              Our approach
-            </p>
             <h2
               id="our-approach-heading"
-              className="font-heading mb-6 text-3xl font-normal leading-[1.18] text-stone-900 sm:text-4xl lg:text-[2.35rem]"
+              className="mfs-home-title mb-6 text-[1.9375rem] text-stone-900"
             >
               How Real Moments Rewrote the Way We Shoot
             </h2>
@@ -174,7 +168,7 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
         </p>
         <h2
           id="why-india-trusts-heading"
-          className="font-heading mb-6 text-3xl font-normal leading-[1.18] text-stone-900 sm:text-4xl lg:text-[2.35rem]"
+          className="mfs-home-title mb-6 text-[1.9375rem] text-stone-900"
         >
           {block.heading}
         </h2>

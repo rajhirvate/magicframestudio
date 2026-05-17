@@ -58,7 +58,7 @@ export default function ReadyToConnectSection() {
           >
             <h2
               id="hero3-ready-connect-heading"
-              className="font-heading text-[1.625rem] font-semibold leading-snug tracking-tight text-white drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-[1.75rem] md:text-[1.875rem] lg:text-[2.25rem]"
+              className="mfs-home-title text-[1.9375rem] text-white drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-[2rem] md:text-[2.125rem] lg:text-[2.25rem]"
             >
               Prewedding Shoot in Dubai
             </h2>

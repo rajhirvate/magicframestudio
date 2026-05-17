@@ -50,8 +50,7 @@ function ServiceCard({
         {/* Card body */}
         <div className="px-4 py-3.5">
           <h3
-            className="text-[15px] font-semibold text-stone-800 group-hover:text-[#c9a84c] transition-colors duration-200 mb-0.5"
-            style={{ fontFamily: "var(--font-sans), sans-serif" }}
+            className="mfs-home-title text-[15px] text-stone-800 transition-colors duration-200 group-hover:text-[#c9a84c] mb-0.5"
           >
             {title}
           </h3>
@@ -92,7 +91,7 @@ export default function ServicesOverview() {
           >
             What We Do
           </p>
-          <h2 className="font-heading text-3xl font-light text-stone-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mfs-home-title text-[1.9375rem] text-stone-900">
             Our Services
           </h2>
         </motion.div>
@@ -110,10 +109,7 @@ export default function ServicesOverview() {
               <div className="w-8 h-8 rounded-full bg-[#c9a84c]/10 flex items-center justify-center flex-shrink-0">
                 <Camera size={15} className="text-[#c9a84c]" />
               </div>
-              <h3
-                className="text-xl font-semibold text-stone-800"
-                style={{ fontFamily: "var(--font-sans), sans-serif" }}
-              >
+              <h3 className="mfs-home-title text-[1.125rem] sm:text-[1.1875rem] text-stone-800">
                 Photography Services
               </h3>
             </motion.div>
@@ -143,10 +139,7 @@ export default function ServicesOverview() {
               <div className="w-8 h-8 rounded-full bg-[#c9a84c]/10 flex items-center justify-center flex-shrink-0">
                 <Video size={15} className="text-[#c9a84c]" />
               </div>
-              <h3
-                className="text-xl font-semibold text-stone-800"
-                style={{ fontFamily: "var(--font-sans), sans-serif" }}
-              >
+              <h3 className="mfs-home-title text-[1.125rem] sm:text-[1.1875rem] text-stone-800">
                 Videography Services
               </h3>
             </motion.div>

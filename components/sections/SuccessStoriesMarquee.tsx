@@ -143,8 +143,7 @@ export default function SuccessStoriesMarquee() {
         </p>
         <h2
           id="success-stories-heading"
-          className="mt-3 max-w-3xl text-3xl font-semibold uppercase leading-[1.1] tracking-tight text-stone-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.05]"
-          style={{ fontFamily: sans }}
+          className="mfs-home-title mt-3 max-w-3xl text-[1.9375rem] text-stone-900"
         >
           Powered by{" "}
           <span className="text-[#9a7b2e]">Magic Frame Studio</span>

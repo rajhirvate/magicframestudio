@@ -93,7 +93,7 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
           <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#c9a84c]">
             {item.category}
           </p>
-          <h3 className="mb-4 text-xl font-normal text-white md:text-2xl">
+          <h3 className="mfs-home-title mb-4 text-xl font-normal text-white md:text-2xl">
             {item.label}
           </h3>
           <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export default function PortfolioPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-tight leading-tight font-heading"
+            className="mfs-home-title text-[1.9375rem] text-white mx-auto"
           >
             Capturing the <span className="italic">Essence</span> <br /> 
             of Every Moment

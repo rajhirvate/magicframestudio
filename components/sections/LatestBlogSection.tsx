@@ -25,7 +25,7 @@ export default async function LatestBlogSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2
           id="latest-blog-heading"
-          className="font-heading mb-12 text-center text-3xl font-normal text-stone-900 sm:text-4xl lg:mb-14 lg:text-[2.35rem]"
+          className="mfs-home-title mb-12 text-center text-[1.9375rem] text-stone-900 lg:mb-14"
         >
           Our Latest Blog Post
         </h2>
@@ -48,7 +48,7 @@ export default async function LatestBlogSection() {
                 />
               </div>
               <div className="bg-white px-6 py-12 sm:px-8 sm:py-14">
-                <h3 className="font-heading text-center text-[1.0625rem] font-normal leading-snug text-stone-500 transition group-hover:text-stone-600 sm:text-lg lg:text-[1.125rem]">
+                <h3 className="mfs-home-title text-center text-[1.0625rem] font-normal leading-snug text-stone-500 transition group-hover:text-stone-600 sm:text-lg lg:text-[1.125rem]">
                   {post.title}
                 </h3>
               </div>

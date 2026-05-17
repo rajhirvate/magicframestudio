@@ -51,7 +51,7 @@ export default function IntroSection() {
             >
               <h2
                 id="intro-services-heading"
-                className="font-heading mb-6 text-3xl font-normal leading-[1.18] text-stone-900 sm:text-4xl lg:text-[2.35rem]"
+                className="mfs-home-title mb-6 text-[1.9375rem] text-stone-900"
               >
                 Photography &amp; Videography Services
               </h2>

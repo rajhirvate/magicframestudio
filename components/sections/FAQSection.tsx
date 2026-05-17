@@ -128,8 +128,7 @@ export default function FAQSection() {
             Got Questions?
           </p>
           <h2
-            className="text-3xl sm:text-4xl font-bold text-stone-900 mb-3"
-            style={{ fontFamily: poppins }}
+            className="mfs-home-title text-[1.9375rem] text-stone-900 mb-3"
           >
             Frequently Asked Questions
           </h2>

@@ -43,6 +43,18 @@ body {
   font-weight: 400;
 }
 
+/**
+ * Main homepage only (`app/page.tsx` → `.hero3-page`): matches Our Approach block —
+ * Plus Jakarta, normal weight, uppercase, wide tracking, leading 1.18.
+ */
+.hero3-page .mfs-home-title {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  line-height: 1.18;
+}
+
 /* Home hero: light motion without hiding text (keeps LCP on the H1). */
 @keyframes mfs-hero-rise {
   from {
