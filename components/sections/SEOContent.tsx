@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { cn } from "@/lib/utils";
+import { isEditorialHeroHome } from "@/lib/routeFlags";
 
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
@@ -35,7 +36,7 @@ export function OurApproachSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
-  const isHero3 = pathname === "/" || pathname === "/hero3";
+  const isHero3 = isEditorialHeroHome(pathname);
 
   return (
     <section
@@ -69,7 +70,7 @@ export function OurApproachSection() {
           >
             <h2
               id="our-approach-heading"
-              className="mfs-home-title mb-6 text-[1.9375rem] text-stone-900"
+              className="mfs-home-title mb-6 max-w-[40rem] text-balance text-[1.9375rem] leading-[1.18] tracking-wide text-stone-900"
             >
               How Real Moments Rewrote the Way We Shoot
             </h2>
@@ -161,14 +162,14 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
         className="text-left"
       >
         <p
-          className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#b89e67]"
+          className="mb-3 text-xs tracking-widest uppercase text-[#c9a84c]"
           style={{ fontFamily: poppins }}
         >
           {block.tag}
         </p>
         <h2
           id="why-india-trusts-heading"
-          className="mfs-home-title mb-6 text-[1.9375rem] text-stone-900"
+          className="mfs-home-title mb-6 max-w-[40rem] text-balance text-[1.9375rem] leading-[1.18] tracking-wide text-stone-900"
         >
           {block.heading}
         </h2>
@@ -203,7 +204,7 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
 
 export default function SEOContent() {
   const pathname = usePathname();
-  const isHero3 = pathname === "/" || pathname === "/hero3";
+  const isHero3 = isEditorialHeroHome(pathname);
 
   if (isHero3) {
     return (

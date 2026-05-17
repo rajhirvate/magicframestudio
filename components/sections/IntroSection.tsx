@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { BTN_PRIMARY } from "@/lib/btn";
+import { isEditorialHeroHome } from "@/lib/routeFlags";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -17,7 +18,7 @@ export default function IntroSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
-  const isHero3 = pathname === "/" || pathname === "/hero3";
+  const isHero3 = isEditorialHeroHome(pathname);
 
   if (isHero3) {
     return (

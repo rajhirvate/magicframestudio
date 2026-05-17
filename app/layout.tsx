@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  Playfair_Display,
+  Plus_Jakarta_Sans,
+  Poppins,
+} from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 
@@ -16,6 +20,15 @@ const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+/** Loaded for `/hero4` typography comparison only (scoped via `.hero4-page`). */
+const fontPoppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -41,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSerif.variable} ${fontSans.variable} h-full`}
+      className={`${fontSerif.variable} ${fontSans.variable} ${fontPoppins.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <SiteChrome>{children}</SiteChrome>

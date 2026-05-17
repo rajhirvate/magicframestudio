@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
+import { isEditorialHeroHome } from "@/lib/routeFlags";
 import { MegaMenu, MobileServiceList } from "@/components/layout/ServiceMegaMenu";
 
 /* ─── Main Navbar ─────────────────────────────────────────────── */
@@ -17,8 +18,8 @@ export default function Navbar() {
   const [mobilePhotoOpen, setMobilePhotoOpen] = useState(false);
   const [mobileVideoOpen, setMobileVideoOpen] = useState(false);
   const pathname = usePathname();
-  /** Editorial home (formerly `/hero3`): light bar while idle; dark chrome while mega menu open. */
-  const hero3Editorial = pathname === "/" || pathname === "/hero3";
+  /** Editorial home: light bar while idle; dark chrome while mega menu open. */
+  const hero3Editorial = isEditorialHeroHome(pathname);
   const lightNavChrome = hero3Editorial && !openMega;
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
