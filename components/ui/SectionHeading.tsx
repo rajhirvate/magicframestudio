@@ -23,7 +23,7 @@ export type SectionHeadingProps = {
 };
 
 /**
- * Section title: gold eyebrow + stone title. Main `/` uses Plus Jakarta, normal weight,
+ * Section title: gold eyebrow + stone title. Main `/` uses Plus Jakarta, medium weight,
  * and uppercase to match `.mfs-home-title`; other routes use compact Poppins + extrabold.
  */
 export function SectionHeading({
@@ -67,7 +67,7 @@ export function SectionHeading({
         className={cn(
           useCompactScale
             ? "max-w-[22rem] font-extrabold tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-[min(40rem,92vw)]"
-            : "max-w-[22rem] font-normal leading-[1.08] text-balance text-stone-900 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
+            : "max-w-[22rem] font-medium leading-[1.08] text-balance text-stone-900 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
           Tag === "h3"
             ? cn(
                 useCompactScale
