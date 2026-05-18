@@ -171,7 +171,7 @@ export default function HeroSectionHero3() {
 
       <span className="sr-only">{HERO_SLIDES.map((s) => s.alt).join(". ")}.</span>
 
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-6 pb-16 pt-8 sm:px-10 sm:pb-20 sm:pt-10 lg:px-14 lg:pb-24 xl:px-16">
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-10 pb-16 pt-8 sm:px-14 sm:pb-20 sm:pt-10 lg:px-20 lg:pb-24 xl:px-32">
         <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
           <div className="mfs-hero-slideshow-copy">
             <AnimatePresence mode="wait" initial={false}>
