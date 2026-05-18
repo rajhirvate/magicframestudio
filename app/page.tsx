@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="hero3-page">
+    <>
       <HeroSectionHero3 />
       <StatsBar />
       <IntroSection />
@@ -38,6 +38,6 @@ export default function HomePage() {
       <MagicFrameDifferenceSection />
       <LatestBlogSection />
       <FAQSection />
-    </div>
+    </>
   );
 }

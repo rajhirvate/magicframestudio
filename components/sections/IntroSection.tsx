@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { BTN_PRIMARY } from "@/lib/btn";
-import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { isHero4Page } from "@/lib/routeFlags";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const sans = "var(--font-sans), sans-serif";
@@ -19,9 +19,9 @@ export default function IntroSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
-  const isHero3 = isEditorialHeroHome(pathname);
+  const isHero4 = isHero4Page(pathname);
 
-  if (isHero3) {
+  if (isHero4) {
     return (
       <section
         ref={ref}
@@ -102,12 +102,19 @@ export default function IntroSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
         >
-          <SectionHeading
+          <p
+            className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
+            style={{ fontFamily: sans }}
+          >
+            What we offer
+          </p>
+          <motion.h2
             id="intro-services-heading"
-            align="center"
-            eyebrow="What we offer"
-            title="Photography & videography services"
-          />
+            className="text-xl font-bold uppercase tracking-[0.14em] text-stone-900 sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] xl:text-[2rem]"
+            style={{ fontFamily: sans }}
+          >
+            Photography &amp; videography services
+          </motion.h2>
         </motion.div>
 
         <motion.div

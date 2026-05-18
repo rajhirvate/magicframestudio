@@ -3,8 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Camera, Video } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { photographyServices, videographyServices } from "@/data/services";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -70,6 +72,8 @@ function ServiceCard({
 export default function ServicesOverview() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const pathname = usePathname();
+  const isHero4 = pathname === "/hero4";
 
   return (
     <section
@@ -84,10 +88,10 @@ export default function ServicesOverview() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-10 text-center"
+          className={cn("mb-10", isHero4 ? "text-center" : "text-left")}
         >
           <SectionHeading
-            align="center"
+            align={isHero4 ? "center" : "left"}
             eyebrow="What we do"
             title="Our services"
           />
