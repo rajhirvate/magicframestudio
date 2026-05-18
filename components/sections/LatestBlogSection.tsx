@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { readBlogPosts } from "@/lib/blog/store";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/utils";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -10,7 +11,12 @@ const READ_POSTS_BTN =
   "inline-flex items-center justify-center rounded-md bg-[#6d563f] px-11 py-3.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-md shadow-stone-900/10 transition hover:bg-[#5f4a34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6d563f]";
 
 /** Homepage strip — latest three posts, links to `/blog` and individual stories. */
-export default async function LatestBlogSection() {
+export default async function LatestBlogSection({
+  hero4Variant = false,
+}: {
+  /** `/hero4` experiments: tighter padding and no eyebrow. */
+  hero4Variant?: boolean;
+} = {}) {
   const posts = await readBlogPosts();
   const featured = posts.slice(0, 3);
 
@@ -20,13 +26,19 @@ export default async function LatestBlogSection() {
 
   return (
     <section
-      className="border-t border-stone-200 bg-white pt-14 pb-10 lg:pt-[4.5rem] lg:pb-12"
+      className={cn(
+        "border-t border-stone-200 bg-white",
+        hero4Variant
+          ? "pt-14 pb-10 lg:pt-[4.5rem] lg:pb-12"
+          : "py-14 lg:py-[4.5rem]",
+      )}
       aria-labelledby="latest-blog-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="latest-blog-heading"
           align="center"
+          eyebrow={hero4Variant ? undefined : "From the blog"}
           title="Our latest blog post"
           className="mb-12 lg:mb-14"
         />

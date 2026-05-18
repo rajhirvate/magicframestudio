@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
-import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { isEditorialHeroHome, isHero4Path } from "@/lib/routeFlags";
 import { MegaMenu, MobileServiceList } from "@/components/layout/ServiceMegaMenu";
 
 /* ─── Main Navbar ─────────────────────────────────────────────── */
@@ -20,6 +20,7 @@ export default function Navbar() {
   const pathname = usePathname();
   /** Editorial home: light bar while idle; dark chrome while mega menu open. */
   const hero3Editorial = isEditorialHeroHome(pathname);
+  const hero4TaupeNavBook = hero3Editorial && isHero4Path(pathname);
   const lightNavChrome = hero3Editorial && !openMega;
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -156,7 +157,7 @@ export default function Navbar() {
                 className={cn(
                   BTN_PRIMARY,
                   "px-5 py-2 text-[11px]",
-                  hero3Editorial && "mfs-editorial-nav-book",
+                  hero4TaupeNavBook && "mfs-editorial-nav-book",
                 )}
                 style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
@@ -278,7 +279,7 @@ export default function Navbar() {
                 className={cn(
                   BTN_PRIMARY,
                   "w-full py-3 text-[11px]",
-                  hero3Editorial && "mfs-editorial-nav-book",
+                  hero4TaupeNavBook && "mfs-editorial-nav-book",
                 )}
                 style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >

@@ -30,7 +30,7 @@ export default function Hero4Page() {
       <SuccessStoriesMarquee />
       <SEOContent />
       <MagicFrameDifferenceSection />
-      <LatestBlogSection />
+      <LatestBlogSection hero4Variant />
       <FAQSection />
     </div>
   );

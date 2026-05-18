@@ -8,7 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { cn } from "@/lib/utils";
-import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { isEditorialHeroHome, isHero4Path } from "@/lib/routeFlags";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const poppins = "var(--font-sans), sans-serif";
@@ -202,9 +202,13 @@ export default function SEOContent() {
   const isHero3 = isEditorialHeroHome(pathname);
 
   if (isHero3) {
+    const isHero4 = isHero4Path(pathname);
     return (
       <section
-        className="bg-white py-16 lg:py-24"
+        className={cn(
+          "bg-white py-16 lg:py-24",
+          !isHero4 && "border-t border-stone-200",
+        )}
         aria-labelledby="why-india-trusts-heading"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

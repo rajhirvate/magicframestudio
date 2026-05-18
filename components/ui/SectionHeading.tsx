@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const POPPINS =
@@ -16,7 +19,8 @@ export type SectionHeadingProps = {
 };
 
 /**
- * Standard section title: small uppercase brand-gold eyebrow + large extrabold stone title (Poppins).
+ * Section title: gold eyebrow + stone title. Main `/` uses normal weight + uppercase
+ * to match `.mfs-home-title`; other routes use compact extrabold scale.
  */
 export function SectionHeading({
   eyebrow,
@@ -27,6 +31,9 @@ export function SectionHeading({
   as: Tag = "h2",
   className,
 }: SectionHeadingProps) {
+  const pathname = usePathname();
+  /** Only `/` uses the larger pre–hero-4 editorial scale; all other routes keep the compact scale. */
+  const useCompactScale = pathname !== "/";
   const isDark = theme === "dark";
 
   return (
@@ -39,17 +46,34 @@ export function SectionHeading({
       style={{ fontFamily: POPPINS }}
     >
       {eyebrow ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]">
+        <p
+          className={
+            useCompactScale
+              ? "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
+              : "text-sm font-semibold uppercase tracking-[0.12em] text-[var(--gold)] sm:tracking-[0.14em]"
+          }
+        >
           {eyebrow}
         </p>
       ) : null}
       <Tag
         id={id}
         className={cn(
-          "max-w-[22rem] font-extrabold tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-[min(40rem,92vw)]",
+          useCompactScale
+            ? "max-w-[22rem] font-extrabold tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-[min(40rem,92vw)]"
+            : "max-w-[22rem] font-normal leading-[1.08] text-balance text-stone-900 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
           Tag === "h3"
-            ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
-            : "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]",
+            ? cn(
+                "text-lg sm:text-xl lg:text-2xl leading-[1.15]",
+                !useCompactScale && "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
+              )
+            : cn(
+                useCompactScale
+                  ? "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]"
+                  : "text-[1.75rem] sm:text-4xl lg:text-[2.65rem] xl:text-5xl",
+                !useCompactScale &&
+                  "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
+              ),
           isDark && "text-white",
           eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",

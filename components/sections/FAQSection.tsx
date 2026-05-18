@@ -1,9 +1,12 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { isHero4Path } from "@/lib/routeFlags";
+import { cn } from "@/lib/utils";
 
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
@@ -109,9 +112,18 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const pathname = usePathname();
+  const isHero4 = isHero4Path(pathname);
 
   return (
-    <section className="bg-white pt-10 pb-14 lg:pt-14 lg:pb-20">
+    <section
+      className={cn(
+        "bg-white",
+        isHero4
+          ? "pt-10 pb-14 lg:pt-14 lg:pb-20"
+          : "border-t border-stone-100 py-14 lg:py-20",
+      )}
+    >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

@@ -6,7 +6,8 @@ import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { BTN_PRIMARY } from "@/lib/btn";
-import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { isEditorialHeroHome, isHero4Path } from "@/lib/routeFlags";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const sans = "var(--font-sans), sans-serif";
@@ -20,12 +21,18 @@ export default function IntroSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
   const isHero3 = isEditorialHeroHome(pathname);
+  const isHero4 = isHero4Path(pathname);
 
   if (isHero3) {
     return (
       <section
         ref={ref}
-        className="border-t border-stone-200 bg-white pt-16 pb-11 lg:pt-24 lg:pb-14"
+        className={cn(
+          "border-t border-stone-200 bg-white",
+          isHero4
+            ? "pt-16 pb-11 lg:pt-24 lg:pb-14"
+            : "py-16 lg:py-24",
+        )}
         aria-labelledby="intro-services-heading"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

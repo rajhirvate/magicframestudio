@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { isEditorialHeroHome, isHero4Path } from "@/lib/routeFlags";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 /** Full-bleed desert / dunes — cinematic backdrop for editorial CTA (home). */
@@ -21,6 +21,7 @@ export default function ReadyToConnectSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const pathname = usePathname();
   const cinematicHero3 = isEditorialHeroHome(pathname);
+  const isHero4 = isHero4Path(pathname);
 
   if (cinematicHero3) {
     return (
@@ -61,8 +62,9 @@ export default function ReadyToConnectSection() {
             <SectionHeading
               id="hero3-ready-connect-heading"
               theme="dark"
-              title="Prewedding shoot in Dubai"
+              eyebrow={isHero4 ? undefined : "Featured"}
               className="drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)]"
+              title="Prewedding shoot in Dubai"
             />
             <p
               className="mt-4 text-[13px] font-normal leading-relaxed text-white/90 sm:mt-5 sm:text-[14px] md:text-[15px]"

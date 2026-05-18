@@ -171,7 +171,14 @@ export default function HeroSectionHero3() {
 
       <span className="sr-only">{HERO_SLIDES.map((s) => s.alt).join(". ")}.</span>
 
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-8 pb-16 pt-8 sm:px-12 sm:pb-20 sm:pt-10 lg:px-16 lg:pb-24 xl:px-24">
+      <div
+        className={cn(
+          "relative z-10 flex flex-1 flex-col justify-center pb-16 pt-8 sm:pb-20 sm:pt-10",
+          isHero4
+            ? "px-8 sm:px-12 lg:px-16 lg:pb-24 xl:px-24"
+            : "px-4 sm:px-8 lg:px-12 lg:pb-24",
+        )}
+      >
         <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
           <div className="mfs-hero-slideshow-copy">
             <AnimatePresence mode="wait" initial={false}>
@@ -183,7 +190,12 @@ export default function HeroSectionHero3() {
                 transition={copyMotion}
               >
                 <p
-                  className="mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:mb-2.5 sm:tracking-[0.12em]"
+                  className={cn(
+                    "mb-2 font-semibold uppercase text-[var(--gold)] sm:mb-2.5",
+                    isHero4
+                      ? "text-xs tracking-[0.1em] sm:tracking-[0.12em]"
+                      : "text-sm tracking-[0.12em] sm:tracking-[0.14em]",
+                  )}
                   style={{ fontFamily: HERO_HEADING_FONT }}
                 >
                   {slide.eyebrow}
@@ -193,7 +205,7 @@ export default function HeroSectionHero3() {
                   className={cn(
                     isHero4
                       ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
-                      : "text-stone-800 font-extrabold leading-[1.04] text-[2.35rem] sm:text-4xl md:text-5xl lg:text-[3.65rem] tracking-tight",
+                      : "text-stone-900 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
                   )}
                   style={{ fontFamily: HERO_HEADING_FONT }}
                 >

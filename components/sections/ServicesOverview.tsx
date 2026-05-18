@@ -3,11 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Camera, Video } from "lucide-react";
 import { photographyServices, videographyServices } from "@/data/services";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { isHero4Path } from "@/lib/routeFlags";
+import { cn } from "@/lib/utils";
 
 function ServiceCard({
   title,
@@ -70,11 +73,18 @@ function ServiceCard({
 export default function ServicesOverview() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const pathname = usePathname();
+  const isHero4 = isHero4Path(pathname);
 
   return (
     <section
       id="homepage-services"
-      className="bg-white pt-11 pb-14 lg:pt-14 lg:pb-20"
+      className={cn(
+        "bg-white",
+        isHero4
+          ? "pt-11 pb-14 lg:pt-14 lg:pb-20"
+          : "py-14 lg:py-20",
+      )}
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
