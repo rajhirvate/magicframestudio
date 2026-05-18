@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import HeroSectionHero3 from "@/components/sections/HeroSectionHero3";
 import StatsBar from "@/components/sections/StatsBar";
 import IntroSection from "@/components/sections/IntroSection";
-import PartnersLogoStrip from "@/components/sections/PartnersLogoStrip";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import MagicFrameDifferenceSection from "@/components/sections/MagicFrameDifferenceSection";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
@@ -24,7 +23,6 @@ export default function Hero4Page() {
       <HeroSectionHero3 />
       <StatsBar />
       <IntroSection />
-      <PartnersLogoStrip />
       <ServicesOverview />
       <ReadyToConnectSection />
       <OurApproachSection />
