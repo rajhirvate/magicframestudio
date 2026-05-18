@@ -111,7 +111,7 @@ export default function FAQSection() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-white py-14 lg:py-20 border-t border-stone-100">
+    <section className="bg-white pt-10 pb-14 lg:pt-14 lg:pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

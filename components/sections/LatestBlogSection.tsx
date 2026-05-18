@@ -20,7 +20,7 @@ export default async function LatestBlogSection() {
 
   return (
     <section
-      className="border-t border-stone-200 bg-white py-14 lg:py-[4.5rem]"
+      className="border-t border-stone-200 bg-white pt-14 pb-10 lg:pt-[4.5rem] lg:pb-12"
       aria-labelledby="latest-blog-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
