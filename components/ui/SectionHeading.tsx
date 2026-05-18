@@ -46,7 +46,7 @@ export function SectionHeading({
       <Tag
         id={id}
         className={cn(
-          "max-w-[22rem] font-extrabold leading-[1.08] tracking-tight text-balance text-stone-900 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
+          "max-w-[22rem] font-extrabold leading-[1.08] tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
           Tag === "h3"
             ? "text-lg sm:text-xl lg:text-2xl"
             : "text-[1.75rem] sm:text-4xl lg:text-[2.65rem] xl:text-5xl",

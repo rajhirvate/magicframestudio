@@ -122,7 +122,7 @@ export default function HeroSectionHero3() {
     <section
       className={cn(
         "mfs-hero-editorial relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-16 lg:pt-20",
-        isHero4 ? "text-white" : "text-[#1a1a1a]",
+        isHero4 ? "text-white" : "text-stone-800",
       )}
       style={{ fontFamily: "var(--font-sans), sans-serif" }}
       aria-roledescription="slideshow"
@@ -193,7 +193,7 @@ export default function HeroSectionHero3() {
                   className={cn(
                     isHero4
                       ? "text-white text-[clamp(2.85rem,5.5vw+1rem,6.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em]"
-                      : "text-stone-900 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
+                      : "text-stone-800 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
                   )}
                   style={{ fontFamily: HERO_HEADING_FONT }}
                 >
