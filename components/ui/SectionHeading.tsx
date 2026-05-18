@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { isHero4Path } from "@/lib/routeFlags";
 
 const POPPINS =
   'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
@@ -24,7 +25,8 @@ export type SectionHeadingProps = {
 
 /**
  * Section title: gold eyebrow + stone title. Main `/` uses Plus Jakarta, medium weight,
- * and uppercase to match `.mfs-home-title`; other routes use compact Poppins + extrabold.
+ * and uppercase to match `.mfs-home-title`. `/hero4` uses the larger compact Poppins
+ * scale; other routes use the smaller compact scale.
  */
 export function SectionHeading({
   eyebrow,
@@ -38,6 +40,7 @@ export function SectionHeading({
   const pathname = usePathname();
   /** Only `/` uses the larger pre–hero-4 editorial scale; all other routes keep the compact scale. */
   const useCompactScale = pathname !== "/";
+  const isHero4 = isHero4Path(pathname);
   const isDark = theme === "dark";
 
   return (
@@ -55,7 +58,9 @@ export function SectionHeading({
         <p
           className={
             useCompactScale
-              ? "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] text-[var(--gold)] sm:text-[0.75rem] sm:tracking-[0.1em]"
+              ? isHero4
+                ? "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
+                : "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] text-[var(--gold)] sm:text-[0.75rem] sm:tracking-[0.1em]"
               : "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
           }
         >
@@ -71,13 +76,17 @@ export function SectionHeading({
           Tag === "h3"
             ? cn(
                 useCompactScale
-                  ? "text-base sm:text-lg lg:text-xl leading-[1.15]"
+                  ? isHero4
+                    ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
+                    : "text-base sm:text-lg lg:text-xl leading-[1.15]"
                   : "text-sm sm:text-base lg:text-lg leading-[1.15]",
                 !useCompactScale && "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
               )
             : cn(
                 useCompactScale
-                  ? "text-[1.25rem] sm:text-[1.75rem] leading-[1.06]"
+                  ? isHero4
+                    ? "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]"
+                    : "text-[1.25rem] sm:text-[1.75rem] leading-[1.06]"
                   : "text-[1.375rem] sm:text-[1.875rem] leading-[1.08]",
                 !useCompactScale &&
                   "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
