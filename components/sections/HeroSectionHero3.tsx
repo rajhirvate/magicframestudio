@@ -183,7 +183,7 @@ export default function HeroSectionHero3() {
                 transition={copyMotion}
               >
                 <p
-                  className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--gold)] sm:mb-2.5 sm:tracking-[0.14em]"
+                  className="mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:mb-2.5 sm:tracking-[0.12em]"
                   style={{ fontFamily: HERO_HEADING_FONT }}
                 >
                   {slide.eyebrow}

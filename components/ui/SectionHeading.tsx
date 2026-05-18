@@ -39,7 +39,7 @@ export function SectionHeading({
       style={{ fontFamily: POPPINS }}
     >
       {eyebrow ? (
-        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--gold)] sm:tracking-[0.14em]">
+        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]">
           {eyebrow}
         </p>
       ) : null}
