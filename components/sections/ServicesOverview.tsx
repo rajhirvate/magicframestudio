@@ -9,6 +9,12 @@ import { photographyServices, videographyServices } from "@/data/services";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
+const INTRO_FONT =
+  'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
+
+const SERVICES_INTRO =
+  "We plan every project with you — from weddings and portraits to corporate, product, and event work — then shoot with verified crews across India and deliver galleries and films you can publish or relive with confidence.";
+
 function ServiceCard({
   title,
   slug,
@@ -79,14 +85,24 @@ export default function ServicesOverview() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section heading */}
+        {/* Split header — heading left, intro right (reference layout) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-10 text-left"
+          className="mb-12 grid grid-cols-1 items-start gap-8 sm:gap-10 lg:mb-16 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6 xl:gap-x-20"
         >
-          <SectionHeading eyebrow="What we do" title="Our services" />
+          <SectionHeading
+            eyebrow="What we do"
+            title="Our services"
+            className="max-w-xl lg:max-w-none"
+          />
+          <p
+            className="max-w-lg text-[15px] font-normal leading-relaxed text-stone-600 sm:text-base lg:pt-1"
+            style={{ fontFamily: INTRO_FONT }}
+          >
+            {SERVICES_INTRO}
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
