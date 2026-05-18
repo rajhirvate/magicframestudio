@@ -212,9 +212,11 @@ body {
 /**
  * /hero3 — editorial taupe CTAs (flat, square corners, uppercase tracking).
  * Scoped so other routes keep gold `BTN_PRIMARY`.
+ * `mfs-editorial-nav-book`: same look for nav “Book a shoot” (nav sits outside `.hero3-page`).
  */
 .hero3-page .mfs-btn-primary,
-.hero3-page .mfs-btn-editorial {
+.hero3-page .mfs-btn-editorial,
+.mfs-editorial-nav-book.mfs-btn-primary {
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
@@ -235,19 +237,22 @@ body {
 }
 
 .hero3-page .mfs-btn-primary:hover,
-.hero3-page .mfs-btn-editorial:hover {
+.hero3-page .mfs-btn-editorial:hover,
+.mfs-editorial-nav-book.mfs-btn-primary:hover {
   background-color: #5a4f44 !important;
   color: #ffffff !important;
 }
 
 .hero3-page .mfs-btn-primary:focus-visible,
-.hero3-page .mfs-btn-editorial:focus-visible {
+.hero3-page .mfs-btn-editorial:focus-visible,
+.mfs-editorial-nav-book.mfs-btn-primary:focus-visible {
   outline: 2px solid #6b5e51 !important;
   outline-offset: 2px !important;
 }
 
 .hero3-page .mfs-btn-primary svg,
-.hero3-page .mfs-btn-editorial svg {
+.hero3-page .mfs-btn-editorial svg,
+.mfs-editorial-nav-book.mfs-btn-primary svg {
   color: #ffffff;
   stroke: #ffffff;
   width: 0.875rem !important;

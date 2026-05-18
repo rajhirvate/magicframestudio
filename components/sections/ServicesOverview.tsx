@@ -74,7 +74,7 @@ export default function ServicesOverview() {
   return (
     <section
       id="homepage-services"
-      className="bg-white py-14 lg:py-20"
+      className="bg-white pt-11 pb-14 lg:pt-14 lg:pb-20"
       ref={ref}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

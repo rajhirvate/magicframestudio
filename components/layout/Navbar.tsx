@@ -153,7 +153,11 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className={cn(BTN_PRIMARY, "px-5 py-2 text-[11px]")}
+                className={cn(
+                  BTN_PRIMARY,
+                  "px-5 py-2 text-[11px]",
+                  hero3Editorial && "mfs-editorial-nav-book",
+                )}
                 style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Book a shoot
@@ -271,7 +275,11 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className={cn(BTN_PRIMARY, "w-full py-3 text-[11px]")}
+                className={cn(
+                  BTN_PRIMARY,
+                  "w-full py-3 text-[11px]",
+                  hero3Editorial && "mfs-editorial-nav-book",
+                )}
                 style={{ fontFamily: "var(--font-sans), sans-serif" }}
               >
                 Book a shoot
