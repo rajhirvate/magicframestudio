@@ -117,7 +117,7 @@ export default function HeroSection() {
               transform: "translateY(-0.05em)",
             }}
           />{" "}
-          We Craft Stories
+          We Craft Stories.
         </h1>
 
         <p

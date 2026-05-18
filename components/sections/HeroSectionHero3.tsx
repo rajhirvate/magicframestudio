@@ -41,7 +41,7 @@ const HERO_SLIDES: HeroSlide[] = [
     eyebrow: "Magic Frame Studio · Since 2020",
     title: (
       <>
-        We Don&apos;t Just Capture Moments <TitleAccent /> We Craft Stories
+        We Don&apos;t Just Capture Moments <TitleAccent /> We Craft Stories.
       </>
     ),
     subline:
