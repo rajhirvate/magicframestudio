@@ -171,7 +171,7 @@ export default function HeroSectionHero3() {
 
       <span className="sr-only">{HERO_SLIDES.map((s) => s.alt).join(". ")}.</span>
 
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-12 lg:pb-24">
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-6 pb-16 pt-8 sm:px-10 sm:pb-20 sm:pt-10 lg:px-14 lg:pb-24 xl:px-16">
         <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
           <div className="mfs-hero-slideshow-copy">
             <AnimatePresence mode="wait" initial={false}>
@@ -192,8 +192,8 @@ export default function HeroSectionHero3() {
                 <div
                   className={cn(
                     isHero4
-                      ? "text-white text-[clamp(2.85rem,5.5vw+1rem,6.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em]"
-                      : "text-stone-800 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
+                      ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.06] tracking-[-0.03em]"
+                      : "text-stone-800 font-extrabold leading-[1.08] text-[2.35rem] sm:text-4xl md:text-5xl lg:text-[3.65rem] tracking-tight",
                   )}
                   style={{ fontFamily: HERO_HEADING_FONT }}
                 >
