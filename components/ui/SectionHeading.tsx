@@ -55,8 +55,8 @@ export function SectionHeading({
         <p
           className={
             useCompactScale
-              ? "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
-              : "text-sm font-semibold uppercase tracking-[0.12em] text-[var(--gold)] sm:tracking-[0.14em]"
+              ? "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] text-[var(--gold)] sm:text-[0.75rem] sm:tracking-[0.1em]"
+              : "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
           }
         >
           {eyebrow}
@@ -71,14 +71,14 @@ export function SectionHeading({
           Tag === "h3"
             ? cn(
                 useCompactScale
-                  ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
-                  : "text-base sm:text-lg lg:text-xl leading-[1.15]",
+                  ? "text-base sm:text-lg lg:text-xl leading-[1.15]"
+                  : "text-sm sm:text-base lg:text-lg leading-[1.15]",
                 !useCompactScale && "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
               )
             : cn(
                 useCompactScale
-                  ? "text-[1.375rem] sm:text-[1.9375rem] leading-[1.06]"
-                  : "text-[1.5rem] sm:text-[2.125rem] leading-[1.08]",
+                  ? "text-[1.25rem] sm:text-[1.75rem] leading-[1.06]"
+                  : "text-[1.375rem] sm:text-[1.875rem] leading-[1.08]",
                 !useCompactScale &&
                   "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
               ),
