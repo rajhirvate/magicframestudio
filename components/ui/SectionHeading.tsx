@@ -46,10 +46,10 @@ export function SectionHeading({
       <Tag
         id={id}
         className={cn(
-          "max-w-[22rem] font-extrabold leading-[1.08] tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
+          "max-w-[22rem] font-extrabold leading-[1.12] tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-[min(40rem,92vw)]",
           Tag === "h3"
             ? "text-lg sm:text-xl lg:text-2xl"
-            : "text-[1.75rem] sm:text-4xl lg:text-[2.65rem] xl:text-5xl",
+            : "text-[1.75rem] sm:text-[2.5rem]",
           isDark && "text-white",
           eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",

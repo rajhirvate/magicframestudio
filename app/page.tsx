@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import HeroSectionHero3 from "@/components/sections/HeroSectionHero3";
 import StatsBar from "@/components/sections/StatsBar";
 import IntroSection from "@/components/sections/IntroSection";
+import PartnersLogoStrip from "@/components/sections/PartnersLogoStrip";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <HeroSectionHero3 />
       <StatsBar />
       <IntroSection />
+      <PartnersLogoStrip />
       <ServicesOverview />
       <ReadyToConnectSection />
       <OurApproachSection />
