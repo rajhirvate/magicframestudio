@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
@@ -111,9 +110,6 @@ function PortfolioCard({ item, index }: { item: typeof portfolioItems[0], index:
 }
 
 export default function PortfolioPreview() {
-  const pathname = usePathname();
-  const isHero4 = pathname === "/hero4";
-
   return (
     <section className="relative overflow-hidden bg-[#0f0c0a] py-24 lg:py-32">
       {/* Decorative Background Elements */}
@@ -130,39 +126,17 @@ export default function PortfolioPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {isHero4 ? (
-              <SectionHeading
-                theme="dark"
-                align="center"
-                eyebrow="Visual excellence"
-                title={
-                  <>
-                    Capturing the <span className="italic">essence</span> of
-                    every moment
-                  </>
-                }
-              />
-            ) : (
-              <>
-                <motion.span
-                  className="mb-6 block text-[10px] font-bold uppercase text-[#c9a84c] md:text-xs"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  Visual excellence
-                </motion.span>
-                <motion.h2
-                  className="mfs-home-title mx-auto max-w-4xl text-[1.9375rem] text-white"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  Capturing the <span className="italic">essence</span> of
-                  every moment
-                </motion.h2>
-              </>
-            )}
+            <SectionHeading
+              theme="dark"
+              align="center"
+              eyebrow="Visual excellence"
+              title={
+                <>
+                  Capturing the <span className="italic">essence</span> of every
+                  moment
+                </>
+              }
+            />
           </motion.div>
           
           <motion.p

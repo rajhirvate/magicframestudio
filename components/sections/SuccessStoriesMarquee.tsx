@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import type { SuccessStory } from "@/data/successStoriesMarquee";
 import {
   SUCCESS_STORIES_MARQUEE_ROW_A,
@@ -126,8 +125,6 @@ function MarqueeRow({
 
 export default function SuccessStoriesMarquee() {
   const prefersReducedMotion = useReducedMotion();
-  const pathname = usePathname();
-  const isHero4 = pathname === "/hero4";
 
   return (
     <section
@@ -139,34 +136,16 @@ export default function SuccessStoriesMarquee() {
         aria-hidden
       />
       <div className="relative z-[1] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {isHero4 ? (
-          <SectionHeading
-            id="success-stories-heading"
-            eyebrow="Success stories"
-            title={
-              <>
-                Powered by{" "}
-                <span className="text-[#9a7b2e]">Magic Frame Studio</span>
-              </>
-            }
-          />
-        ) : (
-          <>
-            <p
-              className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]"
-              style={{ fontFamily: sans }}
-            >
-              Success stories
-            </p>
-            <h2
-              id="success-stories-heading"
-              className="mfs-home-title mt-3 text-[1.9375rem] text-stone-900"
-            >
+        <SectionHeading
+          id="success-stories-heading"
+          eyebrow="Success stories"
+          title={
+            <>
               Powered by{" "}
               <span className="text-[#9a7b2e]">Magic Frame Studio</span>
-            </h2>
-          </>
-        )}
+            </>
+          }
+        />
         <p
           className="mt-4 max-w-xl text-sm text-stone-600"
           style={{ fontFamily: sans }}

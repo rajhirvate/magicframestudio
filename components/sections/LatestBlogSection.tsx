@@ -10,11 +10,7 @@ const READ_POSTS_BTN =
   "inline-flex items-center justify-center rounded-md bg-[#6d563f] px-11 py-3.5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white shadow-md shadow-stone-900/10 transition hover:bg-[#5f4a34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6d563f]";
 
 /** Homepage strip — latest three posts, links to `/blog` and individual stories. */
-export default async function LatestBlogSection({
-  editorial = false,
-}: {
-  editorial?: boolean;
-} = {}) {
+export default async function LatestBlogSection() {
   const posts = await readBlogPosts();
   const featured = posts.slice(0, 3);
 
@@ -28,22 +24,13 @@ export default async function LatestBlogSection({
       aria-labelledby="latest-blog-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {editorial ? (
-          <SectionHeading
-            id="latest-blog-heading"
-            align="center"
-            eyebrow="From the blog"
-            title="Our latest blog post"
-            className="mb-12 lg:mb-14"
-          />
-        ) : (
-          <h2
-            id="latest-blog-heading"
-            className="mfs-home-title mb-12 text-center text-[1.9375rem] text-stone-900 lg:mb-14"
-          >
-            Our Latest Blog Post
-          </h2>
-        )}
+        <SectionHeading
+          id="latest-blog-heading"
+          align="center"
+          eyebrow="From the blog"
+          title="Our latest blog post"
+          className="mb-12 lg:mb-14"
+        />
 
         <div className="mx-auto grid max-w-6xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {featured.map((post) => (

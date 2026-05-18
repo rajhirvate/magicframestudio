@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { usePathname } from "next/navigation";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -110,14 +109,9 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const pathname = usePathname();
-  const isHero4 = pathname === "/hero4";
 
   return (
-    <section
-      className="border-t border-stone-100 bg-white py-14 lg:py-20"
-      aria-labelledby="faq-heading"
-    >
+    <section className="bg-white py-14 lg:py-20 border-t border-stone-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -128,30 +122,12 @@ export default function FAQSection() {
           transition={{ duration: 0.65 }}
           className="text-center mb-12"
         >
-          {isHero4 ? (
-            <SectionHeading
-              id="faq-heading"
-              align="center"
-              eyebrow="Got questions?"
-              title="Frequently asked questions"
-              className="mb-3"
-            />
-          ) : (
-            <>
-              <p
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#c9a84c]"
-                style={{ fontFamily: poppins }}
-              >
-                Got questions?
-              </p>
-              <h2
-                id="faq-heading"
-                className="mfs-home-title text-[1.9375rem] text-stone-900"
-              >
-                Frequently asked questions
-              </h2>
-            </>
-          )}
+          <SectionHeading
+            align="center"
+            eyebrow="Got questions?"
+            title="Frequently asked questions"
+            className="mb-3"
+          />
           <p
             className="text-sm text-stone-400 max-w-xl mx-auto"
             style={{ fontFamily: inter }}

@@ -8,7 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { cn } from "@/lib/utils";
-import { isHero4Page } from "@/lib/routeFlags";
+import { isEditorialHeroHome } from "@/lib/routeFlags";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const poppins = "var(--font-sans), sans-serif";
@@ -37,7 +37,7 @@ export function OurApproachSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const pathname = usePathname();
-  const isHero4 = isHero4Page(pathname);
+  const isHero3 = isEditorialHeroHome(pathname);
 
   return (
     <section
@@ -69,29 +69,12 @@ export function OurApproachSection() {
             transition={{ duration: 0.65, delay: 0.06, ease: "easeOut" }}
             className="text-left"
           >
-            {isHero4 ? (
-              <SectionHeading
-                id="our-approach-heading"
-                eyebrow="Our approach"
-                title="How real moments rewrote the way we shoot"
-                className="mb-6 max-w-[40rem]"
-              />
-            ) : (
-              <>
-                <p
-                  className="mb-3 text-xs tracking-widest uppercase text-[#c9a84c]"
-                  style={{ fontFamily: poppins }}
-                >
-                  Our approach
-                </p>
-                <h2
-                  id="our-approach-heading"
-                  className="mfs-home-title mb-6 max-w-[40rem] text-balance text-[1.9375rem] leading-[1.18] tracking-wide text-stone-900"
-                >
-                  How real moments rewrote the way we shoot
-                </h2>
-              </>
-            )}
+            <SectionHeading
+              id="our-approach-heading"
+              eyebrow="Our approach"
+              title="How real moments rewrote the way we shoot"
+              className="mb-6 max-w-[40rem]"
+            />
             <div
               className="space-y-4 text-[15px] font-normal leading-relaxed text-stone-600 sm:text-base"
               style={{ fontFamily: inter }}
@@ -113,7 +96,7 @@ export function OurApproachSection() {
                 later, we&apos;re still chasing frames that feel lived-in, not staged.
               </p>
             </div>
-            {isHero4 ? (
+            {isHero3 ? (
               <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:gap-5">
                 <Link
                   href="/about"
@@ -216,9 +199,9 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
 
 export default function SEOContent() {
   const pathname = usePathname();
-  const isHero4 = isHero4Page(pathname);
+  const isHero3 = isEditorialHeroHome(pathname);
 
-  if (isHero4) {
+  if (isHero3) {
     return (
       <section
         className="border-t border-stone-200 bg-white py-16 lg:py-24"
@@ -287,18 +270,12 @@ function SEOBlock({
       transition={{ duration: 0.65, delay: index * 0.08 }}
       className="text-center max-w-4xl mx-auto"
     >
-      <p
-        className="mb-3 text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase"
-        style={{ fontFamily: poppins }}
-      >
-        {block.tag}
-      </p>
-      <h2
-        className="mb-5 text-2xl font-bold leading-snug text-stone-900 sm:text-3xl"
-        style={{ fontFamily: poppins }}
-      >
-        {block.heading}
-      </h2>
+      <SectionHeading
+        align="center"
+        eyebrow={block.tag}
+        title={block.heading}
+        className="mb-5"
+      />
       <div className="space-y-4">
         {block.paragraphs.map((para, j) => (
           <p

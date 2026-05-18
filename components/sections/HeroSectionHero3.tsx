@@ -171,22 +171,8 @@ export default function HeroSectionHero3() {
 
       <span className="sr-only">{HERO_SLIDES.map((s) => s.alt).join(". ")}.</span>
 
-      <div
-        className={cn(
-          "relative z-10 flex flex-1 flex-col justify-center",
-          isHero4
-            ? "px-8 pb-16 pt-8 sm:px-12 sm:pb-20 sm:pt-10 lg:px-16 lg:pb-24 xl:px-24"
-            : "px-4 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-12 lg:pb-24",
-        )}
-      >
-        <div
-          className={cn(
-            "w-full",
-            isHero4
-              ? "max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]"
-              : "max-w-xl lg:max-w-2xl",
-          )}
-        >
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-8 pb-16 pt-8 sm:px-12 sm:pb-20 sm:pt-10 lg:px-16 lg:pb-24 xl:px-24">
+        <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
           <div className="mfs-hero-slideshow-copy">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -197,14 +183,8 @@ export default function HeroSectionHero3() {
                 transition={copyMotion}
               >
                 <p
-                  className={cn(
-                    isHero4
-                      ? "mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:mb-2.5 sm:tracking-[0.12em]"
-                      : "mb-5 text-[10px] font-medium uppercase tracking-[0.4em] text-[#c9a84c] sm:mb-6 sm:text-xs",
-                  )}
-                  style={
-                    isHero4 ? { fontFamily: HERO_HEADING_FONT } : undefined
-                  }
+                  className="mb-2 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:mb-2.5 sm:tracking-[0.12em]"
+                  style={{ fontFamily: HERO_HEADING_FONT }}
                 >
                   {slide.eyebrow}
                 </p>
@@ -213,23 +193,24 @@ export default function HeroSectionHero3() {
                   className={cn(
                     isHero4
                       ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
-                      : "font-heading text-[#1a1a1a] font-light leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem]",
+                      : "text-stone-800 font-extrabold leading-[1.04] text-[2.35rem] sm:text-4xl md:text-5xl lg:text-[3.65rem] tracking-tight",
                   )}
-                  style={
-                    isHero4 ? { fontFamily: HERO_HEADING_FONT } : undefined
-                  }
+                  style={{ fontFamily: HERO_HEADING_FONT }}
                 >
-                  <h1 className={cn("inline-block", isHero4 && "font-extrabold")}>
+                  <h1 className="inline-block font-extrabold">
                     <span aria-live="polite">{slide.title}</span>
                   </h1>
                 </div>
 
-                {isHero4 && (
-                  <p className="mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal text-white/75 sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty">
-                    <span className="block">{slide.lead[0]}</span>
-                    <span className="block">{slide.lead[1]}</span>
-                  </p>
-                )}
+                <p
+                  className={cn(
+                    "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
+                    isHero4 ? "text-white/75" : "text-[#1a1a1a]/58",
+                  )}
+                >
+                  <span className="block">{slide.lead[0]}</span>
+                  <span className="block">{slide.lead[1]}</span>
+                </p>
               </motion.div>
             </AnimatePresence>
           </div>
