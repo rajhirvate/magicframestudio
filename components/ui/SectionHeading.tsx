@@ -7,6 +7,10 @@ import { cn } from "@/lib/utils";
 const POPPINS =
   'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
 
+/** Main `/` section titles — same stack as `.mfs-home-title` (Plus Jakarta from `:root`). */
+const MAIN_HOME_HEADING_FONT =
+  "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
+
 export type SectionHeadingProps = {
   /** Uppercase label above the title (e.g. WHAT WE DO). Omit to hide. */
   eyebrow?: string;
@@ -19,8 +23,8 @@ export type SectionHeadingProps = {
 };
 
 /**
- * Section title: gold eyebrow + stone title. Main `/` uses normal weight + uppercase
- * to match `.mfs-home-title`; other routes use compact extrabold scale.
+ * Section title: gold eyebrow + stone title. Main `/` uses Plus Jakarta, normal weight,
+ * and uppercase to match `.mfs-home-title`; other routes use compact Poppins + extrabold.
  */
 export function SectionHeading({
   eyebrow,
@@ -43,7 +47,9 @@ export function SectionHeading({
         align === "center" && "items-center text-center",
         className,
       )}
-      style={{ fontFamily: POPPINS }}
+      style={{
+        fontFamily: useCompactScale ? POPPINS : MAIN_HOME_HEADING_FONT,
+      }}
     >
       {eyebrow ? (
         <p
@@ -64,13 +70,15 @@ export function SectionHeading({
             : "max-w-[22rem] font-normal leading-[1.08] text-balance text-stone-900 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
           Tag === "h3"
             ? cn(
-                "text-lg sm:text-xl lg:text-2xl leading-[1.15]",
+                useCompactScale
+                  ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
+                  : "text-base sm:text-lg lg:text-xl leading-[1.15]",
                 !useCompactScale && "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
               )
             : cn(
                 useCompactScale
-                  ? "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]"
-                  : "text-[1.75rem] sm:text-4xl lg:text-[2.65rem] xl:text-5xl",
+                  ? "text-[1.375rem] sm:text-[1.9375rem] leading-[1.06]"
+                  : "text-[1.5rem] sm:text-[2.125rem] leading-[1.08]",
                 !useCompactScale &&
                   "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
               ),
