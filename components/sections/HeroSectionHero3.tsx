@@ -192,8 +192,8 @@ export default function HeroSectionHero3() {
                 <div
                   className={cn(
                     isHero4
-                      ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.06] tracking-[-0.03em]"
-                      : "text-stone-800 font-extrabold leading-[1.08] text-[2.35rem] sm:text-4xl md:text-5xl lg:text-[3.65rem] tracking-tight",
+                      ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
+                      : "text-stone-800 font-extrabold leading-[1.04] text-[2.35rem] sm:text-4xl md:text-5xl lg:text-[3.65rem] tracking-tight",
                   )}
                   style={{ fontFamily: HERO_HEADING_FONT }}
                 >

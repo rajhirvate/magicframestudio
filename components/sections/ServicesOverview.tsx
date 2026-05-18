@@ -84,9 +84,13 @@ export default function ServicesOverview() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-10 text-left"
+          className="mb-10 text-center"
         >
-          <SectionHeading eyebrow="What we do" title="Our services" />
+          <SectionHeading
+            align="center"
+            eyebrow="What we do"
+            title="Our services"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
