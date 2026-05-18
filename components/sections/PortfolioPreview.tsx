@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const portfolioItems = [
   {
@@ -119,24 +120,24 @@ export default function PortfolioPreview() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col items-center text-center mb-16 lg:mb-24">
-          <motion.span
-            initial={{ opacity: 0, letterSpacing: "0.2em" }}
-            whileInView={{ opacity: 1, letterSpacing: "0.5em" }}
-            viewport={{ once: true }}
-            className="text-[#c9a84c] text-[10px] md:text-xs font-bold uppercase mb-6 block"
-          >
-            Visual Excellence
-          </motion.span>
-          <motion.h2 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mfs-home-title text-[1.9375rem] text-white mx-auto"
           >
-            Capturing the <span className="italic">Essence</span> <br /> 
-            of Every Moment
-          </motion.h2>
+            <SectionHeading
+              theme="dark"
+              align="center"
+              eyebrow="Visual excellence"
+              title={
+                <>
+                  Capturing the <span className="italic">essence</span> of every
+                  moment
+                </>
+              }
+            />
+          </motion.div>
           
           <motion.p
             initial={{ opacity: 0 }}

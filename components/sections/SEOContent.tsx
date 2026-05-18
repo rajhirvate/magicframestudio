@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { cn } from "@/lib/utils";
 import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
@@ -68,12 +69,12 @@ export function OurApproachSection() {
             transition={{ duration: 0.65, delay: 0.06, ease: "easeOut" }}
             className="text-left"
           >
-            <h2
+            <SectionHeading
               id="our-approach-heading"
-              className="mfs-home-title mb-6 max-w-[40rem] text-balance text-[1.9375rem] leading-[1.18] tracking-wide text-stone-900"
-            >
-              How Real Moments Rewrote the Way We Shoot
-            </h2>
+              eyebrow="Our approach"
+              title="How real moments rewrote the way we shoot"
+              className="mb-6 max-w-[40rem]"
+            />
             <div
               className="space-y-4 text-[15px] font-normal leading-relaxed text-stone-600 sm:text-base"
               style={{ fontFamily: inter }}
@@ -161,18 +162,12 @@ function WhyIndiaHero3Editorial({ block }: { block: typeof whyIndiaBlock }) {
         transition={{ duration: 0.65, delay: 0.06, ease: "easeOut" }}
         className="text-left"
       >
-        <p
-          className="mb-3 text-xs tracking-widest uppercase text-[#c9a84c]"
-          style={{ fontFamily: poppins }}
-        >
-          {block.tag}
-        </p>
-        <h2
+        <SectionHeading
           id="why-india-trusts-heading"
-          className="mfs-home-title mb-6 max-w-[40rem] text-balance text-[1.9375rem] leading-[1.18] tracking-wide text-stone-900"
-        >
-          {block.heading}
-        </h2>
+          eyebrow={block.tag}
+          title={block.heading}
+          className="mb-6 max-w-[40rem]"
+        />
         <div
           className="space-y-4 text-[15px] font-normal leading-relaxed text-stone-600 sm:text-base"
           style={{ fontFamily: inter }}
@@ -275,18 +270,12 @@ function SEOBlock({
       transition={{ duration: 0.65, delay: index * 0.08 }}
       className="text-center max-w-4xl mx-auto"
     >
-      <p
-        className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
-        style={{ fontFamily: poppins }}
-      >
-        {block.tag}
-      </p>
-      <h2
-        className="text-2xl sm:text-3xl font-bold text-stone-900 mb-5 leading-snug"
-        style={{ fontFamily: poppins }}
-      >
-        {block.heading}
-      </h2>
+      <SectionHeading
+        align="center"
+        eyebrow={block.tag}
+        title={block.heading}
+        className="mb-5"
+      />
       <div className="space-y-4">
         {block.paragraphs.map((para, j) => (
           <p

@@ -8,6 +8,7 @@ import { BTN_PRIMARY } from "@/lib/btn";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 /** Full-bleed desert / dunes — cinematic backdrop for editorial CTA (home). */
 const HERO3_READY_CONNECT_BG =
@@ -57,12 +58,13 @@ export default function ReadyToConnectSection() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="w-full max-w-none text-left"
           >
-            <h2
+            <SectionHeading
               id="hero3-ready-connect-heading"
-              className="mfs-home-title text-[1.9375rem] text-white drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)] sm:text-[2rem] md:text-[2.125rem] lg:text-[2.25rem]"
-            >
-              Prewedding Shoot in Dubai
-            </h2>
+              theme="dark"
+              eyebrow="Featured"
+              title="Prewedding shoot in Dubai"
+              className="drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)]"
+            />
             <p
               className="mt-4 text-[13px] font-normal leading-relaxed text-white/90 sm:mt-5 sm:text-[14px] md:text-[15px]"
               style={{ fontFamily: sans }}

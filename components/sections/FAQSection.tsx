@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
@@ -121,17 +122,12 @@ export default function FAQSection() {
           transition={{ duration: 0.65 }}
           className="text-center mb-12"
         >
-          <p
-            className="text-xs font-semibold tracking-[0.2em] text-[#c9a84c] uppercase mb-3"
-            style={{ fontFamily: poppins }}
-          >
-            Got Questions?
-          </p>
-          <h2
-            className="mfs-home-title text-[1.9375rem] text-stone-900 mb-3"
-          >
-            Frequently Asked Questions
-          </h2>
+          <SectionHeading
+            align="center"
+            eyebrow="Got questions?"
+            title="Frequently asked questions"
+            className="mb-3"
+          />
           <p
             className="text-sm text-stone-400 max-w-xl mx-auto"
             style={{ fontFamily: inter }}

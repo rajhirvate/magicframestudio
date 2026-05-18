@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { readBlogPosts } from "@/lib/blog/store";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -23,12 +24,13 @@ export default async function LatestBlogSection() {
       aria-labelledby="latest-blog-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2
+        <SectionHeading
           id="latest-blog-heading"
-          className="mfs-home-title mb-12 text-center text-[1.9375rem] text-stone-900 lg:mb-14"
-        >
-          Our Latest Blog Post
-        </h2>
+          align="center"
+          eyebrow="From the blog"
+          title="Our latest blog post"
+          className="mb-12 lg:mb-14"
+        />
 
         <div className="mx-auto grid max-w-6xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {featured.map((post) => (

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { isEditorialHeroHome } from "@/lib/routeFlags";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const sans = "var(--font-sans), sans-serif";
 
@@ -50,12 +51,12 @@ export default function IntroSection() {
               transition={{ duration: 0.65, delay: 0.06, ease: "easeOut" }}
               className="text-left"
             >
-              <h2
+              <SectionHeading
                 id="intro-services-heading"
-                className="mfs-home-title mb-6 text-[1.9375rem] text-stone-900"
-              >
-                Photography &amp; Videography Services
-              </h2>
+                eyebrow="What we offer"
+                title="Photography & videography services"
+                className="mb-6"
+              />
               <p
                 className="text-[15px] font-normal leading-relaxed text-stone-600 sm:text-base lg:leading-[1.85]"
                 style={{ fontFamily: sans }}
@@ -96,16 +97,18 @@ export default function IntroSection() {
       aria-labelledby="intro-services-heading"
     >
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:max-w-5xl lg:px-8">
-        <motion.h2
-          id="intro-services-heading"
+        <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          className="text-xl font-bold uppercase tracking-[0.14em] text-stone-900 sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] xl:text-[2rem]"
-          style={{ fontFamily: sans }}
         >
-          Photography &amp; Videography Services
-        </motion.h2>
+          <SectionHeading
+            id="intro-services-heading"
+            align="center"
+            eyebrow="What we offer"
+            title="Photography & videography services"
+          />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scaleX: 0.6 }}

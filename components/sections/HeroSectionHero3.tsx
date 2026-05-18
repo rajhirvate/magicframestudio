@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
 const HERO_SLIDE_MS = 4000;
+const HERO_HEADING_FONT =
+  'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
 
 type HeroSlide = {
   id: string;
@@ -21,7 +23,6 @@ type HeroSlide = {
   title: ReactNode;
   /** Two-line lead under the headline (one visual line each). */
   lead: readonly [string, string];
-  subline: string;
 };
 
 function TitleAccent() {
@@ -47,11 +48,9 @@ const HERO_SLIDES: HeroSlide[] = [
       </>
     ),
     lead: [
-      "We work across India with couples, families, and brands — weddings, events, and campaigns —",
-      "and deliver photos and films you will revisit for years.",
+      "We work across India with couples, families, and brands,",
+      "from weddings through campaigns — photos and films you will revisit for years.",
     ],
-    subline:
-      "Wedding · Events · Portraits · Corporate · Product Shoots",
   },
   {
     id: "cinematic",
@@ -67,11 +66,9 @@ const HERO_SLIDES: HeroSlide[] = [
       </>
     ),
     lead: [
-      "We cut ceremony films, highlight reels, and save-the-dates with rhythm and care —",
-      "so the story of your day reads clearly from the first frame to the last.",
+      "We edit ceremony films, highlights, and save-the-dates with care,",
+      "so your story reads clearly from the first frame to the last.",
     ],
-    subline:
-      "Ceremony edits · Highlights · Save-the-date · Love stories",
   },
   {
     id: "brands",
@@ -88,11 +85,9 @@ const HERO_SLIDES: HeroSlide[] = [
       </>
     ),
     lead: [
-      "We shoot executive portraits, products, and live events with the same refined eye —",
-      "from the boardroom and studio set to opening night on stage.",
+      "We shoot portraits, products, and live events with one refined eye,",
+      "from boardrooms and sets to opening night on stage.",
     ],
-    subline:
-      "Executive portraiture · Product · Corporate events · Editorial",
   },
 ];
 
@@ -177,13 +172,7 @@ export default function HeroSectionHero3() {
       <span className="sr-only">{HERO_SLIDES.map((s) => s.alt).join(". ")}.</span>
 
       <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-12 lg:pb-24">
-        <div
-          className={cn(
-            isHero4
-              ? "max-w-md sm:max-w-[min(90vw,64rem)]"
-              : "max-w-xl lg:max-w-2xl",
-          )}
-        >
+        <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
           <div className="mfs-hero-slideshow-copy">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -193,7 +182,10 @@ export default function HeroSectionHero3() {
                 exit={motionOk ? { opacity: 0, y: -10 } : undefined}
                 transition={copyMotion}
               >
-                <p className="mfs-hero-slideshow-eyebrow text-[10px] font-medium uppercase tracking-[0.4em] text-[#c9a84c] sm:text-xs mb-5 sm:mb-6">
+                <p
+                  className="mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--gold)] sm:mb-2.5 sm:tracking-[0.14em]"
+                  style={{ fontFamily: HERO_HEADING_FONT }}
+                >
                   {slide.eyebrow}
                 </p>
 
@@ -201,37 +193,23 @@ export default function HeroSectionHero3() {
                   className={cn(
                     isHero4
                       ? "text-white text-[clamp(2.85rem,5.5vw+1rem,6.5rem)] font-extrabold leading-[1.06] tracking-[-0.03em]"
-                      : "font-heading text-[#1a1a1a] font-light leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem]",
+                      : "text-stone-900 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
                   )}
-                  style={isHero4 ? { fontFamily: "var(--font-poppins), sans-serif" } : undefined}
+                  style={{ fontFamily: HERO_HEADING_FONT }}
                 >
-                  <h1
-                    className={cn(
-                      "inline-block",
-                      isHero4 ? "font-extrabold" : "font-light",
-                    )}
-                  >
+                  <h1 className="inline-block font-extrabold">
                     <span aria-live="polite">{slide.title}</span>
                   </h1>
                 </div>
 
                 <p
                   className={cn(
-                    "mt-6 max-w-xl text-left text-[0.9375rem] font-normal leading-[1.65] tracking-normal sm:mt-7 sm:text-lg sm:leading-[1.6]",
-                    isHero4 ? "text-white/90" : "text-[#1a1a1a]/82",
+                    "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
+                    isHero4 ? "text-white/75" : "text-[#1a1a1a]/58",
                   )}
                 >
                   <span className="block">{slide.lead[0]}</span>
                   <span className="block">{slide.lead[1]}</span>
-                </p>
-
-                <p
-                  className={cn(
-                    "mfs-hero-slideshow-subline mt-5 text-left text-[10px] font-normal uppercase tracking-[0.32em] sm:mt-6 sm:text-xs sm:tracking-[0.28em]",
-                    isHero4 ? "text-white/65" : "text-[#1a1a1a]/72",
-                  )}
-                >
-                  {slide.subline}
                 </p>
               </motion.div>
             </AnimatePresence>

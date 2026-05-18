@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight, Camera, Video } from "lucide-react";
 import { photographyServices, videographyServices } from "@/data/services";
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 function ServiceCard({
   title,
@@ -83,17 +84,9 @@ export default function ServicesOverview() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-10"
+          className="mb-10 text-left"
         >
-          <p
-            className="text-xs tracking-widest text-[#c9a84c] uppercase mb-3"
-            style={{ fontFamily: "var(--font-sans), sans-serif" }}
-          >
-            What We Do
-          </p>
-          <h2 className="mfs-home-title text-[1.9375rem] text-stone-900">
-            Our Services
-          </h2>
+          <SectionHeading eyebrow="What we do" title="Our services" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20">
@@ -109,9 +102,7 @@ export default function ServicesOverview() {
               <div className="w-8 h-8 rounded-full bg-[#c9a84c]/10 flex items-center justify-center flex-shrink-0">
                 <Camera size={15} className="text-[#c9a84c]" />
               </div>
-              <h3 className="mfs-home-title text-[1.125rem] sm:text-[1.1875rem] text-stone-800">
-                Photography Services
-              </h3>
+              <SectionHeading as="h3" title="Photography services" />
             </motion.div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -139,9 +130,7 @@ export default function ServicesOverview() {
               <div className="w-8 h-8 rounded-full bg-[#c9a84c]/10 flex items-center justify-center flex-shrink-0">
                 <Video size={15} className="text-[#c9a84c]" />
               </div>
-              <h3 className="mfs-home-title text-[1.125rem] sm:text-[1.1875rem] text-stone-800">
-                Videography Services
-              </h3>
+              <SectionHeading as="h3" title="Videography services" />
             </motion.div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">

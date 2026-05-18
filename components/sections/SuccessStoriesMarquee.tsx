@@ -7,6 +7,7 @@ import {
   SUCCESS_STORIES_MARQUEE_ROW_A,
   SUCCESS_STORIES_MARQUEE_ROW_B,
 } from "@/data/successStoriesMarquee";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 
 const sans = "var(--font-sans), sans-serif";
@@ -135,19 +136,16 @@ export default function SuccessStoriesMarquee() {
         aria-hidden
       />
       <div className="relative z-[1] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p
-          className="text-[11px] font-semibold uppercase tracking-[0.34em] text-stone-500 sm:text-xs"
-          style={{ fontFamily: sans }}
-        >
-          Success stories
-        </p>
-        <h2
+        <SectionHeading
           id="success-stories-heading"
-          className="mfs-home-title mt-3 max-w-3xl text-[1.9375rem] text-stone-900"
-        >
-          Powered by{" "}
-          <span className="text-[#9a7b2e]">Magic Frame Studio</span>
-        </h2>
+          eyebrow="Success stories"
+          title={
+            <>
+              Powered by{" "}
+              <span className="text-[#9a7b2e]">Magic Frame Studio</span>
+            </>
+          }
+        />
         <p
           className="mt-4 max-w-xl text-sm text-stone-600"
           style={{ fontFamily: sans }}
