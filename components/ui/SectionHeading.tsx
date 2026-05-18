@@ -49,7 +49,7 @@ export function SectionHeading({
           "max-w-[22rem] font-extrabold tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-[min(40rem,92vw)]",
           Tag === "h3"
             ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
-            : "text-[1.75rem] sm:text-[2.5rem] leading-[1.02]",
+            : "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]",
           isDark && "text-white",
           eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",
