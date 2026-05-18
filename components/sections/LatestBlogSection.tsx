@@ -14,7 +14,7 @@ const READ_POSTS_BTN =
 export default async function LatestBlogSection({
   hero4Variant = false,
 }: {
-  /** `/hero4` experiments: tighter padding and no eyebrow. */
+/** `/hero4` experiments: tighter vertical padding. */
   hero4Variant?: boolean;
 } = {}) {
   const posts = await readBlogPosts();
@@ -38,7 +38,6 @@ export default async function LatestBlogSection({
         <SectionHeading
           id="latest-blog-heading"
           align="center"
-          eyebrow={hero4Variant ? undefined : "From the blog"}
           title="Our latest blog post"
           className="mb-12 lg:mb-14"
         />
