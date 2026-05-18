@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import type { ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
@@ -19,6 +19,8 @@ type HeroSlide = {
   objectClass: string;
   eyebrow: string;
   title: ReactNode;
+  /** Two-line lead under the headline (one visual line each). */
+  lead: readonly [string, string];
   subline: string;
 };
 
@@ -44,6 +46,10 @@ const HERO_SLIDES: HeroSlide[] = [
         We Don&apos;t Just Capture Moments <TitleAccent /> We Craft Stories.
       </>
     ),
+    lead: [
+      "We work across India with couples, families, and brands — weddings, events, and campaigns —",
+      "and deliver photos and films you will revisit for years.",
+    ],
     subline:
       "Wedding · Events · Portraits · Corporate · Product Shoots",
   },
@@ -60,6 +66,10 @@ const HERO_SLIDES: HeroSlide[] = [
         Light, Rhythm, Feeling <TitleAccent /> Cinema You Can Almost Touch
       </>
     ),
+    lead: [
+      "We cut ceremony films, highlight reels, and save-the-dates with rhythm and care —",
+      "so the story of your day reads clearly from the first frame to the last.",
+    ],
     subline:
       "Ceremony edits · Highlights · Save-the-date · Love stories",
   },
@@ -77,6 +87,10 @@ const HERO_SLIDES: HeroSlide[] = [
         <TitleAccent /> One Cohesive Lens
       </>
     ),
+    lead: [
+      "We shoot executive portraits, products, and live events with the same refined eye —",
+      "from the boardroom and studio set to opening night on stage.",
+    ],
     subline:
       "Executive portraiture · Product · Corporate events · Editorial",
   },
@@ -87,7 +101,6 @@ export default function HeroSectionHero3() {
   const isHero4 = pathname === "/hero4";
   const [active, setActive] = useState(0);
   const [motionOk, setMotionOk] = useState(true);
-  const [advanceKey, setAdvanceKey] = useState(0);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -103,12 +116,7 @@ export default function HeroSectionHero3() {
       setActive((i) => (i + 1) % HERO_SLIDES.length);
     }, HERO_SLIDE_MS);
     return () => window.clearInterval(id);
-  }, [motionOk, advanceKey]);
-
-  const goTo = useCallback((index: number) => {
-    setActive(index % HERO_SLIDES.length);
-    setAdvanceKey((k) => k + 1);
-  }, []);
+  }, [motionOk]);
 
   const slide = useMemo(() => HERO_SLIDES[active]!, [active]);
   const copyMotion = motionOk
@@ -176,61 +184,7 @@ export default function HeroSectionHero3() {
               : "max-w-xl lg:max-w-2xl",
           )}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mb-7 sm:mb-8"
-          >
-            <div className="mfs-hero-slideshow-progress-wrap mb-6 sm:mb-7">
-              <div
-                className="mfs-hero-slideshow-progress"
-                style={{
-                  "--mfs-hero-slide-ms": `${HERO_SLIDE_MS}ms`,
-                } as CSSProperties}
-                key={`${active}-${advanceKey}-${motionOk ? "anim" : "still"}`}
-                aria-hidden
-              >
-                <div
-                  className={cn(
-                    "mfs-hero-slideshow-progress-fill",
-                    !motionOk && "mfs-hero-slideshow-progress-fill--still",
-                  )}
-                />
-              </div>
-            </div>
-
-            <div
-              className="mfs-hero-slideshow-dots flex flex-wrap gap-3 sm:gap-3.5"
-              role="tablist"
-              aria-label="Choose hero slide"
-            >
-              {HERO_SLIDES.map((item, index) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={index === active}
-                  aria-controls={`mfs-hero-panel-${item.id}`}
-                  id={`mfs-hero-tab-${item.id}`}
-                  onClick={() => goTo(index)}
-                  className={cn(
-                    "mfs-hero-slideshow-dot",
-                    index === active && "mfs-hero-slideshow-dot--active",
-                  )}
-                >
-                  <span className="sr-only">{item.eyebrow}</span>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-
-          <div
-            id={`mfs-hero-panel-${slide.id}`}
-            role="tabpanel"
-            aria-labelledby={`mfs-hero-tab-${slide.id}`}
-            className="mfs-hero-slideshow-copy"
-          >
+          <div className="mfs-hero-slideshow-copy">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={slide.id}
@@ -261,7 +215,22 @@ export default function HeroSectionHero3() {
                   </h1>
                 </div>
 
-                <p className={cn("mfs-hero-slideshow-subline mt-6 text-[10px] font-normal uppercase tracking-[0.32em] sm:text-xs sm:tracking-[0.28em]", isHero4 ? "text-white/65" : "text-[#1a1a1a]/72")}>
+                <p
+                  className={cn(
+                    "mt-6 max-w-xl text-left text-[0.9375rem] font-normal leading-[1.65] tracking-normal sm:mt-7 sm:text-lg sm:leading-[1.6]",
+                    isHero4 ? "text-white/90" : "text-[#1a1a1a]/82",
+                  )}
+                >
+                  <span className="block">{slide.lead[0]}</span>
+                  <span className="block">{slide.lead[1]}</span>
+                </p>
+
+                <p
+                  className={cn(
+                    "mfs-hero-slideshow-subline mt-5 text-left text-[10px] font-normal uppercase tracking-[0.32em] sm:mt-6 sm:text-xs sm:tracking-[0.28em]",
+                    isHero4 ? "text-white/65" : "text-[#1a1a1a]/72",
+                  )}
+                >
                   {slide.subline}
                 </p>
               </motion.div>
