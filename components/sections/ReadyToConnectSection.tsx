@@ -61,7 +61,6 @@ export default function ReadyToConnectSection() {
             <SectionHeading
               id="hero3-ready-connect-heading"
               theme="dark"
-              eyebrow="Featured"
               title="Prewedding shoot in Dubai"
               className="drop-shadow-[0_1px_14px_rgba(0,0,0,0.45)]"
             />

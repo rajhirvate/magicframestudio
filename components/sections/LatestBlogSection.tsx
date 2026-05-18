@@ -27,7 +27,6 @@ export default async function LatestBlogSection() {
         <SectionHeading
           id="latest-blog-heading"
           align="center"
-          eyebrow="From the blog"
           title="Our latest blog post"
           className="mb-12 lg:mb-14"
         />
