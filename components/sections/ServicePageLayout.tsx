@@ -703,7 +703,7 @@ export default function ServicePageLayout({
           <AnimatedSection>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-light text-[#f5f0eb] mb-4 leading-tight">
               Book{" "}
-              <span className="italic text-[#e0c068]">{title}</span> in India
+              <span className="italic text-[var(--secondary)]">{title}</span> in India
             </h2>
             <p
               className="text-sm sm:text-[15px] text-[#f5f0eb]/55 mb-10 max-w-xl mx-auto leading-relaxed"

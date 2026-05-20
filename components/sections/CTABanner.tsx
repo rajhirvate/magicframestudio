@@ -32,7 +32,7 @@ export default function CTABanner() {
           </p>
           <h2 className="font-heading mb-4 text-3xl font-light leading-tight text-[#f5f0eb] sm:text-4xl lg:text-5xl">
             Ready to book{" "}
-            <span className="italic text-[#e0c068]">your shoot?</span>
+            <span className="italic text-[var(--secondary)]">your shoot?</span>
           </h2>
           <p
             className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-[#f5f0eb]/55 sm:text-[15px]"

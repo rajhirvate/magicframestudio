@@ -4,7 +4,10 @@
   --background: #0a0a0a;
   --foreground: #f5f0eb;
   --gold: #c9a84c;
-  --gold-light: #e0c068;
+  /** Secondary accent — matches editorial CTA fill (`.hero3-page .mfs-btn-primary`). */
+  --gold-light: #6b5e51;
+  --secondary: #6b5e51;
+  --secondary-hover: #5a4f44;
   --card-bg: #1e1e1e;
   --border-color: #2a2a2a;
   /* Serif/sans stacks are injected by next/font on <html> (see layout.tsx). */
@@ -222,7 +225,7 @@ body {
   box-shadow: none !important;
   --tw-shadow: 0 0 #0000 !important;
   --tw-shadow-colored: 0 0 #0000 !important;
-  background-color: #6b5e51 !important;
+  background-color: var(--secondary) !important;
   color: #ffffff !important;
   text-transform: uppercase !important;
   letter-spacing: 0.1em !important;
@@ -239,14 +242,14 @@ body {
 .hero3-page .mfs-btn-primary:hover,
 .hero3-page .mfs-btn-editorial:hover,
 .mfs-editorial-nav-book.mfs-btn-primary:hover {
-  background-color: #5a4f44 !important;
+  background-color: var(--secondary-hover) !important;
   color: #ffffff !important;
 }
 
 .hero3-page .mfs-btn-primary:focus-visible,
 .hero3-page .mfs-btn-editorial:focus-visible,
 .mfs-editorial-nav-book.mfs-btn-primary:focus-visible {
-  outline: 2px solid #6b5e51 !important;
+  outline: 2px solid var(--secondary) !important;
   outline-offset: 2px !important;
 }
 

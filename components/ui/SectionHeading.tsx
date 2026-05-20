@@ -16,6 +16,9 @@ const MAIN_HOME_HEADING_FONT =
 const MAIN_HOME_H2_TITLE_CLASS =
   "font-normal uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[2.4rem] leading-[1.12]";
 
+/** Matches `--secondary` / editorial CTA on the main homepage. */
+const MAIN_HOME_EYEBROW_COLOR = "text-[var(--secondary)]";
+
 export type SectionHeadingProps = {
   /** Uppercase label above the title (e.g. WHAT WE DO). Omit to hide. */
   eyebrow?: string;
@@ -74,13 +77,14 @@ export function SectionHeading({
     >
       {eyebrow ? (
         <p
-          className={
+          className={cn(
             useCompactScale
               ? isHero4
-                ? "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
-                : "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] text-[var(--gold)] sm:text-[0.75rem] sm:tracking-[0.1em]"
-              : "text-xs font-semibold uppercase tracking-[0.1em] text-[var(--gold)] sm:tracking-[0.12em]"
-          }
+                ? "text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em]"
+                : "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] sm:text-[0.75rem] sm:tracking-[0.1em]"
+              : "text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em]",
+            isMainHome ? MAIN_HOME_EYEBROW_COLOR : "text-[var(--gold)]",
+          )}
         >
           {eyebrow}
         </p>

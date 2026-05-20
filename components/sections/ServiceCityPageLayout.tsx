@@ -420,7 +420,7 @@ export default function ServiceCityPageLayout({
           <AnimatedSection>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-light text-[#f5f0eb] mb-4 leading-tight">
               Book{" "}
-              <span className="italic text-[#e0c068]">{title}</span> in{" "}
+              <span className="italic text-[var(--secondary)]">{title}</span> in{" "}
               {location.label}
             </h2>
             <p

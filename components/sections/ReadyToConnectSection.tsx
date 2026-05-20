@@ -99,7 +99,7 @@ export default function ReadyToConnectSection() {
         >
           <h2 className="font-heading text-3xl font-light leading-tight text-[#f5f0eb] sm:text-4xl lg:text-5xl">
             Ready to{" "}
-            <span className="italic text-[#e0c068]">connect?</span>
+            <span className="italic text-[var(--secondary)]">connect?</span>
           </h2>
           <Link
             href="/contact"

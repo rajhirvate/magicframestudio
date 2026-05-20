@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
             <Link
               href="/blog"
-              className="inline-block text-sm font-semibold text-[#c9a84c] hover:text-[#e0c068] transition-colors mb-6"
+              className="mb-6 inline-block text-sm font-semibold text-[#c9a84c] transition-colors hover:text-[var(--secondary)]"
             >
               Blog &amp; stories
             </Link>

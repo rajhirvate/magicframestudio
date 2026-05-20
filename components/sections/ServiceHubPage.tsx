@@ -137,7 +137,7 @@ export default function ServiceHubPage({
                 Home
               </Link>
               <span className="text-white/30">/</span>
-              <span className="text-[#e0c068] font-medium capitalize">{category}</span>
+              <span className="font-medium capitalize text-[var(--secondary)]">{category}</span>
             </nav>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default function ServiceHubPage({
             transition={{ duration: 0.75 }}
           >
             <p
-              className="text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#e0c068] uppercase mb-4"
+              className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--secondary)] sm:text-xs"
               style={{ fontFamily: poppins }}
             >
               {category === "photography" ? "Photography" : "Videography"} services

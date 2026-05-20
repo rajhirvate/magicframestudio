@@ -87,7 +87,7 @@ export function MegaMenu({
           <Link
             href={hubHref}
             onClick={onClose}
-            className="flex items-center gap-2 text-sm font-medium text-[#c9a84c] hover:text-[#e0c068] transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-[#c9a84c] transition-colors hover:text-[var(--secondary)]"
             style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
             <span
