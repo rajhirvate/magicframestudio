@@ -74,12 +74,9 @@ export default function IntroSection() {
                 and family photoshoots to commercial productions including
                 corporate headshots, food and product photography, and large-scale
                 events, our verified creatives cover every aspect of visual
-                storytelling. We also offer cinematic videography, brand
-                campaigns, and aerial drone coverage when your brief calls for it —
-                helping you capture unforgettable memories and impactful visuals.
-                Whether in-studio or on location nationwide, our network combines
-                artistry, technology, and passion to deliver photographs and films
-                that feel timeless and powerful.
+                storytelling. Whether in-studio or on location nationwide, our
+                network combines artistry, technology, and passion to deliver
+                photographs and films that feel timeless and powerful.
               </p>
               <div className="mt-9">
                 <Link
@@ -137,12 +134,9 @@ export default function IntroSection() {
           personal milestones such as maternity portraits and family photoshoots
           to commercial productions including corporate headshots, food and
           product photography, and large-scale events, our verified creatives cover
-          every aspect of visual storytelling. We also offer cinematic
-          videography, brand campaigns, and aerial drone coverage when your brief
-          calls for it — helping you capture unforgettable memories and impactful
-          visuals. Whether in-studio or on location nationwide, our network
-          combines artistry, technology, and passion to deliver photographs and
-          films that feel timeless and powerful.
+          every aspect of visual storytelling. Whether in-studio or on location
+          nationwide, our network combines artistry, technology, and passion to
+          deliver photographs and films that feel timeless and powerful.
         </motion.p>
 
         <motion.div

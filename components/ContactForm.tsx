@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
@@ -106,8 +106,11 @@ function TextareaField({
 
 export default function ContactForm({
   variant = "dark",
+  prefill,
 }: {
   variant?: "dark" | "light";
+  /** Applied once when provided (e.g. hero quick-lead → `/contact` query params). */
+  prefill?: Partial<Pick<FormState, "name" | "phone" | "location">>;
 }) {
   const light = variant === "light";
   const [form, setForm] = useState<FormState>({
@@ -118,6 +121,22 @@ export default function ContactForm({
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const prefillApplied = useRef(false);
+
+  useEffect(() => {
+    if (!prefill || prefillApplied.current) return;
+    const nextName = prefill.name?.trim();
+    const nextPhone = prefill.phone?.trim();
+    const nextLoc = prefill.location?.trim();
+    if (!nextName && !nextPhone && !nextLoc) return;
+    prefillApplied.current = true;
+    setForm((prev) => ({
+      ...prev,
+      ...(nextName ? { name: nextName } : {}),
+      ...(nextPhone ? { phone: nextPhone } : {}),
+      ...(nextLoc ? { location: nextLoc } : {}),
+    }));
+  }, [prefill]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -184,7 +203,6 @@ export default function ContactForm({
       <div className="mb-1">
         <h2
           className={`text-base font-semibold ${light ? "text-stone-900" : "text-[#f5f0eb]"}`}
-          style={{ fontFamily: poppins }}
         >
           Send Us a Message
         </h2>

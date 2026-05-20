@@ -8,13 +8,16 @@ import { isHero4Path } from "@/lib/routeFlags";
 const POPPINS =
   'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
 
+const MONTSERRAT_STACK =
+  'var(--font-montserrat), ui-sans-serif, system-ui, sans-serif';
+
 /** Main `/` section titles — same stack as `.mfs-home-title` (Plus Jakarta from `:root`). */
 const MAIN_HOME_HEADING_FONT =
   "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
 
-/** Main homepage (`/`) H2 — Poppins, 2.1rem, normal weight, uppercase. */
+/** Main homepage (`/`) H2 — Montserrat, 1.9rem, medium weight, uppercase. */
 const MAIN_HOME_H2_TITLE_CLASS =
-  "font-normal uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[2.1rem] leading-[1.12]";
+  "font-medium uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[1.9rem] leading-[1.12]";
 
 /** Matches `--secondary` / editorial CTA on the main homepage. */
 const MAIN_HOME_EYEBROW_COLOR = "text-[var(--secondary)]";
@@ -30,13 +33,13 @@ export type SectionHeadingProps = {
   className?: string;
   /** Extra classes on the title element (homepage-only overrides, etc.). */
   titleClassName?: string;
-  /** @deprecated Main `/` H2s use Poppins automatically; only needed for one-off overrides. */
+  /** @deprecated H2s use Montserrat globally; legacy prop only affects H3 compact stacks. */
   font?: "poppins";
 };
 
 /**
- * Section title: gold eyebrow + stone title. All section H2 titles render at 2.1rem.
- * Main `/` H2s use Poppins, normal weight, uppercase. Main `/` H3s use Plus Jakarta.
+ * Section title: gold eyebrow + stone title. All section H2 titles render at 1.9rem.
+ * Main `/` H2s use Montserrat, medium weight, uppercase. Other routes: H2 bold (700).
  * `/hero4` tweaks eyebrow/H3 sizing; other routes use compact eyebrow/H3 typography.
  */
 export function SectionHeading({
@@ -57,12 +60,15 @@ export function SectionHeading({
   const useCompactScale = pathname !== "/";
   const isHero4 = isHero4Path(pathname);
   const isDark = theme === "dark";
-  const headingFont =
-    isMainHomeH2 || fontOverride === "poppins"
-      ? POPPINS
-      : useCompactScale
+  /** Wrapper stack: Montserrat when the title is `<h2>` so eyebrow matches the heading. */
+  const wrapperFontFamily =
+    Tag === "h2"
+      ? MONTSERRAT_STACK
+      : fontOverride === "poppins"
         ? POPPINS
-        : MAIN_HOME_HEADING_FONT;
+        : useCompactScale
+          ? POPPINS
+          : MAIN_HOME_HEADING_FONT;
 
   return (
     <div
@@ -72,7 +78,7 @@ export function SectionHeading({
         className,
       )}
       style={{
-        fontFamily: headingFont,
+        fontFamily: wrapperFontFamily,
       }}
     >
       {eyebrow ? (
@@ -96,7 +102,7 @@ export function SectionHeading({
           isMainHomeH2
             ? "max-w-5xl text-stone-900"
             : useCompactScale
-              ? "font-extrabold tracking-tight text-stone-800 lg:max-w-[min(40rem,92vw)]"
+              ? "font-bold tracking-tight text-stone-800 lg:max-w-[min(40rem,92vw)]"
               : "font-medium leading-[1.08] text-stone-900 lg:max-w-5xl",
           Tag === "h3"
             ? cn(
@@ -110,7 +116,7 @@ export function SectionHeading({
               )
             : isMainHomeH2
               ? MAIN_HOME_H2_TITLE_CLASS
-              : "text-[2.1rem] leading-[1.06]",
+              : "text-[1.9rem] leading-[1.06]",
           isDark && "text-white",
           eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",

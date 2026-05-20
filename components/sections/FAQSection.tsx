@@ -121,7 +121,7 @@ export default function FAQSection() {
         "bg-white",
         isHero4
           ? "pt-10 pb-14 lg:pt-14 lg:pb-20"
-          : "border-t border-stone-100 py-14 lg:py-20",
+          : "py-14 lg:py-20",
       )}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

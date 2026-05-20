@@ -47,6 +47,17 @@ body {
 }
 
 /**
+ * `<h1>` / `<h2>` use Montserrat (`--font-montserrat` from layout.tsx).
+ * Overrides `.font-heading` above so serif stays for other roles (h3, spans, etc.).
+ */
+h1.font-heading,
+h2.font-heading,
+h1:not(.font-heading),
+h2:not(.font-heading) {
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+/**
  * Main homepage only (`app/page.tsx` → `.hero3-page`): matches Our Approach block —
  * Plus Jakarta, normal weight, uppercase, wide tracking, leading 1.18.
  */

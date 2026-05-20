@@ -9,9 +9,10 @@ import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
+import HeroLeadForm from "@/components/sections/HeroLeadForm";
 
 const HERO_HEADING_FONT =
-  'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
+  'var(--font-montserrat), ui-sans-serif, system-ui, sans-serif';
 
 type HeroSlide = {
   src: string;
@@ -70,8 +71,7 @@ export default function HeroSectionHero3() {
   return (
     <section
       className={cn(
-        "mfs-hero-editorial relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-16 lg:pt-20",
-        isHero4 ? "text-white" : "text-stone-800",
+        "mfs-hero-editorial relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-16 lg:pt-20 text-white",
       )}
       style={{ fontFamily: "var(--font-sans), sans-serif" }}
       aria-label="Featured work and studio introduction"
@@ -95,15 +95,13 @@ export default function HeroSectionHero3() {
         <div
           className={cn(
             "mfs-hero-slideshow-gradient-y pointer-events-none absolute inset-0 z-[1]",
-            isHero4
-              ? "bg-black/50"
-              : "bg-gradient-to-b from-white/55 via-white/12 to-transparent sm:from-white/45",
+            "bg-gradient-to-b from-black/55 via-black/25 to-black/45",
           )}
           aria-hidden
         />
         {!isHero4 && (
           <div
-            className="mfs-hero-slideshow-gradient-read pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-[#f4f1ea]/95 via-[#f4f1ea]/55 to-transparent sm:max-w-[62%]"
+            className="mfs-hero-slideshow-gradient-read pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black/72 via-black/38 to-transparent sm:max-w-[62%]"
             aria-hidden
           />
         )}
@@ -119,76 +117,93 @@ export default function HeroSectionHero3() {
             : "px-4 sm:px-8 lg:px-12 lg:pb-24",
         )}
       >
-        <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
-          <div className="mfs-hero-slideshow-copy">
-            <motion.div
-              initial={motionOk ? { opacity: 0, y: 18 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={copyMotion}
-            >
-              <p
-                className={cn(
-                  "mb-2 font-semibold uppercase text-[var(--gold)] sm:mb-2.5",
-                  isHero4
-                    ? "text-xs tracking-[0.1em] sm:tracking-[0.12em]"
-                    : "text-sm tracking-[0.12em] sm:tracking-[0.14em]",
-                )}
-                style={{ fontFamily: HERO_HEADING_FONT }}
-              >
-                {HERO_SLIDE.eyebrow}
-              </p>
+        <div className="mx-auto w-full max-w-7xl">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(260px,400px)] lg:grid-rows-[auto_auto] lg:items-start lg:gap-x-12 lg:gap-y-10 xl:gap-x-16">
+            <div className="min-w-0 max-w-2xl lg:col-start-1 lg:row-start-1 lg:max-w-none">
+              <div className="mfs-hero-slideshow-copy lg:pt-10 xl:pt-12">
+                <motion.div
+                  initial={motionOk ? { opacity: 0, y: 18 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={copyMotion}
+                >
+                  <p
+                    className={cn(
+                      "mb-2 font-semibold uppercase text-[var(--gold)] sm:mb-2.5",
+                      isHero4
+                        ? "text-xs tracking-[0.1em] sm:tracking-[0.12em]"
+                        : "text-sm tracking-[0.12em] sm:tracking-[0.14em]",
+                    )}
+                    style={{ fontFamily: HERO_HEADING_FONT }}
+                  >
+                    {HERO_SLIDE.eyebrow}
+                  </p>
 
-              <div
-                className={cn(
-                  isHero4
-                    ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
-                    : "text-stone-900 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
-                )}
-                style={{ fontFamily: HERO_HEADING_FONT }}
-              >
-                <h1 className="inline-block font-extrabold">
-                  <span aria-live="polite">{HERO_SLIDE.title}</span>
-                </h1>
+                  <div
+                    className={cn(
+                      isHero4
+                        ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-semibold uppercase leading-[1.06] tracking-[0.02em]"
+                        : "text-white font-semibold uppercase leading-[1.14] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-[0.02em]",
+                    )}
+                    style={{ fontFamily: HERO_HEADING_FONT }}
+                  >
+                    <h1 className="inline-block font-semibold">
+                      <span aria-live="polite">{HERO_SLIDE.title}</span>
+                    </h1>
+                  </div>
+
+                  <p
+                    className={cn(
+                      "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
+                      isHero4 ? "text-white/75" : "text-white/88",
+                    )}
+                  >
+                    <span className="block">{HERO_SLIDE.lead[0]}</span>
+                    <span className="block">{HERO_SLIDE.lead[1]}</span>
+                  </p>
+                </motion.div>
               </div>
+            </div>
 
-              <p
+            <motion.div
+              initial={motionOk ? { opacity: 0, y: 16 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.55,
+                delay: motionOk ? 0.22 : 0,
+                ease: "easeOut",
+              }}
+              className="w-full max-w-md justify-self-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:justify-self-end lg:self-start"
+            >
+              <HeroLeadForm />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.65,
+                delay: motionOk ? 0.34 : 0,
+                ease: "easeOut",
+              }}
+              className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 lg:col-start-1 lg:row-start-2"
+            >
+              <Link
+                href="/portfolio"
                 className={cn(
-                  "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
-                  isHero4 ? "text-white/75" : "text-[#1a1a1a]/58",
+                  "group mfs-btn-primary inline-flex w-fit items-center gap-2.5 px-9 py-3.5 text-sm font-medium transition-colors duration-200",
                 )}
               >
-                <span className="block">{HERO_SLIDE.lead[0]}</span>
-                <span className="block">{HERO_SLIDE.lead[1]}</span>
-              </p>
+                Explore our work
+                <ArrowRight
+                  size={14}
+                  className="shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+                />
+              </Link>
+              <Link href="/contact" className={cn(BTN_PRIMARY, "group w-fit")}>
+                Get a quote
+              </Link>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.65,
-              delay: motionOk ? 0.34 : 0,
-              ease: "easeOut",
-            }}
-            className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
-          >
-            <Link
-              href="/portfolio"
-              className={cn(
-                "group mfs-btn-primary inline-flex w-fit items-center gap-2.5 px-9 py-3.5 text-sm font-medium transition-colors duration-200",
-              )}
-            >
-              Explore our work
-              <ArrowRight
-                size={14}
-                className="shrink-0 transition-transform duration-200 group-hover:translate-x-1"
-              />
-            </Link>
-            <Link href="/contact" className={cn(BTN_PRIMARY, "group w-fit")}>
-              Get a quote
-            </Link>
-          </motion.div>
         </div>
       </div>
     </section>

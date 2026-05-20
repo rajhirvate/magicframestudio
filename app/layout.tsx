@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  Montserrat,
   Playfair_Display,
   Plus_Jakarta_Sans,
   Poppins,
@@ -20,6 +21,14 @@ const fontSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+/** Semantic `<h1>` / `<h2>` headings site-wide (see `globals.css`). */
+const fontMontserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -54,7 +63,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSerif.variable} ${fontSans.variable} ${fontPoppins.variable} h-full`}
+      className={`${fontSerif.variable} ${fontSans.variable} ${fontMontserrat.variable} ${fontPoppins.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <SiteChrome>{children}</SiteChrome>

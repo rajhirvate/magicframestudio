@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import { MapPin, Phone, Mail, Clock, CheckCircle2 } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
@@ -12,16 +13,19 @@ function AnimatedSection({
   children,
   delay = 0,
   className = "",
+  id,
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
+  id?: string;
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <motion.div
       ref={ref}
+      id={id}
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay }}
@@ -33,6 +37,19 @@ function AnimatedSection({
 }
 
 export default function ContactPageClient() {
+  const searchParams = useSearchParams();
+  const prefill = useMemo(() => {
+    const name = searchParams.get("name")?.trim();
+    const phone = searchParams.get("phone")?.trim();
+    const location = searchParams.get("location")?.trim();
+    if (!name && !phone && !location) return undefined;
+    return {
+      ...(name ? { name } : {}),
+      ...(phone ? { phone } : {}),
+      ...(location ? { location } : {}),
+    };
+  }, [searchParams]);
+
   return (
     <>
       {/* Hero */}
@@ -63,7 +80,7 @@ export default function ContactPageClient() {
             <AnimatedSection className="lg:col-span-2">
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-2xl font-semibold text-[#f5f0eb] mb-6" style={{ fontFamily: poppins }}>
+                  <h2 className="text-2xl font-semibold text-[#f5f0eb] mb-6">
                     Contact Information
                   </h2>
                   <ul className="space-y-5">
@@ -120,8 +137,8 @@ export default function ContactPageClient() {
             </AnimatedSection>
 
             {/* Right — Form */}
-            <AnimatedSection delay={0.15} className="lg:col-span-3">
-              <ContactForm />
+            <AnimatedSection delay={0.15} className="lg:col-span-3" id="contact-form">
+              <ContactForm prefill={prefill} />
             </AnimatedSection>
           </div>
         </div>
