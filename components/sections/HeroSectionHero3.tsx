@@ -3,19 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
-const HERO_SLIDE_MS = 4000;
 const HERO_HEADING_FONT =
   'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
 
 type HeroSlide = {
-  id: string;
   src: string;
   alt: string;
   objectClass: string;
@@ -34,67 +32,27 @@ function TitleAccent() {
   );
 }
 
-const HERO_SLIDES: HeroSlide[] = [
-  {
-    id: "moments",
-    src:
-      "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=75&w=1600&auto=format&fit=crop",
-    alt: "Wedding celebration with confetti outdoors",
-    objectClass: "object-cover object-[28%_center] sm:object-[32%_center]",
-    eyebrow: "Magic Frame Studio · Since 2020",
-    title: (
-      <>
-        We Don&apos;t Just Capture Moments <TitleAccent /> We Craft Stories.
-      </>
-    ),
-    lead: [
-      "We work across India with couples, families, and brands,",
-      "from weddings through campaigns — photos and films you will revisit for years.",
-    ],
-  },
-  {
-    id: "cinematic",
-    src:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?q=75&w=1600&auto=format&fit=crop",
-    alt: "Silhouetted couple embracing at dusk by the water",
-    objectClass:
-      "object-cover object-[45%_28%] sm:object-[50%_30%]",
-    eyebrow: "Weddings · Ceremonies · Films",
-    title: (
-      <>
-        Light, Rhythm, Feeling <TitleAccent /> Cinema You Can Almost Touch
-      </>
-    ),
-    lead: [
-      "We edit ceremony films, highlights, and save-the-dates with care,",
-      "so your story reads clearly from the first frame to the last.",
-    ],
-  },
-  {
-    id: "brands",
-    src:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=75&w=1600&auto=format&fit=crop",
-    alt: "Large stage with theatrical lighting during an event",
-    objectClass:
-      "object-cover object-[55%_center] sm:object-[52%_42%]",
-    eyebrow: "Brands · Portraits · Launches",
-    title: (
-      <>
-        From Quiet Portraits To Bold Launches{" "}
-        <TitleAccent /> One Cohesive Lens
-      </>
-    ),
-    lead: [
-      "We shoot portraits, products, and live events with one refined eye,",
-      "from boardrooms and sets to opening night on stage.",
-    ],
-  },
-];
+/** Static editorial hero — single image + headline (no carousel). */
+const HERO_SLIDE: HeroSlide = {
+  src:
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=75&w=1600&auto=format&fit=crop",
+  alt: "Close-up of wedding rings and hands with flowers",
+  objectClass: "object-cover object-[28%_center] sm:object-[32%_center]",
+  eyebrow: "Magic Frame Studio · Since 2020",
+  title: (
+    <>
+      We Don&apos;t Just Capture Moments <TitleAccent /> We Craft Stories.
+    </>
+  ),
+  lead: [
+    "We work across India with couples, families, and brands,",
+    "from weddings through campaigns — photos and films you will revisit for years.",
+  ],
+};
 
 export default function HeroSectionHero3() {
   const pathname = usePathname();
   const isHero4 = pathname === "/hero4";
-  const [active, setActive] = useState(0);
   const [motionOk, setMotionOk] = useState(true);
 
   useEffect(() => {
@@ -105,15 +63,6 @@ export default function HeroSectionHero3() {
     return () => mq.removeEventListener("change", apply);
   }, []);
 
-  useEffect(() => {
-    if (!motionOk || HERO_SLIDES.length < 2) return;
-    const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % HERO_SLIDES.length);
-    }, HERO_SLIDE_MS);
-    return () => window.clearInterval(id);
-  }, [motionOk]);
-
-  const slide = useMemo(() => HERO_SLIDES[active]!, [active]);
   const copyMotion = motionOk
     ? { duration: 0.55, ease: "easeOut" as const }
     : { duration: 0 };
@@ -125,32 +74,23 @@ export default function HeroSectionHero3() {
         isHero4 ? "text-white" : "text-stone-800",
       )}
       style={{ fontFamily: "var(--font-sans), sans-serif" }}
-      aria-roledescription="slideshow"
       aria-label="Featured work and studio introduction"
     >
       <div className="absolute inset-0 mfs-hero-slideshow-stack" aria-hidden>
         <div className="mfs-hero-slideshow-layers absolute inset-0 z-0">
-          {HERO_SLIDES.map((item, index) => (
-            <div
-              key={item.id}
-              className={cn(
-                "mfs-hero-slide-layer absolute inset-0",
-                index === active && "mfs-hero-slide-layer--active",
-              )}
-            >
-              <Image
-                src={item.src}
-                alt=""
-                fill
-                role="presentation"
-                priority={index === 0}
-                loading={index === 0 ? "eager" : "lazy"}
-                quality={80}
-                className={cn(item.objectClass)}
-                sizes="100vw"
-              />
-            </div>
-          ))}
+          <div className="mfs-hero-slide-layer mfs-hero-slide-layer--active absolute inset-0">
+            <Image
+              src={HERO_SLIDE.src}
+              alt=""
+              fill
+              role="presentation"
+              priority
+              loading="eager"
+              quality={80}
+              className={cn(HERO_SLIDE.objectClass)}
+              sizes="100vw"
+            />
+          </div>
         </div>
         <div
           className={cn(
@@ -169,7 +109,7 @@ export default function HeroSectionHero3() {
         )}
       </div>
 
-      <span className="sr-only">{HERO_SLIDES.map((s) => s.alt).join(". ")}.</span>
+      <span className="sr-only">{HERO_SLIDE.alt}</span>
 
       <div
         className={cn(
@@ -181,50 +121,46 @@ export default function HeroSectionHero3() {
       >
         <div className="w-full max-w-2xl sm:max-w-3xl lg:max-w-[min(56rem,92vw)] xl:max-w-[60rem]">
           <div className="mfs-hero-slideshow-copy">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={slide.id}
-                initial={motionOk ? { opacity: 0, y: 18 } : false}
-                animate={{ opacity: 1, y: 0 }}
-                exit={motionOk ? { opacity: 0, y: -10 } : undefined}
-                transition={copyMotion}
+            <motion.div
+              initial={motionOk ? { opacity: 0, y: 18 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={copyMotion}
+            >
+              <p
+                className={cn(
+                  "mb-2 font-semibold uppercase text-[var(--gold)] sm:mb-2.5",
+                  isHero4
+                    ? "text-xs tracking-[0.1em] sm:tracking-[0.12em]"
+                    : "text-sm tracking-[0.12em] sm:tracking-[0.14em]",
+                )}
+                style={{ fontFamily: HERO_HEADING_FONT }}
               >
-                <p
-                  className={cn(
-                    "mb-2 font-semibold uppercase text-[var(--gold)] sm:mb-2.5",
-                    isHero4
-                      ? "text-xs tracking-[0.1em] sm:tracking-[0.12em]"
-                      : "text-sm tracking-[0.12em] sm:tracking-[0.14em]",
-                  )}
-                  style={{ fontFamily: HERO_HEADING_FONT }}
-                >
-                  {slide.eyebrow}
-                </p>
+                {HERO_SLIDE.eyebrow}
+              </p>
 
-                <div
-                  className={cn(
-                    isHero4
-                      ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
-                      : "text-stone-900 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
-                  )}
-                  style={{ fontFamily: HERO_HEADING_FONT }}
-                >
-                  <h1 className="inline-block font-extrabold">
-                    <span aria-live="polite">{slide.title}</span>
-                  </h1>
-                </div>
+              <div
+                className={cn(
+                  isHero4
+                    ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
+                    : "text-stone-900 font-extrabold leading-[1.08] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-tight",
+                )}
+                style={{ fontFamily: HERO_HEADING_FONT }}
+              >
+                <h1 className="inline-block font-extrabold">
+                  <span aria-live="polite">{HERO_SLIDE.title}</span>
+                </h1>
+              </div>
 
-                <p
-                  className={cn(
-                    "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
-                    isHero4 ? "text-white/75" : "text-[#1a1a1a]/58",
-                  )}
-                >
-                  <span className="block">{slide.lead[0]}</span>
-                  <span className="block">{slide.lead[1]}</span>
-                </p>
-              </motion.div>
-            </AnimatePresence>
+              <p
+                className={cn(
+                  "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
+                  isHero4 ? "text-white/75" : "text-[#1a1a1a]/58",
+                )}
+              >
+                <span className="block">{HERO_SLIDE.lead[0]}</span>
+                <span className="block">{HERO_SLIDE.lead[1]}</span>
+              </p>
+            </motion.div>
           </div>
 
           <motion.div
