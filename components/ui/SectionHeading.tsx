@@ -12,6 +12,10 @@ const POPPINS =
 const MAIN_HOME_HEADING_FONT =
   "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
 
+/** Main homepage (`/`) H2 — Poppins, 2.4rem, normal weight, uppercase. */
+const MAIN_HOME_H2_TITLE_CLASS =
+  "font-normal uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[2.4rem] leading-[1.12]";
+
 export type SectionHeadingProps = {
   /** Uppercase label above the title (e.g. WHAT WE DO). Omit to hide. */
   eyebrow?: string;
@@ -21,12 +25,16 @@ export type SectionHeadingProps = {
   align?: "left" | "center";
   as?: "h2" | "h3";
   className?: string;
+  /** Extra classes on the title element (homepage-only overrides, etc.). */
+  titleClassName?: string;
+  /** @deprecated Main `/` H2s use Poppins automatically; only needed for one-off overrides. */
+  font?: "poppins";
 };
 
 /**
- * Section title: gold eyebrow + stone title. Main `/` uses Plus Jakarta, medium weight,
- * and uppercase to match `.mfs-home-title`. `/hero4` uses the larger compact Poppins
- * scale; other routes use the smaller compact scale.
+ * Section title: gold eyebrow + stone title. Main `/` H2s use Poppins at 2.4rem,
+ * normal weight, uppercase. Main `/` H3s use Plus Jakarta. `/hero4` uses compact
+ * Poppins; other routes use the smaller compact scale.
  */
 export function SectionHeading({
   eyebrow,
@@ -36,12 +44,22 @@ export function SectionHeading({
   align = "left",
   as: Tag = "h2",
   className,
+  titleClassName,
+  font: fontOverride,
 }: SectionHeadingProps) {
   const pathname = usePathname();
+  const isMainHome = pathname === "/";
+  const isMainHomeH2 = isMainHome && Tag === "h2";
   /** Only `/` uses the larger pre–hero-4 editorial scale; all other routes keep the compact scale. */
   const useCompactScale = pathname !== "/";
   const isHero4 = isHero4Path(pathname);
   const isDark = theme === "dark";
+  const headingFont =
+    isMainHomeH2 || fontOverride === "poppins"
+      ? POPPINS
+      : useCompactScale
+        ? POPPINS
+        : MAIN_HOME_HEADING_FONT;
 
   return (
     <div
@@ -51,7 +69,7 @@ export function SectionHeading({
         className,
       )}
       style={{
-        fontFamily: useCompactScale ? POPPINS : MAIN_HOME_HEADING_FONT,
+        fontFamily: headingFont,
       }}
     >
       {eyebrow ? (
@@ -70,9 +88,12 @@ export function SectionHeading({
       <Tag
         id={id}
         className={cn(
-          useCompactScale
-            ? "max-w-[22rem] font-extrabold tracking-tight text-balance text-stone-800 sm:max-w-3xl md:max-w-4xl lg:max-w-[min(40rem,92vw)]"
-            : "max-w-[22rem] font-medium leading-[1.08] text-balance text-stone-900 sm:max-w-3xl md:max-w-4xl lg:max-w-5xl",
+          "max-w-[22rem] text-balance sm:max-w-3xl md:max-w-4xl",
+          isMainHomeH2
+            ? "max-w-5xl text-stone-900"
+            : useCompactScale
+              ? "font-extrabold tracking-tight text-stone-800 lg:max-w-[min(40rem,92vw)]"
+              : "font-medium leading-[1.08] text-stone-900 lg:max-w-5xl",
           Tag === "h3"
             ? cn(
                 useCompactScale
@@ -80,20 +101,24 @@ export function SectionHeading({
                     ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
                     : "text-base sm:text-lg lg:text-xl leading-[1.15]"
                   : "text-sm sm:text-base lg:text-lg leading-[1.15]",
-                !useCompactScale && "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
-              )
-            : cn(
-                useCompactScale
-                  ? isHero4
-                    ? "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]"
-                    : "text-[1.25rem] sm:text-[1.75rem] leading-[1.06]"
-                  : "text-[1.375rem] sm:text-[1.875rem] leading-[1.08]",
-                !useCompactScale &&
+                isMainHome &&
                   "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
-              ),
+              )
+            : isMainHomeH2
+              ? MAIN_HOME_H2_TITLE_CLASS
+              : cn(
+                  useCompactScale
+                    ? isHero4
+                      ? "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]"
+                      : "text-[1.25rem] sm:text-[1.75rem] leading-[1.06]"
+                    : "text-[1.375rem] sm:text-[1.875rem] leading-[1.08]",
+                  !useCompactScale &&
+                    "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
+                ),
           isDark && "text-white",
           eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",
+          titleClassName,
         )}
       >
         {title}
