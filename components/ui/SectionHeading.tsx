@@ -12,9 +12,9 @@ const POPPINS =
 const MAIN_HOME_HEADING_FONT =
   "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
 
-/** Main homepage (`/`) H2 — Poppins, 2.4rem, normal weight, uppercase. */
+/** Main homepage (`/`) H2 — Poppins, 2.1rem, normal weight, uppercase. */
 const MAIN_HOME_H2_TITLE_CLASS =
-  "font-normal uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[2.4rem] leading-[1.12]";
+  "font-normal uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[2.1rem] leading-[1.12]";
 
 /** Matches `--secondary` / editorial CTA on the main homepage. */
 const MAIN_HOME_EYEBROW_COLOR = "text-[var(--secondary)]";
@@ -35,9 +35,9 @@ export type SectionHeadingProps = {
 };
 
 /**
- * Section title: gold eyebrow + stone title. Main `/` H2s use Poppins at 2.4rem,
- * normal weight, uppercase. Main `/` H3s use Plus Jakarta. `/hero4` uses compact
- * Poppins; other routes use the smaller compact scale.
+ * Section title: gold eyebrow + stone title. All section H2 titles render at 2.1rem.
+ * Main `/` H2s use Poppins, normal weight, uppercase. Main `/` H3s use Plus Jakarta.
+ * `/hero4` tweaks eyebrow/H3 sizing; other routes use compact eyebrow/H3 typography.
  */
 export function SectionHeading({
   eyebrow,
@@ -110,15 +110,7 @@ export function SectionHeading({
               )
             : isMainHomeH2
               ? MAIN_HOME_H2_TITLE_CLASS
-              : cn(
-                  useCompactScale
-                    ? isHero4
-                      ? "text-[1.5rem] sm:text-[2.0625rem] leading-[1.06]"
-                      : "text-[1.25rem] sm:text-[1.75rem] leading-[1.06]"
-                    : "text-[1.375rem] sm:text-[1.875rem] leading-[1.08]",
-                  !useCompactScale &&
-                    "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
-                ),
+              : "text-[2.1rem] leading-[1.06]",
           isDark && "text-white",
           eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",
