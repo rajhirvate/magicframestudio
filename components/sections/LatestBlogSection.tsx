@@ -22,7 +22,7 @@ export default async function LatestBlogSection({
   return (
     <section
       className={cn(
-        "border-t border-stone-200 bg-white",
+        "bg-white",
         hero4Variant
           ? "pt-14 pb-10 lg:pt-[4.5rem] lg:pb-12"
           : "py-14 lg:py-[4.5rem]",

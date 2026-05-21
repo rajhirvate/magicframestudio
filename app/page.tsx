@@ -9,7 +9,6 @@ import SuccessStoriesMarquee from "@/components/sections/SuccessStoriesMarquee";
 import LatestBlogSection from "@/components/sections/LatestBlogSection";
 import FAQSection from "@/components/sections/FAQSection";
 import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
-import MagicFrameDifferenceSection from "@/components/sections/MagicFrameDifferenceSection";
 
 export const metadata: Metadata = {
   title: "Magic Frame Studio | Professional Photography & Videography in India",
@@ -35,7 +34,6 @@ export default function HomePage() {
       <PortfolioPreview />
       <SuccessStoriesMarquee />
       <SEOContent />
-      <MagicFrameDifferenceSection />
       <LatestBlogSection />
       <FAQSection />
     </div>
