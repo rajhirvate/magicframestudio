@@ -24,7 +24,7 @@ const WHY_INDIA_SPLIT_IMAGE =
 
 const whyIndiaBlock = {
   tag: "Why India Trusts Us",
-  heading: "India's Most Reliable Photography & Videography Studio Since 2020",
+  heading: "India's most reliable photography & videography studio since 2020",
   paragraphs: [
     "When you book with Magic Frame Studio, you're not just hiring a photographer — you're partnering with a dedicated creative team that treats your project with the same care and commitment we would give our own. Our transparent pricing, prompt communication, and 100% satisfaction guarantee mean there are never any unpleasant surprises.",
     "We cover the full spectrum of photography and videography services — weddings, events, portraits, fashion, products, corporate, real estate, drone, brand films, social media content, and more. Whatever your visual needs, Magic Frame Studio has the expertise, the equipment, and the passion to bring your vision to life.",

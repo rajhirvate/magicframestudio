@@ -1,4 +1,12 @@
-@import "tailwindcss";
+/**
+ * Limit class scanning to app code only (not `_push_repo`, scripts, logs, etc.).
+ * Speeds up `next dev` / Turbopack CSS pipeline when extra trees live in the repo.
+ */
+@import "tailwindcss" source(none);
+
+@source "../app";
+@source "../components";
+@source "../lib";
 
 :root {
   --background: #0a0a0a;
@@ -47,25 +55,25 @@ body {
 }
 
 /**
- * `<h1>` / `<h2>` use Montserrat (`--font-montserrat` from layout.tsx).
- * Overrides `.font-heading` above so serif stays for other roles (h3, spans, etc.).
+ * `<h1>` / `<h2>` / `<h3>` use Montserrat (`--font-montserrat` from layout.tsx).
  */
 h1.font-heading,
 h2.font-heading,
+h3.font-heading,
 h1:not(.font-heading),
-h2:not(.font-heading) {
+h2:not(.font-heading),
+h3:not(.font-heading) {
   font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 /**
- * Main homepage only (`app/page.tsx` → `.hero3-page`): matches Our Approach block —
- * Plus Jakarta, normal weight, uppercase, wide tracking, leading 1.18.
+ * Main homepage only (`app/page.tsx` → `.hero3-page`): card/subhead titles —
+ * Montserrat to match service pages (e.g. wedding photography).
  */
 .hero3-page .mfs-home-title {
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: normal;
   line-height: 1.18;
 }
 

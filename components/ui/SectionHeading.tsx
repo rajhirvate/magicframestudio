@@ -5,22 +5,18 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { isHero4Path } from "@/lib/routeFlags";
 
-const POPPINS =
-  'var(--font-poppins), ui-sans-serif, system-ui, sans-serif';
-
-const MONTSERRAT_STACK =
-  'var(--font-montserrat), ui-sans-serif, system-ui, sans-serif';
-
-/** Main `/` section titles — same stack as `.mfs-home-title` (Plus Jakarta from `:root`). */
-const MAIN_HOME_HEADING_FONT =
+const BODY_SANS =
   "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
 
-/** Main homepage (`/`) H2 — Montserrat, 1.9rem, medium weight, uppercase. */
-const MAIN_HOME_H2_TITLE_CLASS =
-  "font-medium uppercase tracking-[0.02em] sm:tracking-[0.025em] text-[1.9rem] leading-[1.12]";
+/** Matches service pages — compact gold label above section titles. */
+const SERVICE_EYEBROW_CLASS =
+  "text-[0.6875rem] sm:text-[11px] font-semibold tracking-[0.14em] sm:tracking-[0.16em] text-[#c9a84c] uppercase mb-3";
 
-/** Matches `--secondary` / editorial CTA on the main homepage. */
-const MAIN_HOME_EYEBROW_COLOR = "text-[var(--secondary)]";
+const SERVICE_H2_CLASS =
+  "font-heading text-3xl sm:text-4xl font-light text-stone-900 leading-snug";
+
+const SERVICE_H3_CLASS =
+  "font-heading text-xl sm:text-2xl font-light text-stone-900 leading-snug";
 
 export type SectionHeadingProps = {
   /** Uppercase label above the title (e.g. WHAT WE DO). Omit to hide. */
@@ -38,9 +34,8 @@ export type SectionHeadingProps = {
 };
 
 /**
- * Section title: gold eyebrow + stone title. All section H2 titles render at 1.9rem.
- * Main `/` H2s use Montserrat, medium weight, uppercase. Other routes: H2 bold (700).
- * `/hero4` tweaks eyebrow/H3 sizing; other routes use compact eyebrow/H3 typography.
+ * Section title: gold eyebrow + stone title.
+ * Main `/` matches service-page headings (`ServicePageLayout`).
  */
 export function SectionHeading({
   eyebrow,
@@ -56,19 +51,12 @@ export function SectionHeading({
   const pathname = usePathname();
   const isMainHome = pathname === "/";
   const isMainHomeH2 = isMainHome && Tag === "h2";
+  const isMainHomeH3 = isMainHome && Tag === "h3";
   /** Only `/` uses the larger pre–hero-4 editorial scale; all other routes keep the compact scale. */
   const useCompactScale = pathname !== "/";
   const isHero4 = isHero4Path(pathname);
   const isDark = theme === "dark";
-  /** Wrapper stack: Montserrat when the title is `<h2>` so eyebrow matches the heading. */
-  const wrapperFontFamily =
-    Tag === "h2"
-      ? MONTSERRAT_STACK
-      : fontOverride === "poppins"
-        ? POPPINS
-        : useCompactScale
-          ? POPPINS
-          : MAIN_HOME_HEADING_FONT;
+  const eyebrowFontFamily = BODY_SANS;
 
   return (
     <div
@@ -77,20 +65,20 @@ export function SectionHeading({
         align === "center" && "items-center text-center",
         className,
       )}
-      style={{
-        fontFamily: wrapperFontFamily,
-      }}
     >
       {eyebrow ? (
         <p
           className={cn(
-            useCompactScale
-              ? isHero4
-                ? "text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em]"
-                : "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] sm:text-[0.75rem] sm:tracking-[0.1em]"
-              : "text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em]",
-            isMainHome ? MAIN_HOME_EYEBROW_COLOR : "text-[var(--gold)]",
+            isMainHome
+              ? SERVICE_EYEBROW_CLASS
+              : useCompactScale
+                ? isHero4
+                  ? "text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em]"
+                  : "text-[0.6875rem] font-semibold uppercase tracking-[0.09em] sm:text-[0.75rem] sm:tracking-[0.1em]"
+                : "text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.12em]",
+            !isMainHome && "text-[var(--gold)]",
           )}
+          style={{ fontFamily: eyebrowFontFamily }}
         >
           {eyebrow}
         </p>
@@ -98,27 +86,31 @@ export function SectionHeading({
       <Tag
         id={id}
         className={cn(
-          "max-w-[22rem] text-balance sm:max-w-3xl md:max-w-4xl",
+          "font-heading",
+          !isMainHomeH2 &&
+            !isMainHomeH3 &&
+            "max-w-[22rem] text-balance sm:max-w-3xl md:max-w-4xl",
           isMainHomeH2
-            ? "max-w-5xl text-stone-900"
-            : useCompactScale
-              ? "font-bold tracking-tight text-stone-800 lg:max-w-[min(40rem,92vw)]"
-              : "font-medium leading-[1.08] text-stone-900 lg:max-w-5xl",
-          Tag === "h3"
-            ? cn(
-                useCompactScale
-                  ? isHero4
-                    ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
-                    : "text-base sm:text-lg lg:text-xl leading-[1.15]"
-                  : "text-sm sm:text-base lg:text-lg leading-[1.15]",
-                isMainHome &&
-                  "uppercase tracking-[0.02em] sm:tracking-[0.025em]",
-              )
-            : isMainHomeH2
-              ? MAIN_HOME_H2_TITLE_CLASS
-              : "text-[1.9rem] leading-[1.06]",
+            ? SERVICE_H2_CLASS
+            : isMainHomeH3
+              ? SERVICE_H3_CLASS
+              : useCompactScale
+                ? Tag === "h3"
+                  ? cn(
+                      isHero4
+                        ? "text-lg sm:text-xl lg:text-2xl leading-[1.15]"
+                        : "text-base sm:text-lg lg:text-xl leading-[1.15]",
+                      "font-bold tracking-tight text-stone-800",
+                    )
+                  : "font-bold tracking-tight text-stone-800 lg:max-w-[min(40rem,92vw)]"
+                : Tag === "h3"
+                  ? "text-sm sm:text-base lg:text-lg leading-[1.15] font-medium text-stone-900"
+                  : "font-medium leading-[1.08] text-stone-900 lg:max-w-5xl",
+          Tag === "h2" && !isMainHomeH2 && "text-[1.9rem] leading-[1.06]",
           isDark && "text-white",
-          eyebrow && (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
+          !isMainHome &&
+            eyebrow &&
+            (Tag === "h3" ? "mt-1" : "mt-1.5 sm:mt-2"),
           align === "center" && "mx-auto",
           titleClassName,
         )}

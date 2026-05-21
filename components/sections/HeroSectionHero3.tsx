@@ -11,8 +11,16 @@ import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 import HeroLeadForm from "@/components/sections/HeroLeadForm";
 
-const HERO_HEADING_FONT =
-  'var(--font-montserrat), ui-sans-serif, system-ui, sans-serif';
+const BODY_SANS =
+  "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
+
+/** Service-page hero eyebrow — compact gold label. */
+const HERO_EYEBROW_CLASS =
+  "text-[0.6875rem] sm:text-[11px] font-semibold tracking-[0.14em] sm:tracking-[0.16em] uppercase mb-3 sm:mb-4 text-[#c9a84c]";
+
+/** Service-page hero H1 — Montserrat, bold, sentence case. */
+const HERO_H1_CLASS =
+  "font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-[#f5f0eb] leading-[1.04]";
 
 type HeroSlide = {
   src: string;
@@ -42,7 +50,7 @@ const HERO_SLIDE: HeroSlide = {
   eyebrow: "Magic Frame Studio · Since 2020",
   title: (
     <>
-      We Don&apos;t Just Capture Moments <TitleAccent /> We Craft Stories.
+      We don&apos;t just capture moments <TitleAccent /> we craft stories.
     </>
   ),
   lead: [
@@ -127,29 +135,15 @@ export default function HeroSectionHero3() {
                   transition={copyMotion}
                 >
                   <p
-                    className={cn(
-                      "mb-2 font-semibold uppercase text-[var(--gold)] sm:mb-2.5",
-                      isHero4
-                        ? "text-xs tracking-[0.1em] sm:tracking-[0.12em]"
-                        : "text-sm tracking-[0.12em] sm:tracking-[0.14em]",
-                    )}
-                    style={{ fontFamily: HERO_HEADING_FONT }}
+                    className={HERO_EYEBROW_CLASS}
+                    style={{ fontFamily: BODY_SANS }}
                   >
                     {HERO_SLIDE.eyebrow}
                   </p>
 
-                  <div
-                    className={cn(
-                      isHero4
-                        ? "text-white text-[clamp(2.45rem,4.65vw+0.85rem,5.65rem)] font-semibold uppercase leading-[1.06] tracking-[0.02em]"
-                        : "text-white font-semibold uppercase leading-[1.14] text-[2.65rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] tracking-[0.02em]",
-                    )}
-                    style={{ fontFamily: HERO_HEADING_FONT }}
-                  >
-                    <h1 className="inline-block font-semibold">
-                      <span aria-live="polite">{HERO_SLIDE.title}</span>
-                    </h1>
-                  </div>
+                  <h1 className={cn(HERO_H1_CLASS, "inline-block")}>
+                    <span aria-live="polite">{HERO_SLIDE.title}</span>
+                  </h1>
 
                   <p
                     className={cn(
