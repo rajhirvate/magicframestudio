@@ -1,15 +1,13 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { isHero4Path } from "@/lib/routeFlags";
 import { cn } from "@/lib/utils";
 
-const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
+const poppins = "var(--font-sans), sans-serif";
 
 const faqs = [
   {
@@ -46,7 +44,7 @@ const faqs = [
   },
 ];
 
-function FAQItem({
+function AccordionRow({
   faq,
   index,
   isOpen,
@@ -57,32 +55,44 @@ function FAQItem({
   isOpen: boolean;
   onToggle: () => void;
 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const rowRef = useRef(null);
+  const inView = useInView(rowRef, { once: true, margin: "-40px" });
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
+      ref={rowRef}
+      initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, delay: index * 0.05 }}
-      className="border-b border-stone-200 last:border-b-0"
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      className="rounded-2xl border border-stone-100 bg-[#faf9f7] px-6 py-5 sm:px-7 sm:py-6"
     >
       <button
+        type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left group"
+        className="group flex w-full items-start justify-between gap-4 text-left"
+        aria-expanded={isOpen}
       >
         <span
-          className="text-[15px] font-semibold text-stone-800 group-hover:text-[#c9a84c] transition-colors duration-200 leading-snug"
+          className={cn(
+            "text-[15px] sm:text-base leading-snug",
+            isOpen ? "font-bold text-stone-900" : "font-semibold text-stone-900",
+          )}
           style={{ fontFamily: poppins }}
         >
           {faq.q}
         </span>
-        <span className="flex-shrink-0 w-7 h-7 rounded-full border border-stone-200 group-hover:border-[#c9a84c]/50 group-hover:bg-[#c9a84c]/5 flex items-center justify-center transition-all duration-200">
-          {isOpen
-            ? <Minus size={13} className="text-[#c9a84c]" />
-            : <Plus size={13} className="text-stone-400 group-hover:text-[#c9a84c]" />
-          }
+        <span
+          className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-[#fafaf9] text-stone-800 transition-colors group-hover:border-[#c9a84c]/35"
+          aria-hidden
+        >
+          {isOpen ? (
+            <Minus className="h-4 w-4 text-[#c9a84c]" strokeWidth={2} />
+          ) : (
+            <Plus
+              className="h-4 w-4 text-stone-500 group-hover:text-[#c9a84c]"
+              strokeWidth={2}
+            />
+          )}
         </span>
       </button>
 
@@ -92,11 +102,11 @@ function FAQItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
             <p
-              className="text-sm text-stone-500 leading-relaxed pb-5 pr-8"
+              className="pt-4 text-sm sm:text-[15px] leading-relaxed text-stone-600 pr-2 sm:pr-10"
               style={{ fontFamily: inter }}
             >
               {faq.a}
@@ -110,78 +120,62 @@ function FAQItem({
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const pathname = usePathname();
-  const isHero4 = isHero4Path(pathname);
+  const headerRef = useRef(null);
+  const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
+
+  const handleToggle = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
 
   return (
-    <section
-      className={cn(
-        "bg-white",
-        isHero4
-          ? "pt-10 pb-14 lg:pt-14 lg:pb-20"
-          : "py-14 lg:py-20",
-      )}
-    >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Header */}
+    <section className="relative overflow-hidden bg-white py-14 lg:py-20">
+      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65 }}
-          className="text-center mb-12"
+          ref={headerRef}
+          initial={{ opacity: 0, y: 18 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55 }}
+          className="mx-auto mb-10 max-w-2xl text-center sm:mb-12"
         >
-          <SectionHeading
-            align="center"
-            eyebrow="Got questions?"
-            title="Frequently asked questions"
-            className="mb-3"
-          />
+          <h2 className="font-heading mb-3 text-3xl font-light text-stone-900 sm:text-4xl md:text-[2.35rem] md:leading-tight">
+            Frequently asked questions
+          </h2>
           <p
-            className="text-sm text-stone-400 max-w-xl mx-auto"
+            className="text-sm text-stone-500 sm:text-[15px]"
             style={{ fontFamily: inter }}
           >
-            Everything you need to know before booking your shoot with Magic Frame Studio.
+            Everything you need to know!
           </p>
         </motion.div>
 
-        {/* Accordion */}
-        <div className="bg-[#faf9f7] border border-stone-100 rounded-2xl px-6 sm:px-8 divide-y-0">
+        <div className="flex flex-col gap-4">
           {faqs.map((faq, i) => (
-            <FAQItem
-              key={i}
+            <AccordionRow
+              key={faq.q}
               faq={faq}
               index={i}
               isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              onToggle={() => handleToggle(i)}
             />
           ))}
         </div>
 
-        {/* Still have questions */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-10"
+          animate={headerInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.35, duration: 0.5 }}
+          className="mt-10 text-center text-sm text-stone-600"
+          style={{ fontFamily: inter }}
         >
-          <p
-            className="text-sm text-stone-400 mb-3"
-            style={{ fontFamily: inter }}
-          >
-            Still have questions?
-          </p>
-          <a
+          Still have questions?{" "}
+          <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#c9a84c] hover:text-[#b8942e] transition-colors"
-            style={{ fontFamily: poppins }}
+            className="font-semibold text-stone-900 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-[#c9a84c] hover:decoration-[#c9a84c]/50"
           >
-            Ask us directly →
-          </a>
-        </motion.div>
+            Contact us
+          </Link>
+          .
+        </motion.p>
       </div>
     </section>
   );
