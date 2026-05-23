@@ -43,10 +43,9 @@ function TitleAccent() {
 
 /** Static editorial hero — single image + headline (no carousel). */
 const HERO_SLIDE: HeroSlide = {
-  src:
-    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=75&w=1600&auto=format&fit=crop",
-  alt: "Close-up of wedding rings and hands with flowers",
-  objectClass: "object-cover object-[28%_center] sm:object-[32%_center]",
+  src: "/images/hero-home.webp",
+  alt: "Bride and groom at a wedding ceremony under floral décor",
+  objectClass: "object-cover object-center",
   eyebrow: "Magic Frame Studio · Since 2020",
   title: (
     <>

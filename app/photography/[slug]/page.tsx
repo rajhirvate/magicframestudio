@@ -2,10 +2,14 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { photographyServices } from "@/data/services";
 import ServicePageLayout from "@/components/sections/ServicePageLayout";
+import { getWeddingPhotographyGalleryPreview, getWeddingPhotographyMasonryGallery } from "@/lib/gallery/weddingPhotographyGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+/** Re-read wedding gallery folder periodically in production. */
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return photographyServices.map((service) => ({
@@ -38,6 +42,16 @@ export default async function PhotographyServicePage({ params }: Props) {
 
   if (!service) notFound();
 
+  const galleryPreviewPhotos =
+    service.slug === "wedding-photography"
+      ? await getWeddingPhotographyGalleryPreview()
+      : undefined;
+
+  const masonryGalleryPhotos =
+    service.slug === "wedding-photography"
+      ? await getWeddingPhotographyMasonryGallery()
+      : undefined;
+
   return (
     <ServicePageLayout
       title={service.title}
@@ -49,6 +63,8 @@ export default async function PhotographyServicePage({ params }: Props) {
       subServices={service.subServices}
       category="photography"
       slug={service.slug}
+      galleryPreviewPhotos={galleryPreviewPhotos}
+      masonryGalleryPhotos={masonryGalleryPhotos}
     />
   );
 }

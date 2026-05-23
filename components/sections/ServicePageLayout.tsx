@@ -15,7 +15,9 @@ import {
 import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
 import { locations } from "@/data/locations";
 import ContactForm from "@/components/ContactForm";
-import WeddingMasonryPortfolios from "@/components/sections/WeddingMasonryPortfolios";
+import WeddingMasonryPortfolios, {
+  type MasonryImageItem,
+} from "@/components/sections/WeddingMasonryPortfolios";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import WeddingPhotographyFAQ from "@/components/sections/WeddingPhotographyFAQ";
 import EventPhotographyFAQ from "@/components/sections/EventPhotographyFAQ";
@@ -45,7 +47,7 @@ const galleryPhotoPool = [
 ];
 
 const serviceStoryPhotos: Record<string, string> = {
-  "wedding-photography": "/images/services/wedding-photography-about.png",
+  "wedding-photography": "/images/services/wedding-photography-about.webp",
 };
 
 const serviceHighlights: Record<
@@ -269,6 +271,10 @@ interface ServicePageLayoutProps {
   subServices: string[];
   category: "photography" | "videography";
   slug: string;
+  /** When set (e.g. wedding photography folder scan), overrides the static gallery preview list. */
+  galleryPreviewPhotos?: string[];
+  /** Folder-backed masonry grid for wedding photography. */
+  masonryGalleryPhotos?: MasonryImageItem[];
 }
 
 function AnimatedSection({
@@ -303,13 +309,19 @@ export default function ServicePageLayout({
   subServices,
   category,
   slug,
+  galleryPreviewPhotos,
+  masonryGalleryPhotos,
 }: ServicePageLayoutProps) {
   const paragraphs = description.split("\n\n").filter(Boolean);
   const photoMap = category === "photography" ? photographyPhotos : videographyPhotos;
   const heroPhoto = photoMap[slug];
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
   const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
-  const gallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const defaultGallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const gallery =
+    galleryPreviewPhotos && galleryPreviewPhotos.length > 0
+      ? galleryPreviewPhotos
+      : defaultGallery;
   const highlightsContent = serviceHighlights[slug];
 
   return (
@@ -637,7 +649,7 @@ export default function ServicePageLayout({
 
           <ReadyToConnectSection />
 
-          <WeddingMasonryPortfolios />
+          <WeddingMasonryPortfolios items={masonryGalleryPhotos} />
 
           <WeddingHowItWorks />
 

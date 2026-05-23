@@ -15,8 +15,8 @@ export type MasonryImageItem = {
 
 const WEDDING_GALLERY_SECTION_1: MasonryImageItem[] = [
   {
-    src: "/images/services/wedding-photography-about.png",
-    alt: "Wedding photography — celebration",
+    src: "/images/services/wedding-photography-about.webp",
+    alt: "Bride and groom at a wedding ceremony under floral décor",
   },
   {
     src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=640&q=75&fit=crop&auto=format",
@@ -241,8 +241,6 @@ const ALL_GALLERY_ITEMS: MasonryImageItem[] = [
   ...WEDDING_GALLERY_LOAD_MORE,
 ];
 
-const TOTAL_GALLERY_IMAGES = ALL_GALLERY_ITEMS.length;
-
 const INITIAL_VISIBLE_COUNT = 28;
 const LOAD_MORE_BATCH = 8;
 
@@ -435,7 +433,16 @@ function UniformGalleryGrid({
   );
 }
 
-export default function WeddingMasonryPortfolios() {
+export default function WeddingMasonryPortfolios({
+  items,
+}: {
+  /** Folder-backed gallery for wedding photography; falls back to built-in samples when empty. */
+  items?: MasonryImageItem[];
+}) {
+  const galleryItems =
+    items && items.length > 0 ? items : ALL_GALLERY_ITEMS;
+  const totalGalleryImages = galleryItems.length;
+
   /** Derived count avoids stale `useState` after hot reload when INITIAL_VISIBLE_COUNT changes. */
   const [loadMoreBatches, setLoadMoreBatches] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -443,13 +450,13 @@ export default function WeddingMasonryPortfolios() {
 
   const visibleCount = Math.min(
     INITIAL_VISIBLE_COUNT + loadMoreBatches * LOAD_MORE_BATCH,
-    TOTAL_GALLERY_IMAGES,
+    totalGalleryImages,
   );
   const visibleItems = useMemo(
-    () => ALL_GALLERY_ITEMS.slice(0, visibleCount),
-    [visibleCount],
+    () => galleryItems.slice(0, visibleCount),
+    [galleryItems, visibleCount],
   );
-  const hasMore = visibleCount < TOTAL_GALLERY_IMAGES;
+  const hasMore = visibleCount < totalGalleryImages;
 
   return (
     <section className="border-t border-stone-200/90 bg-[#f8f7f5] py-14 lg:py-20">
@@ -463,7 +470,7 @@ export default function WeddingMasonryPortfolios() {
       ) : null}
       <div className="relative mx-auto max-w-7xl px-5 sm:px-7 lg:px-10">
         <p className="sr-only" aria-live="polite">
-          Gallery showing {visibleItems.length} of {TOTAL_GALLERY_IMAGES} photos
+          Gallery showing {visibleItems.length} of {totalGalleryImages} photos
         </p>
         <div className="mx-auto w-full max-w-6xl">
           <UniformGalleryGrid
