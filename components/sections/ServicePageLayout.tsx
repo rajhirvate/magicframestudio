@@ -629,7 +629,7 @@ export default function ServicePageLayout({
                       </div>
 
                       <h3
-                        className="font-heading text-2xl font-bold text-stone-900 mb-3 leading-tight"
+                        className="font-heading text-lg sm:text-xl font-normal text-stone-900 mb-3 leading-snug"
                       >
                         {item.title}
                       </h3>

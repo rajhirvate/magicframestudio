@@ -6,7 +6,6 @@ import { ClipboardList, UsersRound, CalendarCheck2, Camera } from "lucide-react"
 import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
 
 const inter = "var(--font-sans), sans-serif";
-const poppins = "var(--font-sans), sans-serif";
 
 const steps = [
   {
@@ -67,8 +66,7 @@ function StepCard({
       </div>
 
       <h3
-        className="mb-2.5 max-w-[280px] text-base font-bold leading-snug text-stone-900 sm:max-w-[260px] sm:text-lg"
-        style={{ fontFamily: poppins }}
+        className="mb-2.5 max-w-[280px] font-heading text-base font-normal leading-snug text-stone-900 sm:max-w-[260px] sm:text-lg"
       >
         {step.subtitle}
       </h3>
