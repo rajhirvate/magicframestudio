@@ -27,6 +27,7 @@ async function readWeddingPhotographyGalleryPreviewUncached(): Promise<string[]>
     relativeDir: WEDDING_PHOTOGRAPHY_GALLERY_DIR,
     publicPath: WEDDING_PHOTOGRAPHY_GALLERY_PUBLIC_PATH,
     limit: WEDDING_PHOTOGRAPHY_GALLERY_PREVIEW_LIMIT,
+    altPrefix: "Wedding photography",
   });
 
   return images.map((image) => image.src);
@@ -38,6 +39,7 @@ async function readWeddingPhotographyMasonryGalleryUncached(): Promise<
   const images = await readGalleryImageFolder({
     relativeDir: WEDDING_PHOTOGRAPHY_MASONRY_DIR,
     publicPath: WEDDING_PHOTOGRAPHY_MASONRY_PUBLIC_PATH,
+    altPrefix: "Wedding photography",
   });
 
   return images.map(({ src, alt }) => ({ src, alt }));

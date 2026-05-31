@@ -1,11 +1,15 @@
 // Curated Unsplash photos for each service category
 // Format: https://images.unsplash.com/photo-{id}?w=600&q=80&fit=crop&auto=format
 
+/** About-section image for event photography. */
+export const eventPhotographyStoryPhoto =
+  "/images/services/event-photography-conference-audience.jpg";
+
 export const photographyPhotos: Record<string, string> = {
   // Bride & groom — soft warm light, wide compositional breathing room
   "wedding-photography": "/images/services/wedding-photography-about.webp",
   "event-photography":
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop&auto=format",
+    "/images/services/event-photography-conference-audience.jpg",
   "portrait-photography":
     "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&fit=crop&auto=format",
   "fashion-model-photography":

@@ -12,7 +12,11 @@ import {
   MapPin,
   Wallet,
 } from "lucide-react";
-import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
+import {
+  eventPhotographyStoryPhoto,
+  photographyPhotos,
+  videographyPhotos,
+} from "@/data/servicePhotos";
 import { locations } from "@/data/locations";
 import ContactForm from "@/components/ContactForm";
 import WeddingMasonryPortfolios, {
@@ -48,6 +52,7 @@ const galleryPhotoPool = [
 
 const serviceStoryPhotos: Record<string, string> = {
   "wedding-photography": "/images/services/wedding-photography-about.webp",
+  "event-photography": eventPhotographyStoryPhoto,
 };
 
 const serviceHighlights: Record<
@@ -273,7 +278,7 @@ interface ServicePageLayoutProps {
   slug: string;
   /** When set (e.g. wedding photography folder scan), overrides the static gallery preview list. */
   galleryPreviewPhotos?: string[];
-  /** Folder-backed masonry grid for wedding photography. */
+  /** Folder-backed masonry grid with Load more (wedding & event photography). */
   masonryGalleryPhotos?: MasonryImageItem[];
 }
 
@@ -318,10 +323,14 @@ export default function ServicePageLayout({
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
   const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
   const defaultGallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
-  const gallery =
-    galleryPreviewPhotos && galleryPreviewPhotos.length > 0
+  const usesFolderGallery =
+    slug === "wedding-photography" || slug === "event-photography";
+  const gallery = usesFolderGallery
+    ? (galleryPreviewPhotos ?? [])
+    : galleryPreviewPhotos !== undefined
       ? galleryPreviewPhotos
       : defaultGallery;
+  const showGalleryPreview = gallery.length > 0;
   const highlightsContent = serviceHighlights[slug];
 
   return (
@@ -544,7 +553,8 @@ export default function ServicePageLayout({
         </div>
       </section>
 
-      {/* Gallery preview — same 6-image grid as other service pages */}
+      {/* Gallery preview — folder-backed for wedding & event; hidden when folder empty */}
+      {showGalleryPreview && (
       <section className="py-16 lg:py-24 bg-[#f5f0eb] border-t border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-12 text-center">
@@ -592,6 +602,7 @@ export default function ServicePageLayout({
           </AnimatedSection>
         </div>
       </section>
+      )}
 
       {highlightsContent && (
         <>
@@ -649,7 +660,12 @@ export default function ServicePageLayout({
 
           <ReadyToConnectSection />
 
-          <WeddingMasonryPortfolios items={masonryGalleryPhotos} />
+          {(slug === "wedding-photography" || slug === "event-photography") && (
+            <WeddingMasonryPortfolios
+              items={masonryGalleryPhotos}
+              fallbackWhenEmpty={slug === "wedding-photography"}
+            />
+          )}
 
           <WeddingHowItWorks />
 

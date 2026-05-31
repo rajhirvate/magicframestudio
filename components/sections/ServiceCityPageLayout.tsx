@@ -5,7 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, CheckCircle2, ChevronRight, MapPin } from "lucide-react";
-import { photographyPhotos, videographyPhotos } from "@/data/servicePhotos";
+import {
+  eventPhotographyStoryPhoto,
+  photographyPhotos,
+  videographyPhotos,
+} from "@/data/servicePhotos";
 import { locations, Location } from "@/data/locations";
 import { photographyServices, videographyServices } from "@/data/services";
 import { cn } from "@/lib/utils";
@@ -31,6 +35,7 @@ interface ServiceCityPageLayoutProps {
   category: "photography" | "videography";
   slug: string;
   location: Location;
+  galleryPreviewPhotos?: string[];
 }
 
 function AnimatedSection({
@@ -64,13 +69,25 @@ export default function ServiceCityPageLayout({
   category,
   slug,
   location,
+  galleryPreviewPhotos,
 }: ServiceCityPageLayoutProps) {
   const paragraphs = description.split("\n\n").filter(Boolean);
   const photoMap = category === "photography" ? photographyPhotos : videographyPhotos;
   const heroPhoto = photoMap[slug];
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
-  const storyPhoto = restPool[0] ?? heroPhoto;
-  const gallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const storyPhoto =
+    slug === "event-photography"
+      ? eventPhotographyStoryPhoto
+      : restPool[0] ?? heroPhoto;
+  const defaultGallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
+  const usesFolderGallery =
+    slug === "wedding-photography" || slug === "event-photography";
+  const gallery = usesFolderGallery
+    ? (galleryPreviewPhotos ?? [])
+    : galleryPreviewPhotos !== undefined
+      ? galleryPreviewPhotos
+      : defaultGallery;
+  const showGalleryPreview = gallery.length > 0;
 
   const allServices =
     category === "photography" ? photographyServices : videographyServices;
@@ -306,6 +323,7 @@ export default function ServiceCityPageLayout({
       </section>
 
       {/* Gallery */}
+      {showGalleryPreview && (
       <section className="py-16 lg:py-24 bg-[#f5f0eb] border-t border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-12 text-center">
@@ -350,6 +368,7 @@ export default function ServiceCityPageLayout({
           </AnimatedSection>
         </div>
       </section>
+      )}
 
       {/* Other cities for this service */}
       <section className="py-14 lg:py-20 bg-white border-t border-stone-100">

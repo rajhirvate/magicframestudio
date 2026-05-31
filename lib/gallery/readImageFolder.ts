@@ -15,21 +15,22 @@ export type GalleryImageRecord = {
   mtimeMs: number;
 };
 
-function altFromFilename(name: string): string {
+function altFromFilename(name: string, prefix = "Gallery"): string {
   const base = path.basename(name, path.extname(name));
   const label = base
     .replace(/^[\d._-]+/, "")
     .replace(/[-_]+/g, " ")
     .trim();
 
-  if (!label) return "Wedding photography";
-  return `Wedding photography — ${label.charAt(0).toUpperCase()}${label.slice(1)}`;
+  if (!label) return prefix;
+  return `${prefix} — ${label.charAt(0).toUpperCase()}${label.slice(1)}`;
 }
 
 export async function readGalleryImageFolder(options: {
   relativeDir: string;
   publicPath: string;
   limit?: number;
+  altPrefix?: string;
 }): Promise<GalleryImageRecord[]> {
   const absoluteDir = path.join(process.cwd(), options.relativeDir);
 
@@ -54,7 +55,7 @@ export async function readGalleryImageFolder(options: {
 
         return {
           src: `${options.publicPath}/${encodeURIComponent(name)}`,
-          alt: altFromFilename(name),
+          alt: altFromFilename(name, options.altPrefix ?? "Gallery"),
           mtimeMs: info.mtimeMs,
         };
       }),

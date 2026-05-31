@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { photographyServices } from "@/data/services";
 import ServicePageLayout from "@/components/sections/ServicePageLayout";
 import { getWeddingPhotographyGalleryPreview, getWeddingPhotographyMasonryGallery } from "@/lib/gallery/weddingPhotographyGallery";
+import { getEventPhotographyGalleryPreview, getEventPhotographyMasonryGallery } from "@/lib/gallery/eventPhotographyGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,12 +46,16 @@ export default async function PhotographyServicePage({ params }: Props) {
   const galleryPreviewPhotos =
     service.slug === "wedding-photography"
       ? await getWeddingPhotographyGalleryPreview()
-      : undefined;
+      : service.slug === "event-photography"
+        ? await getEventPhotographyGalleryPreview()
+        : undefined;
 
   const masonryGalleryPhotos =
     service.slug === "wedding-photography"
       ? await getWeddingPhotographyMasonryGallery()
-      : undefined;
+      : service.slug === "event-photography"
+        ? await getEventPhotographyMasonryGallery()
+        : undefined;
 
   return (
     <ServicePageLayout

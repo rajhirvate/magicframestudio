@@ -435,13 +435,22 @@ function UniformGalleryGrid({
 
 export default function WeddingMasonryPortfolios({
   items,
+  fallbackWhenEmpty = true,
 }: {
-  /** Folder-backed gallery for wedding photography; falls back to built-in samples when empty. */
+  /** Folder-backed gallery; when empty, optional built-in samples (wedding only). */
   items?: MasonryImageItem[];
+  fallbackWhenEmpty?: boolean;
 }) {
-  const galleryItems =
-    items && items.length > 0 ? items : ALL_GALLERY_ITEMS;
+  const galleryItems = (() => {
+    if (items === undefined) return ALL_GALLERY_ITEMS;
+    if (items.length > 0) return items;
+    return fallbackWhenEmpty ? ALL_GALLERY_ITEMS : items;
+  })();
   const totalGalleryImages = galleryItems.length;
+
+  if (totalGalleryImages === 0) {
+    return null;
+  }
 
   /** Derived count avoids stale `useState` after hot reload when INITIAL_VISIBLE_COUNT changes. */
   const [loadMoreBatches, setLoadMoreBatches] = useState(0);
