@@ -3,12 +3,24 @@
 import { useState, useEffect, useRef, startTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 import { isEditorialHeroHome } from "@/lib/routeFlags";
-import { MegaMenu, MobileServiceList } from "@/components/layout/ServiceMegaMenu";
+
+const MegaMenu = dynamic(
+  () => import("@/components/layout/ServiceMegaMenu").then((m) => ({ default: m.MegaMenu })),
+  { ssr: false },
+);
+const MobileServiceList = dynamic(
+  () =>
+    import("@/components/layout/ServiceMegaMenu").then((m) => ({
+      default: m.MobileServiceList,
+    })),
+  { ssr: false },
+);
 
 /* ─── Main Navbar ─────────────────────────────────────────────── */
 export default function Navbar() {
@@ -74,8 +86,6 @@ export default function Navbar() {
                 alt="Magic Frame Studio"
                 width={200}
                 height={52}
-                priority
-                fetchPriority="high"
                 className="h-9 lg:h-10 w-auto"
                 style={
                   lightNavChrome

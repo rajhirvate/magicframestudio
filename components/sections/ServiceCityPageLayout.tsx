@@ -14,6 +14,7 @@ import { locations, Location } from "@/data/locations";
 import { photographyServices, videographyServices } from "@/data/services";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
+import { isFolderGallerySlug } from "@/lib/gallery/folderGallerySlugs";
 
 const poppins = "var(--font-sans), sans-serif";
 const inter = "var(--font-sans), sans-serif";
@@ -80,8 +81,7 @@ export default function ServiceCityPageLayout({
       ? eventPhotographyStoryPhoto
       : restPool[0] ?? heroPhoto;
   const defaultGallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
-  const usesFolderGallery =
-    slug === "wedding-photography" || slug === "event-photography";
+  const usesFolderGallery = isFolderGallerySlug(slug);
   const gallery = usesFolderGallery
     ? (galleryPreviewPhotos ?? [])
     : galleryPreviewPhotos !== undefined

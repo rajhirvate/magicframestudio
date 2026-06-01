@@ -3,7 +3,6 @@ import {
   Montserrat,
   Playfair_Display,
   Plus_Jakarta_Sans,
-  Poppins,
 } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
@@ -32,15 +31,6 @@ const fontMontserrat = Montserrat({
   display: "swap",
 });
 
-/** Loaded for `/hero4` typography comparison only (scoped via `.hero4-page`). */
-const fontPoppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  style: ["normal", "italic"],
-  variable: "--font-poppins",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Magic Frame Studio | Professional Photography & Videography in India",
   description:
@@ -63,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSerif.variable} ${fontSans.variable} ${fontMontserrat.variable} ${fontPoppins.variable} h-full`}
+      className={`${fontSerif.variable} ${fontSans.variable} ${fontMontserrat.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <SiteChrome>{children}</SiteChrome>

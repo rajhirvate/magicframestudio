@@ -34,6 +34,7 @@ import DronePhotographyFAQ from "@/components/sections/DronePhotographyFAQ";
 import WeddingHowItWorks from "@/components/sections/WeddingHowItWorks";
 import WeddingCustomerTestimonials from "@/components/sections/WeddingCustomerTestimonials";
 import { ICON_RING_GRADIENT } from "@/lib/iconRingGradient";
+import { isFolderGallerySlug } from "@/lib/gallery/folderGallerySlugs";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 
@@ -323,8 +324,7 @@ export default function ServicePageLayout({
   const restPool = galleryPhotoPool.filter((p) => p !== heroPhoto);
   const storyPhoto = serviceStoryPhotos[slug] ?? restPool[0] ?? heroPhoto;
   const defaultGallery = [heroPhoto, ...restPool].filter(Boolean).slice(0, 6) as string[];
-  const usesFolderGallery =
-    slug === "wedding-photography" || slug === "event-photography";
+  const usesFolderGallery = isFolderGallerySlug(slug);
   const gallery = usesFolderGallery
     ? (galleryPreviewPhotos ?? [])
     : galleryPreviewPhotos !== undefined
@@ -660,7 +660,7 @@ export default function ServicePageLayout({
 
           <ReadyToConnectSection />
 
-          {(slug === "wedding-photography" || slug === "event-photography") && (
+          {usesFolderGallery && (
             <WeddingMasonryPortfolios
               items={masonryGalleryPhotos}
               fallbackWhenEmpty={slug === "wedding-photography"}

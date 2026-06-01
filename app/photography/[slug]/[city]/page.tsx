@@ -3,9 +3,7 @@ import type { Metadata } from "next";
 import { photographyServices } from "@/data/services";
 import { locations, getLocation } from "@/data/locations";
 import ServiceCityPageLayout from "@/components/sections/ServiceCityPageLayout";
-
-import { getEventPhotographyGalleryPreview } from "@/lib/gallery/eventPhotographyGallery";
-import { getWeddingPhotographyGalleryPreview } from "@/lib/gallery/weddingPhotographyGallery";
+import { getServiceGalleryPreview } from "@/lib/gallery/serviceGalleryRegistry";
 
 interface Props {
   params: Promise<{ slug: string; city: string }>;
@@ -50,12 +48,7 @@ export default async function PhotographyCityPage({ params }: Props) {
 
   if (!service || !location) notFound();
 
-  const galleryPreviewPhotos =
-    service.slug === "wedding-photography"
-      ? await getWeddingPhotographyGalleryPreview()
-      : service.slug === "event-photography"
-        ? await getEventPhotographyGalleryPreview()
-        : undefined;
+  const galleryPreviewPhotos = await getServiceGalleryPreview(service.slug);
 
   return (
     <ServiceCityPageLayout

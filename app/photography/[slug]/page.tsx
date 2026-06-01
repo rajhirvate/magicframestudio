@@ -2,14 +2,16 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { photographyServices } from "@/data/services";
 import ServicePageLayout from "@/components/sections/ServicePageLayout";
-import { getWeddingPhotographyGalleryPreview, getWeddingPhotographyMasonryGallery } from "@/lib/gallery/weddingPhotographyGallery";
-import { getEventPhotographyGalleryPreview, getEventPhotographyMasonryGallery } from "@/lib/gallery/eventPhotographyGallery";
+import {
+  getServiceGalleryPreview,
+  getServiceMasonryGallery,
+} from "@/lib/gallery/serviceGalleryRegistry";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-/** Re-read wedding gallery folder periodically in production. */
+/** Re-read gallery folders periodically in production. */
 export const revalidate = 60;
 
 export async function generateStaticParams() {
@@ -43,19 +45,8 @@ export default async function PhotographyServicePage({ params }: Props) {
 
   if (!service) notFound();
 
-  const galleryPreviewPhotos =
-    service.slug === "wedding-photography"
-      ? await getWeddingPhotographyGalleryPreview()
-      : service.slug === "event-photography"
-        ? await getEventPhotographyGalleryPreview()
-        : undefined;
-
-  const masonryGalleryPhotos =
-    service.slug === "wedding-photography"
-      ? await getWeddingPhotographyMasonryGallery()
-      : service.slug === "event-photography"
-        ? await getEventPhotographyMasonryGallery()
-        : undefined;
+  const galleryPreviewPhotos = await getServiceGalleryPreview(service.slug);
+  const masonryGalleryPhotos = await getServiceMasonryGallery(service.slug);
 
   return (
     <ServicePageLayout

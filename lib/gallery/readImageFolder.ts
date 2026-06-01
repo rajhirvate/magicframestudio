@@ -1,3 +1,4 @@
+import "server-only";
 import { readdir, stat } from "fs/promises";
 import path from "path";
 

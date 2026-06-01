@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import HeroSectionHero3 from "@/components/sections/HeroSectionHero3";
 import StatsBar from "@/components/sections/StatsBar";
-import IntroSection from "@/components/sections/IntroSection";
-import ServicesOverview from "@/components/sections/ServicesOverview";
-import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
-import PortfolioPreview from "@/components/sections/PortfolioPreview";
-import SuccessStoriesMarquee from "@/components/sections/SuccessStoriesMarquee";
 import LatestBlogSection from "@/components/sections/LatestBlogSection";
-import FAQSection from "@/components/sections/FAQSection";
-import SEOContent, { OurApproachSection } from "@/components/sections/SEOContent";
+
+const HomeBelowFold = dynamic(() => import("@/components/home/HomeBelowFold"), {
+  loading: () => <div className="min-h-[40vh]" aria-hidden />,
+});
 
 export const metadata: Metadata = {
   title: "Magic Frame Studio | Professional Photography & Videography in India",
@@ -27,15 +26,10 @@ export default function HomePage() {
     <div className="hero3-page">
       <HeroSectionHero3 />
       <StatsBar />
-      <IntroSection />
-      <ServicesOverview />
-      <ReadyToConnectSection />
-      <OurApproachSection />
-      <PortfolioPreview />
-      <SuccessStoriesMarquee />
-      <SEOContent />
-      <LatestBlogSection />
-      <FAQSection />
+      <HomeBelowFold />
+      <Suspense fallback={null}>
+        <LatestBlogSection />
+      </Suspense>
     </div>
   );
 }

@@ -92,8 +92,7 @@ export default function HeroSectionHero3() {
               fill
               role="presentation"
               priority
-              loading="eager"
-              quality={80}
+              quality={75}
               className={cn(HERO_SLIDE.objectClass)}
               sizes="100vw"
             />

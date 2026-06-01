@@ -5,7 +5,6 @@ import ServicesOverview from "@/components/sections/ServicesOverview";
 import ReadyToConnectSection from "@/components/sections/ReadyToConnectSection";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
 import SuccessStoriesMarquee from "@/components/sections/SuccessStoriesMarquee";
-import LatestBlogSection from "@/components/sections/LatestBlogSection";
 import FAQSection from "@/components/sections/FAQSection";
 import SEOContent, {
   OurApproachSection,
@@ -22,7 +21,6 @@ export default function HomeBelowFold() {
       <PortfolioPreview />
       <SuccessStoriesMarquee />
       <SEOContent />
-      <LatestBlogSection />
       <FAQSection />
     </>
   );

@@ -1,5 +1,47 @@
 # Service gallery folders
 
+## Corporate Photography — Gallery preview (6 images)
+
+Upload to:
+
+```
+public/images/gallery/corporate-photography/
+```
+
+Shows the **6 most recently modified** files in the **Gallery preview** section on `/photography/corporate-photography`.
+
+## Corporate Photography — Masonry grid (Load more)
+
+Upload to:
+
+```
+public/images/gallery/corporate-photography/masonry/
+```
+
+Powers the **large 4-column gallery** after the Ready to Connect section. All images in this folder are included, sorted newest first.
+
+## Event Photography — Gallery preview (6 images)
+
+Upload to:
+
+```
+public/images/gallery/event-photography/
+```
+
+Shows the **6 most recently modified** files in the **Gallery preview** section on `/photography/event-photography`.
+
+Only files in this folder root are used (not the `masonry/` subfolder).
+
+## Event Photography — Masonry grid (Load more)
+
+Upload to:
+
+```
+public/images/gallery/event-photography/masonry/
+```
+
+Powers the **large 4-column gallery** further down the same page.
+
 ## Wedding Photography — Gallery preview (6 images)
 
 Upload to:
