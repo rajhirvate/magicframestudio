@@ -241,12 +241,12 @@ const ALL_GALLERY_ITEMS: MasonryImageItem[] = [
   ...WEDDING_GALLERY_LOAD_MORE,
 ];
 
-const INITIAL_VISIBLE_COUNT = 12;
+const INITIAL_VISIBLE_COUNT = 16;
 const LOAD_MORE_BATCH = 8;
 const EAGER_IMAGE_COUNT = 6;
 
 /** Stagger only the first screen of tiles so the grid feels sequential as you scroll. */
-const SCROLL_REVEAL_STAGGER_CAP = 12;
+const SCROLL_REVEAL_STAGGER_CAP = 16;
 
 function subscribePrefersReducedMotion(onChange: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
