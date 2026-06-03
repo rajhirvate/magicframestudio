@@ -5,6 +5,10 @@
 export const eventPhotographyStoryPhoto =
   "/images/services/event-photography-conference-audience.jpg";
 
+/** About-section image for corporate photography (story block only). */
+export const corporatePhotographyStoryPhoto =
+  "/images/services/corporate-photography-about.png";
+
 export const photographyPhotos: Record<string, string> = {
   // Bride & groom — soft warm light, wide compositional breathing room
   "wedding-photography": "/images/services/wedding-photography-about.webp",
@@ -17,7 +21,7 @@ export const photographyPhotos: Record<string, string> = {
   "product-photography":
     "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&fit=crop&auto=format",
   "corporate-photography":
-    "/images/gallery/corporate-photography/corporate-event-photography-services.png",
+    "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80&fit=crop&auto=format",
   "real-estate-photography":
     "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80&fit=crop&auto=format",
   "drone-photography":
