@@ -16,6 +16,16 @@ export type GalleryImageRecord = {
   mtimeMs: number;
 };
 
+type FolderCacheEntry = {
+  expiresAt: number;
+  data: GalleryImageRecord[];
+};
+
+/** Avoid re-statting large masonry folders on every navigation in dev. */
+const folderReadCache = new Map<string, FolderCacheEntry>();
+const FOLDER_CACHE_TTL_MS =
+  process.env.NODE_ENV === "production" ? 5 * 60_000 : 30_000;
+
 function altFromFilename(name: string, prefix = "Gallery"): string {
   const base = path.basename(name, path.extname(name));
   const label = base
@@ -33,6 +43,12 @@ export async function readGalleryImageFolder(options: {
   limit?: number;
   altPrefix?: string;
 }): Promise<GalleryImageRecord[]> {
+  const cacheKey = `${options.relativeDir}:${options.limit ?? "all"}`;
+  const cached = folderReadCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.data;
+  }
+
   const absoluteDir = path.join(process.cwd(), options.relativeDir);
 
   let entries: string[];
@@ -66,9 +82,13 @@ export async function readGalleryImageFolder(options: {
     .filter((item): item is GalleryImageRecord => item !== null)
     .sort((a, b) => b.mtimeMs - a.mtimeMs);
 
-  if (options.limit !== undefined) {
-    return sorted.slice(0, options.limit);
-  }
+  const result =
+    options.limit !== undefined ? sorted.slice(0, options.limit) : sorted;
 
-  return sorted;
+  folderReadCache.set(cacheKey, {
+    data: result,
+    expiresAt: Date.now() + FOLDER_CACHE_TTL_MS,
+  });
+
+  return result;
 }

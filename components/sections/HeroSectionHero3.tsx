@@ -1,18 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BTN_PRIMARY } from "@/lib/btn";
 import HeroLeadForm from "@/components/sections/HeroLeadForm";
-
-const BODY_SANS =
-  "var(--font-sans), ui-sans-serif, system-ui, sans-serif";
 
 /** Service-page hero eyebrow — compact gold label. */
 const HERO_EYEBROW_CLASS =
@@ -58,29 +50,22 @@ const HERO_SLIDE: HeroSlide = {
   ],
 };
 
-export default function HeroSectionHero3() {
-  const pathname = usePathname();
-  const isHero4 = pathname === "/hero4";
-  const [motionOk, setMotionOk] = useState(true);
+type HeroSectionHero3Props = {
+  /** `/hero4` uses wider padding and omits the left readability gradient. */
+  variant?: "default" | "hero4";
+};
 
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => setMotionOk(!mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
-  }, []);
-
-  const copyMotion = motionOk
-    ? { duration: 0.55, ease: "easeOut" as const }
-    : { duration: 0 };
+/** Server-rendered hero — CSS motion only; client JS limited to `HeroLeadForm`. */
+export default function HeroSectionHero3({
+  variant = "default",
+}: HeroSectionHero3Props) {
+  const isHero4 = variant === "hero4";
 
   return (
     <section
       className={cn(
         "mfs-hero-editorial relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-16 lg:pt-20 text-white",
       )}
-      style={{ fontFamily: "var(--font-sans), sans-serif" }}
       aria-label="Featured work and studio introduction"
     >
       <div className="absolute inset-0 mfs-hero-slideshow-stack" aria-hidden>
@@ -92,7 +77,7 @@ export default function HeroSectionHero3() {
               fill
               role="presentation"
               priority
-              quality={75}
+              quality={60}
               className={cn(HERO_SLIDE.objectClass)}
               sizes="100vw"
             />
@@ -127,58 +112,33 @@ export default function HeroSectionHero3() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(260px,400px)] lg:grid-rows-[auto_auto] lg:items-start lg:gap-x-12 lg:gap-y-10 xl:gap-x-16">
             <div className="min-w-0 max-w-2xl lg:col-start-1 lg:row-start-1 lg:max-w-none">
               <div className="mfs-hero-slideshow-copy lg:pt-10 xl:pt-12">
-                <motion.div
-                  initial={motionOk ? { opacity: 0, y: 18 } : false}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={copyMotion}
-                >
-                  <p
-                    className={HERO_EYEBROW_CLASS}
-                    style={{ fontFamily: BODY_SANS }}
-                  >
+                <div>
+                  <p className={cn(HERO_EYEBROW_CLASS, "mfs-hero-line")}>
                     {HERO_SLIDE.eyebrow}
                   </p>
 
-                  <h1 className={cn(HERO_H1_CLASS, "inline-block")}>
+                  <h1 className={cn(HERO_H1_CLASS, "mfs-hero-title inline-block")}>
                     <span aria-live="polite">{HERO_SLIDE.title}</span>
                   </h1>
 
                   <p
                     className={cn(
-                      "mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
+                      "mfs-hero-sub mt-6 w-full max-w-none text-left text-[0.9375rem] font-light leading-snug tracking-normal sm:mt-7 sm:text-lg sm:leading-snug [&>span]:text-pretty",
                       isHero4 ? "text-white/75" : "text-white/88",
                     )}
                   >
                     <span className="block">{HERO_SLIDE.lead[0]}</span>
                     <span className="block">{HERO_SLIDE.lead[1]}</span>
                   </p>
-                </motion.div>
+                </div>
               </div>
             </div>
 
-            <motion.div
-              initial={motionOk ? { opacity: 0, y: 16 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.55,
-                delay: motionOk ? 0.22 : 0,
-                ease: "easeOut",
-              }}
-              className="w-full max-w-md justify-self-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:justify-self-end lg:self-start"
-            >
+            <div className="mfs-hero-form w-full max-w-md justify-self-center lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:justify-self-end lg:self-start">
               <HeroLeadForm />
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.65,
-                delay: motionOk ? 0.34 : 0,
-                ease: "easeOut",
-              }}
-              className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 lg:col-start-1 lg:row-start-2"
-            >
+            <div className="mfs-hero-cta flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 lg:col-start-1 lg:row-start-2">
               <Link
                 href="/portfolio"
                 className={cn(
@@ -194,7 +154,7 @@ export default function HeroSectionHero3() {
               <Link href="/contact" className={cn(BTN_PRIMARY, "group w-fit")}>
                 Get a quote
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

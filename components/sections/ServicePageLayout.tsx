@@ -54,6 +54,8 @@ const galleryPhotoPool = [
 const serviceStoryPhotos: Record<string, string> = {
   "wedding-photography": "/images/services/wedding-photography-about.webp",
   "event-photography": eventPhotographyStoryPhoto,
+  "corporate-photography":
+    "/images/gallery/corporate-photography/corporate-event-photography-services.png",
 };
 
 const serviceHighlights: Record<

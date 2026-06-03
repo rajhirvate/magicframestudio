@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const sans = "var(--font-sans), sans-serif";
 
-function StoryCard({ story, index }: { story: SuccessStory; index: number }) {
+function StoryCard({ story }: { story: SuccessStory }) {
   const portraitAlt =
     story.imageAlt?.trim() || `Portrait of ${story.name}`;
   const isBlobOrData =
@@ -48,7 +48,7 @@ function StoryCard({ story, index }: { story: SuccessStory; index: number }) {
               fill
               className="object-cover"
               sizes="40px"
-              priority={index < 4 && isRemotePattern}
+              loading="lazy"
               unoptimized={
                 typeof story.image === "string" && story.image.startsWith("/") && story.image.endsWith(".gif")
               }
@@ -86,11 +86,10 @@ function MarqueeRow({
   if (prefersReducedMotion) {
     return (
       <div className="mx-auto grid max-w-7xl justify-center gap-5 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:px-8">
-        {items.map((story, index) => (
+        {items.map((story) => (
           <StoryCard
             key={`static-${reverse ? "b" : "a"}-${story.name}`}
             story={story}
-            index={index}
           />
         ))}
       </div>
@@ -114,7 +113,6 @@ function MarqueeRow({
             <StoryCard
               key={`${story.name}-${index}`}
               story={story}
-              index={index}
             />
           ))}
         </div>

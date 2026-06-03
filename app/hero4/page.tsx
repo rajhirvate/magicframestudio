@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function Hero4Page() {
   return (
     <div className="hero3-page hero4-page">
-      <HeroSectionHero3 />
+      <HeroSectionHero3 variant="hero4" />
       <StatsBar />
       <IntroSection />
       <ServicesOverview />

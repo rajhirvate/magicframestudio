@@ -11,49 +11,49 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const portfolioItems = [
   {
-    photo: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1519741497674-611481863552?w=640&q=75&fit=crop&auto=format",
     label: "Wedding Photography",
     category: "Love Stories",
     size: "large", // spans 2x2
   },
   {
-    photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=480&q=75&fit=crop&auto=format",
     label: "Editorial Portraits",
     category: "Portraits",
     size: "tall", // spans 1x2
   },
   {
-    photo: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=480&q=75&fit=crop&auto=format",
     label: "Aerial Perspectives",
     category: "Drone",
     size: "small",
   },
   {
-    photo: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=640&q=75&fit=crop&auto=format",
     label: "Cinematic Experiences",
     category: "Films",
     size: "wide", // spans 2x1
   },
   {
-    photo: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=480&q=75&fit=crop&auto=format",
     label: "Corporate Events",
     category: "Events",
     size: "small",
   },
   {
-    photo: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=480&q=75&fit=crop&auto=format",
     label: "High Fashion",
     category: "Fashion",
     size: "tall",
   },
   {
-    photo: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=480&q=75&fit=crop&auto=format",
     label: "Luxury Estates",
     category: "Real Estate",
     size: "small",
   },
   {
-    photo: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&fit=crop&auto=format",
+    photo: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=480&q=75&fit=crop&auto=format",
     label: "Product Showcase",
     category: "Commercial",
     size: "small",

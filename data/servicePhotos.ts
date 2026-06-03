@@ -17,7 +17,7 @@ export const photographyPhotos: Record<string, string> = {
   "product-photography":
     "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&fit=crop&auto=format",
   "corporate-photography":
-    "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80&fit=crop&auto=format",
+    "/images/gallery/corporate-photography/corporate-event-photography-services.png",
   "real-estate-photography":
     "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80&fit=crop&auto=format",
   "drone-photography":

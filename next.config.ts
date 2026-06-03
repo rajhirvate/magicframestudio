@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  turbopack: {},
+  /** Prefer `npm run dev` (webpack) — ignores `_push_repo` and avoids Turbopack cache stalls. */
+  turbopack: {
+    root: process.cwd(),
+  },
   /** Fewer modules to trace in dev/build when using barrel-heavy packages */
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],

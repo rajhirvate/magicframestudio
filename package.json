@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NEXT_TELEMETRY_DISABLED=1 next dev -p 3000 --turbopack",
     "dev:turbo": "NEXT_TELEMETRY_DISABLED=1 next dev -p 3000 --turbopack",
-    "dev:webpack": "next dev --webpack -p 3000",
+    "dev:webpack": "NEXT_TELEMETRY_DISABLED=1 next dev -p 3000 --webpack",
     "build": "next build",
     "start": "next start -H 0.0.0.0",
     "lint": "eslint"

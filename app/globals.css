@@ -116,14 +116,18 @@ h3:not(.font-heading) {
 .mfs-hero-sub {
   animation: mfs-hero-rise 0.55s ease-out 0.12s both;
 }
+.mfs-hero-form {
+  animation: mfs-hero-rise 0.55s ease-out 0.22s both;
+}
 .mfs-hero-cta {
-  animation: mfs-hero-rise 0.55s ease-out 0.2s both;
+  animation: mfs-hero-rise 0.55s ease-out 0.34s both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mfs-hero-line,
   .mfs-hero-title,
   .mfs-hero-sub,
+  .mfs-hero-form,
   .mfs-hero-cta {
     animation: none;
     opacity: 1;
