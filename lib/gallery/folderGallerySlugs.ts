@@ -3,6 +3,11 @@ export const FOLDER_GALLERY_SLUGS = [
   "wedding-photography",
   "event-photography",
   "corporate-photography",
+  "portrait-photography",
+  "fashion-model-photography",
+  "product-photography",
+  "real-estate-photography",
+  "drone-photography",
 ] as const;
 
 export type FolderGallerySlug = (typeof FOLDER_GALLERY_SLUGS)[number];
